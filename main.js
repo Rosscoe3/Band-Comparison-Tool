@@ -2,7 +2,7 @@ import './style.css'
 
 //** CHART JS SETUP */
 const ctx = document.getElementById('myChart');
-let myData = "/myData.csv";
+let myData = "/files/myData.csv";
 
 let transmissionData = [];
 var boxAnnotations = [];
