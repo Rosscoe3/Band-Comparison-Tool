@@ -1,7 +1,8 @@
-import './style.css'
+import "./style.css";
 
 //** CHART JS SETUP */
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById("VSWIR");
+const ctx2 = document.getElementById("TIR");
 let myData = "/files/myData.csv";
 
 let transmissionData = [];
@@ -13,7 +14,7 @@ var arrayEndCut = 1150;
 var transmissionDataResolution = 1;
 
 //** IMPORT TRANSMISSION DATA AS A CSV */
-d3.csv(myData).then(function(datapoints){
+d3.csv(myData).then(function (datapoints) {
   transmissionData = datapoints;
   plotCSV();
   resize();
@@ -23,8 +24,7 @@ var data = {
   datasets: [
     //** VISIBLE dataset 13*/
     {
-      data: [
-      ],
+      data: [],
       showLine: true,
       label: "Transmission",
       fill: true,
@@ -43,9 +43,9 @@ const options = {
       enabled: false,
     },
     annotation: {
-      annotations: boxAnnotations
+      annotations: boxAnnotations,
     },
-  }
+  },
 };
 
 const config = {
@@ -171,11 +171,12 @@ const config = {
       },
     },
   },
-  plugins: ['chartjs-plugin-annotation'],
+  plugins: ["chartjs-plugin-annotation"],
   options,
 };
 
 const chart = new Chart(ctx, config);
+const chart2 = new Chart(ctx2, config);
 
 init();
 function init() {
@@ -196,7 +197,7 @@ function readTextFile(file) {
         transmissionData = csvToArray(csvdata);
         console.log(transmissionData);
         plotCSV();
-        
+
         // setTimeout(() => {
         //   plotCSV();
         // }, 1000);
@@ -236,19 +237,17 @@ function csvToArray(str, delimiter = ",") {
 }
 
 //** TAKES A CSV AND PLOTS THE TRANSMISSION DATA */
-function plotCSV()
-{
+function plotCSV() {
   let compressedArray = transmissionData.filter((element, index) => {
     return index % transmissionDataResolution === 0;
-  })
-  console.log(compressedArray); 
-  
-  for(var i = 0; i < compressedArray.length - arrayEndCut; i++)
-  {
-    chart.data.datasets[0].data[i] = ({
+  });
+  console.log(compressedArray);
+
+  for (var i = 0; i < compressedArray.length - arrayEndCut; i++) {
+    chart.data.datasets[0].data[i] = {
       x: compressedArray[i].Wave * 1000,
       y: compressedArray[i].TotTrans,
-    });
+    };
   }
   chart.update();
 }
@@ -259,35 +258,44 @@ window.onresize = function () {
 };
 
 var resizeTimeout;
-function resize()
-{
+function resize() {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(function () 
-  {
+  resizeTimeout = setTimeout(function () {
     //chart.options.plugins.annotation.annotations.label1.font.size = '10%';
     chart.update();
     chart.resize();
   }, 500);
 }
 
-var textFont = '25%';
+var textFont = "15%";
+var sublabelXOffset = 0.1;
+var sublabelYOffset = 0.01;
 
-addBox(430, 450, 0.2, 0.25, 'rgb(103,156,191)', '1', textFont);
-addBox(450, 510, 0.1, 0.15, 'rgb(0,101,141)', '2', textFont);
-addBox(530, 590, 0.1, 0.15, 'rgb(76,157,95)', '3', textFont);
-addBox(640, 670, 0.1, 0.15, 'rgb(194,32,54)', '4', textFont);
-addBox(850, 880, 0.1, 0.15, 'rgb(197,162,189)', '5', textFont);
-addBox(1570, 1650, 0.1, 0.15, 'rgb(211,153,121)', '6', textFont);
-addBox(2110, 2290, 0.1, 0.15, 'rgb(153,156,150)', '7', textFont);
-addBox(500, 680, 0.0, 0.05, 'rgb(0,143,162)', '8', textFont);
-addBox(1360, 1380, 0.2, 0.25, 'rgb(116,128,161)', '9', textFont);
-// addBox(10600, 11190, 0.1, 0.15, 'rgb(188,122,130)', '10', '35%');
-// addBox(11500, 12510, 0.1, 0.15, 'rgb(188,122,130)', '11', '35%');
+addBox(430, 450, 0.2, 0.25, "rgb(103,156,191)", "1", textFont, "30m");
+addBox(450, 510, 0.1, 0.15, "rgb(0,101,141)", "2", textFont, "30m");
+addBox(530, 590, 0.1, 0.15, "rgb(76,157,95)", "3", textFont, "30m");
+addBox(640, 670, 0.1, 0.15, "rgb(194,32,54)", "4", textFont, "30m");
+addBox(850, 880, 0.1, 0.15, "rgb(197,162,189)", "5", textFont, "30m");
+addBox(1570, 1650, 0.1, 0.15, "rgb(211,153,121)", "6", textFont, "60m");
+addBox(2110, 2290, 0.1, 0.15, "rgb(153,156,150)", "7", textFont, "30m");
+addBox(500, 680, 0.0, 0.05, "rgb(0,143,162)", "8", textFont, "15m");
+addBox(1360, 1380, 0.2, 0.25, "rgb(116,128,161)", "9", textFont, "30m");
+// addBox(10600, 11190, 0.1, 0.15, "rgb(188,122,130)", "10", "35%");
+// addBox(11500, 12510, 0.1, 0.15, "rgb(188,122,130)", "11", "35%");
 
 //** ADD LINE FOR ANNOTATION */
-function addBox(xMin, xMax, yMin, yHeight, color, labelText, textSize) {
+function addBox(
+  xMin,
+  xMax,
+  yMin,
+  yHeight,
+  color,
+  labelText,
+  textSize,
+  subLabelText
+) {
   var box = {
-    type: 'box',
+    type: "box",
     xMin: xMin,
     xMax: xMax,
     yMin: yMin,
@@ -296,22 +304,38 @@ function addBox(xMin, xMax, yMin, yHeight, color, labelText, textSize) {
     backgroundColor: color,
   };
   var label = {
-    type: 'label',
+    type: "label",
     xMin: xMin,
     xMax: xMax,
     yMin: yMin,
     yMax: yHeight,
     content: [labelText],
     font: {
-    size: textSize,
-    borderColor: 'rgb(245,245,245)',
-    color: 'rgb(245,245,245)',
+      size: textSize,
+      borderColor: "rgb(245,245,245)",
+      color: "rgb(245,245,245)",
     },
-    color: 'rgb(245,245,245)',
+    color: "rgb(245,245,245)",
+  };
+
+  var subLabel = {
+    type: "label",
+    xMin: xMin,
+    xMax: xMax,
+    yMin: yHeight + sublabelYOffset,
+    yMax: yHeight + sublabelYOffset,
+    content: [subLabelText],
+    font: {
+      size: 10,
+      color: "rgb(245,245,245)",
+      textAlign: "right",
+    },
+    color: "rgb(0,0,0)",
   };
 
   boxAnnotations.push(box);
   boxAnnotations.push(label);
+  boxAnnotations.push(subLabel);
 }
 
 console.log(boxAnnotations);
