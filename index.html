@@ -9,14 +9,46 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div class="chartCard active">
-      <div class="chartBox active">
-        <canvas id="VSWIR"> </canvas>
-        <div class="title">Visible to Short Wavelength InfraRed (VSWIR)</div>
+
+    <div class="container">
+      <div class="sidebar active" id="sidebar">
+        <div class="sidebarTitle">
+          <b>Presets</b>
+        </div>
+        <div class="scrollContainer">
+          <div class="batchGrid" id="graphs" style="height: fit-content">
+            <div id="Landsat7" class="active" title="RAW data from the device" style="padding: 5%">
+              Landsat 7
+            </div>
+            <div id="Landsat8-9" class="active selected" title="Duplicate screen from the device" style="padding: 5%">
+              Landsat 8-9
+            </div>
+          </div>
+        </div>
+        <div class="sidebarTitle">
+          <b>Global Style</b>
+        </div>
+        <div class="scrollContainer">
+          <input id="boxHeight_Global" type="number" placeholder="Box Height..." value='0.05' step="0.01">
+          <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
+          <input id="chartSeperation_Global" type="number" placeholder="Chart Seperation..." value='0.25' step="0.01">
+        </div>
       </div>
-      <div class="chartBox active">
-        <canvas id="TIR"> </canvas>
-        <div class="title">Thermal Infrared (TIR)</div>
+
+      <div class="content-area">
+        <div class="openSidebarIcon active" id="openSidebarIcon">
+          >
+        </div>
+        <div class="chartCard active">
+          <div class="chartBox active">
+            <canvas id="VSWIR"> </canvas>
+            <div class="title">Visible to Short Wavelength InfraRed (VSWIR)</div>
+          </div>
+          <div class="chartBox active">
+            <canvas id="TIR"> </canvas>
+            <div class="title">Thermal Infrared (TIR)</div>
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="/main.js"></script>

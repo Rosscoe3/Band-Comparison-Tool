@@ -7,11 +7,28 @@ let myData = "/files/myData.csv";
 
 let transmissionData = [];
 var boxAnnotations = [];
+var boxAnnotations2 = [];
+var groupsToggled = ['L8-9'];
 var labels = [];
 
-var arrayStartCut = 200;
-var arrayEndCut = 1150;
+
+//** MIN AND MAX VALUES */
+var arrayStartCut_chart2 = 2900;
+var arrayEndCut_chart1 = 1150;
 var transmissionDataResolution = 1;
+var minChartTwo = 9500;
+var boxSeperation = 0.1;
+var boxHeight = 0.05;
+var chartSeperation = 0.25;
+
+//** GRAB HTML OBJECTS */
+let sidebarButton = document.getElementById("openSidebarIcon");
+let L8_9_Toggle = document.getElementById("Landsat8-9");
+let L7Toggle = document.getElementById("Landsat7");
+
+let boxHeight_Global = document.getElementById("boxHeight_Global");
+let boxSeperation_Global = document.getElementById("boxSeperation_Global");
+let chartSeperation_Global = document.getElementById("chartSeperation_Global");
 
 //** IMPORT TRANSMISSION DATA AS A CSV */
 d3.csv(myData).then(function (datapoints) {
@@ -35,7 +52,22 @@ var data = {
   ],
 };
 
-const options = {
+var data2 = {
+  datasets: [
+    //** VISIBLE dataset 13*/
+    {
+      data: [],
+      showLine: true,
+      label: "Transmission",
+      fill: true,
+      borderColor: "rgb(255, 255, 255)",
+      pointBackgroundColor: "rgb(189, 195, 199)",
+      pointRadius: 0,
+    },
+  ],
+};
+
+const options1 = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -48,12 +80,25 @@ const options = {
   },
 };
 
+const options2 = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    tooltip: {
+      enabled: false,
+    },
+    annotation: {
+      annotations: boxAnnotations2,
+    },
+  },
+};
+
 const config = {
   type: "scatter",
   data: data,
   options: {
     radius: 3,
-    hitRadius: 10,
+    hitRadius: 3,
     hoverRadius: 8,
     spanGaps: true,
     responsive: true,
@@ -63,16 +108,6 @@ const config = {
       customCanvasBackgroundColor: {
         color: "white",
       },
-      title: {
-        display: true,
-        text: "  UID: 8888",
-        align: "start",
-        font: {
-          weight: "bold",
-          family: "'Inter', sans-serif",
-          size: 14,
-        },
-      },
       background: {
         color: "white",
       },
@@ -81,11 +116,11 @@ const config = {
         labels: {
           filter: function (item, chart) {
             //** Function for filtering out legends. Chooses which Labels to exclude depending on the dataMode*/
-            if (excludeLabelList.includes(item.text)) {
-              return false;
-            } else {
-              return item;
-            }
+            // if (excludeLabelList.includes(item.text)) {
+            //   return false;
+            // } else {
+            //   return item;
+            // }
           },
         },
       },
@@ -128,27 +163,28 @@ const config = {
           weight: "bold",
         },
       },
+      tooltip: {
+        enabled: false,
+      },
+      annotation: {
+        annotations: boxAnnotations,
+      },
     },
     //** ADDS NM to the Y axis lables */
-    animation: {
-      onComplete: () => {
-        delayed = true;
-      },
-      delay: (context) => {
-        let delay = 0;
-        if (context.type === "data" && context.mode === "default" && !delayed) {
-          delay = context.dataIndex * 75 + context.datasetIndex * 25;
-        }
-        return delay;
-      },
-    },
+    // animation: {
+    //   onComplete: () => {
+    //     delayed = true;
+    //   },
+    //   delay: (context) => {
+    //     let delay = 0;
+    //     if (context.type === "data" && context.mode === "default" && !delayed) {
+    //       delay = context.dataIndex * 75 + context.datasetIndex * 25;
+    //     }
+    //     return delay;
+    //   },
+    // },
     scales: {
       y: {
-        // ticks: {
-        //   callback: function (value){
-        //     return value + "μW/cm²";
-        //   }
-        // },
         title: {
           display: true,
           text: "μW/cm²",
@@ -156,32 +192,140 @@ const config = {
             size: 15,
           },
         },
+        max: 0.9,
       },
       x: {
         type: "linear",
         position: "bottom",
-        title: {
-          display: true,
-          text: "Wavelength (nm)",
-          align: "center",
-          font: {
-            size: 15,
-          },
-        },
+        // title: {
+        //   display: true,
+        //   text: "Wavelength (nm)",
+        //   align: "center",
+        //   font: {
+        //     size: 15,
+        //   },
+        // },
       },
     },
   },
   plugins: ["chartjs-plugin-annotation"],
-  options,
+  options1,
+};
+
+const config2 = {
+  type: "scatter",
+  data: data2,
+  options: {
+    radius: 3,
+    hitRadius: 3,
+    hoverRadius: 8,
+    spanGaps: true,
+    responsive: true,
+    maintainAspectRatio: false,
+    tension: 0,
+    plugins: {
+      customCanvasBackgroundColor: {
+        color: "white",
+      },
+      background: {
+        color: "white",
+      },
+      legend: {
+        display: true,
+        labels: {
+          filter: function (item, chart) {
+            //** Function for filtering out legends. Chooses which Labels to exclude depending on the dataMode*/
+            // if (excludeLabelList.includes(item.text)) {
+            //   return false;
+            // } else {
+            //   return item;
+            // }
+          },
+        },
+      },
+      //** STYLING FOR DATA LABELS */
+      datalabels: {
+        formatter: (value, context) => {
+          if (
+            (context.datasetIndex === 12 && raw_labels_visible) ||
+            (context.datasetIndex === 13 && raw_labels_visible)
+          ) {
+            var output;
+
+            if (toggleUnitLabels_icon.classList.contains("selected")) {
+              output = value.y;
+            } else {
+              output = value.y + "μW/cm²";
+            }
+
+            return output;
+          } else {
+            return "";
+          }
+        },
+        color: "white",
+        anchor: "end",
+        align: "top",
+        backgroundColor: function (context) {
+          if (
+            (context.datasetIndex === 12 && raw_labels_visible) ||
+            (context.datasetIndex === 13 && raw_labels_visible)
+          ) {
+            return "rgba(0, 0, 0, 0.75)";
+          } else {
+            return "rgba(0, 0, 0, 0)";
+          }
+        },
+        borderWidth: 0.5,
+        borderRadius: 5,
+        font: {
+          weight: "bold",
+        },
+      },
+      tooltip: {
+        enabled: false,
+      },
+      annotation: {
+        annotations: boxAnnotations2,
+      },
+    },
+    //** ADDS NM to the Y axis lables */
+    // animation: {
+    //   onComplete: () => {
+    //     delayed = true;
+    //   },
+    //   delay: (context) => {
+    //     let delay = 0;
+    //     if (context.type === "data" && context.mode === "default" && !delayed) {
+    //       delay = context.dataIndex * 75 + context.datasetIndex * 25;
+    //     }
+    //     return delay;
+    //   },
+    // },
+    scales: {
+      y: {
+        ticks: {
+          display: false,
+        },
+        max: 0.9,
+      },
+      x: {
+        min: minChartTwo,
+      },
+    },
+  },
+  plugins: ["chartjs-plugin-annotation"],
+  options2,
 };
 
 const chart = new Chart(ctx, config);
-const chart2 = new Chart(ctx2, config);
+const chart2 = new Chart(ctx2, config2);
 
 init();
 function init() {
   //transmissionData = readTextFile("/myData.csv", true);
-  console.log(chart.options.plugins.annotation.annotations[0]);
+  // console.log(chart.options.plugins.annotation.annotations[0]);
+  // console.log(chart2.options.plugins.annotation.annotations[0]);
 }
 
 //** GRABS THE DATA FROM THE DROP AND SENDS IT TO BE CONVERTED INTO A CSV */
@@ -243,13 +387,30 @@ function plotCSV() {
   });
   console.log(compressedArray);
 
-  for (var i = 0; i < compressedArray.length - arrayEndCut; i++) {
+  for (var i = 0; i < compressedArray.length - arrayEndCut_chart1; i++) {
     chart.data.datasets[0].data[i] = {
       x: compressedArray[i].Wave * 1000,
       y: compressedArray[i].TotTrans,
     };
   }
+
+  console.log(compressedArray.length);
+
+  for (var i = arrayStartCut_chart2; i < compressedArray.length; i++) {
+    if(i < 3151)
+    {
+      //** HAVE TO MAKE IT START AT DATA 0 */
+      chart2.data.datasets[0].data[i - arrayStartCut_chart2] = {
+        x: compressedArray[i].Wave * 1000,
+        y: compressedArray[i].TotTrans,
+      };
+    }
+  }
+
   chart.update();
+  chart2.update();
+
+  console.log(chart2.data.datasets[0].data);
 }
 
 //** WINDOW RESIZE EVENT */
@@ -264,6 +425,8 @@ function resize() {
     //chart.options.plugins.annotation.annotations.label1.font.size = '10%';
     chart.update();
     chart.resize();
+    chart2.update();
+    chart2.resize();
   }, 500);
 }
 
@@ -271,17 +434,27 @@ var textFont = "15%";
 var sublabelXOffset = 0.1;
 var sublabelYOffset = 0.01;
 
-addBox(430, 450, 0.2, 0.25, "rgb(103,156,191)", "1", textFont, "30m");
-addBox(450, 510, 0.1, 0.15, "rgb(0,101,141)", "2", textFont, "30m");
-addBox(530, 590, 0.1, 0.15, "rgb(76,157,95)", "3", textFont, "30m");
-addBox(640, 670, 0.1, 0.15, "rgb(194,32,54)", "4", textFont, "30m");
-addBox(850, 880, 0.1, 0.15, "rgb(197,162,189)", "5", textFont, "30m");
-addBox(1570, 1650, 0.1, 0.15, "rgb(211,153,121)", "6", textFont, "60m");
-addBox(2110, 2290, 0.1, 0.15, "rgb(153,156,150)", "7", textFont, "30m");
-addBox(500, 680, 0.0, 0.05, "rgb(0,143,162)", "8", textFont, "15m");
-addBox(1360, 1380, 0.2, 0.25, "rgb(116,128,161)", "9", textFont, "30m");
-// addBox(10600, 11190, 0.1, 0.15, "rgb(188,122,130)", "10", "35%");
-// addBox(11500, 12510, 0.1, 0.15, "rgb(188,122,130)", "11", "35%");
+//** ADD ALL BOX VALUES TO GRAPH */
+addBox(430, 450, 
+  0.1 + boxSeperation, 
+  0.1 + boxHeight + boxSeperation, 
+  "rgb(103,156,191)", "1", textFont, "30m", 1);
+addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", textFont, "30m", 1);
+addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", textFont, "30m", 1);
+addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", textFont, "30m", 1);
+addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", textFont, "30m", 1);
+addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", textFont, "60m", 1);
+addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", textFont, "30m", 1);
+addBox(500, 680, 
+  (0.1) - boxSeperation, 
+  (0.1 + boxHeight) - boxSeperation, 
+  "rgb(0,143,162)", "8", textFont, "15m", 1);
+addBox(1360, 1380, 
+  0.1 + boxSeperation, 
+  0.1 + boxHeight + boxSeperation, 
+  "rgb(116,128,161)", "9", textFont, "30m", 1);
+addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", textFont, "30m", 2);
+addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", textFont, "30m", 2);
 
 //** ADD LINE FOR ANNOTATION */
 function addBox(
@@ -292,7 +465,8 @@ function addBox(
   color,
   labelText,
   textSize,
-  subLabelText
+  subLabelText, 
+  graphNumb
 ) {
   var box = {
     type: "box",
@@ -326,23 +500,173 @@ function addBox(
     yMax: yHeight + sublabelYOffset,
     content: [subLabelText],
     font: {
-      size: 10,
+      size: 15,
       color: "rgb(245,245,245)",
       textAlign: "right",
     },
     color: "rgb(0,0,0)",
   };
 
-  boxAnnotations.push(box);
-  boxAnnotations.push(label);
-  boxAnnotations.push(subLabel);
+  if(graphNumb == 1)
+  {
+    boxAnnotations.push(box);
+    boxAnnotations.push(label);
+    boxAnnotations.push(subLabel);
+  }
+  else if(graphNumb == 2)
+  {
+    boxAnnotations2.push(box);
+    boxAnnotations2.push(label);
+    boxAnnotations2.push(subLabel);
+  }
 }
 
+//** CLEARS ALL ANNOTATIONS AND UPDATES THEM IN updateAnnotations() */
+function clearAnnotations(graph)
+{
+  boxAnnotations.splice(0, boxAnnotations.length);
+  boxAnnotations2.splice(0, boxAnnotations2.length);
+
+  //** takes out specific graph in the graph list */
+  if(groupsToggled.includes(graph))
+  {          
+    groupsToggled.splice(groupsToggled.indexOf(graph), 1);
+  }
+  console.log(groupsToggled);
+  updateAnnotations();
+}
+
+//** UPDATES ALL CURRENTLY SELECTED ANNOTATIONS */
+function updateAnnotations()
+{
+
+  var offsetY = chartSeperation; 
+
+  for(var i = 0; i < groupsToggled.length; i++)
+  {
+    offsetY = chartSeperation * i;
+    console.log(groupsToggled[i]);
+
+    if(groupsToggled[i] == 'L8-9')
+    {
+      addBox(430, 450, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "1", textFont, "30m", 1);
+      addBox(450, 510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "2", textFont, "30m", 1);
+      addBox(530, 590, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "3", textFont, "30m", 1);
+      addBox(640, 670, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "4", textFont, "30m", 1);
+      addBox(850, 880, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "5", textFont, "30m", 1);
+      addBox(1570, 1650, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "6", textFont, "60m", 1);
+      addBox(2110, 2290, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", textFont, "30m", 1);
+      addBox(500, 680, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(0,143,162)", "8", textFont, "15m", 1);
+      addBox(1360, 1380, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(116,128,161)", "9", textFont, "30m", 1);
+      addBox(10600, 11190, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "10", textFont, "30m", 2);
+      addBox(11500, 12510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "11", textFont, "30m", 2);
+  
+      console.log("updated L8-9 Annotations");
+    }
+    else if(groupsToggled[i] == 'L7')
+    {
+      addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", textFont, "30m", 1);
+      addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", textFont, "30m", 1);
+      addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", textFont, "30m", 1);
+      addBox(770, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", textFont, "30m", 1);
+      addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", textFont, "30m", 1);
+      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", textFont, "60m", 2);
+      addBox(2090, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", textFont, "30m", 1);
+      addBox(520, 900, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(0,143,162)", "8", textFont, "15m", 1);
+  
+      console.log("updated L7 Annotations");
+    }
+  }
+
+  console.log(groupsToggled);
+
+  chart.update();
+  chart2.update();
+}
+
+//....** HTML OBJECTS ACTIONS ....*/
+
+//** SIDEBAR FUNCTIONALITY */
+sidebarButton.addEventListener("click", function () {
+  if(sidebar.classList.contains("active"))
+  {
+    sidebarButton.innerHTML = "<";
+  }
+  else
+  {
+    sidebarButton.innerHTML = ">";
+  }
+
+  sidebar.classList.toggle("active");
+});
+
+//** GRAPH TOGGLES */
+L8_9_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(L8_9_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('L8-9');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('L8-9');
+    clearAnnotations();
+  }
+  L8_9_Toggle.classList.toggle("selected");
+});
+L7Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(L7Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('L7');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('L7');
+    clearAnnotations();
+  }
+  L7Toggle.classList.toggle("selected");
+});
+
+boxHeight_Global.addEventListener("change", function () {
+  console.log("change BoxHeight to: " + boxHeight_Global.value);
+  boxHeight = parseFloat(boxHeight_Global.value);
+  clearAnnotations();
+});
+boxSeperation_Global.addEventListener("change", function () {
+  console.log("change BoxHeight to: " + boxSeperation_Global.value);
+  boxSeperation = parseFloat(boxSeperation_Global.value);
+  clearAnnotations();
+});
+chartSeperation_Global.addEventListener("change", function () {
+  console.log("change BoxHeight to: " + chartSeperation_Global.value);
+  chartSeperation = parseFloat(chartSeperation_Global.value);
+  clearAnnotations();
+});
+
+
 console.log(boxAnnotations);
+console.log(boxAnnotations2);
 
 //** REMOVE BOX ANNOTATION */
 // setTimeout(() => {
-//   boxAnnotations.splice(0, 2);
+//   boxAnnotations.splice(0, 3);
 //   console.log(boxAnnotations);
 //   chart.update();
 // }, 2000);
