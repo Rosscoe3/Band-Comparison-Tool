@@ -26,13 +26,73 @@
           </div>
         </div>
         <div class="sidebarTitle">
-          <b>Global Style</b>
+          <b>Styling</b>
         </div>
-        <div class="scrollContainer">
-          <input id="boxHeight_Global" type="number" placeholder="Box Height..." value='0.05' step="0.01">
-          <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
-          <input id="chartSeperation_Global" type="number" placeholder="Chart Seperation..." value='0.25' step="0.01">
-        </div>
+        <nav class="nav" role="navigation">
+          <ul class="nav__list">
+            <li>
+              <input id="group-1" type="checkbox" hidden/>
+              <label for="group-1"><span class="fa fa-angle-right"></span> Global Style</label>
+              <ul class="group-list">
+                <!-- <li><a href="#">1st level item</a></li> -->
+                <!-- Second list -->
+                <li>
+                  <input id="sub-group-1" type="checkbox" hidden />
+                  <label for="sub-group-1"><span class="fa fa-angle-right"></span> Box Style</label>
+                  <ul class="sub-group-list">
+                    <div class="inputContainer">
+                      <div>Box Height:</div>
+                      <input id="boxHeight_Global" type="number" placeholder="Box Height..." value='0.05' step="0.01">
+                    </div>
+                    <div class="inputContainer">
+                      <div>Box Seperation:</div>
+                      <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
+                    </div>
+                  </ul>
+                </li>
+                <!-- Second list -->
+                <li>
+                  <input id="sub-group-2" type="checkbox" hidden />
+                  <label for="sub-group-2"><span class="fa fa-angle-right"></span> Label Style</label>
+                  <ul class="sub-group-list">
+                    <div class="inputContainer">
+                      <div>Group Seperation:</div>
+                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.25' step="0.01">          
+                    </div>
+                    <div class="inputContainer">
+                      <div>Label Size:</div>
+                      <input id="labelSize_Global" type="number" placeholder="Chart Seperation..." value='15' step="1">          
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <!-- LIST TWO -->
+            <!-- <li>
+              <input id="group-2" type="checkbox" hidden />
+              <label for="group-2"><span class="fa fa-angle-right"></span> First level</label>
+              <ul class="group-list">
+                <li>
+                  <li><a href="#">1st level item</a></li>
+                  <li><a href="#">1st level item</a></li>
+                  <input id="sub-group-3" type="checkbox" hidden />
+                  <label for="sub-group-3"><span class="fa fa-angle-right"></span> Second level</label>
+                  <ul class="sub-group-list">
+                    <li><a href="#">2nd level nav item</a></li>
+                    <li><a href="#">2nd level nav item</a></li>
+                    <li>
+                      <input id="sub-sub-group-2" type="checkbox" hidden />
+                      <label for="sub-sub-group-2"><span class="fa fa-angle-right"></span> Third level</label>
+                      <ul class="sub-sub-group-list">
+                        <li><a href="#">3rd level nav item</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li> -->
+          </ul>
+        </nav>
       </div>
 
       <div class="content-area">
