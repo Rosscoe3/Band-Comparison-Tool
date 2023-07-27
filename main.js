@@ -24,12 +24,14 @@ var groupSeperation = 0.25;
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let L8_9_Toggle = document.getElementById("Landsat8-9");
+let L4_5_Toggle = document.getElementById("Landsat4-5")
 let L7Toggle = document.getElementById("Landsat7");
 
 let boxHeight_Global = document.getElementById("boxHeight_Global");
 let boxSeperation_Global = document.getElementById("boxSeperation_Global");
 let groupSeperation_Global = document.getElementById("groupSeperation_Global");
 let labelSize_Global = document.getElementById("labelSize_Global");
+let labelSublabelSize_Global = document.getElementById("labelSublabelSize_Global");
 
 //** IMPORT TRANSMISSION DATA AS A CSV */
 d3.csv(myData).then(function (datapoints) {
@@ -432,6 +434,7 @@ function resize() {
 }
 
 var labelSize = "15%";
+var sublabelSize = "15%";
 var sublabelXOffset = 0.1;
 var sublabelYOffset = 0.01;
 
@@ -439,23 +442,23 @@ var sublabelYOffset = 0.01;
 addBox(430, 450, 
   0.1 + boxSeperation, 
   0.1 + boxHeight + boxSeperation, 
-  "rgb(103,156,191)", "1", labelSize, "30m", 1);
-addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", 1);
-addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", 1);
-addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", 1);
-addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", 1);
-addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "60m", 1);
-addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", 1);
+  "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
+addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
+addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
+addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
+addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "60m", sublabelSize, 1);
+addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
 addBox(500, 680, 
   (0.1) - boxSeperation, 
   (0.1 + boxHeight) - boxSeperation, 
-  "rgb(0,143,162)", "8", labelSize, "15m", 1);
+  "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
 addBox(1360, 1380, 
   0.1 + boxSeperation, 
   0.1 + boxHeight + boxSeperation, 
-  "rgb(116,128,161)", "9", labelSize, "30m", 1);
-addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", 2);
-addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", 2);
+  "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
+addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", sublabelSize, 2);
+addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", sublabelSize, 2);
 
 //** ADD LINE FOR ANNOTATION */
 function addBox(
@@ -466,7 +469,8 @@ function addBox(
   color,
   labelText,
   textSize,
-  subLabelText, 
+  subLabelText,
+  sublabelSize, 
   graphNumb
 ) {
   var box = {
@@ -501,7 +505,7 @@ function addBox(
     yMax: yHeight + sublabelYOffset,
     content: [subLabelText],
     font: {
-      size: 15,
+      size: sublabelSize,
       color: "rgb(245,245,245)",
       textAlign: "right",
     },
@@ -553,41 +557,53 @@ function updateAnnotations()
       addBox(430, 450, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "1", labelSize, "30m", 1);
-      addBox(450, 510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", 1);
-      addBox(530, 590, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", 1);
-      addBox(640, 670, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", 1);
-      addBox(850, 880, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", 1);
-      addBox(1570, 1650, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "60m", 1);
-      addBox(2110, 2290, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", 1);
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+      addBox(450, 510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
+      addBox(530, 590, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
+      addBox(640, 670, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
+      addBox(850, 880, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
+      addBox(1570, 1650, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "60m", sublabelSize, 1);
+      addBox(2110, 2290, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
       addBox(500, 680, 
         (offsetY + 0.1) - boxSeperation, 
         (offsetY + 0.1 + boxHeight) - boxSeperation, 
-        "rgb(0,143,162)", "8", labelSize, "15m", 1);
+        "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
       addBox(1360, 1380, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(116,128,161)", "9", labelSize, "30m", 1);
-      addBox(10600, 11190, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", 2);
-      addBox(11500, 12510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", 2);
+        "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
+      addBox(10600, 11190, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", sublabelSize, 2);
+      addBox(11500, 12510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", sublabelSize, 2);
   
       console.log("updated L8-9 Annotations");
     }
     else if(groupsToggled[i] == 'L7')
     {
-      addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "30m", 1);
-      addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "30m", 1);
-      addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", 1);
-      addBox(770, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "30m", 1);
-      addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", 1);
-      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "60m", 2);
-      addBox(2090, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", 1);
+      addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
+      addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
+      addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
+      addBox(770, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
+      addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
+      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "60m", sublabelSize, 2);
+      addBox(2090, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
       addBox(520, 900, 
         (offsetY + 0.1) - boxSeperation, 
         (offsetY + 0.1 + boxHeight) - boxSeperation, 
-        "rgb(0,143,162)", "8", labelSize, "15m", 1);
+        "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
   
       console.log("updated L7 Annotations");
+    }
+    else if(groupsToggled[i] == 'L4-5')
+    {
+      addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
+      addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
+      addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
+      addBox(760, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
+      addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
+      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "60m", sublabelSize, 2);
+      addBox(2080, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
+  
+      console.log("updated L4-5 Annotations");
     }
   }
 
@@ -644,6 +660,21 @@ L7Toggle.addEventListener("click", function () {
   }
   L7Toggle.classList.toggle("selected");
 });
+L4_5_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(L4_5_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('L4-5');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('L4-5');
+    clearAnnotations();
+  }
+  L4_5_Toggle.classList.toggle("selected");
+});
 
 boxHeight_Global.addEventListener("change", function () {
   console.log("change BoxHeight to: " + boxHeight_Global.value);
@@ -667,6 +698,11 @@ labelSize_Global.addEventListener("change", function () {
   clearAnnotations();
 });
 
+labelSublabelSize_Global.addEventListener("change", function () {
+  sublabelSize = labelSublabelSize_Global.value + "%";
+  console.log("Label size: " + sublabelSize);
+  clearAnnotations();
+});
 
 console.log(boxAnnotations);
 console.log(boxAnnotations2);
