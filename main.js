@@ -24,7 +24,8 @@ var groupSeperation = 0.25;
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let L8_9_Toggle = document.getElementById("Landsat8-9");
-let L4_5_Toggle = document.getElementById("Landsat4-5")
+let L4_5_Toggle = document.getElementById("Landsat4-5");
+let L1_3_Toggle = document.getElementById("Landsat1-3");
 let L7Toggle = document.getElementById("Landsat7");
 
 let boxHeight_Global = document.getElementById("boxHeight_Global");
@@ -600,10 +601,18 @@ function updateAnnotations()
       addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
       addBox(760, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
       addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
-      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "60m", sublabelSize, 2);
+      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "120m", sublabelSize, 2);
       addBox(2080, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
   
       console.log("updated L4-5 Annotations");
+    }
+    else if(groupsToggled[i] == 'L1-3')
+    {
+      addBox(500, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "60m", sublabelSize, 1);
+      addBox(600, 700, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "60m", sublabelSize, 1);
+      addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "60m", sublabelSize, 1);
+      addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "60m", sublabelSize, 1);
+      console.log("updated L1-3 Annotations");
     }
   }
 
@@ -674,6 +683,21 @@ L4_5_Toggle.addEventListener("click", function () {
     clearAnnotations();
   }
   L4_5_Toggle.classList.toggle("selected");
+});
+L1_3_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(L1_3_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('L1-3');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('L1-3');
+    clearAnnotations();
+  }
+  L1_3_Toggle.classList.toggle("selected");
 });
 
 boxHeight_Global.addEventListener("change", function () {
