@@ -12,40 +12,18 @@
 
     <div class="container">
       <div class="sidebar active" id="sidebar">
-        <div class="sidebarTitle">
-          <b>Presets</b>
-        </div>
-        <div class="scrollContainer">
-          <div class="batchGrid" id="graphs" style="height: fit-content">
-            <div id="Landsat4-5" class="active" title="RAW data from the device" style="padding: 5%">
-              Landsat 4-5
-            </div>
-            <div id="Landsat7" class="active" title="RAW data from the device" style="padding: 5%">
-              Landsat 7
-            </div>
-            <div id="Landsat8-9" class="active selected" title="Duplicate screen from the device" style="padding: 5%">
-              Landsat 8-9
-            </div>
-          </div>
-        </div>
-        <div class="sidebarTitle">
-          <b>Styling</b>
-        </div>
+        <!-- Global Style Nav -->
         <nav class="nav" role="navigation">
           <ul class="nav__list">
             <li>
               <input id="group-1" type="checkbox" hidden/>
-              <label for="group-1"><span class="fa fa-angle-right"></span> Global Style</label>
+              <label for="group-1"><span class="fa fa-angle-right">›</span> Global Style</label>
               <ul class="group-list">
                 <!-- <li><a href="#">1st level item</a></li> -->
                 <!-- Second list -->
-                <div class="inputContainer">
-                  <div>Group Seperation:</div>
-                  <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.25' step="0.01">          
-                </div>
                 <li>
                   <input id="sub-group-1" type="checkbox" hidden />
-                  <label for="sub-group-1"><span class="fa fa-angle-right"></span> Box Style</label>
+                  <label for="sub-group-1"><span class="fa fa-angle-right">›</span> Box Style</label>
                   <ul class="sub-group-list">
                     <div class="inputContainer">
                       <div>Box Height:</div>
@@ -55,12 +33,16 @@
                       <div>Box Seperation:</div>
                       <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
                     </div>
+                    <div class="inputContainer">
+                      <div>Group Seperation:</div>
+                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.25' step="0.01">          
+                    </div>
                   </ul>
                 </li>
                 <!-- Second list -->
                 <li>
                   <input id="sub-group-2" type="checkbox" hidden />
-                  <label for="sub-group-2"><span class="fa fa-angle-right"></span> Label Style</label>
+                  <label for="sub-group-2"><span class="fa fa-angle-right">›</span> Label Style</label>
                   <ul class="sub-group-list">
                     <div class="inputContainer">
                       <div>Label Size:</div>
@@ -100,6 +82,22 @@
             </li> -->
           </ul>
         </nav>
+        <div class="sidebarTitle">
+          <b>Presets</b>
+        </div>
+        <div class="scrollContainer">
+          <div class="batchGrid" id="graphs" style="height: fit-content">
+            <div id="Landsat4-5" class="active" title="RAW data from the device" style="padding: 5%">
+              Landsat 4-5
+            </div>
+            <div id="Landsat7" class="active" title="RAW data from the device" style="padding: 5%">
+              Landsat 7
+            </div>
+            <div id="Landsat8-9" class="active selected" title="Duplicate screen from the device" style="padding: 5%">
+              Landsat 8-9
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="content-area">

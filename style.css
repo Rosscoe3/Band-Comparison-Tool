@@ -183,12 +183,11 @@ h1 {
   height: fit-content;
   
   padding: 5%;
-  font-size: 0%;
   text-align: left;
   outline: solid 0px rgba(0, 0, 0, 1);
-  font-weight: bold;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #B3B3B3;
+  color: black;
 
   transition: all 0.5s ease-in-out;
 }
@@ -217,6 +216,9 @@ h1 {
   outline: solid 1px rgba(0, 0, 0, 1);
   overflow: auto;
   overflow-x: hidden;
+
+  background: white;
+  color: black;
 
   align-content: flex-start;
   justify-content: flex-start;
@@ -279,8 +281,9 @@ h1 {
   font-size: 200%;
   display: block;
   padding: .85rem;
-  color: #fff;
-  background-color: #151515;
+  /* color: #fff; */
+  color: black;
+  background-color: #B3B3B3;
   box-shadow: inset 0 -1px #1d1d1d;
   -webkit-transition: all .25s ease-in;
   transition: all .25s ease-in;
@@ -294,22 +297,31 @@ h1 {
 /**
  * Styling first level lists items
  */
- .group-list a, .group-list label {
+ .group-list a, .group-list label{
   font-size: 150%;
   padding-left: 2rem;
-  background: #252525;
+  color: black;
+  background: #E6E6E6;
   box-shadow: inset 0 -1px #373737;
+}
+
+.group-list .inputContainer .input_title, .inputContainer input{
+  font-size: 100%;
+  padding-left: 0.5rem;
+  color: black;
+  background: white;
 }
 .group-list a:focus, .group-list a:hover, .group-list label:focus, .group-list label:hover { background: #131313; }
 /**
  * Styling second level list items
  */
-.sub-group-list a, .sub-group-list label, .sub-group-list .inputContainer, .sub-group-list .inputContainer {
+.sub-group-list a, .sub-group-list label, .sub-group-list .inputContainer, input {
   font-size: 125%;
   outline: solid 1px #353535;
   margin: auto;
+  color: black;
   background: white;
-  box-shadow: inset 0 -1px #474747;
+  /* box-shadow: inset 0 -1px #474747; */
 }
 .sub-group-list input{
   font-size: 125%;
@@ -346,11 +358,17 @@ label > span {
   -webkit-transition: -webkit-transform .65s ease;
   transition: transform .65s ease;
 }
+/* .nav__list input[type=checkbox]:checked + label > span, .group-list label{
+  background-color: rgb(163, 163, 163);
+} */
 .nav__list input[type=checkbox]:checked + label > span {
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
+  background-color: rgba(0, 0, 0, 0);
 }
+
+
 
 ul {
   list-style-type: none;
