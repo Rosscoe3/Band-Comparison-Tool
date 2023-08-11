@@ -17,9 +17,9 @@ var arrayStartCut_chart2 = 2900;
 var arrayEndCut_chart1 = 1150;
 var transmissionDataResolution = 1;
 var minChartTwo = 9500;
-var boxSeperation = 0.1;
-var boxHeight = 0.05;
-var groupSeperation = 0.25;
+var boxSeperation = 0.05;
+var boxHeight = 0.03;
+var groupSeperation = 0.15;
 
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
@@ -52,6 +52,7 @@ var data = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
+      lineTension: 0.2,
     },
   ],
 };
@@ -67,6 +68,7 @@ var data2 = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
+      lineTension: 0.2,
     },
   ],
 };
@@ -460,6 +462,7 @@ addBox(1360, 1380,
   "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
 addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", sublabelSize, 2);
 addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", sublabelSize, 2);
+addBox(12610, 12640, (0.1) - boxSeperation, 0.1 + boxHeight + boxSeperation, "rgba(150,150,150, 0.5)", "", labelSize, "MSS", sublabelSize, 2);
 
 //** ADD LINE FOR ANNOTATION */
 function addBox(
@@ -608,10 +611,10 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'L1-3')
     {
-      addBox(500, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "60m", sublabelSize, 1);
-      addBox(600, 700, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "60m", sublabelSize, 1);
-      addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "60m", sublabelSize, 1);
-      addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "60m", sublabelSize, 1);
+      addBox(500, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "1", labelSize, "80m", sublabelSize, 1);
+      addBox(600, 700, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "2", labelSize, "80m", sublabelSize, 1);
+      addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
+      addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
       console.log("updated L1-3 Annotations");
     }
   }
