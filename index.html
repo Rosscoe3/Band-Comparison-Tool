@@ -15,15 +15,46 @@
         <!-- Global Style Nav -->
         <nav class="nav" role="navigation">
           <ul class="nav__list">
+            <!-- GLOBAL STYLE -->
             <li>
               <input id="group-1" type="checkbox" hidden/>
               <label for="group-1"><span class="fa fa-angle-right">›</span> Global Style</label>
               <ul class="group-list">
-                <!-- <li><a href="#">1st level item</a></li> -->
-                <!-- Second list -->
+                <!-- GLOBAL STYLE -->
                 <li>
                   <input id="sub-group-1" type="checkbox" hidden />
-                  <label for="sub-group-1"><span class="fa fa-angle-right">›</span> Box Style</label>
+                  <label for="sub-group-1"><span class="fa fa-angle-right">›</span> Graphs</label>
+                  <ul class="sub-group-list">
+                    <div class="inputContainer">
+                      <div>Second Graph</div>
+                      <input id="secondGraph_Toggle" type="checkbox" checked />          
+                    </div>
+                    <div class="inputContainer">
+                      <div>Transmission Values</div>
+                      <input id="transmission_Toggle" type="checkbox" checked />          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart1</i> start (nm)</div>
+                      <input id="" type="number" placeholder="Chart Seperation..." value='400' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart1</i> end (nm)</div>
+                      <input id="" type="number" placeholder="Chart Seperation..." value='2400' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart2</i> start (nm)</div>
+                      <input id="" type="number" placeholder="Chart Seperation..." value='9500' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart2</i> end (nm)</div>
+                      <input id="" type="number" placeholder="Chart Seperation..." value='14000' step="1">          
+                    </div>
+                  </ul>
+                </li>
+                <!-- BOX STYLE -->
+                <li>
+                  <input id="sub-group-2" type="checkbox" hidden />
+                  <label for="sub-group-2"><span class="fa fa-angle-right">›</span> Boxs</label>
                   <ul class="sub-group-list">
                     <div class="inputContainer">
                       <div>Box Height:</div>
@@ -39,10 +70,10 @@
                     </div>
                   </ul>
                 </li>
-                <!-- Second list -->
+                <!-- LABEL STYLE -->
                 <li>
-                  <input id="sub-group-2" type="checkbox" hidden />
-                  <label for="sub-group-2"><span class="fa fa-angle-right">›</span> Label Style</label>
+                  <input id="sub-group-3" type="checkbox" hidden />
+                  <label for="sub-group-3"><span class="fa fa-angle-right">›</span> Labels</label>
                   <ul class="sub-group-list">
                     <div class="inputContainer">
                       <div>Label Size:</div>
@@ -99,6 +130,30 @@
             <div id="Landsat8-9" class="active selected" title="Landsat 8 and 9 Bands" style="padding: 5%">
               Landsat 8-9
             </div>
+            <div id="LandsatNext" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              Landsat Next
+            </div>
+            <div id="Sentinel-2" class="active" title="Sentinel-2 Bands" style="padding: 5%">
+              Sentinel 2
+            </div>
+            <div id="Sentinel-3" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              Sentinel 3
+            </div>
+            <div id="EO1" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              EO1
+            </div>
+            <div id="DESIS" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              DESIS
+            </div>
+            <div id="ECOSTRESS" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              ECOSTRESS
+            </div>
+            <div id="EMIT" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              EMIT
+            </div>
+            <div id="MODIS" class="active" title="Sentinel-3 Bands" style="padding: 5%">
+              MODIS
+            </div>
           </div>
         </div>
       </div>
@@ -107,12 +162,12 @@
         <div class="openSidebarIcon active" id="openSidebarIcon">
           >
         </div>
-        <div class="chartCard active">
-          <div class="chartBox active">
+        <div class="chartCard active" id="chart_container">
+          <div class="chartBox active" id="VSWIR_Chart">
             <canvas id="VSWIR"> </canvas>
             <div class="title">Visible to Short Wavelength InfraRed (VSWIR)</div>
           </div>
-          <div class="chartBox active">
+          <div class="chartBox active" id="TIRS_Chart">
             <canvas id="TIR"> </canvas>
             <div class="title">Thermal Infrared (TIR)</div>
           </div>

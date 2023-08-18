@@ -3,6 +3,9 @@ import "./style.css";
 //** CHART JS SETUP */
 const ctx = document.getElementById("VSWIR");
 const ctx2 = document.getElementById("TIR");
+var chart1_element = document.getElementById("VSWIR_Chart");
+var chart2_element = document.getElementById("TIRS_Chart");
+var chart_container = document.getElementById("chart_container");
 let myData = "/files/myData.csv";
 
 let transmissionData = [];
@@ -13,10 +16,9 @@ var labels = [];
 
 
 //** MIN AND MAX VALUES */
-var arrayStartCut_chart2 = 2900;
 var arrayEndCut_chart1 = 1150;
 var transmissionDataResolution = 1;
-var minChartTwo = 9500;
+var minChartTwo = 7000;
 var boxSeperation = 0.05;
 var boxHeight = 0.03;
 var groupSeperation = 0.15;
@@ -27,6 +29,18 @@ let L8_9_Toggle = document.getElementById("Landsat8-9");
 let L4_5_Toggle = document.getElementById("Landsat4-5");
 let L1_3_Toggle = document.getElementById("Landsat1-3");
 let L7Toggle = document.getElementById("Landsat7");
+let LNext_Toggle = document.getElementById("LandsatNext");
+
+let Sentintel2_Toggle = document.getElementById("Sentinel-2");
+let Sentintel3_Toggle = document.getElementById("Sentinel-3");
+let EO1_Toggle = document.getElementById("EO1");
+let DESIS_Toggle = document.getElementById("DESIS");
+let ECOSTRESS_Toggle = document.getElementById("ECOSTRESS");
+let EMIT_Toggle = document.getElementById("EMIT");
+let MODIS_Toggle = document.getElementById("MODIS");
+
+//** Graphs Styling */
+let secondGraph_Toggle = document.getElementById("secondGraph_Toggle");
 
 let boxHeight_Global = document.getElementById("boxHeight_Global");
 let boxSeperation_Global = document.getElementById("boxSeperation_Global");
@@ -393,23 +407,26 @@ function plotCSV() {
   });
   console.log(compressedArray);
 
-  for (var i = 0; i < compressedArray.length - arrayEndCut_chart1; i++) {
+  //** DETERMINE TRANSMISSION CURVE FOR CHART 1 */
+  for (var i = 0; i < compressedArray.length - arrayEndCut_chart1; i++) 
+  {
     chart.data.datasets[0].data[i] = {
       x: compressedArray[i].Wave * 1000,
       y: compressedArray[i].TotTrans,
     };
   }
 
-  console.log(compressedArray.length);
-
-  for (var i = arrayStartCut_chart2; i < compressedArray.length; i++) {
-    if(i < 3151)
+  //** DETERMINE TRANSMISSION CURVE FOR CHART 2 */
+  for (var i = 0; i < compressedArray.length; i++) 
+  {
+    if((compressedArray[i].Wave * 1000) >= minChartTwo)
     {
+      console.log(compressedArray[i].Wave * 1000);
       //** HAVE TO MAKE IT START AT DATA 0 */
-      chart2.data.datasets[0].data[i - arrayStartCut_chart2] = {
+      chart2.data.datasets[0].data.push({
         x: compressedArray[i].Wave * 1000,
         y: compressedArray[i].TotTrans,
-      };
+      });
     }
   }
 
@@ -450,7 +467,7 @@ addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", 
 addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
 addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
 addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
-addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "60m", sublabelSize, 1);
+addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
 addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
 addBox(500, 680, 
   (0.1) - boxSeperation, 
@@ -460,8 +477,8 @@ addBox(1360, 1380,
   0.1 + boxSeperation, 
   0.1 + boxHeight + boxSeperation, 
   "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
-addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", sublabelSize, 2);
-addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", sublabelSize, 2);
+addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
+addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
 addBox(12610, 12640, (0.1) - boxSeperation, 0.1 + boxHeight + boxSeperation, "rgba(150,150,150, 0.5)", "", labelSize, "MSS", sublabelSize, 2);
 
 //** ADD LINE FOR ANNOTATION */
@@ -558,28 +575,71 @@ function updateAnnotations()
 
     if(groupsToggled[i] == 'L8-9')
     {
+      //** Band 1 - Coastal aerosol	*/
       addBox(430, 450, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
         "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
-      addBox(450, 510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
-      addBox(530, 590, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
-      addBox(640, 670, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
-      addBox(850, 880, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
-      addBox(1570, 1650, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "60m", sublabelSize, 1);
-      addBox(2110, 2290, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 2 - Blue */
+      addBox(450, 510, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 3 - Green */
+      addBox(530, 590, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 4 - Red */
+      addBox(640, 670, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 5 - Near Infrared (NIR) */
+      addBox(850, 880, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 6 - Shortwave Infrared (SWIR) 1	 */
+      addBox(1570, 1650, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 7 - Shortwave Infrared (SWIR) 2 */
+      addBox(2110, 2290, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
+      
+      //** Band 8 - Panchromatic */
       addBox(500, 680, 
         (offsetY + 0.1) - boxSeperation, 
         (offsetY + 0.1 + boxHeight) - boxSeperation, 
         "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
+      
+      //** Band 9 - Cirrus */
       addBox(1360, 1380, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
         "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
-      addBox(10600, 11190, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "30m", sublabelSize, 2);
-      addBox(11500, 12510, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "30m", sublabelSize, 2);
-  
-      console.log("updated L8-9 Annotations");
+      
+      //** Band 10 - Thermal Infrared (TIRS) 1 */
+      addBox(10600, 11190, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
+      
+      //** Band 11 - Thermal Infrared (TIRS) 2 */
+      addBox(11500, 12510, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
     }
     else if(groupsToggled[i] == 'L7')
     {
@@ -594,8 +654,6 @@ function updateAnnotations()
         (offsetY + 0.1) - boxSeperation, 
         (offsetY + 0.1 + boxHeight) - boxSeperation, 
         "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
-  
-      console.log("updated L7 Annotations");
     }
     else if(groupsToggled[i] == 'L4-5')
     {
@@ -606,8 +664,6 @@ function updateAnnotations()
       addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
       addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "120m", sublabelSize, 2);
       addBox(2080, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
-  
-      console.log("updated L4-5 Annotations");
     }
     else if(groupsToggled[i] == 'L1-3')
     {
@@ -615,7 +671,336 @@ function updateAnnotations()
       addBox(600, 700, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "2", labelSize, "80m", sublabelSize, 1);
       addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
       addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
-      console.log("updated L1-3 Annotations");
+    }
+    else if(groupsToggled[i] == 'Sent-2')
+    {
+      //** B1 - CA */
+      addBox(433, 453, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "1", labelSize, "60m", sublabelSize, 1);
+      
+      //** B2 - Blue */
+        addBox(457.5, 522.5, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation,
+         "rgb(0,101,141)", "2", labelSize, "10m", sublabelSize, 1);
+      
+      //** B3 - Green */
+      addBox(542, 577.5, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(76,157,95)", "3", labelSize, "10m", sublabelSize, 1);
+      
+      //** B4 - Red */
+      addBox(649.5, 680.5, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(194,32,54)", "4", labelSize, "10m", sublabelSize, 1);
+      
+      //** B5 - Red Edge */
+      addBox(697.5, 712.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "5", labelSize, "20m", sublabelSize, 1);
+      
+      //** B6 - NIR-1 */
+      addBox(732.5, 747.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(211,153,121)", "6", labelSize, "20m", sublabelSize, 1);
+      
+      //** B7 - NIR-2 */
+      addBox(773, 793, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(153,156,150)", "7", labelSize, "20m", sublabelSize, 1);
+      
+      //** B8 - NIR-3	 */
+      addBox(784.5, 899.5, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(0,143,162)", "8", labelSize, "10m", sublabelSize, 1);
+      
+      //** B8a - Water Vapor-1	 */
+      addBox(855, 875, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(116,128,161)", "8a", labelSize, "20m", sublabelSize, 1);
+
+      //** B9 - Water Vapor-2 */
+      addBox(935, 945, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(211,153,121)", "9", labelSize, "60m", sublabelSize, 1);  
+      
+      //** B10 - Cirrus */
+      addBox(1365, 1395, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(188,122,130)", "10", labelSize, "60m", sublabelSize, 1);
+      
+      //** B11 - SWIR1 */
+      addBox(1565, 1655, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(188,122,130)", "11", labelSize, "20m", sublabelSize, 1);
+      
+      //** B12 - SWIR2 */
+      addBox(2100, 2280, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(188,122,130)", "12", labelSize, "20m", sublabelSize, 1);
+    }
+    else if(groupsToggled[i] == 'Sent-3')
+    {
+      //** Oa01 - CA-1 */
+      addBox(395, 405, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa02 - CA-2 */
+        addBox(407, 417, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(0,101,141)", "2", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa03 - CA-3 */
+      addBox(438, 448, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(76,157,95)", "3", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa04 - Blue-1 */
+      addBox(485, 495, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(194,32,54)", "4", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa05 - Blue-2 */
+      addBox(505, 515, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "5", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa06 - Green */
+      addBox(555, 565, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "6", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa07 - Red-1 */
+      addBox(615, 625, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "7", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa08 - Red-2 */
+      addBox(660, 670, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "8", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa09 - Red-3 */
+      addBox(670, 677, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "9", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa10 - Red-4 */
+      addBox(677, 685, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "10", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa11 - NIR-1 */
+      addBox(703, 713, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "11", labelSize, "300m", sublabelSize, 1);
+      
+      //** Oa12 - NIR-2 */
+      addBox(750, 757, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "12", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa13 - NIR-3 */
+      addBox(760, 762, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "13", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa14 - NIR-4 */
+      addBox(762, 766, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "14", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa15 - NIR-5 */
+      addBox(766, 769, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "15", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa16 - NIR-6 */
+      addBox(771, 786, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "16", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa17 - NIR-7 */
+      addBox(855, 875, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "17", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa18 - NIR-8 */
+      addBox(880, 890, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "18", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa19 - NIR-9 */
+      addBox(895, 905, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "19", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa20 - NIR-10 */
+      addBox(930, 950, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "20", labelSize, "300m", sublabelSize, 1);
+
+      //** Oa21 - NIR-11 */
+      addBox(1000, 1040, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "21", labelSize, "300m", sublabelSize, 1);
+    }
+    else if(groupsToggled[i] == 'EO-1')
+    {
+      //** CA */
+      addBox(433, 453, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** Blue */
+      addBox(450, 515, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** Green */
+      addBox(525, 605, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** Red */
+      addBox(630, 690, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** NIR-1 */
+      addBox(775, 805, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** NIR-2 */
+      addBox(845, 890, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+      
+      //** NIR-3 */
+      addBox(1200, 1300, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** SWIR1 */
+      addBox(1550, 1750, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** SWIR2 */
+      addBox(2080, 2350, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+
+      //** Panchromatic */
+      addBox(480, 690, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "10m", sublabelSize, 1); 
+    }
+    else if(groupsToggled[i] == 'DESIS')
+    {
+      var width = 2.5;
+      var length = (600/width);
+      
+      for(var i = 0; i <= length; i++)
+      {
+        var start = 400 + (width * i);
+        
+        addBox(start, start + width, 
+          offsetY + 0.1, 
+          offsetY + 0.1 + boxHeight,
+          "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1); 
+      }
+    }
+    else if(groupsToggled[i] == 'ECOSTRESS')
+    {
+      //** B1 */
+      addBox(1475, 1845, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "1", labelSize, "70m", sublabelSize, 1);
+
+      //** B2 */
+      addBox(8113, 8467, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "2", labelSize, "70m", sublabelSize, 2);
+      
+      //** B3 */
+      addBox(8625, 8935, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "3", labelSize, "70m", sublabelSize, 2);
+      
+      //** B4 */
+      addBox(9002, 9398, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "4", labelSize, "70m", sublabelSize, 2);
+      
+      //** B5 */
+      addBox(10285, 10695, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "5", labelSize, "70m", sublabelSize, 2);
+
+      //** B6 */
+      addBox(11784.5, 12395.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "6", labelSize, "70m", sublabelSize, 2);
+    }
+    else if(groupsToggled[i] == 'EMIT')
+    {
+      var width = 7.5;
+      var length = (2070/width);
+      
+      addInLine(width, length, offsetY);
     }
   }
 
@@ -623,6 +1008,19 @@ function updateAnnotations()
 
   chart.update();
   chart2.update();
+}
+
+function addInLine(width, length, offsetY)
+{ 
+  for(var i = 0; i <= length; i++)
+  {
+    var start = 380 + (width * i);
+    
+    addBox(start, start + width, 
+      offsetY + 0.1, 
+      offsetY + 0.1 + boxHeight,
+      "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1); 
+  }
 }
 
 //....** HTML OBJECTS ACTIONS ....*/
@@ -702,7 +1100,113 @@ L1_3_Toggle.addEventListener("click", function () {
   }
   L1_3_Toggle.classList.toggle("selected");
 });
+Sentintel2_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(Sentintel2_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('Sent-2');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('Sent-2');
+    clearAnnotations();
+  }
+  Sentintel2_Toggle.classList.toggle("selected");
+});
+Sentintel3_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(Sentintel3_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('Sent-3');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('Sent-3');
+    clearAnnotations();
+  }
+  Sentintel3_Toggle.classList.toggle("selected");
+});
+EO1_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(EO1_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('EO-1');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('EO-1');
+    clearAnnotations();
+  }
+  EO1_Toggle.classList.toggle("selected");
+});
+DESIS_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(DESIS_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('DESIS');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('DESIS');
+    clearAnnotations();
+  }
+  DESIS_Toggle.classList.toggle("selected");
+});
+ECOSTRESS_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(ECOSTRESS_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('ECOSTRESS');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('ECOSTRESS');
+    clearAnnotations();
+  }
+  ECOSTRESS_Toggle.classList.toggle("selected");
+});
+EMIT_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(EMIT_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('EMIT');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('EMIT');
+    clearAnnotations();
+  }
+  EMIT_Toggle.classList.toggle("selected");
+});
+MODIS_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(MODIS_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('MODIS');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('MODIS');
+    clearAnnotations();
+  }
+  MODIS_Toggle.classList.toggle("selected");
+});
 
+//** TOGGLE GLOBALY STYLE */
 boxHeight_Global.addEventListener("change", function () {
   console.log("change BoxHeight to: " + boxHeight_Global.value);
   boxHeight = parseFloat(boxHeight_Global.value);
@@ -718,17 +1222,28 @@ groupSeperation_Global.addEventListener("change", function () {
   groupSeperation = parseFloat(groupSeperation_Global.value);
   clearAnnotations();
 });
-
 labelSize_Global.addEventListener("change", function () {
   labelSize = labelSize_Global.value + "%";
   console.log("Label size: " + labelSize);
   clearAnnotations();
 });
-
 labelSublabelSize_Global.addEventListener("change", function () {
   sublabelSize = labelSublabelSize_Global.value + "%";
   console.log("Label size: " + sublabelSize);
   clearAnnotations();
+});
+  //** TOGGLES OFF AN ON SECOND GRAPH */
+secondGraph_Toggle.addEventListener("change", function () {
+  console.log(secondGraph_Toggle.checked);
+  if(!secondGraph_Toggle.checked)
+  {
+    chart_container.style.gridTemplateColumns = "minmax(200px, 1fr)";
+  }
+  else
+  {
+    chart_container.style.gridTemplateColumns = "minmax(200px, 1fr) minmax(200px, 1fr)";
+  }
+  chart2_element.classList.toggle("active");
 });
 
 console.log(boxAnnotations);
