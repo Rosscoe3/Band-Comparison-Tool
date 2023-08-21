@@ -41,6 +41,11 @@ let MODIS_Toggle = document.getElementById("MODIS");
 
 //** Graphs Styling */
 let secondGraph_Toggle = document.getElementById("secondGraph_Toggle");
+let transmission_Toggle = document.getElementById("transmission_Toggle");
+let Chart1_min = document.getElementById("Chart1_min");
+let Chart1_max = document.getElementById("Chart1_max");
+let Chart2_min = document.getElementById("Chart2_min");
+let Chart2_max = document.getElementById("Chart2_max");
 
 let boxHeight_Global = document.getElementById("boxHeight_Global");
 let boxSeperation_Global = document.getElementById("boxSeperation_Global");
@@ -401,7 +406,8 @@ function csvToArray(str, delimiter = ",") {
 }
 
 //** TAKES A CSV AND PLOTS THE TRANSMISSION DATA */
-function plotCSV() {
+function plotCSV() 
+{
   let compressedArray = transmissionData.filter((element, index) => {
     return index % transmissionDataResolution === 0;
   });
@@ -562,11 +568,15 @@ function clearAnnotations(graph)
   updateAnnotations();
 }
 
+var minChart1 = 400;
+var minChart1 = 7000;
+
 //** UPDATES ALL CURRENTLY SELECTED ANNOTATIONS */
 function updateAnnotations()
 {
 
   var offsetY = groupSeperation; 
+  var min1;
 
   for(var i = 0; i < groupsToggled.length; i++)
   {
@@ -672,6 +682,166 @@ function updateAnnotations()
       addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
       addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
     }
+    
+    else if(groupsToggled[i] == 'LNext')
+    {
+      //** Band 1 - Violet	*/
+      addBox(402, 422, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "1", labelSize, "60m", sublabelSize, 1);
+
+      //** Band 2 - Coastal/Aerosol		*/
+      addBox(433, 453, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "2", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 3 - Blue 	*/
+      addBox(457.5, 522.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "3", labelSize, "10m", sublabelSize, 1);
+
+      //** Band 4 - Green 	*/
+      addBox(542.5, 577.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "4", labelSize, "10m", sublabelSize, 1);
+
+      //** Band 5 - Yellow 	*/
+      addBox(585, 615, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "5", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 6 - Orange	*/
+      addBox(610, 630, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "6", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 7 - Red 1	 */
+      addBox(640, 660, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "7", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 8 - Red 2  */
+      addBox(650, 680, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "8", labelSize, "10m", sublabelSize, 1);
+
+      //** Band 9 - Red Edge 1  */
+      addBox(697.5, 712.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "9", labelSize, "20m", sublabelSize, 1);
+      
+      //** Band 10 - Red Edge 2  */
+      addBox(732.5, 747.5, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "10", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 11 - NIR Broad  */
+      addBox(784.5, 899.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "11", labelSize, "10m", sublabelSize, 1);
+
+      //** Band 12 - NIR 1  */
+      addBox(855, 875, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "12", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 13 - Water Vapor  */
+      addBox(935, 955, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "13", labelSize, "60m", sublabelSize, 1);
+
+      //** Band 14 - Liquid Water  */
+      addBox(975, 995, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "14", labelSize, "20m", sublabelSize, 1);
+      
+      //** Band 15 - Snow/Ice 1  */
+      addBox(1025, 1045, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "15", labelSize, "20m", sublabelSize, 1);
+      
+      //** Band 16 - Snow/Ice 2  */
+      addBox(1080, 1100, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight,
+        "rgb(103,156,191)", "16", labelSize, "20m", sublabelSize, 1);
+      
+      //** Band 17 - Cirrus  */
+      addBox(1360, 1390, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "17", labelSize, "60m", sublabelSize, 1);
+      
+      //** Band 18 - SWIR 1  */
+      addBox(1565, 1655, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "18", labelSize, "10m", sublabelSize, 1);
+
+      //** Band 19 - SWIR 2a  */
+      addBox(2025.5, 2050.5, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "19", labelSize, "20m", sublabelSize, 1);
+      
+      //** Band 20 - SWIR 2b  */
+      addBox(2088, 2128, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(103,156,191)", "20", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 21 - SWIR 2c  */
+      addBox(2191, 2231, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "21", labelSize, "20m", sublabelSize, 1);
+
+      //** Band 22 - TIR 1  */
+      addBox(8050, 8425, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "22", labelSize, "60m", sublabelSize, 2);
+
+      //** Band 23 - TIR 2  */
+      addBox(8425, 8775, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "23", labelSize, "60m", sublabelSize, 2);
+      
+      //** Band 24 - TIR 3  */
+      addBox(8925, 9275, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "24", labelSize, "60m", sublabelSize, 2);
+
+      //** Band 25 - TIR 4  */
+      addBox(11025, 11575, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "25", labelSize, "60m", sublabelSize, 2);
+
+      //** Band 26 - TIR 5  */
+      addBox(11775, 12225, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(103,156,191)", "26", labelSize, "60m", sublabelSize, 2);
+    }
+
     else if(groupsToggled[i] == 'Sent-2')
     {
       //** B1 - CA */
@@ -754,6 +924,8 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'Sent-3')
     {
+      chart.options.scales.x.min = 395;
+
       //** Oa01 - CA-1 */
       addBox(395, 405, 
         offsetY + 0.1, 
@@ -1004,10 +1176,28 @@ function updateAnnotations()
     }
   }
 
-  console.log(groupsToggled);
-
   chart.update();
   chart2.update();
+}
+
+function updateMinAndMax(min)
+{
+  if(transmission_Toggle.checked)
+  {
+    chart.data.datasets.scales.x.min = 400;
+  }
+  else
+  {
+    if(min < minChart1)
+    {
+      minChart1 = min;
+      chart.data.datasets.scales.x.min = minChart1;
+    }
+    if(min < minChart2)
+    {
+      
+    }
+  }
 }
 
 function addInLine(width, length, offsetY)
@@ -1099,6 +1289,21 @@ L1_3_Toggle.addEventListener("click", function () {
     clearAnnotations();
   }
   L1_3_Toggle.classList.toggle("selected");
+});
+LNext_Toggle.addEventListener("click", function () {
+  //** CLEARING */
+  if(LNext_Toggle.classList.contains("selected"))
+  {
+    clearAnnotations('LNext');
+    console.log("CLEAR");
+  }
+  //** ADDING */
+  else
+  {
+    groupsToggled.push('LNext');
+    clearAnnotations();
+  }
+  LNext_Toggle.classList.toggle("selected");
 });
 Sentintel2_Toggle.addEventListener("click", function () {
   //** CLEARING */
@@ -1232,9 +1437,9 @@ labelSublabelSize_Global.addEventListener("change", function () {
   console.log("Label size: " + sublabelSize);
   clearAnnotations();
 });
+  
   //** TOGGLES OFF AN ON SECOND GRAPH */
 secondGraph_Toggle.addEventListener("change", function () {
-  console.log(secondGraph_Toggle.checked);
   if(!secondGraph_Toggle.checked)
   {
     chart_container.style.gridTemplateColumns = "minmax(200px, 1fr)";
@@ -1244,6 +1449,56 @@ secondGraph_Toggle.addEventListener("change", function () {
     chart_container.style.gridTemplateColumns = "minmax(200px, 1fr) minmax(200px, 1fr)";
   }
   chart2_element.classList.toggle("active");
+});
+  //** TOGGLES TRANSMISSION CURVE */
+transmission_Toggle.addEventListener("change", function () {
+  //console.log(chart.datasets);
+  if(!transmission_Toggle.checked)
+  {
+    chart.hide(0);
+    chart2.hide(0);
+  }
+  else
+  {
+    chart.show(0);
+    chart2.show(0);
+  }
+});
+
+  //** TOGGLES TRANSMISSION CURVE */
+transmission_Toggle.addEventListener("change", function () {
+  //console.log(chart.datasets);
+  if(!transmission_Toggle.checked)
+  {
+    chart.hide(0);
+    chart2.hide(0);
+  }
+  else
+  {
+    chart.show(0);
+    chart2.show(0);
+  }
+});
+
+Chart1_min.addEventListener("change", function () {
+  console.log(chart.options.scales.x.min);
+  chart.options.scales.x.min = parseInt(Chart1_min.value);
+  chart.update();
+});
+Chart1_max.addEventListener("change", function () {
+  console.log(chart.options.scales.x.max);
+  chart.options.scales.x.max = parseInt(Chart1_max.value);
+  chart.update();
+});
+Chart2_min.addEventListener("change", function () {
+  console.log(chart2.options.scales.x.min);
+  chart2.options.scales.x.min = parseInt(Chart2_min.value);
+  chart2.update();
+});
+Chart2_max.addEventListener("change", function () {
+  console.log(Chart2_max.value);
+  chart2.options.scales.x.max = parseInt(Chart2_max.value);
+  chart2.update();
 });
 
 console.log(boxAnnotations);
