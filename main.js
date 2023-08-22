@@ -681,165 +681,164 @@ function updateAnnotations()
       addBox(600, 700, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "2", labelSize, "80m", sublabelSize, 1);
       addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
       addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
-    }
-    
+    } 
     else if(groupsToggled[i] == 'LNext')
     {
       //** Band 1 - Violet	*/
       addBox(402, 422, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "1", labelSize, "60m", sublabelSize, 1);
+        "rgb(127,176,198)", "1", labelSize, "60m", sublabelSize, 1);
 
       //** Band 2 - Coastal/Aerosol		*/
       addBox(433, 453, 
-        offsetY + 0.1, 
-        offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "2", labelSize, "20m", sublabelSize, 1);
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(127,176,198)", "2", labelSize, "20m", sublabelSize, 1);
 
       //** Band 3 - Blue 	*/
       addBox(457.5, 522.5, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "3", labelSize, "10m", sublabelSize, 1);
+        "rgb(26,125,158)", "3", labelSize, "10m", sublabelSize, 1);
 
       //** Band 4 - Green 	*/
       addBox(542.5, 577.5, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "4", labelSize, "10m", sublabelSize, 1);
+        "rgb(116,169,124)", "4", labelSize, "10m", sublabelSize, 1);
 
       //** Band 5 - Yellow 	*/
       addBox(585, 615, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "5", labelSize, "20m", sublabelSize, 1);
+        "rgb(202,197,63)", "5", labelSize, "20m", sublabelSize, 1);
 
       //** Band 6 - Orange	*/
       addBox(610, 630, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "6", labelSize, "20m", sublabelSize, 1);
+        "rgb(202,165,83)", "6", labelSize, "20m", sublabelSize, 1);
 
       //** Band 7 - Red 1	 */
       addBox(640, 660, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "7", labelSize, "20m", sublabelSize, 1);
+        "rgb(182,61,76)", "7", labelSize, "20m", sublabelSize, 1);
 
       //** Band 8 - Red 2  */
       addBox(650, 680, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "8", labelSize, "10m", sublabelSize, 1);
+        "rgb(182,61,76)", "8", labelSize, "10m", sublabelSize, 1);
 
       //** Band 9 - Red Edge 1  */
       addBox(697.5, 712.5, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "9", labelSize, "20m", sublabelSize, 1);
+        "rgb(105,0,34)", "9", labelSize, "20m", sublabelSize, 1);
       
       //** Band 10 - Red Edge 2  */
       addBox(732.5, 747.5, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "10", labelSize, "20m", sublabelSize, 1);
+        "rgb(105,0,34)", "10", labelSize, "20m", sublabelSize, 1);
 
       //** Band 11 - NIR Broad  */
       addBox(784.5, 899.5, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "11", labelSize, "10m", sublabelSize, 1);
+        "rgb(181,176,196)", "11", labelSize, "10m", sublabelSize, 1);
 
       //** Band 12 - NIR 1  */
       addBox(855, 875, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "12", labelSize, "20m", sublabelSize, 1);
+        "rgb(181,176,196)", "12", labelSize, "20m", sublabelSize, 1);
 
       //** Band 13 - Water Vapor  */
       addBox(935, 955, 
-        offsetY + 0.1, 
-        offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "13", labelSize, "60m", sublabelSize, 1);
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(121,57,160)", "13", labelSize, "60m", sublabelSize, 1);
 
       //** Band 14 - Liquid Water  */
       addBox(975, 995, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "14", labelSize, "20m", sublabelSize, 1);
+        "rgb(181,176,196)", "14", labelSize, "20m", sublabelSize, 1);
       
       //** Band 15 - Snow/Ice 1  */
       addBox(1025, 1045, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "15", labelSize, "20m", sublabelSize, 1);
+        "rgb(181,176,196)", "15", labelSize, "20m", sublabelSize, 1);
       
       //** Band 16 - Snow/Ice 2  */
       addBox(1080, 1100, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "16", labelSize, "20m", sublabelSize, 1);
+        "rgb(181,176,196)", "16", labelSize, "20m", sublabelSize, 1);
       
       //** Band 17 - Cirrus  */
       addBox(1360, 1390, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "17", labelSize, "60m", sublabelSize, 1);
+        "rgb(141,150,171)", "17", labelSize, "60m", sublabelSize, 1);
       
       //** Band 18 - SWIR 1  */
       addBox(1565, 1655, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "18", labelSize, "10m", sublabelSize, 1);
+        "rgb(194,170,148)", "18", labelSize, "10m", sublabelSize, 1);
 
       //** Band 19 - SWIR 2a  */
       addBox(2025.5, 2050.5, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "19", labelSize, "20m", sublabelSize, 1);
+        "rgb(200,134,71)", "19", labelSize, "20m", sublabelSize, 1);
       
       //** Band 20 - SWIR 2b  */
       addBox(2088, 2128, 
         offsetY + 0.1 + boxSeperation, 
         offsetY + 0.1 + boxHeight + boxSeperation, 
-        "rgb(103,156,191)", "20", labelSize, "20m", sublabelSize, 1);
+        "rgb(200,134,71)", "20", labelSize, "20m", sublabelSize, 1);
 
       //** Band 21 - SWIR 2c  */
       addBox(2191, 2231, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "21", labelSize, "20m", sublabelSize, 1);
+        "rgb(200,134,71)", "21", labelSize, "20m", sublabelSize, 1);
 
       //** Band 22 - TIR 1  */
       addBox(8050, 8425, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "22", labelSize, "60m", sublabelSize, 2);
+        "rgb(183,148,152)", "22", labelSize, "60m", sublabelSize, 2);
 
       //** Band 23 - TIR 2  */
       addBox(8425, 8775, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "23", labelSize, "60m", sublabelSize, 2);
+        "rgb(183,148,152)", "23", labelSize, "60m", sublabelSize, 2);
       
       //** Band 24 - TIR 3  */
       addBox(8925, 9275, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "24", labelSize, "60m", sublabelSize, 2);
+        "rgb(183,148,152)", "24", labelSize, "60m", sublabelSize, 2);
 
       //** Band 25 - TIR 4  */
       addBox(11025, 11575, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "25", labelSize, "60m", sublabelSize, 2);
+        "rgb(182,127,129)", "25", labelSize, "60m", sublabelSize, 2);
 
       //** Band 26 - TIR 5  */
       addBox(11775, 12225, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(103,156,191)", "26", labelSize, "60m", sublabelSize, 2);
+        "rgb(182,127,129)", "26", labelSize, "60m", sublabelSize, 2);
     }
 
     else if(groupsToggled[i] == 'Sent-2')
@@ -1054,80 +1053,87 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'EO-1')
     {
-      //** CA */
+      //** Band 1 CA */
       addBox(433, 453, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
         "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
 
-      //** Blue */
+      //** Band 2 Blue */
       addBox(450, 515, 
-        offsetY + 0.1, 
-        offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(26,125,158)", "2", labelSize, "30m", sublabelSize, 1);
 
-      //** Green */
+      //** Band 3 - Green */
       addBox(525, 605, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(116,169,124)", "3", labelSize, "30m", sublabelSize, 1);
 
-      //** Red */
+      //** Band 4 - Red */
       addBox(630, 690, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(182,61,76)", "4", labelSize, "30m", sublabelSize, 1);
 
-      //** NIR-1 */
+      //** Band 5 - NIR-1 */
       addBox(775, 805, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(105,0,34)", "5", labelSize, "30m", sublabelSize, 1);
 
-      //** NIR-2 */
+      //** Band 6 - NIR-2 */
       addBox(845, 890, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(181,176,196)", "6", labelSize, "30m", sublabelSize, 1);
       
-      //** NIR-3 */
+      //** Band 7 - NIR-3 */
       addBox(1200, 1300, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(141,150,171)", "7", labelSize, "30m", sublabelSize, 1);
 
-      //** SWIR1 */
+      //** Band 8 - SWIR1 */
       addBox(1550, 1750, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(211,153,121)", "8", labelSize, "30m", sublabelSize, 1);
 
-      //** SWIR2 */
+      //** Band 9 - SWIR2 */
       addBox(2080, 2350, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+        "rgb(200,134,71)", "9", labelSize, "30m", sublabelSize, 1);
 
-      //** Panchromatic */
+      //** Band 10 - Panchromatic */
       addBox(480, 690, 
-        offsetY + 0.1, 
-        offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "10m", sublabelSize, 1); 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation,
+        "rgb(103,156,191)", "10", labelSize, "10m", sublabelSize, 1); 
     }
     else if(groupsToggled[i] == 'DESIS')
     {
       var width = 2.5;
       var length = (600/width);
+
+      // addBox(402, 1000, 
+      //   offsetY + 0.1, 
+      //   offsetY + 0.1 + boxHeight,
+      //   "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1);
+
+      addInLine(400, width, length, offsetY, "rgb(142,172,130)");
       
-      for(var i = 0; i <= length; i++)
-      {
-        var start = 400 + (width * i);
+      // for(var i = 0; i <= length; i++)
+      // {
+      //   var start = 400 + (width * i);
         
-        addBox(start, start + width, 
-          offsetY + 0.1, 
-          offsetY + 0.1 + boxHeight,
-          "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1); 
-      }
+      //   addBox(start, start + width, 
+      //     offsetY + 0.1, 
+      //     offsetY + 0.1 + boxHeight,
+      //     "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1); 
+      // }
     }
     else if(groupsToggled[i] == 'ECOSTRESS')
     {
@@ -1135,44 +1141,263 @@ function updateAnnotations()
       addBox(1475, 1845, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "1", labelSize, "70m", sublabelSize, 1);
+        "rgb(146,208,80)", "1", labelSize, "70m", sublabelSize, 1);
 
       //** B2 */
       addBox(8113, 8467, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "2", labelSize, "70m", sublabelSize, 2);
+        "rgb(146,208,80)", "2", labelSize, "70m", sublabelSize, 2);
       
       //** B3 */
       addBox(8625, 8935, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "3", labelSize, "70m", sublabelSize, 2);
+        "rgb(146,208,80)", "3", labelSize, "70m", sublabelSize, 2);
       
       //** B4 */
       addBox(9002, 9398, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "4", labelSize, "70m", sublabelSize, 2);
+        "rgb(146,208,80)", "4", labelSize, "70m", sublabelSize, 2);
       
       //** B5 */
       addBox(10285, 10695, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "5", labelSize, "70m", sublabelSize, 2);
+        "rgb(146,208,80)", "5", labelSize, "70m", sublabelSize, 2);
 
       //** B6 */
       addBox(11784.5, 12395.5, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight,
-        "rgb(103,156,191)", "6", labelSize, "70m", sublabelSize, 2);
+        "rgb(146,208,80)", "6", labelSize, "70m", sublabelSize, 2);
     }
     else if(groupsToggled[i] == 'EMIT')
     {
       var width = 7.5;
       var length = (2070/width);
       
-      addInLine(width, length, offsetY);
+      addInLine(380, width, length, offsetY, "rgb(226,178,128)");
+    }
+
+    else if(groupsToggled[i] == 'MODIS')
+    {
+      //** Band 1 - Shortwave/VIS	*/
+      addBox(620, 670, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation, 
+        "rgb(202,165,83)", "1", labelSize, "250m", sublabelSize, 1);
+
+      //** Band 2 - Shortwave/NIR	*/
+      addBox(841, 876, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation,
+        "rgb(181,176,196)", "2", labelSize, "250m", sublabelSize, 1);
+
+      //** Band 3 - Shortwave/VIS	*/
+      addBox(459, 479, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation,
+        "rgb(26,125,158)", "3", labelSize, "500m", sublabelSize, 1);
+
+      //** Band 4 - Shortwave/VIS	*/
+      addBox(545, 565, 
+        offsetY + 0.1 + boxSeperation, 
+        offsetY + 0.1 + boxHeight + boxSeperation,
+        "rgb(116,169,124)", "4", labelSize, "500m", sublabelSize, 1);
+
+      //** Band 5 - Shortwave/NIR	*/
+      addBox(1230, 1250, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(141,150,171)", "5", labelSize, "500m", sublabelSize, 1);
+
+      //** Band 6 - Shortwave/NIR	*/
+      addBox(1628, 1652, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(194,170,148)", "6", labelSize, "500m", sublabelSize, 1);
+
+      //** Band 7 - Shortwave/NIR	*/
+      addBox(2105, 2155, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(200,134,71)", "7", labelSize, "500m", sublabelSize, 1);
+      
+      //** Band 8 - Shortwave/VIS	*/
+      addBox(405, 420, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "8", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 9 - Shortwave/VIS	*/
+      addBox(438, 448, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(127,176,198)", "9", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 10 - Shortwave/VIS	*/
+      addBox(483, 493, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(26,125,158)", "10", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 11 - Shortwave/VIS	*/
+      addBox(526, 536, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(26,125,158)", "11", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 12 - Shortwave/VIS	*/
+      addBox(546, 556, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(116,169,124)", "12", labelSize, "1000m", sublabelSize, 1);
+      
+      //** Band 13 - Shortwave/VIS	*/
+      addBox(662, 672, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,61,76)", "13", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 14 - Shortwave/VIS	*/
+      addBox(673, 683, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(182,61,76)", "14", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 15 - Shortwave/VIS	*/
+      addBox(743, 753, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "15", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 16 - Shortwave/VIS	*/
+      addBox(862, 877, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(181,176,196)", "16", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 17 - Shortwave/VIS	*/
+      addBox(890, 920, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(181,176,196)", "17", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 18 - Shortwave/VIS	*/
+      addBox(931, 941, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(181,176,196)", "18", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 19 - Shortwave/VIS	*/
+      addBox(915, 965, 
+        (offsetY + 0.1) - boxSeperation, 
+        (offsetY + 0.1 + boxHeight) - boxSeperation, 
+        "rgb(121,57,160)", "19", labelSize, "1000m", sublabelSize, 1);
+
+      //** Band 20 - Longwave thermal Infrared/TIR	*/
+      addBox(3660, 3840, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "20", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 21 - Longwave thermal Infrared/TIR	*/
+      addBox(3929, 3989, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "21", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 22 - Longwave thermal Infrared/TIR	*/
+      addBox(3929, 3989, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "22", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 23 - Longwave thermal Infrared/TIR	*/
+      addBox(4020, 4080, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "23", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 24 - Longwave thermal Infrared/TIR	*/
+      addBox(4433, 4498, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "24", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 25 - Longwave thermal Infrared/TIR	*/
+      addBox(4482, 4549, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "25", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 26 - Longwave thermal Infrared/TIR	*/
+      addBox(1360, 1390, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "26", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 27 - Longwave thermal Infrared/TIR	*/
+      addBox(6535, 6895, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(127,176,198)", "27", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 28 - Longwave thermal Infrared/TIR	*/
+      addBox(7175, 7475, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(183,148,152)", "28", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 29 - Longwave thermal Infrared/TIR	*/
+      addBox(8400, 8700, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(183,148,152)", "29", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 30 - Longwave thermal Infrared/TIR	*/
+      addBox(9580, 9880, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(183,148,152)", "30", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 31 - Longwave thermal Infrared/TIR	*/
+      addBox(10780, 11280, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,127,129)", "31", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 32 - Longwave thermal Infrared/TIR	*/
+      addBox(11770, 12270, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,127,129)", "32", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 33 - Longwave thermal Infrared/TIR	*/
+      addBox(13185, 13485, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,127,129)", "33", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 34 - Longwave thermal Infrared/TIR	*/
+      addBox(13485, 13785, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,127,129)", "34", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 35 - Longwave thermal Infrared/TIR	*/
+      addBox(13785, 14085, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,127,129)", "35", labelSize, "1000m", sublabelSize, 2);
+
+      //** Band 36 - Longwave thermal Infrared/TIR	*/
+      addBox(14085, 14385, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(182,127,129)", "36", labelSize, "1000m", sublabelSize, 2);
     }
   }
 
@@ -1200,16 +1425,16 @@ function updateMinAndMax(min)
   }
 }
 
-function addInLine(width, length, offsetY)
+function addInLine(startNmb, width, length, offsetY, color)
 { 
   for(var i = 0; i <= length; i++)
   {
-    var start = 380 + (width * i);
+    var start = startNmb + (width * i);
     
     addBox(start, start + width, 
       offsetY + 0.1, 
       offsetY + 0.1 + boxHeight,
-      "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1); 
+      color, "", labelSize, "", sublabelSize, 1); 
   }
 }
 
