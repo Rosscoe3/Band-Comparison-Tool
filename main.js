@@ -230,6 +230,8 @@ const config = {
         //     size: 15,
         //   },
         // },
+        min: parseInt(Chart1_min.value),
+        max: parseInt(Chart1_max.value),
       },
     },
   },
@@ -335,7 +337,8 @@ const config2 = {
         max: 0.9,
       },
       x: {
-        min: minChartTwo,
+        min: parseInt(Chart2_min.value),
+        max: parseInt(Chart2_max.value),
       },
     },
   },
@@ -414,27 +417,33 @@ function plotCSV()
   console.log(compressedArray);
 
   //** DETERMINE TRANSMISSION CURVE FOR CHART 1 */
-  for (var i = 0; i < compressedArray.length - arrayEndCut_chart1; i++) 
+  // - arrayEndCut_chart1
+  for (var i = 0; i < compressedArray.length; i++) 
   {
     chart.data.datasets[0].data[i] = {
+      x: compressedArray[i].Wave * 1000,
+      y: compressedArray[i].TotTrans,
+    };
+
+    chart2.data.datasets[0].data[i] = {
       x: compressedArray[i].Wave * 1000,
       y: compressedArray[i].TotTrans,
     };
   }
 
   //** DETERMINE TRANSMISSION CURVE FOR CHART 2 */
-  for (var i = 0; i < compressedArray.length; i++) 
-  {
-    if((compressedArray[i].Wave * 1000) >= minChartTwo)
-    {
-      console.log(compressedArray[i].Wave * 1000);
-      //** HAVE TO MAKE IT START AT DATA 0 */
-      chart2.data.datasets[0].data.push({
-        x: compressedArray[i].Wave * 1000,
-        y: compressedArray[i].TotTrans,
-      });
-    }
-  }
+  // for (var i = 0; i < compressedArray.length; i++) 
+  // {
+  //   if((compressedArray[i].Wave * 1000) >= minChartTwo)
+  //   {
+  //     console.log(compressedArray[i].Wave * 1000);
+  //     //** HAVE TO MAKE IT START AT DATA 0 */
+  //     chart2.data.datasets[0].data.push({
+  //       x: compressedArray[i].Wave * 1000,
+  //       y: compressedArray[i].TotTrans,
+  //     });
+  //   }
+  // }
 
   chart.update();
   chart2.update();
@@ -568,15 +577,15 @@ function clearAnnotations(graph)
   updateAnnotations();
 }
 
-var minChart1 = 400;
-var minChart1 = 7000;
-
 //** UPDATES ALL CURRENTLY SELECTED ANNOTATIONS */
 function updateAnnotations()
 {
 
   var offsetY = groupSeperation; 
-  var min1;
+  var mins1 = [];
+  var maxes1 = [];
+  var mins2 = [];
+  var maxes2 = [];
 
   for(var i = 0; i < groupsToggled.length; i++)
   {
@@ -585,6 +594,12 @@ function updateAnnotations()
 
     if(groupsToggled[i] == 'L8-9')
     {
+      mins1.push(430);
+      mins2.push(10600);
+
+      maxes1.push(2290);
+      maxes2.push(12510);
+      
       //** Band 1 - Coastal aerosol	*/
       addBox(430, 450, 
         offsetY + 0.1 + boxSeperation, 
@@ -653,6 +668,12 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'L7')
     {
+      mins1.push(450);
+      mins2.push(10400);
+
+      maxes1.push(2090);
+      maxes2.push(12500);
+      
       addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
       addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
       addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
@@ -667,23 +688,80 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'L4-5')
     {
-      addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
-      addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
-      addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
-      addBox(760, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
-      addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
-      addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "120m", sublabelSize, 2);
-      addBox(2080, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
+      mins1.push(450);
+      mins2.push(10400);
+
+      maxes1.push(2350);
+      maxes2.push(12500);
+      
+      addBox(450, 520, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
+      
+      addBox(520, 600, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
+      
+      addBox(630, 690, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
+      
+      addBox(760, 900, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
+      
+      addBox(1550, 1750, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
+      
+      addBox(10400, 12500, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(188,122,130)", "6", labelSize, "120m", sublabelSize, 2);
+      
+      addBox(2080, 2350, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
     }
     else if(groupsToggled[i] == 'L1-3')
     {
-      addBox(500, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "1", labelSize, "80m", sublabelSize, 1);
-      addBox(600, 700, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "2", labelSize, "80m", sublabelSize, 1);
-      addBox(700, 800, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
-      addBox(800, 1100, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
+      mins1.push(500);
+      maxes1.push(1100);
+      
+      addBox(500, 600, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(76,157,95)", "1", labelSize, "80m", sublabelSize, 1);
+
+      addBox(600, 700, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(194,32,54)", "2", labelSize, "80m", sublabelSize, 1);
+
+      addBox(700, 800, 
+        offsetY + 0.1,
+        offsetY + 0.1 + boxHeight, 
+        "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
+
+      addBox(800, 1100, 
+        offsetY + 0.1, 
+        offsetY + 0.1 + boxHeight, 
+        "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
     } 
     else if(groupsToggled[i] == 'LNext')
     {
+      mins1.push(402);
+      mins2.push(8050);
+
+      maxes1.push(2231);
+      maxes2.push(12225);
+      
       //** Band 1 - Violet	*/
       addBox(402, 422, 
         offsetY + 0.1, 
@@ -843,6 +921,9 @@ function updateAnnotations()
 
     else if(groupsToggled[i] == 'Sent-2')
     {
+      mins1.push(433);
+      maxes1.push(2280);
+      
       //** B1 - CA */
       addBox(433, 453, 
         offsetY + 0.1 + boxSeperation, 
@@ -923,7 +1004,8 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'Sent-3')
     {
-      chart.options.scales.x.min = 395;
+      mins1.push(395);
+      maxes1.push(1040);
 
       //** Oa01 - CA-1 */
       addBox(395, 405, 
@@ -1053,6 +1135,9 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'EO-1')
     {
+      mins1.push(433);
+      maxes1.push(2350);
+      
       //** Band 1 CA */
       addBox(433, 453, 
         offsetY + 0.1, 
@@ -1115,6 +1200,9 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'DESIS')
     {
+      mins1.push(400);
+      maxes1.push(1000);
+      
       var width = 2.5;
       var length = (600/width);
 
@@ -1137,6 +1225,12 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'ECOSTRESS')
     {
+      mins1.push(1475);
+      mins2.push(8113);
+
+      maxes1.push(1845);
+      maxes2.push(12395.5);
+      
       //** B1 */
       addBox(1475, 1845, 
         offsetY + 0.1, 
@@ -1175,14 +1269,22 @@ function updateAnnotations()
     }
     else if(groupsToggled[i] == 'EMIT')
     {
+      mins1.push(380);
+      maxes1.push(2500);
+      
       var width = 7.5;
       var length = (2070/width);
       
       addInLine(380, width, length, offsetY, "rgb(226,178,128)");
     }
-
     else if(groupsToggled[i] == 'MODIS')
     {
+      mins1.push(405);
+      mins2.push(3660);
+
+      maxes1.push(2155);
+      maxes2.push(14385);
+      
       //** Band 1 - Shortwave/VIS	*/
       addBox(620, 670, 
         offsetY + 0.1 + boxSeperation, 
@@ -1337,7 +1439,7 @@ function updateAnnotations()
       addBox(1360, 1390, 
         offsetY + 0.1, 
         offsetY + 0.1 + boxHeight, 
-        "rgb(127,176,198)", "26", labelSize, "1000m", sublabelSize, 2);
+        "rgb(127,176,198)", "26", labelSize, "1000m", sublabelSize, 1);
 
       //** Band 27 - Longwave thermal Infrared/TIR	*/
       addBox(6535, 6895, 
@@ -1401,28 +1503,52 @@ function updateAnnotations()
     }
   }
 
+  console.log(Math.min.apply(Math, mins1));
+
+
+  if(mins1.length > 0 && mins2.length > 0)
+  {
+    //** Update min and max values of charts manually *//
+    updateMinAndMax(
+      Math.min.apply(Math, mins1), 
+      Math.min.apply(Math, mins2),
+      Math.max.apply(Math, maxes1),
+      Math.max.apply(Math, maxes2));
+  }
+  else
+  {
+    updateMinAndMax(
+      Chart1_min.value, 
+      Chart2_min.value,
+      Chart1_max.value,
+      Chart2_max.value);
+  }
+
+
   chart.update();
   chart2.update();
 }
 
-function updateMinAndMax(min)
+//** UPDATE MIN AND MAX FOR CHARTS DEPENDING ON PRESETS SELECTED */
+function updateMinAndMax(min1, min2, max1, max2)
 {
-  if(transmission_Toggle.checked)
-  {
-    chart.data.datasets.scales.x.min = 400;
-  }
-  else
-  {
-    if(min < minChart1)
-    {
-      minChart1 = min;
-      chart.data.datasets.scales.x.min = minChart1;
-    }
-    if(min < minChart2)
-    {
-      
-    }
-  }
+  var padding = 50;
+  
+  // if(transmission_Toggle.checked)
+  // {
+  //   chart.options.scales.x.min = parseInt(400);
+  // }
+  // else
+  // {
+  // }
+  chart.options.scales.x.min = parseInt(min1) - padding;
+  chart.options.scales.x.max = parseInt(max1) + padding;
+
+  chart2.options.scales.x.min = parseInt(min2) - padding;
+  chart2.options.scales.x.max = parseInt(max2) + padding;
+
+  chart.update();
+  chart2.update();
 }
 
 function addInLine(startNmb, width, length, offsetY, color)
