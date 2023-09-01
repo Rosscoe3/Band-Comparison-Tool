@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Band Comparison Tool</title>
   </head>
   <body>
 
@@ -18,12 +19,12 @@
             <!-- GLOBAL STYLE -->
             <li>
               <input id="group-1" type="checkbox" hidden/>
-              <label for="group-1"><span class="fa fa-angle-right">›</span> Global Style</label>
+              <label for="group-1"><span class="">›</span> Global Style</label>
               <ul class="group-list">
                 <!-- GLOBAL STYLE -->
                 <li>
                   <input id="sub-group-1" type="checkbox" hidden />
-                  <label for="sub-group-1"><span class="fa fa-angle-right">›</span> Graphs</label>
+                  <label for="sub-group-1"><span class="">›</span> Graphs</label>
                   <ul class="sub-group-list">
                     <div class="inputContainer">
                       <div>Second Graph</div>
@@ -54,26 +55,26 @@
                 <!-- BOX STYLE -->
                 <li>
                   <input id="sub-group-2" type="checkbox" hidden />
-                  <label for="sub-group-2"><span class="fa fa-angle-right">›</span> Boxes</label>
+                  <label for="sub-group-2"><span class="">›</span> Boxes</label>
                   <ul class="sub-group-list">
-                    <div class="inputContainer">
+                    <!-- <div class="inputContainer">
                       <div>Box Height:</div>
                       <input id="boxHeight_Global" type="number" placeholder="Box Height..." value='0.05' step="0.01">
                     </div>
                     <div class="inputContainer">
                       <div>Box Seperation:</div>
                       <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
-                    </div>
+                    </div> -->
                     <div class="inputContainer">
                       <div>Group Seperation:</div>
-                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.25' step="0.01">          
+                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.15' step="0.01">          
                     </div>
                   </ul>
                 </li>
                 <!-- LABEL STYLE -->
-                <li>
+                <!-- <li>
                   <input id="sub-group-3" type="checkbox" hidden />
-                  <label for="sub-group-3"><span class="fa fa-angle-right">›</span> Labels</label>
+                  <label for="sub-group-3"><span class="">›</span> Labels</label>
                   <ul class="sub-group-list">
                     <div class="inputContainer">
                       <div>Label Size:</div>
@@ -84,25 +85,25 @@
                       <input id="labelSublabelSize_Global" type="number" placeholder="Chart Seperation..." value='15' step="1">          
                     </div>
                   </ul>
-                </li>
+                </li> -->
               </ul>
             </li>
             <!-- LIST TWO -->
             <!-- <li>
               <input id="group-2" type="checkbox" hidden />
-              <label for="group-2"><span class="fa fa-angle-right"></span> First level</label>
+              <label for="group-2"><span class=""></span> First level</label>
               <ul class="group-list">
                 <li>
                   <li><a href="#">1st level item</a></li>
                   <li><a href="#">1st level item</a></li>
                   <input id="sub-group-3" type="checkbox" hidden />
-                  <label for="sub-group-3"><span class="fa fa-angle-right"></span> Second level</label>
+                  <label for="sub-group-3"><span class=""></span> Second level</label>
                   <ul class="sub-group-list">
                     <li><a href="#">2nd level nav item</a></li>
                     <li><a href="#">2nd level nav item</a></li>
                     <li>
                       <input id="sub-sub-group-2" type="checkbox" hidden />
-                      <label for="sub-sub-group-2"><span class="fa fa-angle-right"></span> Third level</label>
+                      <label for="sub-sub-group-2"><span class=""></span> Third level</label>
                       <ul class="sub-sub-group-list">
                         <li><a href="#">3rd level nav item</a></li>
                       </ul>
@@ -114,11 +115,31 @@
           </ul>
         </nav>
         <div class="sidebarTitle">
-          <b>Presets</b>
+          <b>Layers</b>
+          <!-- <div id="upload_additional" class="symbol" title="Add a Custom layer or Preset">
+            +
+          </div> -->
+          <div class="dropdown">
+            <button id="dropDownBtn" class="dropbtn">+</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a id="preset_DESIS">DESIS</a>
+              <a id="preset_ECOSTRESS">ECOSTRESS</a>
+              <a id="preset_EMIT">EMIT</a>
+              <a id="preset_EO1">EO1</a>
+              <a id="preset_L1-3">Landsat 1-3</a>
+              <a id="preset_L4-5">Landsat 4-5</a>
+              <a id="preset_L8-9">Landsat 8-9</a>
+              <a id="preset_LNext">Landsat Next</a>
+              <a id="preset_MODIS">MODIS</a>
+              <a id="preset_Sentinel2">Sentinel 2</a>
+              <a id="preset_Sentinel3">Sentinel 3</a>
+              <a id="preset_STELLA">STELLA</a>
+            </div>
+          </div>
         </div>
         <div class="scrollContainer">
-          <div class="batchGrid" id="graphs" style="height: fit-content">
-            <div id="Landsat1-3" class="active" title="Landsat 1-3 Bands" style="padding: 5%">
+          <div class="batchGrid" id="layers" style="height: fit-content">
+            <!-- <div id="Landsat1-3" class="active" title="Landsat 1-3 Bands" style="padding: 5%">
               Landsat 1-3
             </div>
             <div id="Landsat4-5" class="active" title="Landsat 4-5 Bands" style="padding: 5%">
@@ -153,7 +174,49 @@
             </div>
             <div id="MODIS" class="active" title="Sentinel-3 Bands" style="padding: 5%">
               MODIS
-            </div>
+            </div> -->
+            
+            <!-- L8-9 Nav -->
+            <!-- <nav class="nav" role="navigation">
+              <ul class="nav__list">
+                <li>
+                  <input id="Landsat-8-9" type="checkbox" hidden/>
+                  <label for="Landsat-8-9"><span class="">›</span>Landsat 8 - 9</label>
+                  <ul class="group-list">
+                    <li>
+                      <input id="sub-group-5" type="checkbox" hidden />
+                      <label for="sub-group-5">
+                        <span class="">›</span> 
+                        <i class="fa fa-trash"></i>
+                        b1
+                      </label>
+                      <ul class="sub-group-list">
+                        <div class="inputContainer">
+                          <div>Color</div>
+                          <input id="color_input" type="color" />          
+                        </div>
+                        <div class="inputContainer">
+                          <div>Label size</div>
+                          <input id="b1_labelSize" type="number" placeholder="Chart1 min" value='15' step="1">          
+                        </div>
+                        <div class="inputContainer">
+                          <div>Sublabel size</div>
+                          <input id="b1_labelSize" type="number" placeholder="Chart1 min" value='15' step="1">          
+                        </div>
+                        <div class="inputContainer">
+                          <div>Height</div>
+                          <input id="b1_labelSize" type="number" placeholder="Chart1 min" value='15' step="1">          
+                        </div>
+                        <div class="inputContainer">
+                          <div>Separation</div>
+                          <input id="b1_labelSize" type="number" placeholder="Chart1 min" value='15' step="1">          
+                        </div>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav> -->
           </div>
         </div>
       </div>
@@ -172,6 +235,9 @@
             <div class="title">Thermal Infrared (TIR)</div>
           </div>
         </div>
+        <div class="editIcon active" id="snapshot" title="Take a screenshot of the current graph">
+          <i class="fa fa-camera"></i>
+        </div>
       </div>
     </div>
     <script type="module" src="/main.js"></script>
@@ -179,6 +245,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"
       integrity="sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ=="
