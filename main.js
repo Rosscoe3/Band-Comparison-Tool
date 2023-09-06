@@ -3363,7 +3363,7 @@ var MODIS_values = [
 var PACE_values = [
   {
     //** Band 1 - Hyperspectral	*/
-    color: '#B930D5',
+    color: '#c22036',
     xMin: 340, 
     xMax: 890,
     yHeight: 0.05,
@@ -3376,7 +3376,7 @@ var PACE_values = [
   },
   {
     //** Band 2 - NIR-1	*/
-    color: '#B930D5',
+    color: '#c5a2bd',
     xMin: 900, 
     xMax: 980,
     yHeight: 0.05,
@@ -3389,7 +3389,7 @@ var PACE_values = [
   },
   {
     //** Band 3 - NIR-2	*/
-    color: '#B930D5',
+    color: '#c5a2bd',
     xMin: 938, 
     xMax: 1138,
     yHeight: 0.05,
@@ -3402,7 +3402,7 @@ var PACE_values = [
   },
   {
     //** Band 4 - NIR-3	*/
-    color: '#B930D5',
+    color: '#7480a1',
     xMin: 1278, 
     xMax: 1478,
     yHeight: 0.05,
@@ -3415,7 +3415,7 @@ var PACE_values = [
   },
   {
     //** Band 5 - SWIR1-1	*/
-    color: '#B930D5',
+    color: '#d39979',
     xMin: 1515, 
     xMax: 1715,
     yHeight: 0.05,
@@ -3428,7 +3428,7 @@ var PACE_values = [
   },
   {
     //** Band 6 - SWIR2-1	*/
-    color: '#B930D5',
+    color: '#999c96',
     xMin: 2030, 
     xMax: 2230,
     yHeight: 0.05,
@@ -3441,7 +3441,7 @@ var PACE_values = [
   },
   {
     //** Band 7 - SWIR2-2	*/
-    color: '#B930D5',
+    color: '#999c96',
     xMin: 2160, 
     xMax: 2360,
     yHeight: 0.05,
@@ -3660,6 +3660,7 @@ function addPreset(title, preset)
   
   //** TITLE LABEL */
   var title_label = document.createElement("label");
+  title_label.classList = "title_Label";
   title_label.setAttribute("for", title);
   title_label.innerHTML = title;
   li.appendChild(title_label);
@@ -3668,6 +3669,20 @@ function addPreset(title, preset)
   var title_label_span = document.createElement("span");
   title_label_span.innerHTML = "›";
   title_label.appendChild(title_label_span);
+
+  //** TITLE REMOVE ICON */
+  var title_label_removeIcon = document.createElement("i");
+  title_label_removeIcon.classList = "fa fa-trash";
+  title_label_removeIcon.id = "removeIcon";
+  title_label.appendChild(title_label_removeIcon);
+
+  //** ON CHANGE EVENT FOR COLOR PICKER */
+  title_label_removeIcon.addEventListener('click', function() {
+    nav.innerHTML = "";
+    nav.remove();
+    console.log("REMOVE");
+    loopThroughLayers();
+  }, false);
 
   //** GROUP LIST CONTAINER, CONTAINS ALL GROUP VALUES */
   var groupList = document.createElement("ul");
@@ -4306,11 +4321,13 @@ STELLA_Dropdown.addEventListener("click", function () {
 //   boxSeperation = parseFloat(boxSeperation_Global.value);
 //   clearAnnotations();
 // });
+
 groupSeperation_Global.addEventListener("change", function () {
   console.log("change BoxHeight to: " + groupSeperation_Global.value);
   groupSeperation = parseFloat(groupSeperation_Global.value);
   loopThroughLayers();
 });
+
 // labelSize_Global.addEventListener("change", function () {
 //   labelSize = labelSize_Global.value + "%";
 //   console.log("Label size: " + labelSize);

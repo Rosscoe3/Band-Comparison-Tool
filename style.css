@@ -504,3 +504,15 @@ ul {
   text-align: center;
   font-size: 1.25vw;
 }
+
+.title_Label i{
+  float: right;
+  margin-top: 2%;
+  margin-right: 5%;
+  transition: all 0.25s ease-in-out;
+}
+
+.title_Label i:hover{
+  color: white;
+  transition: all 0.25s ease-in-out;
+}
