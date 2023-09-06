@@ -50,6 +50,7 @@ let DESIS_Dropdown = document.getElementById("preset_DESIS");
 let ECOSTRESS_Dropdown = document.getElementById("preset_ECOSTRESS");
 let EMIT_Dropdown = document.getElementById("preset_EMIT");
 let MODIS_Dropdown = document.getElementById("preset_MODIS");
+let PACE_Dropdown = document.getElementById("preset_PACE");
 let STELLA_Dropdown = document.getElementById("preset_STELLA");
 
 let downloadScreenshot = document.getElementById("snapshot");
@@ -3359,6 +3360,101 @@ var MODIS_values = [
   }, 
 ];
 
+var PACE_values = [
+  {
+    //** Band 1 - Hyperspectral	*/
+    color: '#B930D5',
+    xMin: 340, 
+    xMax: 890,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "1",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 2 - NIR-1	*/
+    color: '#B930D5',
+    xMin: 900, 
+    xMax: 980,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "2",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 3 - NIR-2	*/
+    color: '#B930D5',
+    xMin: 938, 
+    xMax: 1138,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "3",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: 0.05,
+  },
+  {
+    //** Band 4 - NIR-3	*/
+    color: '#B930D5',
+    xMin: 1278, 
+    xMax: 1478,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "4",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 5 - SWIR1-1	*/
+    color: '#B930D5',
+    xMin: 1515, 
+    xMax: 1715,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "5",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 6 - SWIR2-1	*/
+    color: '#B930D5',
+    xMin: 2030, 
+    xMax: 2230,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "6",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 7 - SWIR2-2	*/
+    color: '#B930D5',
+    xMin: 2160, 
+    xMax: 2360,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "7",
+    sublabelSize: 15, 
+    subLabelText: '50m',
+    graphNumb: 1,
+    yOffset: -0.05,
+  },
+];
+
+
 var STELLA_values = [
   {
     //** Band 1 - Violet	*/
@@ -4188,6 +4284,10 @@ EMIT_Dropdown.addEventListener("click", function () {
 });
 MODIS_Dropdown.addEventListener("click", function () {
   addPreset("MODIS", MODIS_values);
+  loopThroughLayers();
+});
+PACE_Dropdown.addEventListener("click", function () {
+  addPreset("PACE", PACE_values);
   loopThroughLayers();
 });
 STELLA_Dropdown.addEventListener("click", function () {
