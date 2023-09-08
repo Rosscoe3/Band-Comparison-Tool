@@ -149,6 +149,8 @@ h1 {
   transition: all 0.5s ease-in-out;
   flex-flow: column nowrap;
 
+  resize: none;
+
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -178,17 +180,17 @@ h1 {
   flex-grow: 2;
   padding-left: 2rem;
   line-height: 200%;
+  user-select: none;
 }
 
 .sidebar .sidebarTitle{
   user-select: none;
   height: fit-content;
-  
+
   padding: 5%;
 
   float: right;
   text-align: left;
-  outline: solid 0px rgba(0, 0, 0, 1);
 
   background-color: #B3B3B3;
   color: black;
@@ -196,7 +198,7 @@ h1 {
   transition: all 0.5s ease-in-out;
 }
 .sidebar.active .sidebarTitle{
-  font-size: 150%;
+  font-size: 175%;
   outline: solid 1px rgba(0, 0, 0, 1);
   transition: all 0.5s ease-in-out;
 }
@@ -207,6 +209,14 @@ h1 {
 
   opacity: 100%;
   transition: opacity 0.25s ease-in-out;
+}
+
+.sidebarTitle label{
+  position: absolute;
+  align-items: center;
+  text-align: center;
+
+  transform: translate(0%, 25%);
 }
 
 .group-list i{
@@ -236,8 +246,10 @@ h1 {
   font-size: 125%;
   border: none;
   cursor: pointer;
-  background-color: rgba(100, 100, 100, 0);
+  background-color: rgba(0, 100, 100, 0);
 }
+
+
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   opacity: 50%;
@@ -247,6 +259,12 @@ h1 {
   position: relative;
   display: inline-block;
   float: right;
+}
+
+li .dropdown{
+  display: inline-block;
+  float: right;
+  bottom: 0%;
 }
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -275,6 +293,7 @@ h1 {
   width: 20%;
   outline: solid 2px rgba(0, 0, 0, 1);
   transition: all 0.5s ease-in-out;
+  resize: none;
 }
 .sidebar .batchGrid {
   outline: solid 0px rgba(0, 0, 0, 1);
@@ -359,13 +378,13 @@ h1 {
   padding: .85rem;
   /* color: #fff; */
   color: black;
-  background-color: #B3B3B3;
+  background-color: #ffffff;
   box-shadow: inset 0 -1px #1d1d1d;
   -webkit-transition: all .25s ease-in;
   transition: all .25s ease-in;
 }
 .nav a:focus, .nav a:hover, .nav label:focus, .nav label:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1);
   background: #030303;
 }
 .nav label { cursor: pointer; }
@@ -507,9 +526,10 @@ ul {
 
 .title_Label i{
   float: right;
-  margin-top: 2%;
-  margin-right: 5%;
+  transform: translate(-100%, 55%);
+  font-size: 75%;
   transition: all 0.25s ease-in-out;
+  user-select: none;  
 }
 
 .title_Label i:hover{
