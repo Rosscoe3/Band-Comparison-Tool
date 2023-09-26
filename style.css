@@ -216,7 +216,7 @@ h1 {
   align-items: center;
   text-align: center;
 
-  transform: translate(0%, 25%);
+  transform: translate(0%, 10%);
 }
 
 .group-list i{
@@ -474,11 +474,12 @@ ul {
 
 .editIcon {
   margin: 0.1rem;
-  height: 2vw;
-  width: 2vw;
+  height: fit-content;
+  width: fit-content;
   padding: 0.5rem;
   right: 1%;
   bottom: 1%;
+  background-color: white;
 
   margin: auto;
 
@@ -535,4 +536,27 @@ ul {
 .title_Label i:hover{
   color: white;
   transition: all 0.25s ease-in-out;
+}
+
+.loading{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex: none;
+  position: absolute;
+  z-index: 1000;
+  opacity: 0%;
+  pointer-events: none;
+}
+
+.loading.active{
+  opacity: 100%;
+}
+
+.loading img{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5%;
 }

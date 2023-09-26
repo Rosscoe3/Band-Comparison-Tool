@@ -25,6 +25,7 @@ var groupSeperation = 0.15;
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let layers = document.getElementById("layers");
+let loadingScreen = document.getElementById("loading");
 
 // let L8_9_Toggle = document.getElementById("Landsat8-9");
 // let L4_5_Toggle = document.getElementById("Landsat4-5");
@@ -489,28 +490,14 @@ var sublabelSize = "15%";
 var sublabelXOffset = 0.1;
 var sublabelYOffset = 0.01;
 
-//** ADD ALL BOX VALUES TO GRAPH */
-addBox(430, 450, 
-  0.1 + boxSeperation, 
-  0.1 + boxHeight + boxSeperation, 
-  "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
-addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
-addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
-addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
-addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
-addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
-addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
-addBox(500, 680, 
-  (0.1) - boxSeperation, 
-  (0.1 + boxHeight) - boxSeperation, 
-  "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
-addBox(1360, 1380, 
-  0.1 + boxSeperation, 
-  0.1 + boxHeight + boxSeperation, 
-  "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
-addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
-addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
-addBox(12610, 12640, (0.1) - boxSeperation, 0.1 + boxHeight + boxSeperation, "rgba(150,150,150, 0.5)", "", labelSize, "MSS", sublabelSize, 2);
+//** STARTING Values */
+
+setTimeout(() => {
+  setTimeout(() => {
+    addPreset("Landsat 8-9", Landsat8_9_values);
+    loopThroughLayers();
+  }, 10);
+}, 100);
 
 //** ADD LINE FOR ANNOTATION */
 function addBox(
@@ -1592,6 +1579,7 @@ var Landsat1_3_values = [
     subLabelText: '80m',
     graphNumb: 1,
     yOffset: 0,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     color: '#c22036',
@@ -1642,6 +1630,7 @@ var Landsat4_5_values = [
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     color: '#4c9d5f',
@@ -1729,6 +1718,7 @@ var Landsat8_9_values = [
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0.05,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     //** Band 2 - Blue */
@@ -1874,6 +1864,7 @@ var LandsatNext_values = [
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     //** Band 2 - Coastal/Aerosol		*/
@@ -3682,6 +3673,7 @@ function addPreset(title, preset)
   var title_label_span = document.createElement("span");
   title_label_span.innerHTML = "›";
   title_label_span.setAttribute("contentEditable", false);
+  title_label_span.setAttribute("contentEditable", false);
   title_label.appendChild(title_label_span);
 
   //** TITLE REMOVE ICON */
@@ -3699,6 +3691,20 @@ function addPreset(title, preset)
     enabledPresets.splice(index, 1);
     loopThroughLayers();
   }, false);
+
+  // //** I ICON */
+  // var title_label_moreInfo = document.createElement("i");
+  // title_label_moreInfo.classList = "fa fa-info-circle";
+  // title_label_moreInfo.id = "removeIcon";
+  // title_label_moreInfo.style = "float: left";
+  // title_label_moreInfo.style.transform = "translate(-30%, 50%)";
+  // title_label_moreInfo.setAttribute("contentEditable", false);
+  // title_label.appendChild(title_label_moreInfo);
+
+  // //** CLICK EVENT FOR MORE INFO ICON */
+  // title_label_moreInfo.addEventListener('click', function() {
+  //   window.open(preset[0].link);
+  // }, false);
 
   //** GROUP LIST CONTAINER, CONTAINS ALL GROUP VALUES */
   var groupList = document.createElement("ul");
@@ -4252,7 +4258,8 @@ function addPreset(title, preset)
 function loopThroughLayers()
 {
   clearAnnotations();
-  
+  console.log("START OF LOOP");
+
   //** GRAB ALL NAVS */
   let navs = layers.getElementsByClassName("nav");
   var offsetY = 0;
@@ -4347,7 +4354,10 @@ function loopThroughLayers()
     2450,
     13950);
   }
-    
+  
+  //loadingScreen.classList.toggle('active');
+  console.log("END OF LOOP");
+
   chart.update();
   chart2.update();
 }
