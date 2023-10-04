@@ -464,6 +464,10 @@ label > span {
   background-color: rgba(0, 0, 0, 0);
 }
 
+label span{
+  user-select: none;
+}
+
 
 
 ul {

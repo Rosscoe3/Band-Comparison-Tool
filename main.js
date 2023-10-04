@@ -41,6 +41,7 @@ let layers = document.getElementById("layers");
 
 let L1_3_Dropdown = document.getElementById("preset_L1-3");
 let L4_5_Dropdown = document.getElementById("preset_L4-5");
+let L7_Dropdown = document.getElementById("preset_L7");
 let L8_9_Dropdown = document.getElementById("preset_L8-9");
 let LNext_Dropdown = document.getElementById("preset_LNext");
 let Sentinel2_Dropdown = document.getElementById("preset_Sentinel2");
@@ -490,27 +491,28 @@ var sublabelXOffset = 0.1;
 var sublabelYOffset = 0.01;
 
 //** ADD ALL BOX VALUES TO GRAPH */
-addBox(430, 450, 
-  0.1 + boxSeperation, 
-  0.1 + boxHeight + boxSeperation, 
-  "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
-addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
-addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
-addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
-addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
-addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
-addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
-addBox(500, 680, 
-  (0.1) - boxSeperation, 
-  (0.1 + boxHeight) - boxSeperation, 
-  "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
-addBox(1360, 1380, 
-  0.1 + boxSeperation, 
-  0.1 + boxHeight + boxSeperation, 
-  "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
-addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
-addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
-addBox(12610, 12640, (0.1) - boxSeperation, 0.1 + boxHeight + boxSeperation, "rgba(150,150,150, 0.5)", "", labelSize, "MSS", sublabelSize, 2);
+// addBox(430, 450, 
+//   0.1 + boxSeperation, 
+//   0.1 + boxHeight + boxSeperation, 
+//   "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
+// addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
+// addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
+// addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
+// addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
+// addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
+// addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
+// addBox(500, 680, 
+//   (0.1) - boxSeperation, 
+//   (0.1 + boxHeight) - boxSeperation, 
+//   "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
+// addBox(1360, 1380, 
+//   0.1 + boxSeperation, 
+//   0.1 + boxHeight + boxSeperation, 
+//   "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
+// addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
+// addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
+// addBox(12610, 12640, (0.1) - boxSeperation, 0.1 + boxHeight + boxSeperation, "rgba(150,150,150, 0.5)", "", labelSize, "MSS", sublabelSize, 2);
+
 
 //** ADD LINE FOR ANNOTATION */
 function addBox(
@@ -523,16 +525,30 @@ function addBox(
   textSize,
   subLabelText,
   sublabelSize, 
-  graphNumb
+  graphNumb, 
+  title,
 ) {
+  
+  var y_padding_box = 0;
+  var borderWidth = 1;
+  var color_update = color;
+
+  if(title.includes("_Title"))
+  {
+    y_padding_box = 0.05;
+    borderWidth = 0;
+    color_update = addAlpha("#d1d1d1", '0.75');
+  }
+
   var box = {
     type: "box",
     xMin: xMin,
     xMax: xMax,
-    yMin: yMin,
-    yMax: yHeight,
-    borderWidth: 1,
-    backgroundColor: color,
+    yMin: yMin - y_padding_box,
+    yMax: yHeight + y_padding_box,
+    borderWidth: borderWidth,
+    backgroundColor: color_update,
+    title: title + "_box",
   };
   var label = {
     type: "label",
@@ -547,20 +563,22 @@ function addBox(
       color: "rgb(245,245,245)",
     },
     color: "rgb(245,245,245)",
+    title: title + "_label",
   };
   var subLabel = {
     type: "label",
     xMin: xMin,
     xMax: xMax,
-    yMin: yHeight + sublabelYOffset,
-    yMax: yHeight + sublabelYOffset,
+    yMin: yHeight + sublabelYOffset + y_padding_box,
+    yMax: yHeight + sublabelYOffset + y_padding_box,
     content: [subLabelText],
     font: {
       size: sublabelSize,
       color: "rgb(245,245,245)",
       textAlign: "right",
     },
-    color: "rgb(0,0,0)",
+    color: "rgb(0, 0, 0)",
+    title: title + "_sublabel",
   };
 
   if(graphNumb == 1)
@@ -575,6 +593,8 @@ function addBox(
     boxAnnotations2.push(label);
     boxAnnotations2.push(subLabel);
   }
+
+  console.log(boxAnnotations);
 }
 
 //** CLEARS ALL ANNOTATIONS AND UPDATES THEM IN updateAnnotations() */
@@ -606,916 +626,6 @@ function updateAnnotations()
   for(var i = 0; i < groupsToggled.length; i++)
   {
     offsetY = groupSeperation * i;
-
-    // if(groupsToggled[i] == 'L8-9')
-    // {
-    //   mins1.push(430);
-    //   mins2.push(10600);
-
-    //   maxes1.push(2290);
-    //   maxes2.push(12510);
-      
-    //   //** Band 1 - Coastal aerosol	*/
-    //   addBox(430, 450, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 2 - Blue */
-    //   addBox(450, 510, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 3 - Green */
-    //   addBox(530, 590, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 4 - Red */
-    //   addBox(640, 670, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 5 - Near Infrared (NIR) */
-    //   addBox(850, 880, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 6 - Shortwave Infrared (SWIR) 1	 */
-    //   addBox(1570, 1650, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 7 - Shortwave Infrared (SWIR) 2 */
-    //   addBox(2110, 2290, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 8 - Panchromatic */
-    //   addBox(500, 680, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
-      
-    //   //** Band 9 - Cirrus */
-    //   addBox(1360, 1380, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 10 - Thermal Infrared (TIRS) 1 */
-    //   addBox(10600, 11190, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
-      
-    //   //** Band 11 - Thermal Infrared (TIRS) 2 */
-    //   addBox(11500, 12510, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
-    // }
-    // else if(groupsToggled[i] == 'L7')
-    // {
-    //   mins1.push(450);
-    //   mins2.push(10400);
-
-    //   maxes1.push(2090);
-    //   maxes2.push(12500);
-      
-    //   addBox(450, 520, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
-    //   addBox(520, 600, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
-    //   addBox(630, 690, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
-    //   addBox(770, 900, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
-    //   addBox(1550, 1750, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
-    //   addBox(10400, 12500, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(188,122,130)", "6", labelSize, "60m", sublabelSize, 2);
-    //   addBox(2090, 2350, offsetY + 0.1, offsetY + 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
-    //   addBox(520, 900, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
-    // }
-    // else if(groupsToggled[i] == 'L4-5')
-    // {
-    //   mins1.push(450);
-    //   mins2.push(10400);
-
-    //   maxes1.push(2350);
-    //   maxes2.push(12500);
-      
-    //   addBox(450, 520, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(0,101,141)", "1", labelSize, "30m", sublabelSize, 1);
-      
-    //   addBox(520, 600, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(76,157,95)", "2", labelSize, "30m", sublabelSize, 1);
-      
-    //   addBox(630, 690, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(194,32,54)", "3", labelSize, "30m", sublabelSize, 1);
-      
-    //   addBox(760, 900, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "4", labelSize, "30m", sublabelSize, 1);
-      
-    //   addBox(1550, 1750, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(211,153,121)", "5", labelSize, "30m", sublabelSize, 1);
-      
-    //   addBox(10400, 12500, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(188,122,130)", "6", labelSize, "120m", sublabelSize, 2);
-      
-    //   addBox(2080, 2350, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 2);
-    // }
-    // else if(groupsToggled[i] == 'L1-3')
-    // {
-    //   mins1.push(500);
-    //   maxes1.push(1100);
-      
-    //   addBox(500, 600, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(76,157,95)", "1", labelSize, "80m", sublabelSize, 1);
-
-    //   addBox(600, 700, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(194,32,54)", "2", labelSize, "80m", sublabelSize, 1);
-
-    //   addBox(700, 800, 
-    //     offsetY + 0.1,
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(125,38,82)", "3", labelSize, "80m", sublabelSize, 1);
-
-    //   addBox(800, 1100, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "4", labelSize, "80m", sublabelSize, 1);
-    // } 
-    // if(groupsToggled[i] == 'LNext')
-    // {
-    //   mins1.push(402);
-    //   mins2.push(8050);
-
-    //   maxes1.push(2231);
-    //   maxes2.push(12225);
-      
-    //   //** Band 1 - Violet	*/
-    //   addBox(402, 422, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "1", labelSize, "60m", sublabelSize, 1);
-
-    //   //** Band 2 - Coastal/Aerosol		*/
-    //   addBox(433, 453, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(127,176,198)", "2", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 3 - Blue 	*/
-    //   addBox(457.5, 522.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(26,125,158)", "3", labelSize, "10m", sublabelSize, 1);
-
-    //   //** Band 4 - Green 	*/
-    //   addBox(542.5, 577.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(116,169,124)", "4", labelSize, "10m", sublabelSize, 1);
-
-    //   //** Band 5 - Yellow 	*/
-    //   addBox(585, 615, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(202,197,63)", "5", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 6 - Orange	*/
-    //   addBox(610, 630, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(202,165,83)", "6", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 7 - Red 1	 */
-    //   addBox(640, 660, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,61,76)", "7", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 8 - Red 2  */
-    //   addBox(650, 680, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(182,61,76)", "8", labelSize, "10m", sublabelSize, 1);
-
-    //   //** Band 9 - Red Edge 1  */
-    //   addBox(697.5, 712.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(105,0,34)", "9", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** Band 10 - Red Edge 2  */
-    //   addBox(732.5, 747.5, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(105,0,34)", "10", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 11 - NIR Broad  */
-    //   addBox(784.5, 899.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(181,176,196)", "11", labelSize, "10m", sublabelSize, 1);
-
-    //   //** Band 12 - NIR 1  */
-    //   addBox(855, 875, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(181,176,196)", "12", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 13 - Water Vapor  */
-    //   addBox(935, 955, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(121,57,160)", "13", labelSize, "60m", sublabelSize, 1);
-
-    //   //** Band 14 - Liquid Water  */
-    //   addBox(975, 995, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(181,176,196)", "14", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** Band 15 - Snow/Ice 1  */
-    //   addBox(1025, 1045, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(181,176,196)", "15", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** Band 16 - Snow/Ice 2  */
-    //   addBox(1080, 1100, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(181,176,196)", "16", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** Band 17 - Cirrus  */
-    //   addBox(1360, 1390, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(141,150,171)", "17", labelSize, "60m", sublabelSize, 1);
-      
-    //   //** Band 18 - SWIR 1  */
-    //   addBox(1565, 1655, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(194,170,148)", "18", labelSize, "10m", sublabelSize, 1);
-
-    //   //** Band 19 - SWIR 2a  */
-    //   addBox(2025.5, 2050.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(200,134,71)", "19", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** Band 20 - SWIR 2b  */
-    //   addBox(2088, 2128, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(200,134,71)", "20", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 21 - SWIR 2c  */
-    //   addBox(2191, 2231, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(200,134,71)", "21", labelSize, "20m", sublabelSize, 1);
-
-    //   //** Band 22 - TIR 1  */
-    //   addBox(8050, 8425, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(183,148,152)", "22", labelSize, "60m", sublabelSize, 2);
-
-    //   //** Band 23 - TIR 2  */
-    //   addBox(8425, 8775, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(183,148,152)", "23", labelSize, "60m", sublabelSize, 2);
-      
-    //   //** Band 24 - TIR 3  */
-    //   addBox(8925, 9275, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(183,148,152)", "24", labelSize, "60m", sublabelSize, 2);
-
-    //   //** Band 25 - TIR 4  */
-    //   addBox(11025, 11575, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "25", labelSize, "60m", sublabelSize, 2);
-
-    //   //** Band 26 - TIR 5  */
-    //   addBox(11775, 12225, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "26", labelSize, "60m", sublabelSize, 2);
-    // }
-
-    // if(groupsToggled[i] == 'Sent-2')
-    // {
-    //   mins1.push(433);
-    //   maxes1.push(2280);
-      
-    //   //** B1 - CA */
-    //   addBox(433, 453, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(103,156,191)", "1", labelSize, "60m", sublabelSize, 1);
-      
-    //   //** B2 - Blue */
-    //     addBox(457.5, 522.5, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation,
-    //      "rgb(0,101,141)", "2", labelSize, "10m", sublabelSize, 1);
-      
-    //   //** B3 - Green */
-    //   addBox(542, 577.5, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(76,157,95)", "3", labelSize, "10m", sublabelSize, 1);
-      
-    //   //** B4 - Red */
-    //   addBox(649.5, 680.5, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(194,32,54)", "4", labelSize, "10m", sublabelSize, 1);
-      
-    //   //** B5 - Red Edge */
-    //   addBox(697.5, 712.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "5", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** B6 - NIR-1 */
-    //   addBox(732.5, 747.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(211,153,121)", "6", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** B7 - NIR-2 */
-    //   addBox(773, 793, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(153,156,150)", "7", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** B8 - NIR-3	 */
-    //   addBox(784.5, 899.5, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(0,143,162)", "8", labelSize, "10m", sublabelSize, 1);
-      
-    //   //** B8a - Water Vapor-1	 */
-    //   addBox(855, 875, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(116,128,161)", "8a", labelSize, "20m", sublabelSize, 1);
-
-    //   //** B9 - Water Vapor-2 */
-    //   addBox(935, 945, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(211,153,121)", "9", labelSize, "60m", sublabelSize, 1);  
-      
-    //   //** B10 - Cirrus */
-    //   addBox(1365, 1395, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(188,122,130)", "10", labelSize, "60m", sublabelSize, 1);
-      
-    //   //** B11 - SWIR1 */
-    //   addBox(1565, 1655, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(188,122,130)", "11", labelSize, "20m", sublabelSize, 1);
-      
-    //   //** B12 - SWIR2 */
-    //   addBox(2100, 2280, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(188,122,130)", "12", labelSize, "20m", sublabelSize, 1);
-    // }
-    // if(groupsToggled[i] == 'Sent-3')
-    // {
-    //   mins1.push(395);
-    //   maxes1.push(1040);
-
-    //   //** Oa01 - CA-1 */
-    //   addBox(395, 405, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(103,156,191)", "1", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa02 - CA-2 */
-    //     addBox(407, 417, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(0,101,141)", "2", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa03 - CA-3 */
-    //   addBox(438, 448, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(76,157,95)", "3", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa04 - Blue-1 */
-    //   addBox(485, 495, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(194,32,54)", "4", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa05 - Blue-2 */
-    //   addBox(505, 515, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "5", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa06 - Green */
-    //   addBox(555, 565, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "6", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa07 - Red-1 */
-    //   addBox(615, 625, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "7", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa08 - Red-2 */
-    //   addBox(660, 670, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "8", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa09 - Red-3 */
-    //   addBox(670, 677, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "9", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa10 - Red-4 */
-    //   addBox(677, 685, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "10", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa11 - NIR-1 */
-    //   addBox(703, 713, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "11", labelSize, "300m", sublabelSize, 1);
-      
-    //   //** Oa12 - NIR-2 */
-    //   addBox(750, 757, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "12", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa13 - NIR-3 */
-    //   addBox(760, 762, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "13", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa14 - NIR-4 */
-    //   addBox(762, 766, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "14", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa15 - NIR-5 */
-    //   addBox(766, 769, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "15", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa16 - NIR-6 */
-    //   addBox(771, 786, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "16", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa17 - NIR-7 */
-    //   addBox(855, 875, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "17", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa18 - NIR-8 */
-    //   addBox(880, 890, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "18", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa19 - NIR-9 */
-    //   addBox(895, 905, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "19", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa20 - NIR-10 */
-    //   addBox(930, 950, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "20", labelSize, "300m", sublabelSize, 1);
-
-    //   //** Oa21 - NIR-11 */
-    //   addBox(1000, 1040, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(197,162,189)", "21", labelSize, "300m", sublabelSize, 1);
-    // }
-    // if(groupsToggled[i] == 'EO-1')
-    // {
-    //   mins1.push(433);
-    //   maxes1.push(2350);
-      
-    //   //** Band 1 CA */
-    //   addBox(433, 453, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 2 Blue */
-    //   addBox(450, 515, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(26,125,158)", "2", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 3 - Green */
-    //   addBox(525, 605, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(116,169,124)", "3", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 4 - Red */
-    //   addBox(630, 690, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(182,61,76)", "4", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 5 - NIR-1 */
-    //   addBox(775, 805, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(105,0,34)", "5", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 6 - NIR-2 */
-    //   addBox(845, 890, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(181,176,196)", "6", labelSize, "30m", sublabelSize, 1);
-      
-    //   //** Band 7 - NIR-3 */
-    //   addBox(1200, 1300, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(141,150,171)", "7", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 8 - SWIR1 */
-    //   addBox(1550, 1750, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(211,153,121)", "8", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 9 - SWIR2 */
-    //   addBox(2080, 2350, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(200,134,71)", "9", labelSize, "30m", sublabelSize, 1);
-
-    //   //** Band 10 - Panchromatic */
-    //   addBox(480, 690, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation,
-    //     "rgb(103,156,191)", "10", labelSize, "10m", sublabelSize, 1); 
-    // }
-    // else if(groupsToggled[i] == 'DESIS')
-    // {
-    //   mins1.push(400);
-    //   maxes1.push(1000);
-      
-    //   var width = 2.5;
-    //   var length = (600/width);
-
-    //   // addBox(402, 1000, 
-    //   //   offsetY + 0.1, 
-    //   //   offsetY + 0.1 + boxHeight,
-    //   //   "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1);
-
-    //   addInLine(400, width, length, offsetY, "rgb(142,172,130)");
-      
-    //   // for(var i = 0; i <= length; i++)
-    //   // {
-    //   //   var start = 400 + (width * i);
-        
-    //   //   addBox(start, start + width, 
-    //   //     offsetY + 0.1, 
-    //   //     offsetY + 0.1 + boxHeight,
-    //   //     "rgb(103,156,191)", "", labelSize, "", sublabelSize, 1); 
-    //   // }
-    // }
-    // if(groupsToggled[i] == 'ECOSTRESS')
-    // {
-    //   mins1.push(1475);
-    //   mins2.push(8113);
-
-    //   maxes1.push(1845);
-    //   maxes2.push(12395.5);
-      
-    //   //** B1 */
-    //   addBox(1475, 1845, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(146,208,80)", "1", labelSize, "70m", sublabelSize, 1);
-
-    //   //** B2 */
-    //   addBox(8113, 8467, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(146,208,80)", "2", labelSize, "70m", sublabelSize, 2);
-      
-    //   //** B3 */
-    //   addBox(8625, 8935, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(146,208,80)", "3", labelSize, "70m", sublabelSize, 2);
-      
-    //   //** B4 */
-    //   addBox(9002, 9398, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(146,208,80)", "4", labelSize, "70m", sublabelSize, 2);
-      
-    //   //** B5 */
-    //   addBox(10285, 10695, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(146,208,80)", "5", labelSize, "70m", sublabelSize, 2);
-
-    //   //** B6 */
-    //   addBox(11784.5, 12395.5, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight,
-    //     "rgb(146,208,80)", "6", labelSize, "70m", sublabelSize, 2);
-    // }
-    // else if(groupsToggled[i] == 'EMIT')
-    // {
-    //   mins1.push(380);
-    //   maxes1.push(2500);
-      
-    //   var width = 7.5;
-    //   var length = (2070/width);
-      
-    //   addInLine(380, width, length, offsetY, "rgb(226,178,128)");
-    // }
-    // if(groupsToggled[i] == 'MODIS')
-    // {
-    //   mins1.push(405);
-    //   mins2.push(3660);
-
-    //   maxes1.push(2155);
-    //   maxes2.push(14385);
-      
-    //   //** Band 1 - Shortwave/VIS	*/
-    //   addBox(620, 670, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation, 
-    //     "rgb(202,165,83)", "1", labelSize, "250m", sublabelSize, 1);
-
-    //   //** Band 2 - Shortwave/NIR	*/
-    //   addBox(841, 876, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation,
-    //     "rgb(181,176,196)", "2", labelSize, "250m", sublabelSize, 1);
-
-    //   //** Band 3 - Shortwave/VIS	*/
-    //   addBox(459, 479, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation,
-    //     "rgb(26,125,158)", "3", labelSize, "500m", sublabelSize, 1);
-
-    //   //** Band 4 - Shortwave/VIS	*/
-    //   addBox(545, 565, 
-    //     offsetY + 0.1 + boxSeperation, 
-    //     offsetY + 0.1 + boxHeight + boxSeperation,
-    //     "rgb(116,169,124)", "4", labelSize, "500m", sublabelSize, 1);
-
-    //   //** Band 5 - Shortwave/NIR	*/
-    //   addBox(1230, 1250, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(141,150,171)", "5", labelSize, "500m", sublabelSize, 1);
-
-    //   //** Band 6 - Shortwave/NIR	*/
-    //   addBox(1628, 1652, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(194,170,148)", "6", labelSize, "500m", sublabelSize, 1);
-
-    //   //** Band 7 - Shortwave/NIR	*/
-    //   addBox(2105, 2155, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(200,134,71)", "7", labelSize, "500m", sublabelSize, 1);
-      
-    //   //** Band 8 - Shortwave/VIS	*/
-    //   addBox(405, 420, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "8", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 9 - Shortwave/VIS	*/
-    //   addBox(438, 448, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(127,176,198)", "9", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 10 - Shortwave/VIS	*/
-    //   addBox(483, 493, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(26,125,158)", "10", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 11 - Shortwave/VIS	*/
-    //   addBox(526, 536, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(26,125,158)", "11", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 12 - Shortwave/VIS	*/
-    //   addBox(546, 556, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(116,169,124)", "12", labelSize, "1000m", sublabelSize, 1);
-      
-    //   //** Band 13 - Shortwave/VIS	*/
-    //   addBox(662, 672, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,61,76)", "13", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 14 - Shortwave/VIS	*/
-    //   addBox(673, 683, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(182,61,76)", "14", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 15 - Shortwave/VIS	*/
-    //   addBox(743, 753, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "15", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 16 - Shortwave/VIS	*/
-    //   addBox(862, 877, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(181,176,196)", "16", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 17 - Shortwave/VIS	*/
-    //   addBox(890, 920, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(181,176,196)", "17", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 18 - Shortwave/VIS	*/
-    //   addBox(931, 941, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(181,176,196)", "18", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 19 - Shortwave/VIS	*/
-    //   addBox(915, 965, 
-    //     (offsetY + 0.1) - boxSeperation, 
-    //     (offsetY + 0.1 + boxHeight) - boxSeperation, 
-    //     "rgb(121,57,160)", "19", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 20 - Longwave thermal Infrared/TIR	*/
-    //   addBox(3660, 3840, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "20", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 21 - Longwave thermal Infrared/TIR	*/
-    //   addBox(3929, 3989, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "21", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 22 - Longwave thermal Infrared/TIR	*/
-    //   addBox(3929, 3989, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "22", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 23 - Longwave thermal Infrared/TIR	*/
-    //   addBox(4020, 4080, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "23", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 24 - Longwave thermal Infrared/TIR	*/
-    //   addBox(4433, 4498, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "24", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 25 - Longwave thermal Infrared/TIR	*/
-    //   addBox(4482, 4549, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "25", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 26 - Longwave thermal Infrared/TIR	*/
-    //   addBox(1360, 1390, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "26", labelSize, "1000m", sublabelSize, 1);
-
-    //   //** Band 27 - Longwave thermal Infrared/TIR	*/
-    //   addBox(6535, 6895, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(127,176,198)", "27", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 28 - Longwave thermal Infrared/TIR	*/
-    //   addBox(7175, 7475, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(183,148,152)", "28", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 29 - Longwave thermal Infrared/TIR	*/
-    //   addBox(8400, 8700, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(183,148,152)", "29", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 30 - Longwave thermal Infrared/TIR	*/
-    //   addBox(9580, 9880, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(183,148,152)", "30", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 31 - Longwave thermal Infrared/TIR	*/
-    //   addBox(10780, 11280, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "31", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 32 - Longwave thermal Infrared/TIR	*/
-    //   addBox(11770, 12270, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "32", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 33 - Longwave thermal Infrared/TIR	*/
-    //   addBox(13185, 13485, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "33", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 34 - Longwave thermal Infrared/TIR	*/
-    //   addBox(13485, 13785, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "34", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 35 - Longwave thermal Infrared/TIR	*/
-    //   addBox(13785, 14085, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "35", labelSize, "1000m", sublabelSize, 2);
-
-    //   //** Band 36 - Longwave thermal Infrared/TIR	*/
-    //   addBox(14085, 14385, 
-    //     offsetY + 0.1, 
-    //     offsetY + 0.1 + boxHeight, 
-    //     "rgb(182,127,129)", "36", labelSize, "1000m", sublabelSize, 2);
-    // }
   }
 
   if(mins1.length > 0 && mins2.length > 0)
@@ -1582,6 +692,20 @@ function addInLine(startNmb, width, length, offsetY, color)
 //** ARRAYS OF PRESET VALUES */
 var Landsat1_3_values = [
   {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450, 
+    xMax: 1150,
+    yHeight: 0.1,
+    labelSize: 15,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 1-3',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 4 - Green",
     color: '#4c9d5f',
     xMin: 500, 
     xMax: 600,
@@ -1594,6 +718,7 @@ var Landsat1_3_values = [
     yOffset: 0,
   },
   {
+    title: "Band 5 - Red",
     color: '#c22036',
     xMin: 600, 
     xMax: 700,
@@ -1606,6 +731,7 @@ var Landsat1_3_values = [
     yOffset: 0,
   },
   {
+    title: 'Band 6 - NIR',
     color: '#7d2652',
     xMin: 700, 
     xMax: 800,
@@ -1618,6 +744,7 @@ var Landsat1_3_values = [
     yOffset: 0,
   },
   {
+    title: 'Band 7 - NIR',
     color: '#c5a2bd',
     xMin: 800, 
     xMax: 1100,
@@ -1632,6 +759,33 @@ var Landsat1_3_values = [
 ];
 var Landsat4_5_values = [
   {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 400, 
+    xMax: 2400,
+    yHeight: 0.1,
+    labelSize: 15,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 4-5',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Title (2)",
+    color: '#d1d1d1',
+    xMin: 10350, 
+    xMax: 12550,
+    yHeight: 0.1,
+    labelSize: 15,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 4-5',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+  {
+    title: 'Band 1 - Blue',
     color: '#00658d',
     xMin: 450, 
     xMax: 520,
@@ -1644,6 +798,7 @@ var Landsat4_5_values = [
     yOffset: 0,
   },
   {
+    title: 'Band 2 - Green',
     color: '#4c9d5f',
     xMin: 520, 
     xMax: 600,
@@ -1656,6 +811,7 @@ var Landsat4_5_values = [
     yOffset: 0,
   },
   {
+    title: 'Band 3 - Red',
     color: '#c22036',
     xMin: 630, 
     xMax: 690,
@@ -1668,6 +824,7 @@ var Landsat4_5_values = [
     yOffset: 0,
   },
   {
+    title: 'Band 4 - Near Infrared (NIR)',
     color: '#c5a2bd',
     xMin: 760, 
     xMax: 900,
@@ -1680,6 +837,7 @@ var Landsat4_5_values = [
     yOffset: 0,
   },  
   {
+    title: 'Band 5 - Shortwave Infrared (SWIR) 1',
     color: '#d39979',
     xMin: 1550, 
     xMax: 1750,
@@ -1692,6 +850,7 @@ var Landsat4_5_values = [
     yOffset: 0,
   },  
   {
+    title: 'Band 6 - Thermal',
     color: '#bc7a82',
     xMin: 10400, 
     xMax: 12500,
@@ -1704,6 +863,7 @@ var Landsat4_5_values = [
     yOffset: 0,
   },  
   {
+    title: 'Band 7 - Shortwave Infrared (SWIR) 2',
     color: '#999c96',
     xMin: 2080, 
     xMax: 2350,
@@ -1716,9 +876,142 @@ var Landsat4_5_values = [
     yOffset: 0,
   },  
 ];
+var Landsat7_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 400, 
+    xMax: 2400,
+    yHeight: 0.1,
+    labelSize: 15,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 7',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Title (2)",
+    color: '#d1d1d1',
+    xMin: 10350, 
+    xMax: 12550,
+    yHeight: 0.1,
+    labelSize: 15,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 7',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+  {
+    title: 'Band 1 - Blue',
+    color: '#00658d',
+    xMin: 450, 
+    xMax: 520,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "1",
+    sublabelSize: 15, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: 'Band 2 - Green',
+    color: '#4c9d5f',
+    xMin: 520, 
+    xMax: 600,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "2",
+    sublabelSize: 15, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: 'Band 3 - Red',
+    color: '#c22036',
+    xMin: 630, 
+    xMax: 690,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "3",
+    sublabelSize: 15, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: 'Band 4 - Near Infrared (NIR)',
+    color: '#c5a2bd',
+    xMin: 770, 
+    xMax: 900,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "4",
+    sublabelSize: 15, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },  
+  {
+    title: 'Band 5 - Shortwave Infrared (SWIR) 1',
+    color: '#d39979',
+    xMin: 1550, 
+    xMax: 1750,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "5",
+    sublabelSize: 15, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },  
+  {
+    title: 'Band 6 - Thermal',
+    color: '#bc7a82',
+    xMin: 10400, 
+    xMax: 12500,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "6",
+    sublabelSize: 15, 
+    subLabelText: '120m',
+    graphNumb: 2,
+    yOffset: 0,
+  },  
+  {
+    title: 'Band 7 - Shortwave Infrared (SWIR) 2',
+    color: '#999c96',
+    xMin: 2090, 
+    xMax: 2350,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "7",
+    sublabelSize: 15, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: 'Band 8 - Panchromatic',
+    color: '#999c96',
+    xMin: 520, 
+    xMax: 900,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "8",
+    sublabelSize: 15, 
+    subLabelText: '15m',
+    graphNumb: 1,
+    yOffset: -0.05,
+  },  
+];
 var Landsat8_9_values = [
   {
     //** Band 1 - Coastal aerosol	*/
+    title: "Band 1 - Coastal aerosol",
     color: '#679cbf',
     xMin: 430, 
     xMax: 450,
@@ -1732,6 +1025,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 2 - Blue */
+    title: "Band 2 - Blue",
     color: '#00658d',
     xMin: 450, 
     xMax: 510,
@@ -1745,6 +1039,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 3 - Green */
+    title: "Band 3 - Green",
     color: '#4c9d5f',
     xMin: 530, 
     xMax: 590,
@@ -1758,6 +1053,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 4 - Red */
+    title: "Band 4 - Red",
     color: '#c22036',
     xMin: 640, 
     xMax: 670,
@@ -1771,6 +1067,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 5 - Near Infrared (NIR) */
+    title: "Band 6 - Near Infrared (NIR)",
     color: '#c5a2bd',
     xMin: 850, 
     xMax: 880,
@@ -1784,6 +1081,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 6 - Shortwave Infrared (SWIR) 1	 */
+    title: "Band 6 - Shortwave Infrared (SWIR) 1",
     color: '#d39979',
     xMin: 1570, 
     xMax: 1650,
@@ -1797,6 +1095,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 7 - Shortwave Infrared (SWIR) 2 */
+    title: "Band 7 - Shortwave Infrared (SWIR) 2",
     color: '#999c96',
     xMin: 2110, 
     xMax: 2290,
@@ -1810,6 +1109,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 8 - Panchromatic */
+    title: "Band 8 - Panchromatic",
     color: '#008fa2',
     xMin: 500, 
     xMax: 680,
@@ -1823,6 +1123,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 9 - Panchromatic */
+    title: "Band 9 - Panchromatic",
     color: '#7480a1',
     xMin: 1360, 
     xMax: 1380,
@@ -1836,6 +1137,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 10 - Thermal Infrared (TIRS) 1 */
+    title: "Band 10 - Thermal Infrared (TIRS) 1",
     color: '#bc7a82',
     xMin: 10600, 
     xMax: 11190,
@@ -1849,6 +1151,7 @@ var Landsat8_9_values = [
   },
   {
     //** Band 11 - Thermal Infrared (TIRS) 2 */
+    title: "Band 11 - Thermal Infrared (TIRS) 2",
     color: '#bc7a82',
     xMin: 11500, 
     xMax: 12510,
@@ -2204,6 +1507,7 @@ var LandsatNext_values = [
 var Sentinel2_values = [
   {
     //** B1 - CA */
+    title: "B1 - CA",
     color: '#679cbf',
     xMin: 433, 
     xMax: 453,
@@ -2217,6 +1521,7 @@ var Sentinel2_values = [
   },
   {
     //** B2 - Blue */
+    title: "B2 - Blue",
     color: '#00658d',
     xMin: 457.5, 
     xMax: 522.5,
@@ -2230,6 +1535,7 @@ var Sentinel2_values = [
   },
   {
     //** B3 - Green */
+    title: "B3 - Green",
     color: '#4c9d5f',
     xMin: 542, 
     xMax: 577.5,
@@ -2243,6 +1549,7 @@ var Sentinel2_values = [
   },
   {
     //** B4 - Red */
+    title: "B4 - Red",
     color: '#c22036',
     xMin: 649.5, 
     xMax: 680.5,
@@ -2256,6 +1563,7 @@ var Sentinel2_values = [
   }, 
   {
     //** B5 - Red Edge */
+    title: "B5 - Red Edge",
     color: '#c5a2bd',
     xMin: 697.5, 
     xMax: 712.5,
@@ -2269,6 +1577,7 @@ var Sentinel2_values = [
   },  
   {
     //** B6 - NIR-1 */
+    title: "B6 - NIR-1",
     color: '#d39979',
     xMin: 732.5, 
     xMax: 747.5,
@@ -2282,6 +1591,7 @@ var Sentinel2_values = [
   },  
   {
     //** B7 - NIR-2 */
+    title: "B7 - NIR-2",
     color: '#999c96',
     xMin: 773, 
     xMax: 793,
@@ -2295,6 +1605,7 @@ var Sentinel2_values = [
   }, 
   {
     //** B8 - NIR-3	 */
+    title: "B8 - NIR-3",
     color: '#008fa2',
     xMin: 784.5, 
     xMax: 899.5,
@@ -2308,6 +1619,7 @@ var Sentinel2_values = [
   }, 
   {
     //** B8a - Water Vapor-1	 */
+    title: "B8a - Water Vapor-1",
     color: '#7480a1',
     xMin: 855, 
     xMax: 875,
@@ -2321,6 +1633,7 @@ var Sentinel2_values = [
   }, 
   {
     //** B9 - Water Vapor-2 */
+    title: "B9 - Water Vapor-2",
     color: '#d39979',
     xMin: 935, 
     xMax: 945,
@@ -2334,6 +1647,7 @@ var Sentinel2_values = [
   }, 
   {
     //** B10 - Cirrus */
+    title: "B10 - Cirrus",
     color: '#bc7a82',
     xMin: 1365, 
     xMax: 1395,
@@ -2347,6 +1661,7 @@ var Sentinel2_values = [
   }, 
   {
     //** B11 - SWIR1 */
+    title: "B11 - SWIR1",
     color: '#bc7a82',
     xMin: 1565, 
     xMax: 1655,
@@ -2360,6 +1675,7 @@ var Sentinel2_values = [
   },
   {
     //** B12 - SWIR2 */
+    title: "B12 - SWIR2",
     color: '#bc7a82',
     xMin: 2100, 
     xMax: 2280,
@@ -2375,6 +1691,7 @@ var Sentinel2_values = [
 var Sentinel3_values = [
   {
     //** Oa01 - CA-1 */
+    title: "B1 - CA-1",
     color: '#679cbf',
     xMin: 395, 
     xMax: 405,
@@ -2388,6 +1705,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa02 - CA-2 */
+    title: "B2 - CA-2",
     color: '#00658d',
     xMin: 407, 
     xMax: 417,
@@ -2401,6 +1719,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa03 - CA-3 */
+    title: "B3 - CA-3",
     color: '#4c9d5f',
     xMin: 438, 
     xMax: 448,
@@ -2414,6 +1733,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa04 - Blue-1 */
+    title: "B4 - Blue-1",
     color: '#c22036',
     xMin: 485, 
     xMax: 495,
@@ -2427,6 +1747,7 @@ var Sentinel3_values = [
   },  
   {
     //** Oa05 - Blue-2 */
+    title: "B5 - Blue-2",
     color: '#c5a2bd',
     xMin: 505, 
     xMax: 515,
@@ -2440,6 +1761,7 @@ var Sentinel3_values = [
   }, 
   {
     //** Oa06 - Green */
+    title: "B6 - Green",
     color: '#c5a2bd',
     xMin: 555, 
     xMax: 565,
@@ -2453,6 +1775,7 @@ var Sentinel3_values = [
   }, 
   {
     //** Oa07 - Red-1 */
+    title: "B7 - Red-1",
     color: '#c5a2bd',
     xMin: 615, 
     xMax: 625,
@@ -2466,6 +1789,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa08 - Red-2 */
+    title: "B8 - Red-2",
     color: '#c5a2bd',
     xMin: 660, 
     xMax: 670,
@@ -2479,6 +1803,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa09 - Red-3 */
+    title: "B9 - Red-3",
     color: '#c5a2bd',
     xMin: 670, 
     xMax: 677,
@@ -2492,6 +1817,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa10 - Red-4 */
+    title: "B10 - Red-4",
     color: '#c5a2bd',
     xMin: 677, 
     xMax: 685,
@@ -2505,6 +1831,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa11 - NIR-1 */
+    title: "B11 - NIR-1",
     color: '#c5a2bd',
     xMin: 703, 
     xMax: 713,
@@ -2518,6 +1845,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa12 - NIR-2 */
+    title: "B12 - NIR-2",
     color: '#c5a2bd',
     xMin: 750, 
     xMax: 757,
@@ -2531,6 +1859,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa13 - NIR-3 */
+    title: "B13 - NIR-3",
     color: '#c5a2bd',
     xMin: 760, 
     xMax: 762,
@@ -2544,6 +1873,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa14 - NIR-4 */
+    title: "B14 - NIR-4",
     color: '#c5a2bd',
     xMin: 762, 
     xMax: 766,
@@ -2557,6 +1887,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa15 - NIR-5 */
+    title: "B15 - NIR-5",
     color: '#c5a2bd',
     xMin: 766, 
     xMax: 769,
@@ -2570,6 +1901,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa16 - NIR-6 */
+    title: "B16 - NIR-6",
     color: '#c5a2bd',
     xMin: 771, 
     xMax: 786,
@@ -2583,6 +1915,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa17 - NIR-7 */
+    title: "B17 - NIR-7",
     color: '#c5a2bd',
     xMin: 855, 
     xMax: 875,
@@ -2596,6 +1929,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa18 - NIR-8 */
+    title: "B18 - NIR-8",
     color: '#c5a2bd',
     xMin: 880, 
     xMax: 890,
@@ -2609,6 +1943,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa19 - NIR-9 */
+    title: "B19 - NIR-9",
     color: '#c5a2bd',
     xMin: 895, 
     xMax: 905,
@@ -2622,6 +1957,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa20 - NIR-10 */
+    title: "B20 - NIR-10",
     color: '#c5a2bd',
     xMin: 930, 
     xMax: 950,
@@ -2635,6 +1971,7 @@ var Sentinel3_values = [
   },
   {
     //** Oa21 - NIR-11 */
+    title: "B21 - NIR-11",
     color: '#c5a2bd',
     xMin: 1000, 
     xMax: 1040,
@@ -2650,6 +1987,7 @@ var Sentinel3_values = [
 var EO1_values = [
   {
     //** Band 1 CA */
+    title: "B1 - CA",
     color: '#679cbf',
     xMin: 433, 
     xMax: 453,
@@ -2663,6 +2001,7 @@ var EO1_values = [
   },
   {
     //** Band 2 Blue */
+    title: "B2 - Blue",
     color: '#1a7d9e',
     xMin: 450, 
     xMax: 515,
@@ -2676,6 +2015,7 @@ var EO1_values = [
   },
   {
     //** Band 3 - Green */
+    title: "B3 - Green",
     color: '#74a97c',
     xMin: 525, 
     xMax: 605,
@@ -2689,6 +2029,7 @@ var EO1_values = [
   },
   {
     //** Band 4 - Red */
+    title: "B4 - Red",
     color: '#b63d4c',
     xMin: 630, 
     xMax: 690,
@@ -2702,6 +2043,7 @@ var EO1_values = [
   },
   {
     //** Band 5 - NIR-1 */
+    title: "B5 - NIR-1",
     color: '#690022',
     xMin: 775, 
     xMax: 805,
@@ -2715,6 +2057,7 @@ var EO1_values = [
   },
   {
     //** Band 6 - NIR-2 */
+    title: "B6 - NIR-2",
     color: '#b5b0c4',
     xMin: 845, 
     xMax: 890,
@@ -2728,6 +2071,7 @@ var EO1_values = [
   },
   {
     //** Band 7 - NIR-3 */
+    title: "B7 - NIR-3",
     color: '#8d96ab',
     xMin: 1200, 
     xMax: 1300,
@@ -2741,6 +2085,7 @@ var EO1_values = [
   },
   {
     //** Band 8 - SWIR1 */
+    title: "B8 - SWIR1",
     color: '#d39979',
     xMin: 1550, 
     xMax: 1750,
@@ -2754,6 +2099,7 @@ var EO1_values = [
   },
   {
     //** Band 9 - SWIR2 */
+    title: "B9 - SWIR2",
     color: '#c88647',
     xMin: 2080, 
     xMax: 2350,
@@ -2767,6 +2113,7 @@ var EO1_values = [
   },
   {
     //** Band 10 - Panchromatic */
+    title: "B10 - Panchromatic",
     color: '#679cbf',
     xMin: 480, 
     xMax: 690,
@@ -2781,6 +2128,7 @@ var EO1_values = [
 ];
 var DESIS_values = [
   {
+    title: "402nm-1000nm",
     color: '#679cbf',
     xMin: 402, 
     xMax: 1000,
@@ -2875,6 +2223,7 @@ var ECOSTRESS_values = [
 ];
 var EMIT_values = [
   {
+    title: "381nm-2493nm",
     color: '#e2b280',
     xMin: 381, 
     xMax: 2493,
@@ -2890,6 +2239,7 @@ var EMIT_values = [
 var MODIS_values = [
   {
     //** Band 1 - Shortwave/VIS	*/
+    title: "B1 - Shortwave/VIS",
     color: '#caa553',
     xMin: 620, 
     xMax: 670,
@@ -2903,6 +2253,7 @@ var MODIS_values = [
   },
   {
     //** Band 2 - Shortwave/NIR	*/
+    title: "B2 - Shortwave/NIR",
     color: '#b5b0c4',
     xMin: 841, 
     xMax: 876,
@@ -2916,6 +2267,7 @@ var MODIS_values = [
   },
   {
     //** Band 3 - Shortwave/VIS	*/
+    title: "B3 - Shortwave/VIS",
     color: '#1a7d9e',
     xMin: 459, 
     xMax: 479,
@@ -2929,6 +2281,7 @@ var MODIS_values = [
   },
   {
     //** Band 4 - Shortwave/VIS	*/
+    title: "B4 - Shortwave/VIS",
     color: '#1a7d9e',
     xMin: 545, 
     xMax: 565,
@@ -2942,6 +2295,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 5 - Shortwave/NIR	*/
+    title: "B5 - Shortwave/NIR",
     color: '#1a7d9e',
     xMin: 1230, 
     xMax: 1250,
@@ -2954,7 +2308,8 @@ var MODIS_values = [
     yOffset: 0,
   }, 
   {
-    //** Band 6 - Shortwave/NIR	*/
+    //** Band 6 - Shortwave Infrared/SWIR	*/
+    title: "B6 - Shortwave Infrared/SWIR",
     color: '#c2aa94',
     xMin: 1628, 
     xMax: 1652,
@@ -2967,7 +2322,8 @@ var MODIS_values = [
     yOffset: 0,
   },
   {
-    //** Band 7 - Shortwave/NIR	*/
+    //** Band 7 - Shortwave Infrared/SWIR	*/
+    title: "B7 - Shortwave Infrared/SWIR",
     color: '#c88647',
     xMin: 2105, 
     xMax: 2155,
@@ -2981,6 +2337,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 8 - Shortwave/VIS	*/
+    title: "B8 - Shortwave/VIS",
     color: '#7fb0c6',
     xMin: 405, 
     xMax: 420,
@@ -2994,6 +2351,7 @@ var MODIS_values = [
   },
   {
     //** Band 9 - Shortwave/VIS	*/
+    title: "B9 - Shortwave/VIS",
     color: '#7fb0c6',
     xMin: 438, 
     xMax: 448,
@@ -3007,6 +2365,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 10 - Shortwave/VIS	*/
+    title: "B10 - Shortwave/VIS",
     color: '#1a7d9e',
     xMin: 483, 
     xMax: 493,
@@ -3020,6 +2379,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 11 - Shortwave/VIS	*/
+    title: "B11 - Shortwave/VIS",
     color: '#1a7d9e',
     xMin: 483, 
     xMax: 493,
@@ -3033,6 +2393,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 12 - Shortwave/VIS	*/
+    title: "B12 - Shortwave/VIS",
     color: '#1a7d9e',
     xMin: 546, 
     xMax: 556,
@@ -3046,6 +2407,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 13 - Shortwave/VIS	*/
+    title: "B13 - Shortwave/VIS",
     color: '#b63d4c',
     xMin: 662, 
     xMax: 672,
@@ -3059,6 +2421,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 14 - Shortwave/VIS	*/
+    title: "B14 - Shortwave/VIS",
     color: '#b63d4c',
     xMin: 673, 
     xMax: 683,
@@ -3072,6 +2435,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 15 - Shortwave/VIS	*/
+    title: "B15 - Shortwave/VIS",
     color: '#b63d4c',
     xMin: 743, 
     xMax: 753,
@@ -3085,6 +2449,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 16 - Shortwave/VIS	*/
+    title: "B16 - Shortwave/VIS",
     color: '#b5b0c4',
     xMin: 862, 
     xMax: 877,
@@ -3098,6 +2463,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 17 - Shortwave/VIS	*/
+    title: "B17 - Shortwave/VIS",
     color: '#b5b0c4',
     xMin: 890, 
     xMax: 920,
@@ -3111,6 +2477,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 18 - Shortwave/VIS	*/
+    title: "B18 - Shortwave/VIS",
     color: '#b5b0c4',
     xMin: 931, 
     xMax: 941,
@@ -3124,6 +2491,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 19 - Shortwave/VIS	*/
+    title: "B19 - Shortwave/VIS",
     color: '#7939a0',
     xMin: 915, 
     xMax: 965,
@@ -3137,6 +2505,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 20 - Longwave thermal Infrared/TIR	*/
+    title: "B20 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 3660, 
     xMax: 3840,
@@ -3150,6 +2519,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 21 - Longwave thermal Infrared/TIR	*/
+    title: "B21 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 3929, 
     xMax: 3989,
@@ -3163,6 +2533,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 22 - Longwave thermal Infrared/TIR	*/
+    title: "B22 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 3929, 
     xMax: 3989,
@@ -3176,6 +2547,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 23 - Longwave thermal Infrared/TIR	*/
+    title: "B23 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 4020, 
     xMax: 4080,
@@ -3189,6 +2561,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 24 - Longwave thermal Infrared/TIR	*/
+    title: "B24 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 4433, 
     xMax: 4498,
@@ -3202,6 +2575,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 25 - Longwave thermal Infrared/TIR	*/
+    title: "B25 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 4482, 
     xMax: 4549,
@@ -3215,6 +2589,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 26 - Longwave thermal Infrared/TIR	*/
+    title: "B26 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 1360, 
     xMax: 1390,
@@ -3228,6 +2603,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 27 - Longwave thermal Infrared/TIR	*/
+    title: "B27 - Longwave thermal Infrared/TIR",
     color: '#7fb0c6',
     xMin: 6535, 
     xMax: 6895,
@@ -3241,6 +2617,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 28 - Longwave thermal Infrared/TIR	*/
+    title: "B28 - Longwave thermal Infrared/TIR",
     color: '#b79498',
     xMin: 7175, 
     xMax: 7475,
@@ -3254,6 +2631,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 29 - Longwave thermal Infrared/TIR	*/
+    title: "B29 - Longwave thermal Infrared/TIR",
     color: '#b79498',
     xMin: 8400, 
     xMax: 8700,
@@ -3267,6 +2645,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 30 - Longwave thermal Infrared/TIR	*/
+    title: "B30 - Longwave thermal Infrared/TIR",
     color: '#b79498',
     xMin: 9580, 
     xMax: 9880,
@@ -3280,6 +2659,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 31 - Longwave thermal Infrared/TIR	*/
+    title: "B31 - Longwave thermal Infrared/TIR",
     color: '#b67f81',
     xMin: 10780, 
     xMax: 11280,
@@ -3293,6 +2673,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 32 - Longwave thermal Infrared/TIR	*/
+    title: "B32 - Longwave thermal Infrared/TIR",
     color: '#b67f81',
     xMin: 11770, 
     xMax: 12270,
@@ -3306,6 +2687,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 33 - Longwave thermal Infrared/TIR	*/
+    title: "B33 - Longwave thermal Infrared/TIR",
     color: '#b67f81',
     xMin: 13185, 
     xMax: 13485,
@@ -3319,6 +2701,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 34 - Longwave thermal Infrared/TIR	*/
+    title: "B34 - Longwave thermal Infrared/TIR",
     color: '#b67f81',
     xMin: 13485, 
     xMax: 13785,
@@ -3332,6 +2715,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 35 - Longwave thermal Infrared/TIR	*/
+    title: "B35 - Longwave thermal Infrared/TIR",
     color: '#b67f81',
     xMin: 13785, 
     xMax: 14085,
@@ -3345,6 +2729,7 @@ var MODIS_values = [
   }, 
   {
     //** Band 36 - Longwave thermal Infrared/TIR	*/
+    title: "B36 - Longwave thermal Infrared/TIR",
     color: '#b67f81',
     xMin: 14085, 
     xMax: 14385,
@@ -3357,7 +2742,6 @@ var MODIS_values = [
     yOffset: 0,
   }, 
 ];
-
 var PACE_values = [
   {
     //** Band 1 - Hyperspectral	*/
@@ -3451,8 +2835,6 @@ var PACE_values = [
     yOffset: -0.05,
   },
 ];
-
-
 var STELLA_values = [
   {
     //** Band 1 - Violet	*/
@@ -3611,7 +2993,6 @@ var STELLA_values = [
     yOffset: 0,
   },
 ];
-
 var CUSTOM_values = [
   {
     //** Band 1 - Violet	*/
@@ -3628,24 +3009,22 @@ var CUSTOM_values = [
   },
 ];
 
-//addPreset("Landsat 1-3", Landsat1_3_values);
+//addPreset("Landsat 8-9", Landsat8_9_values);
 
 //** CREATES HTML FOR PRESETS IN THE LAYERS TAB */
-
 var enabledPresets = [];
-
 function addPreset(title, preset)
 {
   enabledPresets.push(title);
   var count = 0; 
   enabledPresets.forEach((v) => (v=== title && count++));
-  
+  var title_text = title;
+
   if(count > 1)
   {
-    title += " (" + count + ")";
+    title_text += "(" + count + ")";
   }
-
-  console.log("count: " + count);
+  title += count;
 
   //var tree = document.createDocumentFragment();
   
@@ -3674,58 +3053,517 @@ function addPreset(title, preset)
   var title_label = document.createElement("label");
   title_label.classList = "title_Label";
   title_label.setAttribute("for", title);
-  title_label.innerHTML = title;
-  title_label.setAttribute("contentEditable", true);
+  title_label.innerHTML = title_text;
+  title_label.setAttribute("contentEditable", false);
   li.appendChild(title_label);
 
-  //** TITLE LABEL SPAN */
-  var title_label_span = document.createElement("span");
-  title_label_span.innerHTML = "›";
-  title_label_span.setAttribute("contentEditable", false);
-  title_label.appendChild(title_label_span);
+    //** TITLE LABEL SPAN */
+    var title_label_span = document.createElement("span");
+    title_label_span.innerHTML = "›";
+    title_label_span.setAttribute("contentEditable", false);
+    title_label.appendChild(title_label_span);
 
-  //** TITLE REMOVE ICON */
-  var title_label_removeIcon = document.createElement("i");
-  title_label_removeIcon.classList = "fa fa-trash";
-  title_label_removeIcon.id = "removeIcon";
-  title_label_removeIcon.setAttribute("contentEditable", false);
-  title_label.appendChild(title_label_removeIcon);
+    //** TITLE REMOVE ICON */
+    var title_label_removeIcon = document.createElement("i");
+    title_label_removeIcon.classList = "fa fa-trash";
+    title_label_removeIcon.id = "removeIcon";
+    title_label_removeIcon.setAttribute("contentEditable", false);
+    title_label.appendChild(title_label_removeIcon);
 
-  //** ON CHANGE EVENT FOR COLOR PICKER */
-  title_label_removeIcon.addEventListener('click', function() {
-    nav.innerHTML = "";
-    nav.remove();
-    var index = enabledPresets.indexOf(this.title);
-    enabledPresets.splice(index, 1);
-    loopThroughLayers();
-  }, false);
+    //** ON CHANGE EVENT FOR REMOVE ICON */
+    title_label_removeIcon.addEventListener('click', function() {
+      nav.innerHTML = "";
+      nav.remove();
+      var index = enabledPresets.indexOf(this.title);
+      enabledPresets.splice(index, 1);
+      loopThroughLayers();
+    }, false);
 
   //** GROUP LIST CONTAINER, CONTAINS ALL GROUP VALUES */
   var groupList = document.createElement("ul");
   groupList.classList = "group-list";
   li.appendChild(groupList);
 
+  //** GLOBAL BAND CONTROLLER */
+
+  //** GLOBAL BAND LIST CONTAINER */
+  var band_global_li = document.createElement("li");
+  band_global_li.id = "global_values";
+  groupList.appendChild(band_global_li);
+
+  //** GLOBAL BAND HIDDEN CHECKBOX */
+  var band_checkbox = document.createElement("input");
+  band_checkbox.id = "sub-group-global-values-" + title;
+  band_checkbox.type = "checkbox";
+  band_checkbox.hidden = true;
+  band_global_li.appendChild(band_checkbox);
+
+  //** GLOBAL BAND LABEL */
+  var band_label = document.createElement("label");
+  band_label.setAttribute("for", "sub-group-global-values-" + title);
+  band_label.innerHTML = "Global style";
+  band_label.setAttribute("contentEditable", false);
+  band_label.id = "band_label_b" + (i+1) + title;
+  band_global_li.appendChild(band_label);
+
+    //** BAND LABEL SPAN */
+    var band_label_span = document.createElement("span");
+    band_label_span.innerHTML = "›";
+    band_label_span.setAttribute("contentEditable", false);
+    band_label.appendChild(band_label_span);
+
+  //** GLOBAL BAND CONTENT CONTAINER */
+  var band_content = document.createElement("ul");
+  band_content.classList = "sub-group-list";
+  band_global_li.appendChild(band_content);
+
+    //** GLOBAL - INPUT - COLOR */
+    var input_container_color = document.createElement('div');
+    input_container_color.classList = "inputContainer";
+    band_content.appendChild(input_container_color);
+
+      //** GLOBAL - INPUT - COLOR - TITLE */
+      var input_container_color_title = document.createElement('div');
+      input_container_color_title.innerHTML = "Global Color";
+      input_container_color.appendChild(input_container_color_title);
+
+      //** GLOBAL - INPUT - COLOR - INPUT */
+      var input_container_color_input = document.createElement('input');
+      input_container_color_input.id = "color_global_" + title;
+      input_container_color_input.type = "color";
+      input_container_color_input.value = "#ffffff";
+      input_container_color.appendChild(input_container_color_input);
+      
+      //** ON CHANGE EVENT FOR GLOBAL COLOR PICKER */
+      input_container_color_input.addEventListener('change', function() {
+        
+        var groupId = this.parentElement.parentElement.
+          parentElement.parentElement.parentElement.children[0].id;
+
+        //** LOOP THROUGH TO CHANGE ALL COLOR OF BANDS */
+        for(var i = 0; i < groupList.children.length; i++)
+        {
+          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
+          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values")
+          && !groupList.children[i].children[2].children[0].children[1].id.includes("_Title"))
+          {
+            console.log(groupList.children[i].children[2].children[0].children[1].id);
+
+            groupList.children[i].children[2].children[0].children[1].value = this.value;
+            groupList.children[i].children[1].style.backgroundColor = this.value;
+          }
+        }
+
+        //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          console.log(boxAnnotations[i].title.includes("_Title"));
+          if(boxAnnotations[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
+          {
+            if(boxAnnotations[i].title.includes("box"))
+            {
+              boxAnnotations[i].backgroundColor = this.value;
+            }
+          }
+        }
+        //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId))
+          {
+            if(boxAnnotations2[i].title.includes("box"))
+            {
+              boxAnnotations2[i].backgroundColor = this.value;
+              console.log(boxAnnotations2[i]);
+              console.log(groupId);
+            }
+          }
+        }
+
+        chart.update();
+        chart2.update();
+      }, false);
+
+    //** INPUT - boxHeight */
+    var input_container_boxHeight = document.createElement('div');
+    input_container_boxHeight.classList = "inputContainer";
+    band_content.appendChild(input_container_boxHeight);
+    input_container_boxHeight.id = title;
+
+      //** INPUT - boxHeight - TITLE */
+      var input_container_boxHeight_title = document.createElement('div');
+      input_container_boxHeight_title.innerHTML = "boxHeight";
+      input_container_boxHeight.appendChild(input_container_boxHeight_title);
+
+      //** INPUT - boxHeight - INPUT */
+      var input_container_boxHeight_input = document.createElement('input');
+      input_container_boxHeight_input.type = "number";
+      input_container_boxHeight_input.value = 0.03;
+      input_container_boxHeight_input.step = 0.01;
+      input_container_boxHeight_input.min = 0.00;
+      input_container_boxHeight.appendChild(input_container_boxHeight_input);
+
+      //** ON CHANGE EVENT FOR boxHeight */
+      input_container_boxHeight_input.addEventListener('change', function() {
+        //** LOOP THROUGH TO TURN OFF ALL LABELS */
+        
+        var groupId = this.parentElement.id;
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId))
+          {
+            if(boxAnnotations[i].title.includes("sublabel"))
+            {
+              var yValue;
+              if(boxAnnotations[i].title.includes("_Title"))
+              { 
+                yValue = parseFloat(boxAnnotations[i-2].yMax) + 0.01;
+                //yValue = parseFloat(boxAnnotations[i-2].yMax) - 0.015;
+                boxAnnotations[i].yMin = yValue;
+                boxAnnotations[i].yMax = yValue;
+              }
+              else
+              {
+                yValue = parseFloat(boxAnnotations[i-2].yMin) + parseFloat(this.value) + 0.01;
+                boxAnnotations[i].yMin = yValue;
+                boxAnnotations[i].yMax = yValue;
+              }
+            }
+            //** CHECKS ON BOXES AND MAIN LABEL OF TITLE */
+            else if(boxAnnotations[i].title.includes("_Title"))
+            {
+              boxAnnotations[i].yMin = (parseFloat(boxAnnotations[i+3].yMin)) - 0.05;
+              boxAnnotations[i].yMax = parseFloat(boxAnnotations[i+3].yMin) + parseFloat(this.value) + 0.05;
+            }
+            else
+            {
+              boxAnnotations[i].yMax = parseFloat(boxAnnotations[i].yMin) + parseFloat(this.value);
+            }
+            
+          }
+        }
+
+        chart.update();
+        chart2.update();
+      }, false);
+
+    //** INPUT - labelVisibility */
+    var input_container_labelVisibility = document.createElement('div');
+    input_container_labelVisibility.classList = "inputContainer";
+    band_content.appendChild(input_container_labelVisibility);
+
+      //** INPUT - labelVisibility - TITLE */
+      var input_container_labelVisibility_title = document.createElement('div');
+      input_container_labelVisibility_title.innerHTML = "Labels";
+      input_container_labelVisibility.appendChild(input_container_labelVisibility_title);
+
+      //** INPUT - labelVisibility - INPUT */
+      var input_container_labelVisibility_input = document.createElement('input');
+      input_container_labelVisibility_input.type = "checkbox";
+      input_container_labelVisibility_input.setAttribute("checked", true);
+      input_container_labelVisibility.appendChild(input_container_labelVisibility_input);
+
+      //** ON CHANGE EVENT FOR labelVisibility */
+      input_container_labelVisibility_input.addEventListener('change', function() {
+        var groupId = this.parentElement.parentElement.
+          parentElement.parentElement.parentElement.children[0].id;
+        
+          console.log(groupId);
+
+        //** LOOP THROUGH TO TURN OFF ALL LABELS */
+        for(var i = 0; i < groupList.children.length; i++)
+        {
+          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
+          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values") 
+          && boxAnnotations[i].title.includes(groupId))
+          {
+            //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
+            if (this.checked)
+            {
+              groupList.children[i].children[2].children[3].children[1].value = 15;
+            }
+            else
+            {
+              groupList.children[i].children[2].children[3].children[1].value = 0;
+            }
+          }
+        }
+        
+        //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF LABELS */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId) 
+          && !boxAnnotations[i].title.includes("_Title")
+          && !boxAnnotations[i].title.includes("_sublabel"))
+          {
+            if(boxAnnotations[i].type == "label")
+            {
+              
+              console.log(boxAnnotations[i].title);
+              
+              if (this.checked)
+              {
+                boxAnnotations[i].font.size = 15;
+              }
+              else
+              {
+                boxAnnotations[i].font.size = 0;
+              }
+            }
+          }
+        }
+
+        //** LOOP THROUGH BOX ANNOTATIONS 2 TO TURN OFF LABELS */
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId) 
+          && !boxAnnotations2[i].title.includes("_Title")
+          && !boxAnnotations2[i].title.includes("_sublabel"))
+          {
+            if(boxAnnotations2[i].type == "label")
+            {
+              
+              console.log(boxAnnotations2[i].title);
+              
+              if (this.checked)
+              {
+                boxAnnotations2[i].font.size = 15;
+              }
+              else
+              {
+                boxAnnotations2[i].font.size = 0;
+              }
+            }
+          }
+        }
+        
+        chart.update();
+        chart2.update();
+      }, false);
+
+    
+  
+    //** INPUT - sublabelVisibility */
+    var input_container_sublabelVisibility = document.createElement('div');
+    input_container_sublabelVisibility.classList = "inputContainer";
+    band_content.appendChild(input_container_sublabelVisibility);
+
+      //** INPUT - sublabelVisibility - TITLE */
+      var input_container_sublabelVisibility_title = document.createElement('div');
+      input_container_sublabelVisibility_title.innerHTML = "SubLabels";
+      input_container_sublabelVisibility.appendChild(input_container_sublabelVisibility_title);
+
+      //** INPUT - sublabelVisibility - INPUT */
+      var input_container_sublabelVisibility_input = document.createElement('input');
+      input_container_sublabelVisibility_input.type = "checkbox";
+      input_container_sublabelVisibility_input.setAttribute("checked", true);
+      input_container_sublabelVisibility.appendChild(input_container_sublabelVisibility_input);
+
+      //** ON CHANGE EVENT FOR sublabelVisibility */
+      input_container_sublabelVisibility_input.addEventListener('change', function() {
+        var groupId = this.parentElement.parentElement.
+          parentElement.parentElement.parentElement.children[0].id;
+        
+        //** LOOP THROUGH TO TURN OFF ALL LABELS */
+        for(var i = 0; i < groupList.children.length; i++)
+        {
+          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
+          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
+          {
+            //console.log(groupList.children[i].children[2].children[5]);
+            
+            //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
+            if (this.checked)
+            {
+              groupList.children[i].children[2].children[5].children[1].value = 15;
+            }
+            else
+            {
+              groupList.children[i].children[2].children[5].children[1].value = 0;
+            }
+          }
+        }
+
+        //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF SUBLABELS */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId) 
+          && !boxAnnotations[i].title.includes("_Title")
+          && boxAnnotations[i].title.includes("_sublabel"))
+          {
+            if(boxAnnotations[i].type == "label")
+            { 
+              if (this.checked)
+              {
+                boxAnnotations[i].font.size = 15;
+              }
+              else
+              {
+                boxAnnotations[i].font.size = 0;
+              }
+            }
+          }
+        }
+
+        //** LOOP THROUGH BOX ANNOTATIONS 2 TO TURN OFF SUBLABELS */
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId) 
+          && !boxAnnotations2[i].title.includes("_Title")
+          && !boxAnnotations2[i].title.includes("_label"))
+          {
+            if(boxAnnotations2[i].type == "label")
+            {
+              
+              console.log(boxAnnotations2[i].title);
+              
+              if (this.checked)
+              {
+                boxAnnotations2[i].font.size = 15;
+              }
+              else
+              {
+                boxAnnotations2[i].font.size = 0;
+              }
+            }
+          }
+        }
+
+        console.log(groupId);
+
+        chart.update();
+        chart2.update();
+        //loopThroughLayers();
+      }, false);
+
+    //** INPUT - titleVisibility */
+    var input_container_titleVisibility = document.createElement('div');
+    input_container_titleVisibility.classList = "inputContainer";
+    band_content.appendChild(input_container_titleVisibility);
+
+      //** INPUT - titleVisibility - TITLE */
+      var input_container_titleVisibility_title = document.createElement('div');
+      input_container_titleVisibility_title.innerHTML = "Title";
+      input_container_titleVisibility.appendChild(input_container_titleVisibility_title);
+
+      //** INPUT - titleVisibility - INPUT */
+      var input_container_titleVisibility_input = document.createElement('input');
+      input_container_titleVisibility_input.type = "checkbox";
+      input_container_titleVisibility_input.setAttribute("checked", true);
+      input_container_titleVisibility.appendChild(input_container_titleVisibility_input);
+
+      //** ON CHANGE EVENT FOR titleVisibility */
+      input_container_titleVisibility_input.addEventListener('change', function() {
+        var groupId = this.parentElement.parentElement.
+          parentElement.parentElement.parentElement.children[0].id;
+        
+        //** LOOP THROUGH TO TURN OFF ALL LABELS */
+        for(var i = 0; i < groupList.children.length; i++)
+        {
+          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
+          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
+          {
+            //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
+            if (this.checked)
+            {
+              groupList.children[i].children[2].children[5].children[1].value = 15;
+            }
+            else
+            {
+              groupList.children[i].children[2].children[5].children[1].value = 0;
+            }
+          }
+        }
+
+        //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF SUBLABELS */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId) 
+          && boxAnnotations[i].title.includes("_Title"))
+          {
+            if(boxAnnotations[i].type == "label")
+            { 
+              if (this.checked)
+              {
+                boxAnnotations[i].font.size = 15;
+              }
+              else
+              {
+                boxAnnotations[i].font.size = 0;
+              }
+            }
+            if(boxAnnotations[i].type == "box")
+            { 
+              var inputValue = document.getElementById("b1" + groupId + "_Title").value;
+
+              if(inputValue)
+              {
+                console.log(boxAnnotations[i].backgroundColor);
+                if (this.checked)
+                {
+                  boxAnnotations[i].backgroundColor = addAlpha(inputValue, '0.75');
+                }
+                else
+                {
+                  boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
+                }
+              }
+              else
+              {
+                if (this.checked)
+                {
+                  boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.75)';
+                }
+                else
+                {
+                  boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
+                }
+              }
+            }
+          }
+        }
+
+        chart.update();
+        chart2.update();
+        //loopThroughLayers();
+      }, false);
+  
   //** ADD SPECIFIC BANDS */
   for(var i = 0; i < preset.length; i++)
   {
     //** BAND LIST CONTAINER */
-    var band_li = document.createElement("li");
-    groupList.appendChild(band_li);
+    var band_item_li = document.createElement("li");
+    groupList.appendChild(band_item_li);
 
     //** BAND HIDDEN CHECKBOX */
     var band_checkbox = document.createElement("input");
     band_checkbox.id = "sub-group-b" + (i+1) + title;
     band_checkbox.type = "checkbox";
     band_checkbox.hidden = true;
-    band_li.appendChild(band_checkbox);
+    band_item_li.appendChild(band_checkbox);
 
     //** BAND LABEL */
     var band_label = document.createElement("label");
     band_label.setAttribute("for", "sub-group-b" + (i+1) + title);
-    band_label.innerHTML = "B" + (i+1);
-    band_label.setAttribute("contentEditable", true);
+    band_label.setAttribute("contentEditable", false);
     band_label.id = "band_label_b" + (i+1) + title;
-    band_li.appendChild(band_label);
+
+    // //** IF THE PRESET IS A TILE THEN CHANGE IT's ID */
+    if(preset[i].title)
+    {
+      band_label.innerHTML = preset[i].title;
+      if(preset[i].title.includes("Title"))
+      {
+        band_label.id += "_Title";
+        input_container_color_input.id += "_Title";
+      }
+    }
+    else
+    {
+      band_label.innerHTML = "B" + (i+1);
+    }
+
+    band_item_li.appendChild(band_label);
 
       //** BAND LABEL SPAN */
       var band_label_span = document.createElement("span");
@@ -3736,7 +3574,7 @@ function addPreset(title, preset)
     //** BAND CONTENT CONTAINER */
     var band_content = document.createElement("ul");
     band_content.classList = "sub-group-list";
-    band_li.appendChild(band_content);
+    band_item_li.appendChild(band_content);
 
       //** INPUT - COLOR */
       var input_container_color = document.createElement('div');
@@ -3751,6 +3589,21 @@ function addPreset(title, preset)
         //** INPUT - COLOR - INPUT */
         var input_container_color_input = document.createElement('input');
         input_container_color_input.id = "b" + (i+1) + title;
+        
+        //** IF THE PRESET IS A TILE THEN CHANGE IT's ID */
+        if(preset[i].title)
+        {
+          console.log(preset[i].title);
+          if(preset[i].title.includes("Title"))
+          {
+            input_container_color_input.id += "_Title";
+          }
+          else
+          {
+            input_container_color_input.id = "b" + (i+1) + title;
+          }
+        }
+
         input_container_color_input.type = "color";
         input_container_color_input.value = preset[i].color;
         band_label.style.backgroundColor = preset[i].color;
@@ -3760,9 +3613,38 @@ function addPreset(title, preset)
         input_container_color_input.addEventListener('change', function() {
           //var bandLabel = document.getElementById("band_label_b" + input_container_color_input.id);
           var id = "band_label_" + this.id;
-          console.log(id);
+          console.log(this.value);
           document.getElementById(id).style.backgroundColor = this.value;
-          loopThroughLayers();
+          var groupId = this.id;
+
+          //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+          for(var i = 0; i < boxAnnotations.length; i++)
+          {
+            if(boxAnnotations[i].title.includes(groupId))
+            {
+              if(boxAnnotations[i].title.includes("box"))
+              {
+                boxAnnotations[i].backgroundColor = addAlpha(this.value, 0.5);
+              }
+            }
+          }
+          //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+          for(var i = 0; i < boxAnnotations2.length; i++)
+          {
+            if(boxAnnotations2[i].title.includes(groupId))
+            {
+              if(boxAnnotations2[i].title.includes("box"))
+              {
+                boxAnnotations2[i].backgroundColor = addAlpha(this.value, 0.5);
+              }
+            }
+          }
+          
+          chart.update();
+          chart2.update();
+
+
+          //loopThroughLayers();
         }, false);
 
       //** INPUT - xMin */
@@ -4008,13 +3890,50 @@ function addPreset(title, preset)
     band_label.setAttribute("for", "sub-group-b" + label_index + title);
     band_label.innerHTML = "B" + label_index;
     band_label.id = "band_label_b" + label_index + title;
-    band_label.setAttribute("contentEditable", true);
+    band_label.setAttribute("contentEditable", false);
     band_li.appendChild(band_label);
 
       //** BAND LABEL SPAN */
       var band_label_span = document.createElement("span");
       band_label_span.innerHTML = "›";
       band_label.appendChild(band_label_span);
+
+      //** TITLE REMOVE ICON */
+      var additional_band_removeIcon = document.createElement("i");
+      additional_band_removeIcon.classList = "fa fa-trash";
+      additional_band_removeIcon.id = "removeIcon";
+      additional_band_removeIcon.setAttribute("contentEditable", false);
+      band_label.appendChild(additional_band_removeIcon);
+
+      //** ON CHANGE EVENT FOR REMOVE ICON */
+      additional_band_removeIcon.addEventListener('click', function() {
+        var groupId = this.parentElement.id;
+
+        //** REMOVE BAND FROM BOX ANNOTATIONS, LOOP THROUGH IN REVERSE*/
+        for(var i = boxAnnotations.length-1; i >=0; i--)
+        {
+          if(boxAnnotations[i].title.includes(groupId))
+          {
+            console.log(boxAnnotations[i]);
+            boxAnnotations.splice(i, 1);
+          }
+        }
+        //** REMOVE BAND FROM BOX ANNOTATIONS 2, LOOP THROUGH IN REVERSE */
+        for(var i = boxAnnotations2.length-1; i >=0; i--)
+        {
+          if(boxAnnotations2[i].title.includes(groupId))
+          {
+            boxAnnotations2.splice(i, 1);
+          }
+        }
+
+        this.parentElement.parentElement.remove();
+        this.parentElement.parentElement.innerHTML = "";
+
+        chart.update();
+        chart2.update();
+        
+      }, false);
 
     //** BAND CONTENT CONTAINER */
     var band_content = document.createElement("ul");
@@ -4038,14 +3957,41 @@ function addPreset(title, preset)
         input_container_color_input.value = previousColor;
         band_label.style.backgroundColor = previousColor;
         input_container_color.appendChild(input_container_color_input);
+        console.log(input_container_color_input.id);
         
         //** ON CHANGE EVENT FOR COLOR PICKER */
         input_container_color_input.addEventListener('change', function() {
-          //var bandLabel = document.getElementById("band_label_b" + input_container_color_input.id);
           var id = "band_label_" + this.id;
-          console.log(id);
           document.getElementById(id).style.backgroundColor = this.value;
-          loopThroughLayers();
+          var groupId = this.id;
+
+          //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+          for(var i = 0; i < boxAnnotations.length; i++)
+          {
+            if(boxAnnotations[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
+            {
+              if(boxAnnotations[i].title.includes("box"))
+              {
+                boxAnnotations[i].backgroundColor = this.value;
+              }
+            }
+          }
+          //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+          for(var i = 0; i < boxAnnotations2.length; i++)
+          {
+            if(boxAnnotations2[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
+            {
+              if(boxAnnotations2[i].title.includes("box"))
+              {
+                boxAnnotations2[i].backgroundColor = this.value;
+                console.log(boxAnnotations2[i]);
+                console.log(groupId);
+              }
+            }
+          }
+
+          chart.update();
+          chart2.update();
         }, false);
 
       //** INPUT - xMin */
@@ -4253,10 +4199,11 @@ function loopThroughLayers()
 {
   clearAnnotations();
   
+  console.log(boxAnnotations);
+
   //** GRAB ALL NAVS */
   let navs = layers.getElementsByClassName("nav");
   var offsetY = 0;
-
   var min_1 = [];
   var min_2 = [];
   var max_1 = [];
@@ -4265,25 +4212,31 @@ function loopThroughLayers()
   Array.from(navs).forEach(function (element, i) {
     //** Band LIST */
     let bandList = element.children[0].children[0].children[2];
+    
+    //** GRAB TITLE OF PRESET */
+    // let title = element.children[0].children[0].children[1].innerHTML;
+    // title = title.substring(0, title.indexOf("<"));
+
     offsetY = groupSeperation_Global.value * i;
     i++;
 
-    console.log("group: " + groupSeperation_Global.value);
-
     for(var i = 0; i < bandList.children.length; i++)
     {
-      if(!bandList.children[i].id.includes("add_"))
+      if(!bandList.children[i].id.includes("add_") && !bandList.children[i].id.includes("global_values"))
       {
-        var color = bandList.children[i].children[2].children[0].children[1].value;
-        var xMin = bandList.children[i].children[2].children[1].children[1].value;
-        var xMax = bandList.children[i].children[2].children[2].children[1].value
-        var labelSize_ = bandList.children[i].children[2].children[3].children[1].value;
-        var labelText = bandList.children[i].children[2].children[4].children[1].value;
-        var sublabelSize_ = bandList.children[i].children[2].children[5].children[1].value;
-        var sublabelOffset = bandList.children[i].children[2].children[6].children[1].value;
-        var sublabelText = bandList.children[i].children[2].children[7].children[1].value;
-        var graphNumb = bandList.children[i].children[2].children[8].children[1].value;
-        var Offset = bandList.children[i].children[2].children[9].children[1].value;
+        let color = bandList.children[i].children[2].children[0].children[1].value;
+        let xMin = bandList.children[i].children[2].children[1].children[1].value;
+        let xMax = bandList.children[i].children[2].children[2].children[1].value
+        let labelSize_ = bandList.children[i].children[2].children[3].children[1].value;
+        let labelText = bandList.children[i].children[2].children[4].children[1].value;
+        let sublabelSize_ = bandList.children[i].children[2].children[5].children[1].value;
+        let sublabelOffset = bandList.children[i].children[2].children[6].children[1].value;
+        let sublabelText = bandList.children[i].children[2].children[7].children[1].value;
+        let graphNumb = bandList.children[i].children[2].children[8].children[1].value;
+        let Offset = bandList.children[i].children[2].children[9].children[1].value;
+
+        //** GRAB ID OF BAND */
+        let band  = bandList.children[i].children[1].id;
   
         //** PUSH THE MIN NUMBERS TO EACH GROUP */
         if(graphNumb == 1)
@@ -4303,17 +4256,15 @@ function loopThroughLayers()
         addBox(xMin, xMax, 
           yStart, 
           yEnd, 
-          color, labelText, labelSize_, sublabelText, sublabelSize_, graphNumb);
+          color, labelText, labelSize_, sublabelText, sublabelSize_, graphNumb, band);
   
         chart.update();
         chart2.update();
       }
     }
-
-    console.log(min_1);
-    console.log(min_2);
   });
 
+  //** FIGURE OUT MIN & MAX */
   if(min_1.length > 0 && min_2.length > 0)
     {
       //** Update min and max values of charts manually *//
@@ -4352,6 +4303,11 @@ function loopThroughLayers()
   chart2.update();
 }
 
+function addAlpha(color, opacity) {
+  // coerce values so ti is between 0 and 1.
+  var _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
+  return color + _opacity.toString(16).toUpperCase();
+}
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
@@ -4572,6 +4528,10 @@ L1_3_Dropdown.addEventListener("click", function () {
 });
 L4_5_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 4-5", Landsat4_5_values);
+  loopThroughLayers();
+});
+L7_Dropdown.addEventListener("click", function () {
+  addPreset("Landsat 7", Landsat7_values);
   loopThroughLayers();
 });
 L8_9_Dropdown.addEventListener("click", function () {
