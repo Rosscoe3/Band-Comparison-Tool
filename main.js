@@ -25,6 +25,7 @@ var groupSeperation = 0.15;
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let layers = document.getElementById("layers");
+let loadingScreen = document.getElementById("loading");
 
 // let L8_9_Toggle = document.getElementById("Landsat8-9");
 // let L4_5_Toggle = document.getElementById("Landsat4-5");
@@ -716,6 +717,7 @@ var Landsat1_3_values = [
     subLabelText: '80m',
     graphNumb: 1,
     yOffset: 0,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     title: "Band 5 - Red",
@@ -796,6 +798,7 @@ var Landsat4_5_values = [
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     title: 'Band 2 - Green',
@@ -1022,6 +1025,7 @@ var Landsat8_9_values = [
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0.05,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     //** Band 2 - Blue */
@@ -1177,6 +1181,7 @@ var LandsatNext_values = [
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
+    link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   {
     //** Band 2 - Coastal/Aerosol		*/
@@ -4298,7 +4303,10 @@ function loopThroughLayers()
     2450,
     13950);
   }
-    
+  
+  //loadingScreen.classList.toggle('active');
+  console.log("END OF LOOP");
+
   chart.update();
   chart2.update();
 }
