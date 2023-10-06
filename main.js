@@ -92,7 +92,7 @@ var data = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
-      lineTension: 0.2,
+      lineTension: 0.1,
     },
   ],
 };
@@ -108,7 +108,7 @@ var data2 = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
-      lineTension: 0.2,
+      lineTension: 0.1,
     },
   ],
 };
@@ -238,6 +238,7 @@ const config = {
             size: 15,
           },
         },
+        min: 0.0,
         max: 0.9,
       },
       x: {
@@ -355,6 +356,7 @@ const config2 = {
         ticks: {
           display: false,
         },
+        min: 0.0,
         max: 0.9,
       },
       x: {
@@ -436,6 +438,8 @@ function plotCSV()
     return index % transmissionDataResolution === 0;
   });
 
+  console.log(compressedArray);
+
   //** DETERMINE TRANSMISSION CURVE FOR CHART 1 */
   // - arrayEndCut_chart1
   for (var i = 0; i < compressedArray.length; i++) 
@@ -491,30 +495,6 @@ var sublabelSize = "15%";
 var sublabelXOffset = 0.1;
 var sublabelYOffset = 0.01;
 
-//** ADD ALL BOX VALUES TO GRAPH */
-// addBox(430, 450, 
-//   0.1 + boxSeperation, 
-//   0.1 + boxHeight + boxSeperation, 
-//   "rgb(103,156,191)", "1", labelSize, "30m", sublabelSize, 1);
-// addBox(450, 510, 0.1, 0.1 + boxHeight, "rgb(0,101,141)", "2", labelSize, "30m", sublabelSize, 1);
-// addBox(530, 590, 0.1, 0.1 + boxHeight, "rgb(76,157,95)", "3", labelSize, "30m", sublabelSize, 1);
-// addBox(640, 670, 0.1, 0.1 + boxHeight, "rgb(194,32,54)", "4", labelSize, "30m", sublabelSize, 1);
-// addBox(850, 880, 0.1, 0.1 + boxHeight, "rgb(197,162,189)", "5", labelSize, "30m", sublabelSize, 1);
-// addBox(1570, 1650, 0.1, 0.1 + boxHeight, "rgb(211,153,121)", "6", labelSize, "30m", sublabelSize, 1);
-// addBox(2110, 2290, 0.1, 0.1 + boxHeight, "rgb(153,156,150)", "7", labelSize, "30m", sublabelSize, 1);
-// addBox(500, 680, 
-//   (0.1) - boxSeperation, 
-//   (0.1 + boxHeight) - boxSeperation, 
-//   "rgb(0,143,162)", "8", labelSize, "15m", sublabelSize, 1);
-// addBox(1360, 1380, 
-//   0.1 + boxSeperation, 
-//   0.1 + boxHeight + boxSeperation, 
-//   "rgb(116,128,161)", "9", labelSize, "30m", sublabelSize, 1);
-// addBox(10600, 11190, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "10", labelSize, "100m", sublabelSize, 2);
-// addBox(11500, 12510, 0.1, 0.1 + boxHeight, "rgb(188,122,130)", "11", labelSize, "100m", sublabelSize, 2);
-// addBox(12610, 12640, (0.1) - boxSeperation, 0.1 + boxHeight + boxSeperation, "rgba(150,150,150, 0.5)", "", labelSize, "MSS", sublabelSize, 2);
-
-
 //** ADD LINE FOR ANNOTATION */
 function addBox(
   xMin,
@@ -533,12 +513,34 @@ function addBox(
   var y_padding_box = 0;
   var borderWidth = 1;
   var color_update = color;
+  var labelColor = "rgb(245,245,245)";
+  var yAdjust = 0;
+  var textWeight = "bold"; 
+  var box_display = true;
+
+  //sulabel
+  var sub_rotation = 0;
+  var sub_yMin = yHeight + sublabelYOffset + y_padding_box;
+  var sub_yMax = yHeight + sublabelYOffset + y_padding_box;
+  var sub_xMin = xMin;
+  var sub_xMax = xMax;
 
   if(title.includes("_Title"))
   {
-    y_padding_box = 0.05;
+    y_padding_box = 0.075;
     borderWidth = 0;
-    color_update = addAlpha("#d1d1d1", '0.75');
+    color_update = addAlpha("#d1d1d1", '0.5');
+    labelColor = "rgb(0, 0, 0)";
+    yAdjust = -10;
+    textWeight = "lighter";
+    box_display = false;
+
+    //sublabel
+    sub_rotation = 90;
+    sub_yMin = yMin;
+    sub_yMax = yHeight;
+    sub_xMin = xMin;
+    sub_xMax = xMin;
   }
 
   var box = {
@@ -550,6 +552,7 @@ function addBox(
     borderWidth: borderWidth,
     backgroundColor: color_update,
     title: title + "_box",
+    display: box_display,
   };
   var label = {
     type: "label",
@@ -560,24 +563,26 @@ function addBox(
     content: [labelText],
     font: {
       size: textSize,
-      borderColor: "rgb(245,245,245)",
-      color: "rgb(245,245,245)",
+      borderColor: labelColor,
+      color: labelColor,
     },
-    color: "rgb(245,245,245)",
+    color: labelColor,
     title: title + "_label",
+    yAdjust: yAdjust,
   };
   var subLabel = {
     type: "label",
-    xMin: xMin,
-    xMax: xMax,
-    yMin: yHeight + sublabelYOffset + y_padding_box,
-    yMax: yHeight + sublabelYOffset + y_padding_box,
+    xMin: sub_xMin,
+    xMax: sub_xMax,
+    yMin: sub_yMin,
+    yMax: sub_yMax,
     content: [subLabelText],
     font: {
       size: sublabelSize,
       color: "rgb(245,245,245)",
       textAlign: "right",
     },
+    rotation: sub_rotation,
     color: "rgb(0, 0, 0)",
     title: title + "_sublabel",
   };
@@ -675,19 +680,6 @@ function updateMinAndMax(min1, min2, max1, max2)
 
   chart.update();
   chart2.update();
-}
-
-function addInLine(startNmb, width, length, offsetY, color)
-{ 
-  for(var i = 0; i <= length; i++)
-  {
-    var start = startNmb + (width * i);
-    
-    addBox(start, start + width, 
-      offsetY + 0.1, 
-      offsetY + 0.1 + boxHeight,
-      color, "", labelSize, "", sublabelSize, 1); 
-  }
 }
 
 //** ARRAYS OF PRESET VALUES */
@@ -1012,6 +1004,21 @@ var Landsat7_values = [
   },  
 ];
 var Landsat8_9_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 12560, 
+    xMax: 12660,
+    xMin_2: 10550, 
+    xMax_2: 12560,
+    yHeight: 0.1,
+    labelSize: 200,
+    labelText: "]",
+    sublabelSize: 20, 
+    subLabelText: 'Landsat 8-9',
+    graphNumb: 2,
+    yOffset: 0.01,
+  },
   {
     //** Band 1 - Coastal aerosol	*/
     title: "Band 1 - Coastal aerosol",
@@ -2842,6 +2849,19 @@ var PACE_values = [
 ];
 var STELLA_values = [
   {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 14250, 
+    xMax: 14750,
+    yHeight: 0.1,
+    labelSize: 250,
+    labelText: "]",
+    sublabelSize: 20, 
+    subLabelText: 'STELLA',
+    graphNumb: 2,
+    yOffset: 0.0275,
+  },
+  {
     //** Band 1 - Violet	*/
     color: '#B930D5',
     xMin: 410, 
@@ -2995,6 +3015,19 @@ var STELLA_values = [
     sublabelSize: 15, 
     subLabelText: '',
     graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 13 - NIR*/
+    color: '#b5b3b3',
+    xMin: 5500, 
+    xMax: 14000,
+    yHeight: 0.05,
+    labelSize: 15,
+    labelText: "13",
+    sublabelSize: 13, 
+    subLabelText: '',
+    graphNumb: 2,
     yOffset: 0,
   },
 ];
@@ -3708,7 +3741,7 @@ function addPreset(title, preset)
         var input_container_labelSize_input = document.createElement('input');
         input_container_labelSize_input.id = "b" + (i+1) + title + "color_input";
         input_container_labelSize_input.type = "number";
-        input_container_labelSize_input.value = "15";
+        input_container_labelSize_input.value = preset[i].labelSize;
         input_container_labelSize.appendChild(input_container_labelSize_input);
 
         //** ON CHANGE EVENT FOR LABEL SIZE */
