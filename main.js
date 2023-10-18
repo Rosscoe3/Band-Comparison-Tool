@@ -527,21 +527,27 @@ function addBox(
 
   if(title.includes("_Title"))
   {
-    y_padding_box = 0.075;
+    y_padding_box = 0.05;
     borderWidth = 0;
     color_update = addAlpha("#000000", '0.5');
     labelColor = "rgb(0, 0, 0)";
     yAdjust = -10;
     textWeight = "lighter";
-    //box_display = false;
+    box_display = false;
+
+    var subLabelPadding = 25;
+
+    if(graphNumb == 2)
+    {
+      subLabelPadding = 50;
+    }
 
     //sublabel
     sub_rotation = 90;
     sub_yMin = yMin;
     sub_yMax = yHeight;
-    sub_xMin = parseFloat(xMax) + 50;
-    sub_xMax = parseFloat(xMax) + 50;
-    console.log(sub_xMin);
+    sub_xMin = xMax;
+    sub_xMax = xMax;
   }
 
   var box = {
@@ -688,12 +694,12 @@ var Landsat1_3_values = [
   {
     title: "Title",
     color: '#d1d1d1',
-    xMin: 450, 
-    xMax: 1150,
+    xMin: 1125, 
+    xMax: 1130,
     yHeight: 0.1,
     labelSize: 15,
     labelText: "",
-    sublabelSize: 15, 
+    sublabelSize: 20, 
     subLabelText: 'Landsat 1-3',
     graphNumb: 1,
     yOffset: 0,
@@ -756,25 +762,12 @@ var Landsat4_5_values = [
   {
     title: "Title",
     color: '#d1d1d1',
-    xMin: 400, 
-    xMax: 2400,
+    xMin: 10300, 
+    xMax: 12600,
     yHeight: 0.1,
     labelSize: 15,
     labelText: "",
-    sublabelSize: 15, 
-    subLabelText: 'Landsat 4-5',
-    graphNumb: 1,
-    yOffset: 0,
-  },
-  {
-    title: "Title (2)",
-    color: '#d1d1d1',
-    xMin: 10350, 
-    xMax: 12550,
-    yHeight: 0.1,
-    labelSize: 15,
-    labelText: "",
-    sublabelSize: 15, 
+    sublabelSize: 20, 
     subLabelText: 'Landsat 4-5',
     graphNumb: 2,
     yOffset: 0,
@@ -876,25 +869,12 @@ var Landsat7_values = [
   {
     title: "Title",
     color: '#d1d1d1',
-    xMin: 400, 
-    xMax: 2400,
+    xMin: 10300, 
+    xMax: 12600,
     yHeight: 0.1,
     labelSize: 15,
     labelText: "",
-    sublabelSize: 15, 
-    subLabelText: 'Landsat 7',
-    graphNumb: 1,
-    yOffset: 0,
-  },
-  {
-    title: "Title (2)",
-    color: '#d1d1d1',
-    xMin: 10350, 
-    xMax: 12550,
-    yHeight: 0.1,
-    labelSize: 15,
-    labelText: "",
-    sublabelSize: 15, 
+    sublabelSize: 20, 
     subLabelText: 'Landsat 7',
     graphNumb: 2,
     yOffset: 0,
@@ -1010,8 +990,8 @@ var Landsat8_9_values = [
     color: '#d1d1d1',
     xMin: 12560, 
     xMax: 12610,
-    xMin_2: 10550, 
-    xMax_2: 12560,
+    xMin_2: 10500, 
+    xMax_2: 12610,
     yHeight: 0.1,
     labelSize: 200,
     labelText: "",
@@ -1177,6 +1157,19 @@ var Landsat8_9_values = [
   },
 ];
 var LandsatNext_values = [
+  // {
+  //   title: "Title",
+  //   color: '#d1d1d1',
+  //   xMin: 7950, 
+  //   xMax: 12325,
+  //   yHeight: 0.1,
+  //   labelSize: 15,
+  //   labelText: "",
+  //   sublabelSize: 20, 
+  //   subLabelText: 'Landsat Next',
+  //   graphNumb: 2,
+  //   yOffset: 0,
+  // },
   {
     //** Band 1 - Violet	*/
     color: '#7fb0c6',
@@ -1448,7 +1441,7 @@ var LandsatNext_values = [
     labelText: "21",
     sublabelSize: 15, 
     subLabelText: '20m',
-    graphNumb: 2,
+    graphNumb: 1,
     yOffset: 0,
   },
   {
