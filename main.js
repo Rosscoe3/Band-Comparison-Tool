@@ -529,18 +529,19 @@ function addBox(
   {
     y_padding_box = 0.075;
     borderWidth = 0;
-    color_update = addAlpha("#d1d1d1", '0.5');
+    color_update = addAlpha("#000000", '0.5');
     labelColor = "rgb(0, 0, 0)";
     yAdjust = -10;
     textWeight = "lighter";
-    box_display = false;
+    //box_display = false;
 
     //sublabel
     sub_rotation = 90;
     sub_yMin = yMin;
     sub_yMax = yHeight;
-    sub_xMin = xMin;
-    sub_xMax = xMin;
+    sub_xMin = parseFloat(xMax) + 50;
+    sub_xMax = parseFloat(xMax) + 50;
+    console.log(sub_xMin);
   }
 
   var box = {
@@ -1008,16 +1009,16 @@ var Landsat8_9_values = [
     title: "Title",
     color: '#d1d1d1',
     xMin: 12560, 
-    xMax: 12660,
+    xMax: 12610,
     xMin_2: 10550, 
     xMax_2: 12560,
     yHeight: 0.1,
     labelSize: 200,
-    labelText: "]",
+    labelText: "",
     sublabelSize: 20, 
     subLabelText: 'Landsat 8-9',
     graphNumb: 2,
-    yOffset: 0.01,
+    yOffset: 0.0,
   },
   {
     //** Band 1 - Coastal aerosol	*/
