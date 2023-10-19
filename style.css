@@ -176,7 +176,7 @@ h1 {
   outline: none;
 }
 .inputContainer div{
-  margin: 1%;
+  padding: 10%;
   flex-grow: 2;
   padding-left: 2rem;
   line-height: 200%;
@@ -373,7 +373,7 @@ li .dropdown{
 } */
 
 .nav a, .nav label {
-  font-size: 200%;
+  font-size: 125%;
   display: block;
   padding: .85rem;
   /* color: #fff; */
@@ -393,7 +393,7 @@ li .dropdown{
  * Styling first level lists items
  */
  .group-list a, .group-list label{
-  font-size: 150%;
+  font-size: 125%;
   padding-left: 1.5rem;
   color: black;
   background: #E6E6E6;
@@ -440,6 +440,7 @@ li .dropdown{
  */
 .group-list, .sub-group-list, .sub-sub-group-list {
   height: 100%;
+  width: 100%;
   max-height: 0;
   overflow: hidden;
   -webkit-transition: max-height .5s ease-in-out;
