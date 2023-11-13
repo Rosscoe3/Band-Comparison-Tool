@@ -98,7 +98,7 @@ h1 {
   position: absolute;
   bottom: 100%;
 
-  font-size: 100%;
+  font-size: 125%;
   color: black;
 }
 
@@ -120,7 +120,7 @@ h1 {
   top: 0%;
   margin-left: 0.5rem;
   padding: 0rem;
-  font-size: 200%;
+  font-size: 225%;
   opacity: 0%;
 
   pointer-events: none;
@@ -171,15 +171,18 @@ h1 {
   width: 100%;
 }
 .inputContainer input{
-  width: 25%;
-  height: 100%;
+  min-width: 10%;
+  max-width: 30%;
+  /* height: 100%; */
+  margin-left: 0;
   outline: none;
 }
 .inputContainer div{
-  padding: 10%;
   flex-grow: 2;
+  justify-content: center;
+  height: fit-content;
   padding-left: 2rem;
-  line-height: 200%;
+  line-height: 270%;
   user-select: none;
 }
 
@@ -282,6 +285,7 @@ li .dropdown{
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-size: 75%;
   z-index: 100;
 }
 /* Change color of dropdown links on hover */
@@ -374,7 +378,7 @@ li .dropdown{
 
 .nav a, .nav label {
   font-size: 125%;
-  display: block;
+  display: flex;
   padding: .85rem;
   /* color: #fff; */
   color: black;
@@ -452,6 +456,8 @@ max-height: fit-content;
 
 label > span {
   float: right;
+  margin-right: 0;
+  margin-left: auto;
   -webkit-transition: -webkit-transform .65s ease;
   transition: transform .65s ease;
 }
@@ -531,9 +537,13 @@ ul {
 }
 
 .title_Label i{
-  float: right;
-  transform: translate(-100%, 55%);
-  font-size: 75%;
+  /* float: left; */
+  margin-right: 1%;
+  margin-left: 0;
+  
+  /* padding-left: 2.5%; */
+  /* transform: translate(-75%, 20%); */
+  font-size: 150%;
   transition: all 0.25s ease-in-out;
   user-select: none;  
 }
@@ -541,6 +551,11 @@ ul {
 .title_Label i:hover{
   color: white;
   transition: all 0.25s ease-in-out;
+}
+
+.title_Label span{
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .loading{

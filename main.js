@@ -3051,12 +3051,20 @@ function addPreset(title, preset)
   var count = 0; 
   enabledPresets.forEach((v) => (v=== title && count++));
   var title_text = title;
+  let isCustomBand = false;
+  
+  //** CHECK IF THE BAND PRESET IS A CUSTOM BAND */
+  if(title == "Custom")
+  {
+    isCustomBand = true;
+  }
 
   if(count > 1)
   {
     title_text += "(" + count + ")";
   }
   title += count;
+
 
   //var tree = document.createDocumentFragment();
   
@@ -3085,19 +3093,13 @@ function addPreset(title, preset)
   var title_label = document.createElement("label");
   title_label.classList = "title_Label";
   title_label.setAttribute("for", title);
-  title_label.innerHTML = title_text;
+  // title_label.innerHTML = title_text;
   title_label.setAttribute("contentEditable", false);
   li.appendChild(title_label);
 
-    //** TITLE LABEL SPAN */
-    var title_label_span = document.createElement("span");
-    title_label_span.innerHTML = "›";
-    title_label_span.setAttribute("contentEditable", false);
-    title_label.appendChild(title_label_span);
-
     //** TITLE REMOVE ICON */
     var title_label_removeIcon = document.createElement("i");
-    title_label_removeIcon.classList = "fa fa-trash";
+    title_label_removeIcon.classList = "fa fa-ellipsis-v";
     title_label_removeIcon.id = "removeIcon";
     title_label_removeIcon.setAttribute("contentEditable", false);
     title_label.appendChild(title_label_removeIcon);
@@ -3110,6 +3112,27 @@ function addPreset(title, preset)
       enabledPresets.splice(index, 1);
       loopThroughLayers();
     }, false);
+
+    //** DROP DOWN */
+    var menuList = document.createElement("div");
+    menuList.classList = "dropdown-content show";
+    title_label_removeIcon.appendChild(menuList);
+    menuList.classList.toggle("show");
+
+      var deleteList = document.createElement('a');
+      deleteList.id = "delete";
+      deleteList.innerHTML = "delete";
+      menuList.appendChild(deleteList);
+      
+    var titleText = document.createElement("div");
+    titleText.innerHTML = title_text;
+    title_label.appendChild(titleText);
+
+    //** TITLE LABEL SPAN */
+    var title_label_span = document.createElement("span");
+    title_label_span.innerHTML = "›";
+    title_label_span.setAttribute("contentEditable", false);
+    title_label.appendChild(title_label_span);
 
   //** GROUP LIST CONTAINER, CONTAINS ALL GROUP VALUES */
   var groupList = document.createElement("ul");
@@ -3152,6 +3175,7 @@ function addPreset(title, preset)
     //** GLOBAL - INPUT - COLOR */
     var input_container_color = document.createElement('div');
     input_container_color.classList = "inputContainer";
+    input_container_color.id = "color";
     band_content.appendChild(input_container_color);
 
       //** GLOBAL - INPUT - COLOR - TITLE */
@@ -3219,6 +3243,7 @@ function addPreset(title, preset)
     //** INPUT - boxHeight */
     var input_container_boxHeight = document.createElement('div');
     input_container_boxHeight.classList = "inputContainer";
+    input_container_boxHeight.id = "boxHeight";
     band_content.appendChild(input_container_boxHeight);
     input_container_boxHeight.id = title;
 
@@ -3282,6 +3307,7 @@ function addPreset(title, preset)
     //** INPUT - labelVisibility */
     var input_container_labelVisibility = document.createElement('div');
     input_container_labelVisibility.classList = "inputContainer";
+    input_container_labelVisibility.id = "label_visibility";
     band_content.appendChild(input_container_labelVisibility);
 
       //** INPUT - labelVisibility - TITLE */
@@ -3378,6 +3404,7 @@ function addPreset(title, preset)
     //** INPUT - sublabelVisibility */
     var input_container_sublabelVisibility = document.createElement('div');
     input_container_sublabelVisibility.classList = "inputContainer";
+    input_container_sublabelVisibility.id = "sublabel_visibility";
     band_content.appendChild(input_container_sublabelVisibility);
 
       //** INPUT - sublabelVisibility - TITLE */
@@ -3471,6 +3498,7 @@ function addPreset(title, preset)
     //** INPUT - titleVisibility */
     var input_container_titleVisibility = document.createElement('div');
     input_container_titleVisibility.classList = "inputContainer";
+    input_container_titleVisibility.id = "title_visibility";
     band_content.appendChild(input_container_titleVisibility);
 
       //** INPUT - titleVisibility - TITLE */
@@ -3611,6 +3639,7 @@ function addPreset(title, preset)
       //** INPUT - COLOR */
       var input_container_color = document.createElement('div');
       input_container_color.classList = "inputContainer";
+      input_container_color.id = "color";
       band_content.appendChild(input_container_color);
 
         //** INPUT - COLOR - TITLE */
@@ -3679,51 +3708,58 @@ function addPreset(title, preset)
           //loopThroughLayers();
         }, false);
 
-      //** INPUT - xMin */
-      var input_container_xMin = document.createElement('div');
-      input_container_xMin.classList = "inputContainer";
-      band_content.appendChild(input_container_xMin);
-
-        //** INPUT - xMin - TITLE */
-        var input_container_xMin_title = document.createElement('div');
-        input_container_xMin_title.innerHTML = "xMin";
-        input_container_xMin.appendChild(input_container_xMin_title);
-
-        //** INPUT - xMin - INPUT */
-        var input_container_xMin_input = document.createElement('input');
-        input_container_xMin_input.type = "number";
-        input_container_xMin_input.value = preset[i].xMin;
-        input_container_xMin.appendChild(input_container_xMin_input);
-
-        //** ON CHANGE EVENT FOR XMIN */
-        input_container_xMin_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - xMax */
-      var input_container_xMax = document.createElement('div');
-      input_container_xMax.classList = "inputContainer";
-      band_content.appendChild(input_container_xMax);
-
-        //** INPUT - xMax - TITLE */
-        var input_container_xMax_title = document.createElement('div');
-        input_container_xMax_title.innerHTML = "xMax";
-        input_container_xMax.appendChild(input_container_xMax_title);
-
-        //** INPUT - xMax - INPUT */
-        var input_container_xMax_input = document.createElement('input');
-        input_container_xMax_input.type = "number";
-        input_container_xMax_input.value = preset[i].xMax;
-        input_container_xMax.appendChild(input_container_xMax_input);
-
-        //** ON CHANGE EVENT FOR xMax */
-        input_container_xMax_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
+      //** IF IT IS A CUSTOM BAND, DON'T INCLUDE xMAX and xMIN */
+      if(isCustomBand)
+      {
+        //** INPUT - xMin */
+        var input_container_xMin = document.createElement('div');
+        input_container_xMin.classList = "inputContainer";
+        input_container_xMin.id = "xMin";
+        band_content.appendChild(input_container_xMin);
+  
+          //** INPUT - xMin - TITLE */
+          var input_container_xMin_title = document.createElement('div');
+          input_container_xMin_title.innerHTML = "xMin";
+          input_container_xMin.appendChild(input_container_xMin_title);
+  
+          //** INPUT - xMin - INPUT */
+          var input_container_xMin_input = document.createElement('input');
+          input_container_xMin_input.type = "number";
+          input_container_xMin_input.value = preset[i].xMin;
+          input_container_xMin.appendChild(input_container_xMin_input);
+  
+          //** ON CHANGE EVENT FOR XMIN */
+          input_container_xMin_input.addEventListener('change', function() {
+            loopThroughLayers();
+          }, false);
+  
+        //** INPUT - xMax */
+        var input_container_xMax = document.createElement('div');
+        input_container_xMax.classList = "inputContainer";
+        input_container_xMax.id = "xMax";
+        band_content.appendChild(input_container_xMax);
+  
+          //** INPUT - xMax - TITLE */
+          var input_container_xMax_title = document.createElement('div');
+          input_container_xMax_title.innerHTML = "xMax";
+          input_container_xMax.appendChild(input_container_xMax_title);
+  
+          //** INPUT - xMax - INPUT */
+          var input_container_xMax_input = document.createElement('input');
+          input_container_xMax_input.type = "number";
+          input_container_xMax_input.value = preset[i].xMax;
+          input_container_xMax.appendChild(input_container_xMax_input);
+  
+          //** ON CHANGE EVENT FOR xMax */
+          input_container_xMax_input.addEventListener('change', function() {
+            loopThroughLayers();
+          }, false);
+      }
 
       //** INPUT - LABEL SIZE */
       var input_container_labelSize = document.createElement('div');
       input_container_labelSize.classList = "inputContainer";
+      input_container_labelSize.id = "label_size";
       band_content.appendChild(input_container_labelSize);
 
         //** INPUT - LABEL SIZE - TITLE */
@@ -3746,6 +3782,7 @@ function addPreset(title, preset)
       //** INPUT - LABEL CONTENT */
       var input_container_labelContent = document.createElement('div');
       input_container_labelContent.classList = "inputContainer";
+      input_container_labelContent.id = "label_content";
       band_content.appendChild(input_container_labelContent);
 
         //** INPUT - LABEL CONTENT - TITLE */
@@ -3767,6 +3804,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL SIZE */
       var input_container_subLabelSize = document.createElement('div');
       input_container_subLabelSize.classList = "inputContainer";
+      input_container_subLabelSize.id = "sublabel_size";
       band_content.appendChild(input_container_subLabelSize);
 
         //** INPUT - SUBLABEL SIZE - TITLE */
@@ -3788,6 +3826,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL OFFSET */
       var input_container_subLabelOffset = document.createElement('div');
       input_container_subLabelOffset.classList = "inputContainer";
+      input_container_subLabelOffset.id = "sublabel_offset";
       band_content.appendChild(input_container_subLabelOffset);
 
         //** INPUT - SUBLABEL OFFSET - TITLE */
@@ -3809,6 +3848,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL CONTENT */
       var input_container_subLabelContent = document.createElement('div');
       input_container_subLabelContent.classList = "inputContainer";
+      input_container_subLabelContent.id = "sublabel_content";
       band_content.appendChild(input_container_subLabelContent);
 
         //** INPUT - SUBLABEL Content - TITLE */
@@ -3830,6 +3870,7 @@ function addPreset(title, preset)
       //** INPUT - GRAPH NUMB */
       var input_container_graphNumb = document.createElement('div');
       input_container_graphNumb.classList = "inputContainer";
+      input_container_graphNumb.id = "graph_number";
       band_content.appendChild(input_container_graphNumb);
 
         //** INPUT - SUBLABEL Content - TITLE */
@@ -3853,6 +3894,7 @@ function addPreset(title, preset)
       //** INPUT - yOffset */
       var input_container_yOffset = document.createElement('div');
       input_container_yOffset.classList = "inputContainer";
+      input_container_yOffset.id = "yOffset";
       band_content.appendChild(input_container_yOffset);
 
         //** INPUT - yOffset - TITLE */
@@ -3975,6 +4017,7 @@ function addPreset(title, preset)
       //** INPUT - COLOR */
       var input_container_color = document.createElement('div');
       input_container_color.classList = "inputContainer";
+      input_container_color.id = "color";
       band_content.appendChild(input_container_color);
 
         //** INPUT - COLOR - TITLE */
@@ -4029,6 +4072,7 @@ function addPreset(title, preset)
       //** INPUT - xMin */
       var input_container_xMin = document.createElement('div');
       input_container_xMin.classList = "inputContainer";
+      input_container_xMin.id = "xMin";
       band_content.appendChild(input_container_xMin);
 
         //** INPUT - xMin - TITLE */
@@ -4050,6 +4094,7 @@ function addPreset(title, preset)
       //** INPUT - xMax */
       var input_container_xMax = document.createElement('div');
       input_container_xMax.classList = "inputContainer";
+      input_container_xMax.id = "xMax";
       band_content.appendChild(input_container_xMax);
 
         //** INPUT - xMax - TITLE */
@@ -4071,6 +4116,7 @@ function addPreset(title, preset)
       //** INPUT - LABEL SIZE */
       var input_container_labelSize = document.createElement('div');
       input_container_labelSize.classList = "inputContainer";
+      input_container_labelSize.id = "label_Size";
       band_content.appendChild(input_container_labelSize);
 
         //** INPUT - LABEL SIZE - TITLE */
@@ -4093,6 +4139,7 @@ function addPreset(title, preset)
       //** INPUT - LABEL CONTENT */
       var input_container_labelContent = document.createElement('div');
       input_container_labelContent.classList = "inputContainer";
+      input_container_labelContent.id = "label_content";
       band_content.appendChild(input_container_labelContent);
 
         //** INPUT - LABEL CONTENT - TITLE */
@@ -4114,6 +4161,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL SIZE */
       var input_container_subLabelSize = document.createElement('div');
       input_container_subLabelSize.classList = "inputContainer";
+      input_container_subLabelSize.id = "sublabel_size";
       band_content.appendChild(input_container_subLabelSize);
 
         //** INPUT - SUBLABEL SIZE - TITLE */
@@ -4135,6 +4183,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL OFFSET */
       var input_container_subLabelOffset = document.createElement('div');
       input_container_subLabelOffset.classList = "inputContainer";
+      input_container_subLabelOffset.id = "sublabel_offset";
       band_content.appendChild(input_container_subLabelOffset);
 
         //** INPUT - SUBLABEL OFFSET - TITLE */
@@ -4156,6 +4205,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL CONTENT */
       var input_container_subLabelContent = document.createElement('div');
       input_container_subLabelContent.classList = "inputContainer";
+      input_container_subLabelContent.id = "sublabel_content";
       band_content.appendChild(input_container_subLabelContent);
 
         //** INPUT - SUBLABEL Content - TITLE */
@@ -4177,6 +4227,7 @@ function addPreset(title, preset)
       //** INPUT - GRAPH NUMB */
       var input_container_graphNumb = document.createElement('div');
       input_container_graphNumb.classList = "inputContainer";
+      input_container_graphNumb.id = "graph_number";
       band_content.appendChild(input_container_graphNumb);
 
         //** INPUT - SUBLABEL Content - TITLE */
@@ -4200,6 +4251,7 @@ function addPreset(title, preset)
       //** INPUT - yOffset */
       var input_container_yOffset = document.createElement('div');
       input_container_yOffset.classList = "inputContainer";
+      input_container_yOffset.id = "yOffset";
       band_content.appendChild(input_container_yOffset);
 
         //** INPUT - yOffset - TITLE */
@@ -4256,16 +4308,27 @@ function loopThroughLayers()
     {
       if(!bandList.children[i].id.includes("add_") && !bandList.children[i].id.includes("global_values"))
       {
-        let color = bandList.children[i].children[2].children[0].children[1].value;
-        let xMin = bandList.children[i].children[2].children[1].children[1].value;
-        let xMax = bandList.children[i].children[2].children[2].children[1].value
-        let labelSize_ = bandList.children[i].children[2].children[3].children[1].value;
-        let labelText = bandList.children[i].children[2].children[4].children[1].value;
-        let sublabelSize_ = bandList.children[i].children[2].children[5].children[1].value;
-        let sublabelOffset = bandList.children[i].children[2].children[6].children[1].value;
-        let sublabelText = bandList.children[i].children[2].children[7].children[1].value;
-        let graphNumb = bandList.children[i].children[2].children[8].children[1].value;
-        let Offset = bandList.children[i].children[2].children[9].children[1].value;
+        //** NEED A BETTER WAY TO INDENTIFY THESE */
+
+        let xMin, xMax;
+
+        if(bandList.children[i].children[2].querySelector("#xMin"))
+        {
+          xMin = bandList.children[i].children[2].querySelector("#xMin").children[1].value;
+        }
+        if(bandList.children[i].children[2].querySelector("#xMax"))
+        {
+          xMax = bandList.children[i].children[2].querySelector("#xMax").children[1].value;
+        }
+        
+        let color = bandList.children[i].children[2].querySelector("#color").children[1].value;
+        let labelSize_ = bandList.children[i].children[2].querySelector("#label_size").children[1].value;
+        let labelText = bandList.children[i].children[2].querySelector("#label_content").children[1].value;
+        let sublabelSize_ = bandList.children[i].children[2].querySelector("#sublabel_size").children[1].value;
+        //let sublabelOffset = bandList.children[i].children[2].querySelector("#xMin").children[1].value;
+        let sublabelText = bandList.children[i].children[2].querySelector("#sublabel_content").children[1].value;
+        let graphNumb = bandList.children[i].children[2].querySelector("#graph_number").children[1].value;
+        let Offset = bandList.children[i].children[2].querySelector("#yOffset").children[1].value;
 
         //** GRAB ID OF BAND */
         let band  = bandList.children[i].children[1].id;
@@ -4364,12 +4427,17 @@ window.onclick = function(event) {
 sidebarButton.addEventListener("click", function () {
   if(sidebar.classList.contains("active"))
   {
-    sidebarButton.innerHTML = "<";
+    sidebarButton.innerHTML = "›";
   }
   else
   {
-    sidebarButton.innerHTML = ">";
+    sidebarButton.innerHTML = "‹";
   }
+
+  setTimeout(() => {
+    chart2.update();
+    chart.update();
+  }, 1000);
 
   sidebar.classList.toggle("active");
 });
