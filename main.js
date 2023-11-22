@@ -22,6 +22,8 @@ var boxSeperation = 0.05;
 var boxHeight = 0.03;
 var groupSeperation = 0.15;
 
+var sensorNumb = 0;
+
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let layers = document.getElementById("layers");
@@ -3065,9 +3067,36 @@ function addPreset(title, preset)
   }
   title += count;
 
+  //** ADD PRESET TO INPUT */
+  for(var i = 0; i < preset.length; i++)
+  {
+    //** Change Y offset depending how many layers there are */
+    var offsetY = groupSeperation_Global.value * sensorNumb;
+    
+    var yStart = offsetY + 0.1 + parseFloat(preset[i].yOffset);
+    var yEnd = yStart + preset[i].yHeight;
+    
+    addBox(
+      preset[i].xMin, preset[i].xMax, 
+      yStart, yEnd, 
+      preset[i].color, 
+      preset[i].labelText, 
+      preset[i].labelSize, 
+      preset[i].subLabelText, 
+      preset[i].sublabelSize, 
+      preset[i].graphNumb, 
+      title);
+
+    console.log(preset[i]);
+
+    chart.update();
+    chart2.update();
+  }
+
+  //** UPDATE HOW MANY SENSORS ARE CURRENTLY VISIBLE */
+  sensorNumb++;
 
   //var tree = document.createDocumentFragment();
-  
   //** OUTSIDE NAV */
   var nav = document.createElement("nav");
   nav.classList = "nav";
@@ -3110,6 +3139,7 @@ function addPreset(title, preset)
       nav.remove();
       var index = enabledPresets.indexOf(this.title);
       enabledPresets.splice(index, 1);
+      sensorNumb--;
       loopThroughLayers();
     }, false);
 
@@ -3300,6 +3330,41 @@ function addPreset(title, preset)
           }
         }
 
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId))
+          {
+            if(boxAnnotations2[i].title.includes("sublabel"))
+            {
+              var yValue;
+              if(boxAnnotations2[i].title.includes("_Title"))
+              { 
+                yValue = parseFloat(boxAnnotations2[i-2].yMax) + 0.01;
+                //yValue = parseFloat(boxAnnotations2[i-2].yMax) - 0.015;
+                boxAnnotations2[i].yMin = yValue;
+                boxAnnotations2[i].yMax = yValue;
+              }
+              else
+              {
+                yValue = parseFloat(boxAnnotations2[i-2].yMin) + parseFloat(this.value) + 0.01;
+                boxAnnotations2[i].yMin = yValue;
+                boxAnnotations2[i].yMax = yValue;
+              }
+            }
+            //** CHECKS ON BOXES AND MAIN LABEL OF TITLE */
+            else if(boxAnnotations2[i].title.includes("_Title"))
+            {
+              boxAnnotations2[i].yMin = (parseFloat(boxAnnotations2[i+3].yMin)) - 0.05;
+              boxAnnotations2[i].yMax = parseFloat(boxAnnotations2[i+3].yMin) + parseFloat(this.value) + 0.05;
+            }
+            else
+            {
+              boxAnnotations2[i].yMax = parseFloat(boxAnnotations2[i].yMin) + parseFloat(this.value);
+            }
+            
+          }
+        }
+
         chart.update();
         chart2.update();
       }, false);
@@ -3327,25 +3392,6 @@ function addPreset(title, preset)
           parentElement.parentElement.parentElement.children[0].id;
         
           console.log(groupId);
-
-        //** LOOP THROUGH TO TURN OFF ALL LABELS */
-        for(var i = 0; i < groupList.children.length; i++)
-        {
-          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
-          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values") 
-          && boxAnnotations[i].title.includes(groupId))
-          {
-            //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
-            if (this.checked)
-            {
-              groupList.children[i].children[2].children[3].children[1].value = 15;
-            }
-            else
-            {
-              groupList.children[i].children[2].children[3].children[1].value = 0;
-            }
-          }
-        }
         
         //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF LABELS */
         for(var i = 0; i < boxAnnotations.length; i++)
@@ -3399,8 +3445,29 @@ function addPreset(title, preset)
         chart2.update();
       }, false);
 
-    
-  
+    //** INPUT - LABEL SIZE */
+    var input_container_labelSize = document.createElement('div');
+    input_container_labelSize.classList = "inputContainer";
+    input_container_labelSize.id = "label_size";
+    band_content.appendChild(input_container_labelSize);
+
+      //** INPUT - LABEL SIZE - TITLE */
+      var input_container_labelSize_title = document.createElement('div');
+      input_container_labelSize_title.innerHTML = "Label size";
+      input_container_labelSize.appendChild(input_container_labelSize_title);
+
+      //** INPUT - LABEL SIZE - INPUT */
+      var input_container_labelSize_input = document.createElement('input');
+      input_container_labelSize_input.id = "b" + (i+1) + title + "color_input";
+      input_container_labelSize_input.type = "number";
+      input_container_labelSize_input.value = preset[0].labelSize;
+      input_container_labelSize.appendChild(input_container_labelSize_input);
+
+      //** ON CHANGE EVENT FOR LABEL SIZE */
+      input_container_labelSize_input.addEventListener('change', function() {
+        loopThroughLayers();
+      }, false);
+
     //** INPUT - sublabelVisibility */
     var input_container_sublabelVisibility = document.createElement('div');
     input_container_sublabelVisibility.classList = "inputContainer";
@@ -3424,24 +3491,24 @@ function addPreset(title, preset)
           parentElement.parentElement.parentElement.children[0].id;
         
         //** LOOP THROUGH TO TURN OFF ALL LABELS */
-        for(var i = 0; i < groupList.children.length; i++)
-        {
-          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
-          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
-          {
-            //console.log(groupList.children[i].children[2].children[5]);
+        // for(var i = 0; i < groupList.children.length; i++)
+        // {
+        //   //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
+        //   if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
+        //   {
+        //     //console.log(groupList.children[i].children[2].children[5]);
             
-            //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
-            if (this.checked)
-            {
-              groupList.children[i].children[2].children[5].children[1].value = 15;
-            }
-            else
-            {
-              groupList.children[i].children[2].children[5].children[1].value = 0;
-            }
-          }
-        }
+        //     //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
+        //     if (this.checked)
+        //     {
+        //       groupList.children[i].children[2].children[5].children[1].value = 15;
+        //     }
+        //     else
+        //     {
+        //       groupList.children[i].children[2].children[5].children[1].value = 0;
+        //     }
+        //   }
+        // }
 
         //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF SUBLABELS */
         for(var i = 0; i < boxAnnotations.length; i++)
@@ -3754,118 +3821,119 @@ function addPreset(title, preset)
           input_container_xMax_input.addEventListener('change', function() {
             loopThroughLayers();
           }, false);
+          
+          //** INPUT - LABEL SIZE */
+          var input_container_labelSize = document.createElement('div');
+          input_container_labelSize.classList = "inputContainer";
+          input_container_labelSize.id = "label_size";
+          band_content.appendChild(input_container_labelSize);
+    
+            //** INPUT - LABEL SIZE - TITLE */
+            var input_container_labelSize_title = document.createElement('div');
+            input_container_labelSize_title.innerHTML = "Label size";
+            input_container_labelSize.appendChild(input_container_labelSize_title);
+    
+            //** INPUT - LABEL SIZE - INPUT */
+            var input_container_labelSize_input = document.createElement('input');
+            input_container_labelSize_input.id = "b" + (i+1) + title + "color_input";
+            input_container_labelSize_input.type = "number";
+            input_container_labelSize_input.value = preset[i].labelSize;
+            input_container_labelSize.appendChild(input_container_labelSize_input);
+    
+            //** ON CHANGE EVENT FOR LABEL SIZE */
+            input_container_labelSize_input.addEventListener('change', function() {
+              loopThroughLayers();
+            }, false);
+            
+            //** INPUT - LABEL CONTENT */
+            var input_container_labelContent = document.createElement('div');
+            input_container_labelContent.classList = "inputContainer";
+            input_container_labelContent.id = "label_content";
+            band_content.appendChild(input_container_labelContent);
+      
+              //** INPUT - LABEL CONTENT - TITLE */
+              var input_container_labelContent_title = document.createElement('div');
+              input_container_labelContent_title.innerHTML = "Label Text";
+              input_container_labelContent.appendChild(input_container_labelContent_title);
+      
+              //** INPUT - LABEL CONTENT - INPUT */
+              var input_container_labelContent_input = document.createElement('input');
+              input_container_labelContent_input.type = "text";
+              input_container_labelContent_input.value = preset[i].labelText;
+              input_container_labelContent.appendChild(input_container_labelContent_input);
+      
+              //** ON CHANGE EVENT FOR LABEL CONTENT */
+              input_container_labelContent_input.addEventListener('change', function() {
+                loopThroughLayers();
+              }, false);
+      
+            //** INPUT - SUBLABEL SIZE */
+            var input_container_subLabelSize = document.createElement('div');
+            input_container_subLabelSize.classList = "inputContainer";
+            input_container_subLabelSize.id = "sublabel_size";
+            band_content.appendChild(input_container_subLabelSize);
+      
+              //** INPUT - SUBLABEL SIZE - TITLE */
+              var input_container_subLabelSize_title = document.createElement('div');
+              input_container_subLabelSize_title.innerHTML = "SubLabel Size";
+              input_container_subLabelSize.appendChild(input_container_subLabelSize_title);
+      
+              //** INPUT - SUBLABEL SIZE - INPUT */
+              var input_container_sublabel_input = document.createElement('input');
+              input_container_sublabel_input.type = "number";
+              input_container_sublabel_input.value = preset[i].sublabelSize;
+              input_container_subLabelSize.appendChild(input_container_sublabel_input);
+      
+              //** ON CHANGE EVENT FOR SUBLABEL SIZE */
+              input_container_sublabel_input.addEventListener('change', function() {
+                loopThroughLayers();
+              }, false);
+              
+              //** INPUT - SUBLABEL OFFSET */
+              var input_container_subLabelOffset = document.createElement('div');
+              input_container_subLabelOffset.classList = "inputContainer";
+              input_container_subLabelOffset.id = "sublabel_offset";
+              band_content.appendChild(input_container_subLabelOffset);
+        
+                //** INPUT - SUBLABEL OFFSET - TITLE */
+                var input_container_subLabelOffset_title = document.createElement('div');
+                input_container_subLabelOffset_title.innerHTML = "SubLabel Offset";
+                input_container_subLabelOffset.appendChild(input_container_subLabelOffset_title);
+        
+                //** INPUT - SUBLABEL OFFSET - INPUT */
+                var input_container_sublabelOffset_input = document.createElement('input');
+                input_container_sublabelOffset_input.type = "number";
+                input_container_sublabelOffset_input.value = 0.1;
+                input_container_subLabelOffset.appendChild(input_container_sublabelOffset_input);
+        
+                //** ON CHANGE EVENT FOR SUBLABEL OFFSET */
+                input_container_sublabelOffset_input.addEventListener('change', function() {
+                  loopThroughLayers();
+                }, false);
+        
+              //** INPUT - SUBLABEL CONTENT */
+              var input_container_subLabelContent = document.createElement('div');
+              input_container_subLabelContent.classList = "inputContainer";
+              input_container_subLabelContent.id = "sublabel_content";
+              band_content.appendChild(input_container_subLabelContent);
+        
+                //** INPUT - SUBLABEL Content - TITLE */
+                var input_container_subLabelContent_title = document.createElement('div');
+                input_container_subLabelContent_title.innerHTML = "SubLabel Text";
+                input_container_subLabelContent.appendChild(input_container_subLabelContent_title);
+        
+                //** INPUT - SUBLABEL Content - INPUT */
+                var input_container_sublabelContent_input = document.createElement('input');
+                input_container_sublabelContent_input.type = "text";
+                input_container_sublabelContent_input.value = preset[i].subLabelText;
+                input_container_subLabelContent.appendChild(input_container_sublabelContent_input);
+        
+                //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
+                input_container_sublabelContent_input.addEventListener('change', function() {
+                  loopThroughLayers();
+                }, false);
       }
 
-      //** INPUT - LABEL SIZE */
-      var input_container_labelSize = document.createElement('div');
-      input_container_labelSize.classList = "inputContainer";
-      input_container_labelSize.id = "label_size";
-      band_content.appendChild(input_container_labelSize);
-
-        //** INPUT - LABEL SIZE - TITLE */
-        var input_container_labelSize_title = document.createElement('div');
-        input_container_labelSize_title.innerHTML = "Label size";
-        input_container_labelSize.appendChild(input_container_labelSize_title);
-
-        //** INPUT - LABEL SIZE - INPUT */
-        var input_container_labelSize_input = document.createElement('input');
-        input_container_labelSize_input.id = "b" + (i+1) + title + "color_input";
-        input_container_labelSize_input.type = "number";
-        input_container_labelSize_input.value = preset[i].labelSize;
-        input_container_labelSize.appendChild(input_container_labelSize_input);
-
-        //** ON CHANGE EVENT FOR LABEL SIZE */
-        input_container_labelSize_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - LABEL CONTENT */
-      var input_container_labelContent = document.createElement('div');
-      input_container_labelContent.classList = "inputContainer";
-      input_container_labelContent.id = "label_content";
-      band_content.appendChild(input_container_labelContent);
-
-        //** INPUT - LABEL CONTENT - TITLE */
-        var input_container_labelContent_title = document.createElement('div');
-        input_container_labelContent_title.innerHTML = "Label Text";
-        input_container_labelContent.appendChild(input_container_labelContent_title);
-
-        //** INPUT - LABEL CONTENT - INPUT */
-        var input_container_labelContent_input = document.createElement('input');
-        input_container_labelContent_input.type = "text";
-        input_container_labelContent_input.value = preset[i].labelText;
-        input_container_labelContent.appendChild(input_container_labelContent_input);
-
-        //** ON CHANGE EVENT FOR LABEL CONTENT */
-        input_container_labelContent_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - SUBLABEL SIZE */
-      var input_container_subLabelSize = document.createElement('div');
-      input_container_subLabelSize.classList = "inputContainer";
-      input_container_subLabelSize.id = "sublabel_size";
-      band_content.appendChild(input_container_subLabelSize);
-
-        //** INPUT - SUBLABEL SIZE - TITLE */
-        var input_container_subLabelSize_title = document.createElement('div');
-        input_container_subLabelSize_title.innerHTML = "SubLabel Size";
-        input_container_subLabelSize.appendChild(input_container_subLabelSize_title);
-
-        //** INPUT - SUBLABEL SIZE - INPUT */
-        var input_container_sublabel_input = document.createElement('input');
-        input_container_sublabel_input.type = "number";
-        input_container_sublabel_input.value = preset[i].sublabelSize;
-        input_container_subLabelSize.appendChild(input_container_sublabel_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL SIZE */
-        input_container_sublabel_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - SUBLABEL OFFSET */
-      var input_container_subLabelOffset = document.createElement('div');
-      input_container_subLabelOffset.classList = "inputContainer";
-      input_container_subLabelOffset.id = "sublabel_offset";
-      band_content.appendChild(input_container_subLabelOffset);
-
-        //** INPUT - SUBLABEL OFFSET - TITLE */
-        var input_container_subLabelOffset_title = document.createElement('div');
-        input_container_subLabelOffset_title.innerHTML = "SubLabel Offset";
-        input_container_subLabelOffset.appendChild(input_container_subLabelOffset_title);
-
-        //** INPUT - SUBLABEL OFFSET - INPUT */
-        var input_container_sublabelOffset_input = document.createElement('input');
-        input_container_sublabelOffset_input.type = "number";
-        input_container_sublabelOffset_input.value = 0.1;
-        input_container_subLabelOffset.appendChild(input_container_sublabelOffset_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL OFFSET */
-        input_container_sublabelOffset_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - SUBLABEL CONTENT */
-      var input_container_subLabelContent = document.createElement('div');
-      input_container_subLabelContent.classList = "inputContainer";
-      input_container_subLabelContent.id = "sublabel_content";
-      band_content.appendChild(input_container_subLabelContent);
-
-        //** INPUT - SUBLABEL Content - TITLE */
-        var input_container_subLabelContent_title = document.createElement('div');
-        input_container_subLabelContent_title.innerHTML = "SubLabel Text";
-        input_container_subLabelContent.appendChild(input_container_subLabelContent_title);
-
-        //** INPUT - SUBLABEL Content - INPUT */
-        var input_container_sublabelContent_input = document.createElement('input');
-        input_container_sublabelContent_input.type = "text";
-        input_container_sublabelContent_input.value = preset[i].subLabelText;
-        input_container_subLabelContent.appendChild(input_container_sublabelContent_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
-        input_container_sublabelContent_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
 
       //** INPUT - GRAPH NUMB */
       var input_container_graphNumb = document.createElement('div');
@@ -4627,64 +4695,64 @@ sidebarButton.addEventListener("click", function () {
 //** PRESET TOGGLES */
 L1_3_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 1-3", Landsat1_3_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 L4_5_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 4-5", Landsat4_5_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 L7_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 7", Landsat7_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 L8_9_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 8-9", Landsat8_9_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 LNext_Dropdown.addEventListener("click", function () {
   addPreset("Landsat Next", LandsatNext_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 Sentinel2_Dropdown.addEventListener("click", function () {
   addPreset("Sentinel 2", Sentinel2_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 Sentinel3_Dropdown.addEventListener("click", function () {
   addPreset("Sentinel 3", Sentinel3_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 EO1_Dropdown.addEventListener("click", function () {
   addPreset("EO1", EO1_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 DESIS_Dropdown.addEventListener("click", function () {
   addPreset("DESIS", DESIS_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 ECOSTRESS_Dropdown.addEventListener("click", function () {
   addPreset("ECOSTRESS", ECOSTRESS_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 EMIT_Dropdown.addEventListener("click", function () {
   addPreset("EMIT", EMIT_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 MODIS_Dropdown.addEventListener("click", function () {
   addPreset("MODIS", MODIS_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 PACE_Dropdown.addEventListener("click", function () {
   addPreset("PACE", PACE_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 STELLA_Dropdown.addEventListener("click", function () {
   addPreset("STELLA", STELLA_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 
 CUSTOM_Dropdown.addEventListener("click", function () {
   addPreset("Custom", CUSTOM_values);
-  loopThroughLayers();
+  //loopThroughLayers();
 });
 
 //** TOGGLE GLOBALY STYLE */
