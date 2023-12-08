@@ -18,7 +18,7 @@ var labels = [];
 var arrayEndCut_chart1 = 1150;
 var transmissionDataResolution = 1;
 var minChartTwo = 7000;
-var boxSeperation = 0.05;
+var boxSeperation = 0.0;
 var boxHeight = 0.03;
 var groupSeperation = 0.15;
 
@@ -711,7 +711,7 @@ var Landsat1_3_values = [
     color: '#4c9d5f',
     xMin: 500, 
     xMax: 600,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -725,7 +725,7 @@ var Landsat1_3_values = [
     color: '#c22036',
     xMin: 600, 
     xMax: 700,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -738,7 +738,7 @@ var Landsat1_3_values = [
     color: '#7d2652',
     xMin: 700, 
     xMax: 800,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -751,7 +751,7 @@ var Landsat1_3_values = [
     color: '#c5a2bd',
     xMin: 800, 
     xMax: 1100,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -779,7 +779,7 @@ var Landsat4_5_values = [
     color: '#00658d',
     xMin: 450, 
     xMax: 520,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -793,7 +793,7 @@ var Landsat4_5_values = [
     color: '#4c9d5f',
     xMin: 520, 
     xMax: 600,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -806,7 +806,7 @@ var Landsat4_5_values = [
     color: '#c22036',
     xMin: 630, 
     xMax: 690,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -819,7 +819,7 @@ var Landsat4_5_values = [
     color: '#c5a2bd',
     xMin: 760, 
     xMax: 900,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -832,7 +832,7 @@ var Landsat4_5_values = [
     color: '#d39979',
     xMin: 1550, 
     xMax: 1750,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -845,7 +845,7 @@ var Landsat4_5_values = [
     color: '#bc7a82',
     xMin: 10400, 
     xMax: 12500,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -858,7 +858,7 @@ var Landsat4_5_values = [
     color: '#999c96',
     xMin: 2080, 
     xMax: 2350,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -886,7 +886,7 @@ var Landsat7_values = [
     color: '#00658d',
     xMin: 450, 
     xMax: 520,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -899,7 +899,7 @@ var Landsat7_values = [
     color: '#4c9d5f',
     xMin: 520, 
     xMax: 600,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -912,7 +912,7 @@ var Landsat7_values = [
     color: '#c22036',
     xMin: 630, 
     xMax: 690,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -925,7 +925,7 @@ var Landsat7_values = [
     color: '#c5a2bd',
     xMin: 770, 
     xMax: 900,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -938,7 +938,7 @@ var Landsat7_values = [
     color: '#d39979',
     xMin: 1550, 
     xMax: 1750,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -951,7 +951,7 @@ var Landsat7_values = [
     color: '#bc7a82',
     xMin: 10400, 
     xMax: 12500,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -964,7 +964,7 @@ var Landsat7_values = [
     color: '#999c96',
     xMin: 2090, 
     xMax: 2350,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -977,7 +977,7 @@ var Landsat7_values = [
     color: '#999c96',
     xMin: 520, 
     xMax: 900,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 15, 
@@ -1008,7 +1008,7 @@ var Landsat8_9_values = [
     color: '#679cbf',
     xMin: 430, 
     xMax: 450,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -1023,7 +1023,7 @@ var Landsat8_9_values = [
     color: '#00658d',
     xMin: 450, 
     xMax: 510,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -1037,7 +1037,7 @@ var Landsat8_9_values = [
     color: '#4c9d5f',
     xMin: 530, 
     xMax: 590,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -1051,7 +1051,7 @@ var Landsat8_9_values = [
     color: '#c22036',
     xMin: 640, 
     xMax: 670,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -1065,7 +1065,7 @@ var Landsat8_9_values = [
     color: '#c5a2bd',
     xMin: 850, 
     xMax: 880,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -1079,7 +1079,7 @@ var Landsat8_9_values = [
     color: '#d39979',
     xMin: 1570, 
     xMax: 1650,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -1093,7 +1093,7 @@ var Landsat8_9_values = [
     color: '#999c96',
     xMin: 2110, 
     xMax: 2290,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -1107,7 +1107,7 @@ var Landsat8_9_values = [
     color: '#008fa2',
     xMin: 500, 
     xMax: 680,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 15, 
@@ -1121,7 +1121,7 @@ var Landsat8_9_values = [
     color: '#7480a1',
     xMin: 1360, 
     xMax: 1380,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 15, 
@@ -1135,7 +1135,7 @@ var Landsat8_9_values = [
     color: '#bc7a82',
     xMin: 10600, 
     xMax: 11190,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 15, 
@@ -1149,7 +1149,7 @@ var Landsat8_9_values = [
     color: '#bc7a82',
     xMin: 11500, 
     xMax: 12510,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
     sublabelSize: 15, 
@@ -1177,7 +1177,7 @@ var LandsatNext_values = [
     color: '#7fb0c6',
     xMin: 402, 
     xMax: 422,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -1191,7 +1191,7 @@ var LandsatNext_values = [
     color: '#7fb0c6',
     xMin: 433, 
     xMax: 453,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -1204,7 +1204,7 @@ var LandsatNext_values = [
     color: '#1a7d9e',
     xMin: 457.5, 
     xMax: 522.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -1217,7 +1217,7 @@ var LandsatNext_values = [
     color: '#74a97c',
     xMin: 542.5, 
     xMax: 577.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -1230,7 +1230,7 @@ var LandsatNext_values = [
     color: '#cac53f',
     xMin: 585, 
     xMax: 615,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -1243,7 +1243,7 @@ var LandsatNext_values = [
     color: '#caa553',
     xMin: 610, 
     xMax: 630,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -1256,7 +1256,7 @@ var LandsatNext_values = [
     color: '#b63d4c',
     xMin: 640, 
     xMax: 660,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -1269,7 +1269,7 @@ var LandsatNext_values = [
     color: '#b63d4c',
     xMin: 650, 
     xMax: 680,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 15, 
@@ -1282,7 +1282,7 @@ var LandsatNext_values = [
     color: '#690022',
     xMin: 697.5, 
     xMax: 712.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 15, 
@@ -1295,7 +1295,7 @@ var LandsatNext_values = [
     color: '#690022',
     xMin: 732.5, 
     xMax: 747.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 15, 
@@ -1308,7 +1308,7 @@ var LandsatNext_values = [
     color: '#b5b0c4',
     xMin: 784.5, 
     xMax: 899.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
     sublabelSize: 15, 
@@ -1321,7 +1321,7 @@ var LandsatNext_values = [
     color: '#b5b0c4',
     xMin: 855, 
     xMax: 875,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
     sublabelSize: 15, 
@@ -1334,7 +1334,7 @@ var LandsatNext_values = [
     color: '#7939a0',
     xMin: 935, 
     xMax: 955,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "13",
     sublabelSize: 15, 
@@ -1347,7 +1347,7 @@ var LandsatNext_values = [
     color: '#b5b0c4',
     xMin: 975, 
     xMax: 995,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "14",
     sublabelSize: 15, 
@@ -1360,7 +1360,7 @@ var LandsatNext_values = [
     color: '#b5b0c4',
     xMin: 1025, 
     xMax: 1045,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "15",
     sublabelSize: 15, 
@@ -1373,7 +1373,7 @@ var LandsatNext_values = [
     color: '#b5b0c4',
     xMin: 1080, 
     xMax: 1100,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "16",
     sublabelSize: 15, 
@@ -1386,7 +1386,7 @@ var LandsatNext_values = [
     color: '#8d96ab',
     xMin: 1360, 
     xMax: 1390,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "17",
     sublabelSize: 15, 
@@ -1399,7 +1399,7 @@ var LandsatNext_values = [
     color: '#c2aa94',
     xMin: 1565, 
     xMax: 1655,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "18",
     sublabelSize: 15, 
@@ -1412,7 +1412,7 @@ var LandsatNext_values = [
     color: '#c88647',
     xMin: 2025.5, 
     xMax: 2050.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "19",
     sublabelSize: 15, 
@@ -1425,7 +1425,7 @@ var LandsatNext_values = [
     color: '#c88647',
     xMin: 2088, 
     xMax: 2128,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "20",
     sublabelSize: 15, 
@@ -1438,7 +1438,7 @@ var LandsatNext_values = [
     color: '#c88647',
     xMin: 2191, 
     xMax: 2231,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "21",
     sublabelSize: 15, 
@@ -1451,7 +1451,7 @@ var LandsatNext_values = [
     color: '#b79498',
     xMin: 8050, 
     xMax: 8425,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "22",
     sublabelSize: 15, 
@@ -1464,7 +1464,7 @@ var LandsatNext_values = [
     color: '#b79498',
     xMin: 8425, 
     xMax: 8775,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "23",
     sublabelSize: 15, 
@@ -1477,7 +1477,7 @@ var LandsatNext_values = [
     color: '#b79498',
     xMin: 8925, 
     xMax: 9275,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "24",
     sublabelSize: 15, 
@@ -1490,7 +1490,7 @@ var LandsatNext_values = [
     color: '#b67f81',
     xMin: 11025, 
     xMax: 11575,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "25",
     sublabelSize: 15, 
@@ -1503,7 +1503,7 @@ var LandsatNext_values = [
     color: '#b67f81',
     xMin: 11775, 
     xMax: 12225,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "26",
     sublabelSize: 15, 
@@ -1519,7 +1519,7 @@ var Sentinel2_values = [
     color: '#679cbf',
     xMin: 433, 
     xMax: 453,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -1533,7 +1533,7 @@ var Sentinel2_values = [
     color: '#00658d',
     xMin: 457.5, 
     xMax: 522.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -1547,7 +1547,7 @@ var Sentinel2_values = [
     color: '#4c9d5f',
     xMin: 542, 
     xMax: 577.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -1561,7 +1561,7 @@ var Sentinel2_values = [
     color: '#c22036',
     xMin: 649.5, 
     xMax: 680.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -1575,7 +1575,7 @@ var Sentinel2_values = [
     color: '#c5a2bd',
     xMin: 697.5, 
     xMax: 712.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -1589,7 +1589,7 @@ var Sentinel2_values = [
     color: '#d39979',
     xMin: 732.5, 
     xMax: 747.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -1603,7 +1603,7 @@ var Sentinel2_values = [
     color: '#999c96',
     xMin: 773, 
     xMax: 793,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -1617,7 +1617,7 @@ var Sentinel2_values = [
     color: '#008fa2',
     xMin: 784.5, 
     xMax: 899.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 15, 
@@ -1631,7 +1631,7 @@ var Sentinel2_values = [
     color: '#7480a1',
     xMin: 855, 
     xMax: 875,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8a",
     sublabelSize: 15, 
@@ -1645,7 +1645,7 @@ var Sentinel2_values = [
     color: '#d39979',
     xMin: 935, 
     xMax: 945,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 15, 
@@ -1659,7 +1659,7 @@ var Sentinel2_values = [
     color: '#bc7a82',
     xMin: 1365, 
     xMax: 1395,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 15, 
@@ -1673,7 +1673,7 @@ var Sentinel2_values = [
     color: '#bc7a82',
     xMin: 1565, 
     xMax: 1655,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
     sublabelSize: 15, 
@@ -1687,7 +1687,7 @@ var Sentinel2_values = [
     color: '#bc7a82',
     xMin: 2100, 
     xMax: 2280,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
     sublabelSize: 15, 
@@ -1703,7 +1703,7 @@ var Sentinel3_values = [
     color: '#679cbf',
     xMin: 395, 
     xMax: 405,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 0, 
@@ -1717,7 +1717,7 @@ var Sentinel3_values = [
     color: '#00658d',
     xMin: 407, 
     xMax: 417,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 0, 
@@ -1731,7 +1731,7 @@ var Sentinel3_values = [
     color: '#4c9d5f',
     xMin: 438, 
     xMax: 448,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 0, 
@@ -1745,7 +1745,7 @@ var Sentinel3_values = [
     color: '#c22036',
     xMin: 485, 
     xMax: 495,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 0, 
@@ -1759,7 +1759,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 505, 
     xMax: 515,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 0, 
@@ -1773,7 +1773,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 555, 
     xMax: 565,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 0, 
@@ -1787,7 +1787,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 615, 
     xMax: 625,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 0, 
@@ -1801,7 +1801,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 660, 
     xMax: 670,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 0, 
@@ -1815,7 +1815,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 670, 
     xMax: 677,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 0, 
@@ -1829,7 +1829,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 677, 
     xMax: 685,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 0, 
@@ -1843,7 +1843,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 703, 
     xMax: 713,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
     sublabelSize: 0, 
@@ -1857,7 +1857,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 750, 
     xMax: 757,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
     sublabelSize: 0, 
@@ -1871,7 +1871,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 760, 
     xMax: 762,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "13",
     sublabelSize: 0, 
@@ -1885,7 +1885,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 762, 
     xMax: 766,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "14",
     sublabelSize: 0, 
@@ -1899,7 +1899,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 766, 
     xMax: 769,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "15",
     sublabelSize: 0, 
@@ -1913,7 +1913,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 771, 
     xMax: 786,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "16",
     sublabelSize: 0, 
@@ -1927,7 +1927,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 855, 
     xMax: 875,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "17",
     sublabelSize: 0, 
@@ -1941,7 +1941,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 880, 
     xMax: 890,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "18",
     sublabelSize: 0, 
@@ -1955,7 +1955,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 895, 
     xMax: 905,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "19",
     sublabelSize: 0, 
@@ -1969,7 +1969,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 930, 
     xMax: 950,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "20",
     sublabelSize: 0, 
@@ -1983,7 +1983,7 @@ var Sentinel3_values = [
     color: '#c5a2bd',
     xMin: 1000, 
     xMax: 1040,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "21",
     sublabelSize: 0, 
@@ -1999,7 +1999,7 @@ var EO1_values = [
     color: '#679cbf',
     xMin: 433, 
     xMax: 453,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -2013,7 +2013,7 @@ var EO1_values = [
     color: '#1a7d9e',
     xMin: 450, 
     xMax: 515,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -2027,7 +2027,7 @@ var EO1_values = [
     color: '#74a97c',
     xMin: 525, 
     xMax: 605,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -2041,7 +2041,7 @@ var EO1_values = [
     color: '#b63d4c',
     xMin: 630, 
     xMax: 690,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -2055,7 +2055,7 @@ var EO1_values = [
     color: '#690022',
     xMin: 775, 
     xMax: 805,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -2069,7 +2069,7 @@ var EO1_values = [
     color: '#b5b0c4',
     xMin: 845, 
     xMax: 890,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -2083,7 +2083,7 @@ var EO1_values = [
     color: '#8d96ab',
     xMin: 1200, 
     xMax: 1300,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -2097,7 +2097,7 @@ var EO1_values = [
     color: '#d39979',
     xMin: 1550, 
     xMax: 1750,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 15, 
@@ -2111,7 +2111,7 @@ var EO1_values = [
     color: '#c88647',
     xMin: 2080, 
     xMax: 2350,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 15, 
@@ -2125,7 +2125,7 @@ var EO1_values = [
     color: '#679cbf',
     xMin: 480, 
     xMax: 690,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 15, 
@@ -2140,7 +2140,7 @@ var DESIS_values = [
     color: '#679cbf',
     xMin: 402, 
     xMax: 1000,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "",
     sublabelSize: 15, 
@@ -2155,7 +2155,7 @@ var ECOSTRESS_values = [
     color: '#92d050',
     xMin: 1475, 
     xMax: 1845,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -2168,7 +2168,7 @@ var ECOSTRESS_values = [
     color: '#92d050',
     xMin: 8113, 
     xMax: 8467,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -2181,7 +2181,7 @@ var ECOSTRESS_values = [
     color: '#92d050',
     xMin: 8625, 
     xMax: 8935,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -2194,7 +2194,7 @@ var ECOSTRESS_values = [
     color: '#92d050',
     xMin: 9002, 
     xMax: 9398,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -2207,7 +2207,7 @@ var ECOSTRESS_values = [
     color: '#92d050',
     xMin: 10285, 
     xMax: 10695,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -2220,7 +2220,7 @@ var ECOSTRESS_values = [
     color: '#92d050',
     xMin: 11784.5, 
     xMax: 12395.5,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -2235,7 +2235,7 @@ var EMIT_values = [
     color: '#e2b280',
     xMin: 381, 
     xMax: 2493,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "",
     sublabelSize: 15, 
@@ -2251,7 +2251,7 @@ var MODIS_values = [
     color: '#caa553',
     xMin: 620, 
     xMax: 670,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 0, 
@@ -2265,7 +2265,7 @@ var MODIS_values = [
     color: '#b5b0c4',
     xMin: 841, 
     xMax: 876,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 0, 
@@ -2279,7 +2279,7 @@ var MODIS_values = [
     color: '#1a7d9e',
     xMin: 459, 
     xMax: 479,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 0, 
@@ -2293,7 +2293,7 @@ var MODIS_values = [
     color: '#1a7d9e',
     xMin: 545, 
     xMax: 565,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 0, 
@@ -2307,7 +2307,7 @@ var MODIS_values = [
     color: '#1a7d9e',
     xMin: 1230, 
     xMax: 1250,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 0, 
@@ -2321,7 +2321,7 @@ var MODIS_values = [
     color: '#c2aa94',
     xMin: 1628, 
     xMax: 1652,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 0, 
@@ -2335,7 +2335,7 @@ var MODIS_values = [
     color: '#c88647',
     xMin: 2105, 
     xMax: 2155,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 0, 
@@ -2349,7 +2349,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 405, 
     xMax: 420,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 0, 
@@ -2363,7 +2363,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 438, 
     xMax: 448,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 0, 
@@ -2377,7 +2377,7 @@ var MODIS_values = [
     color: '#1a7d9e',
     xMin: 483, 
     xMax: 493,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 0, 
@@ -2391,7 +2391,7 @@ var MODIS_values = [
     color: '#1a7d9e',
     xMin: 483, 
     xMax: 493,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
     sublabelSize: 0, 
@@ -2405,7 +2405,7 @@ var MODIS_values = [
     color: '#1a7d9e',
     xMin: 546, 
     xMax: 556,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
     sublabelSize: 0, 
@@ -2419,7 +2419,7 @@ var MODIS_values = [
     color: '#b63d4c',
     xMin: 662, 
     xMax: 672,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "13",
     sublabelSize: 0, 
@@ -2433,7 +2433,7 @@ var MODIS_values = [
     color: '#b63d4c',
     xMin: 673, 
     xMax: 683,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "14",
     sublabelSize: 0, 
@@ -2447,7 +2447,7 @@ var MODIS_values = [
     color: '#b63d4c',
     xMin: 743, 
     xMax: 753,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "15",
     sublabelSize: 0, 
@@ -2461,7 +2461,7 @@ var MODIS_values = [
     color: '#b5b0c4',
     xMin: 862, 
     xMax: 877,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "16",
     sublabelSize: 0, 
@@ -2475,7 +2475,7 @@ var MODIS_values = [
     color: '#b5b0c4',
     xMin: 890, 
     xMax: 920,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "17",
     sublabelSize: 0, 
@@ -2489,7 +2489,7 @@ var MODIS_values = [
     color: '#b5b0c4',
     xMin: 931, 
     xMax: 941,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "18",
     sublabelSize: 0, 
@@ -2503,7 +2503,7 @@ var MODIS_values = [
     color: '#7939a0',
     xMin: 915, 
     xMax: 965,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "19",
     sublabelSize: 0, 
@@ -2517,7 +2517,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 3660, 
     xMax: 3840,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "20",
     sublabelSize: 0, 
@@ -2531,7 +2531,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 3929, 
     xMax: 3989,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "21",
     sublabelSize: 0, 
@@ -2545,7 +2545,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 3929, 
     xMax: 3989,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "21",
     sublabelSize: 0, 
@@ -2559,7 +2559,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 4020, 
     xMax: 4080,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "23",
     sublabelSize: 0, 
@@ -2573,7 +2573,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 4433, 
     xMax: 4498,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "24",
     sublabelSize: 0, 
@@ -2587,7 +2587,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 4482, 
     xMax: 4549,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "25",
     sublabelSize: 0, 
@@ -2601,7 +2601,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 1360, 
     xMax: 1390,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "26",
     sublabelSize: 0, 
@@ -2615,7 +2615,7 @@ var MODIS_values = [
     color: '#7fb0c6',
     xMin: 6535, 
     xMax: 6895,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "27",
     sublabelSize: 0, 
@@ -2629,7 +2629,7 @@ var MODIS_values = [
     color: '#b79498',
     xMin: 7175, 
     xMax: 7475,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "28",
     sublabelSize: 0, 
@@ -2643,7 +2643,7 @@ var MODIS_values = [
     color: '#b79498',
     xMin: 8400, 
     xMax: 8700,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "29",
     sublabelSize: 0, 
@@ -2657,7 +2657,7 @@ var MODIS_values = [
     color: '#b79498',
     xMin: 9580, 
     xMax: 9880,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "30",
     sublabelSize: 0, 
@@ -2671,7 +2671,7 @@ var MODIS_values = [
     color: '#b67f81',
     xMin: 10780, 
     xMax: 11280,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "31",
     sublabelSize: 0, 
@@ -2685,7 +2685,7 @@ var MODIS_values = [
     color: '#b67f81',
     xMin: 11770, 
     xMax: 12270,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "32",
     sublabelSize: 0, 
@@ -2699,7 +2699,7 @@ var MODIS_values = [
     color: '#b67f81',
     xMin: 13185, 
     xMax: 13485,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "33",
     sublabelSize: 0, 
@@ -2713,7 +2713,7 @@ var MODIS_values = [
     color: '#b67f81',
     xMin: 13485, 
     xMax: 13785,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "34",
     sublabelSize: 0, 
@@ -2727,7 +2727,7 @@ var MODIS_values = [
     color: '#b67f81',
     xMin: 13785, 
     xMax: 14085,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "35",
     sublabelSize: 0, 
@@ -2741,7 +2741,7 @@ var MODIS_values = [
     color: '#b67f81',
     xMin: 14085, 
     xMax: 14385,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "36",
     sublabelSize: 0, 
@@ -2756,7 +2756,7 @@ var PACE_values = [
     color: '#c22036',
     xMin: 340, 
     xMax: 890,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -2769,7 +2769,7 @@ var PACE_values = [
     color: '#c5a2bd',
     xMin: 900, 
     xMax: 980,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -2782,7 +2782,7 @@ var PACE_values = [
     color: '#c5a2bd',
     xMin: 938, 
     xMax: 1138,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -2795,7 +2795,7 @@ var PACE_values = [
     color: '#7480a1',
     xMin: 1278, 
     xMax: 1478,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -2808,7 +2808,7 @@ var PACE_values = [
     color: '#d39979',
     xMin: 1515, 
     xMax: 1715,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -2821,7 +2821,7 @@ var PACE_values = [
     color: '#999c96',
     xMin: 2030, 
     xMax: 2230,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -2834,7 +2834,7 @@ var PACE_values = [
     color: '#999c96',
     xMin: 2160, 
     xMax: 2360,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -2862,7 +2862,7 @@ var STELLA_values = [
     color: '#B930D5',
     xMin: 410, 
     xMax: 490,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -2875,7 +2875,7 @@ var STELLA_values = [
     color: '#00658d',
     xMin: 460, 
     xMax: 540,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
     sublabelSize: 15, 
@@ -2888,7 +2888,7 @@ var STELLA_values = [
     color: '#4C9D5F',
     xMin: 510, 
     xMax: 590,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
     sublabelSize: 15, 
@@ -2901,7 +2901,7 @@ var STELLA_values = [
     color: '#caa553',
     xMin: 530, 
     xMax: 610,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
     sublabelSize: 15, 
@@ -2914,7 +2914,7 @@ var STELLA_values = [
     color: '#d9964e',
     xMin: 560, 
     xMax: 640,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
     sublabelSize: 15, 
@@ -2927,7 +2927,7 @@ var STELLA_values = [
     color: '#c44354',
     xMin: 590, 
     xMax: 630,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
     sublabelSize: 15, 
@@ -2940,7 +2940,7 @@ var STELLA_values = [
     color: '#c22036',
     xMin: 610, 
     xMax: 690,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
     sublabelSize: 15, 
@@ -2953,7 +2953,7 @@ var STELLA_values = [
     color: '#b5b3b3',
     xMin: 660, 
     xMax: 700,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
     sublabelSize: 15, 
@@ -2966,7 +2966,7 @@ var STELLA_values = [
     color: '#b5b3b3',
     xMin: 710, 
     xMax: 750,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
     sublabelSize: 15, 
@@ -2979,7 +2979,7 @@ var STELLA_values = [
     color: '#b5b3b3',
     xMin: 740, 
     xMax: 780,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
     sublabelSize: 15, 
@@ -2992,7 +2992,7 @@ var STELLA_values = [
     color: '#b5b3b3',
     xMin: 790, 
     xMax: 830,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
     sublabelSize: 15, 
@@ -3005,7 +3005,7 @@ var STELLA_values = [
     color: '#b5b3b3',
     xMin: 840, 
     xMax: 880,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
     sublabelSize: 15, 
@@ -3018,7 +3018,7 @@ var STELLA_values = [
     color: '#b5b3b3',
     xMin: 5500, 
     xMax: 14000,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "13",
     sublabelSize: 13, 
@@ -3033,7 +3033,7 @@ var CUSTOM_values = [
     color: '#d6d6d6',
     xMin: 500, 
     xMax: 700,
-    yHeight: 0.05,
+    yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
     sublabelSize: 15, 
@@ -3075,6 +3075,8 @@ function addPreset(title, preset)
     
     var yStart = offsetY + 0.1 + parseFloat(preset[i].yOffset);
     var yEnd = yStart + preset[i].yHeight;
+
+    var title_var = "b" + (i+1) + title;
     
     addBox(
       preset[i].xMin, preset[i].xMax, 
@@ -3085,7 +3087,7 @@ function addPreset(title, preset)
       preset[i].subLabelText, 
       preset[i].sublabelSize, 
       preset[i].graphNumb, 
-      title);
+      title_var);
 
     console.log(preset[i]);
 
@@ -3101,10 +3103,12 @@ function addPreset(title, preset)
   var nav = document.createElement("nav");
   nav.classList = "nav";
   nav.role = "navigation";
+  nav.setAttribute("name", title);
   
   //** OUTSIDE UL */
   var ul = document.createElement("ul");
   ul.classList = "nav__list";
+  ul.setAttribute("name", title);
   nav.appendChild(ul);
 
   //** LIST CONTAINER */
@@ -3273,7 +3277,6 @@ function addPreset(title, preset)
     //** INPUT - boxHeight */
     var input_container_boxHeight = document.createElement('div');
     input_container_boxHeight.classList = "inputContainer";
-    input_container_boxHeight.id = "boxHeight";
     band_content.appendChild(input_container_boxHeight);
     input_container_boxHeight.id = title;
 
@@ -3285,9 +3288,9 @@ function addPreset(title, preset)
       //** INPUT - boxHeight - INPUT */
       var input_container_boxHeight_input = document.createElement('input');
       input_container_boxHeight_input.type = "number";
-      input_container_boxHeight_input.value = 0.03;
+      input_container_boxHeight_input.value = boxHeight;
       input_container_boxHeight_input.step = 0.01;
-      input_container_boxHeight_input.min = 0.00;
+      input_container_boxHeight_input.min = 0.001;
       input_container_boxHeight.appendChild(input_container_boxHeight_input);
 
       //** ON CHANGE EVENT FOR boxHeight */
@@ -3295,6 +3298,8 @@ function addPreset(title, preset)
         //** LOOP THROUGH TO TURN OFF ALL LABELS */
         
         var groupId = this.parentElement.id;
+        console.log(this.parentElement);
+
         for(var i = 0; i < boxAnnotations.length; i++)
         {
           if(boxAnnotations[i].title.includes(groupId))
@@ -3340,12 +3345,12 @@ function addPreset(title, preset)
               if(boxAnnotations2[i].title.includes("_Title"))
               { 
                 yValue = parseFloat(boxAnnotations2[i-2].yMax) + 0.01;
-                //yValue = parseFloat(boxAnnotations2[i-2].yMax) - 0.015;
                 boxAnnotations2[i].yMin = yValue;
                 boxAnnotations2[i].yMax = yValue;
               }
               else
               {
+                console.log(boxAnnotations2);
                 yValue = parseFloat(boxAnnotations2[i-2].yMin) + parseFloat(this.value) + 0.01;
                 boxAnnotations2[i].yMin = yValue;
                 boxAnnotations2[i].yMax = yValue;
@@ -3361,7 +3366,6 @@ function addPreset(title, preset)
             {
               boxAnnotations2[i].yMax = parseFloat(boxAnnotations2[i].yMin) + parseFloat(this.value);
             }
-            
           }
         }
 
@@ -3407,11 +3411,11 @@ function addPreset(title, preset)
               
               if (this.checked)
               {
-                boxAnnotations[i].font.size = 15;
+                boxAnnotations[i].display = true;
               }
               else
               {
-                boxAnnotations[i].font.size = 0;
+                boxAnnotations[i].display = false;
               }
             }
           }
@@ -3448,7 +3452,7 @@ function addPreset(title, preset)
     //** INPUT - LABEL SIZE */
     var input_container_labelSize = document.createElement('div');
     input_container_labelSize.classList = "inputContainer";
-    input_container_labelSize.id = "label_size";
+    input_container_labelSize.id = title;
     band_content.appendChild(input_container_labelSize);
 
       //** INPUT - LABEL SIZE - TITLE */
@@ -3465,7 +3469,33 @@ function addPreset(title, preset)
 
       //** ON CHANGE EVENT FOR LABEL SIZE */
       input_container_labelSize_input.addEventListener('change', function() {
-        loopThroughLayers();
+        var groupId = this.parentElement.id;
+        console.log(input_container_labelSize_input);
+
+        //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId))
+          {
+            if(!boxAnnotations[i].title.includes("box") && !boxAnnotations[i].title.includes("sublabel"))
+            {
+              boxAnnotations[i].font.size = this.value;
+            }
+          }
+        }
+        //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId))
+          {
+            if(!boxAnnotations2[i].title.includes("box") && !boxAnnotations2[i].title.includes("sublabel"))
+            {
+              boxAnnotations2[i].font.size = this.value;
+            }
+          }
+        }
+        chart.update();
+        chart2.update();
       }, false);
 
     //** INPUT - sublabelVisibility */
@@ -3521,11 +3551,11 @@ function addPreset(title, preset)
             { 
               if (this.checked)
               {
-                boxAnnotations[i].font.size = 15;
+                boxAnnotations[i].display = true;
               }
               else
               {
-                boxAnnotations[i].font.size = 0;
+                boxAnnotations[i].display = false;
               }
             }
           }
@@ -3560,6 +3590,57 @@ function addPreset(title, preset)
         chart.update();
         chart2.update();
         //loopThroughLayers();
+      }, false);
+
+    //** INPUT - SUBLABEL SIZE */
+    var input_container_subLabelSize = document.createElement('div');
+    input_container_subLabelSize.classList = "inputContainer";
+    input_container_subLabelSize.id = title;
+    band_content.appendChild(input_container_subLabelSize);
+
+      //** INPUT - SUBLABEL SIZE - TITLE */
+      var input_container_subLabelSize_title = document.createElement('div');
+      input_container_subLabelSize_title.innerHTML = "SubLabel Size";
+      input_container_subLabelSize.appendChild(input_container_subLabelSize_title);
+
+      //** INPUT - SUBLABEL SIZE - INPUT */
+      var input_container_sublabel_input = document.createElement('input');
+      input_container_sublabel_input.type = "number";
+      input_container_sublabel_input.value = preset[0].sublabelSize;
+      input_container_subLabelSize.appendChild(input_container_sublabel_input);
+
+      //** ON CHANGE EVENT FOR SUBLABEL SIZE */
+      input_container_sublabel_input.addEventListener('change', function() {
+        //loopThroughLayers();
+        console.log("CHANGE LABEL SIZE");
+        console.log(boxAnnotations);
+        var groupId = this.parentElement.id;
+        console.log(groupId);
+
+        //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId))
+          {
+            if(boxAnnotations[i].title.includes("sublabel"))
+            {
+              boxAnnotations[i].font.size = this.value;
+            }
+          }
+        }
+        //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId))
+          {
+            if(boxAnnotations2[i].title.includes("sublabel"))
+            {
+              boxAnnotations2[i].font.size = this.value;
+            }
+          }
+        }
+        chart.update();
+        chart2.update();
       }, false);
 
     //** INPUT - titleVisibility */
@@ -3752,7 +3833,8 @@ function addPreset(title, preset)
             {
               if(boxAnnotations[i].title.includes("box"))
               {
-                boxAnnotations[i].backgroundColor = addAlpha(this.value, 0.5);
+                //boxAnnotations[i].backgroundColor = addAlpha(this.value, 0.5);
+                boxAnnotations[i].backgroundColor = this.value;
               }
             }
           }
@@ -3763,16 +3845,14 @@ function addPreset(title, preset)
             {
               if(boxAnnotations2[i].title.includes("box"))
               {
-                boxAnnotations2[i].backgroundColor = addAlpha(this.value, 0.5);
+                //boxAnnotations2[i].backgroundColor = addAlpha(this.value, 0.5);
+                boxAnnotations2[i].backgroundColor = this.value;
               }
             }
           }
           
           chart.update();
           chart2.update();
-
-
-          //loopThroughLayers();
         }, false);
 
       //** IF IT IS A CUSTOM BAND, DON'T INCLUDE xMAX and xMIN */
@@ -3842,7 +3922,8 @@ function addPreset(title, preset)
     
             //** ON CHANGE EVENT FOR LABEL SIZE */
             input_container_labelSize_input.addEventListener('change', function() {
-              loopThroughLayers();
+              //loopThroughLayers();
+              console.log("CHANGE LABEL SIZE");
             }, false);
             
             //** INPUT - LABEL CONTENT */
@@ -3953,10 +4034,119 @@ function addPreset(title, preset)
         input_container_graphNumb_input.min = 1;
         input_container_graphNumb_input.max = 2;
         input_container_graphNumb.appendChild(input_container_graphNumb_input);
+        input_container_graphNumb_input.id = "b" + (i+1) + title;
 
         //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
         input_container_graphNumb_input.addEventListener('change', function() {
-          loopThroughLayers();
+          var groupId = this.id;
+          var groupId_counter = 0;
+
+          var box_1, label_1, sublabel_1;
+          var box_2, label_2, sublabel_2;
+
+          //** GO THROUGH BOX ANNOTATIONS BACKWARDS, SO THAT WHEN YOU SPLICE IT DOESNT SKIP OVER VALUES */
+          for(var i = boxAnnotations.length-1; i >=0; i--)
+          {
+            
+            if(boxAnnotations[i].title.includes(groupId) && groupId_counter < 3)
+            {
+              if(boxAnnotations[i].title.includes("box"))
+              {
+                box_1 = boxAnnotations[i];
+              }
+              else if(!boxAnnotations[i].title.includes("sublabel") && boxAnnotations[i].title.includes("label"))
+              {
+                label_1 = boxAnnotations[i];
+              }
+              else if(boxAnnotations[i].title.includes("sublabel"))
+              {
+                sublabel_1 = boxAnnotations[i];
+              }
+
+              boxAnnotations.splice(i, 1);
+              groupId_counter++;
+              chart2.options.scales.x.min = 0;
+            }
+            // if(boxAnnotations[i].title.includes(groupId) && groupId_counter < 3)
+            // {
+            //   console.log(boxAnnotations[i].title);
+
+            //   //** IF ITS A BOX, MAKE SURE IT APPEARS UNDER THE LABELS */
+            //   if(boxAnnotations[i].title.includes("box"))
+            //   {
+            //     boxAnnotations2.splice(boxAnnotations2.length-2, 0, boxAnnotations[i]);
+            //   }
+            //   else
+            //   {
+            //     boxAnnotations2.push(boxAnnotations[i]);
+            //   }
+
+            //   boxAnnotations.splice(i, 1);
+            //   groupId_counter++;
+
+            //   console.log("SPLICE");
+            //   chart2.options.scales.x.min = 0;
+            // }
+          }
+
+          if(typeof box_1 !== "undefined" && typeof label_1 !== "undefined" && typeof sublabel_1 !== "undefined")
+          {
+            boxAnnotations2.push(box_1, label_1, sublabel_1);
+          }
+          console.log(boxAnnotations2);
+
+          for(var d = boxAnnotations2.length-1; d >=0; d--)
+          {
+            if(boxAnnotations2[d].title.includes(groupId) && groupId_counter < 3)
+            {
+              if(boxAnnotations2[d].title.includes("box"))
+              {
+                box_2 = boxAnnotations2[d];
+              }
+              else if(!boxAnnotations2[d].title.includes("sublabel") && boxAnnotations2[d].title.includes("label"))
+              {
+                label_2 = boxAnnotations2[d];
+              }
+              else if(boxAnnotations2[d].title.includes("sublabel"))
+              {
+                sublabel_2 = boxAnnotations2[d];
+              }
+              
+              boxAnnotations2.splice(d, 1);
+              groupId_counter++;
+              chart2.options.scales.x.min = 0;
+            }
+            
+            // if(boxAnnotations2[d].title.includes(groupId) && groupId_counter < 3)
+            // {
+            //   //** CORRECT FOR PUSHING ELEMENTS BACKWARDS */
+            //   if(boxAnnotations2[d].title.includes("box"))
+            //   {
+            //     boxAnnotations.splice(boxAnnotations.length-2, 0, boxAnnotations2[d]);
+            //   }
+            //   else
+            //   {
+            //     boxAnnotations.push(boxAnnotations2[d]);
+            //   }
+              
+            //   boxAnnotations2.splice(d, 1);
+            //   groupId_counter++;
+
+            //   chart2.options.scales.x.min = 0;
+            // }
+          }
+
+          if(typeof box_2 !== "undefined" && typeof label_2 !== "undefined" && typeof sublabel_2 !== "undefined")
+          {
+            boxAnnotations.push(box_2, label_2, sublabel_2);
+            console.log(boxAnnotations2);
+          }
+          
+          setTimeout(() => {
+            updateGraphMinMax();
+          }, 250);
+          chart.update();
+          chart2.update();
         }, false);
 
       //** INPUT - yOffset */
@@ -3975,6 +4165,7 @@ function addPreset(title, preset)
         input_container_yOffset_input.type = "number";
         input_container_yOffset_input.value = preset[i].yOffset;
         input_container_yOffset_input.step = 0.1;
+        input_container_yOffset_input.id = "b" + (i+1) + title + "_yOffset";
         input_container_yOffset.appendChild(input_container_yOffset_input);
 
         //** ON CHANGE EVENT FOR xMax */
@@ -4201,7 +4392,8 @@ function addPreset(title, preset)
 
         //** ON CHANGE EVENT FOR LABEL SIZE */
         input_container_labelSize_input.addEventListener('change', function() {
-          loopThroughLayers();
+          //loopThroughLayers();
+          console.log("CHANGE LABEL SIZE");
         }, false);
 
       //** INPUT - LABEL CONTENT */
@@ -4343,7 +4535,7 @@ function addPreset(title, preset)
   })
   
 
-  //tree.appendChild(div);
+  updateGraphMinMax();
   layers.appendChild(nav);
 }
 
@@ -4473,6 +4665,79 @@ function addAlpha(color, opacity) {
   // coerce values so ti is between 0 and 1.
   var _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
   return color + _opacity.toString(16).toUpperCase();
+}
+
+//** READS BOX ANNOTATIONS AND CALCULATES THE LOWEST AND HIGHEST VALUES TO TRIM THE GRAPH TOO */
+function updateGraphMinMax()
+{
+  var min1 = [], max1 = [], min2 = [], max2 = [];
+  
+  //** CYCLE THROUGH FIRST BOXANNOTATIONS AND PUSH VALUES TO MIN AND MAX ARRAYS */
+  for(var i=0; i < boxAnnotations.length; i++)
+  {
+    if(!boxAnnotations[i].title.includes("box") || boxAnnotations[i].title.includes("label") || boxAnnotations[i].title.includes("sublabel"))
+    {
+      min1.push(boxAnnotations[i].xMin);
+      max1.push(boxAnnotations[i].xMax);
+    }
+  }
+
+  //** CYCLE THROUGH SECOND BOXANNOTATIONS AND PUSH VALUES TO MIN AND MAX ARRAYS */
+  for(var x=0; x < boxAnnotations2.length; x++)
+  {
+    if(!boxAnnotations2[x].title.includes("box") || boxAnnotations2[x].title.includes("label") || boxAnnotations2[x].title.includes("sublabel"))
+    {
+      min2.push(boxAnnotations2[x].xMin);
+      max2.push(boxAnnotations2[x].xMax);
+    }
+  }
+
+  //** FIGURE OUT MIN & MAX */
+  if(min1.length > 0 && min2.length > 0)
+    {
+      //** Update min and max values of charts manually *//
+      updateMinAndMax(
+      Math.min.apply(Math, min1), 
+      Math.min.apply(Math, min2),
+      Math.max.apply(Math, max1),
+      Math.max.apply(Math, max2));
+  }
+  else if(min1.length > 0)
+  {
+    updateMinAndMax(
+    Math.min.apply(Math, min1), 
+    7050,
+    Math.max.apply(Math, max1),
+    13950);
+  }
+  else if(min2.length > 0)
+  {
+    updateMinAndMax(
+    450, 
+    Math.min.apply(Math, min2),
+    2450,
+    Math.max.apply(Math, max2));
+  }
+  else
+  {
+    updateMinAndMax(
+    450, 
+    7050,
+    2450,
+    13950);
+  }
+  
+  console.log(min1);
+  console.log(Math.min.apply(Math, min1));
+  console.log(min2);
+  console.log(Math.min.apply(Math, min2));
+  console.log(max1);
+  console.log(Math.max.apply(Math, max1));
+  console.log(max2);
+  console.log(Math.max.apply(Math, max2));
+
+  console.log(boxAnnotations)
+  console.log(boxAnnotations2)
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -4768,9 +5033,71 @@ CUSTOM_Dropdown.addEventListener("click", function () {
 // });
 
 groupSeperation_Global.addEventListener("change", function () {
+  
   console.log("change BoxHeight to: " + groupSeperation_Global.value);
   groupSeperation = parseFloat(groupSeperation_Global.value);
-  loopThroughLayers();
+
+  var navs = layers.getElementsByClassName("nav");
+
+  Array.from(navs).forEach(function (element, i) {
+    
+    var groupId = element.getAttribute("name");
+
+    for(var x=0; x < boxAnnotations.length; x++)
+    {
+      if(boxAnnotations[x].title.includes(groupId))
+      {
+        var yStart = 0.1; //+ offset
+        var yEnd = 0.1;
+
+        var inputName = boxAnnotations[x].title.slice(0, 2);
+        var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
+
+        yStart = (groupSeperation_Global.value * i) + 0.1 + parseFloat(yOffset); //+ offset
+        yEnd = yStart + 0.03;
+
+        if(boxAnnotations[x].title.includes("sublabel"))
+        {
+          yEnd += 0.01;
+          yStart = yEnd;
+        }
+
+        boxAnnotations[x].yMin = yStart;
+        boxAnnotations[x].yMax = yEnd;
+
+      }
+    }
+    for(var y=0; y < boxAnnotations2.length; y++)
+    {
+      if(boxAnnotations2[y].title.includes(groupId))
+      {
+        var yStart = 0.1; //+ offset
+        var yEnd = 0.1;
+
+        var inputName = boxAnnotations2[y].title.slice(0, 2);
+        var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
+
+        yStart = (groupSeperation_Global.value * i) + 0.1 + parseFloat(yOffset); //+ offset
+        yEnd = yStart + 0.03;
+
+        if(boxAnnotations2[y].title.includes("sublabel"))
+        {
+          yEnd += 0.01;
+          yStart = yEnd;
+        }
+
+        boxAnnotations2[y].yMin = yStart;
+        boxAnnotations2[y].yMax = yEnd;
+
+      }
+    }
+  });
+
+  chart.update();
+  chart2.update();
+
+  //console.log(layers.children);
+
 });
 
 // labelSize_Global.addEventListener("change", function () {
