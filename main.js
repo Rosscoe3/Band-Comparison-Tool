@@ -714,7 +714,7 @@ var Landsat1_3_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '80m',
     graphNumb: 1,
     yOffset: 0,
@@ -728,7 +728,7 @@ var Landsat1_3_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '80m',
     graphNumb: 1,
     yOffset: 0,
@@ -741,7 +741,7 @@ var Landsat1_3_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '80m',
     graphNumb: 1,
     yOffset: 0,
@@ -754,7 +754,7 @@ var Landsat1_3_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '80m',
     graphNumb: 1,
     yOffset: 0,
@@ -782,7 +782,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -796,7 +796,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -809,7 +809,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -822,7 +822,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -835,7 +835,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -848,7 +848,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '120m',
     graphNumb: 2,
     yOffset: 0,
@@ -861,7 +861,7 @@ var Landsat4_5_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -889,7 +889,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -902,7 +902,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -915,7 +915,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -928,7 +928,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -941,7 +941,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -954,7 +954,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '120m',
     graphNumb: 2,
     yOffset: 0,
@@ -967,7 +967,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -980,7 +980,7 @@ var Landsat7_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '15m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -1011,7 +1011,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1026,7 +1026,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -1040,7 +1040,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -1054,7 +1054,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -1068,7 +1068,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -1082,7 +1082,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -1096,7 +1096,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -1110,7 +1110,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '15m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -1124,7 +1124,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1138,7 +1138,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '100m',
     graphNumb: 2,
     yOffset: 0,
@@ -1152,7 +1152,7 @@ var Landsat8_9_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '100m',
     graphNumb: 2,
     yOffset: 0,
@@ -1180,7 +1180,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
@@ -1194,7 +1194,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1207,7 +1207,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: 0,
@@ -1220,7 +1220,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: 0,
@@ -1233,7 +1233,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1246,7 +1246,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1259,7 +1259,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1272,7 +1272,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1285,7 +1285,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1298,7 +1298,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1311,7 +1311,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: 0,
@@ -1324,7 +1324,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1337,7 +1337,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "13",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1350,7 +1350,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "14",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1363,7 +1363,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "15",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1376,7 +1376,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "16",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1389,7 +1389,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "17",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
@@ -1402,7 +1402,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "18",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: 0,
@@ -1415,7 +1415,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "19",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1428,7 +1428,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "20",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1441,7 +1441,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "21",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1454,7 +1454,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "22",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 2,
     yOffset: 0,
@@ -1467,7 +1467,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "23",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 2,
     yOffset: 0,
@@ -1480,7 +1480,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "24",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 2,
     yOffset: 0,
@@ -1493,7 +1493,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "25",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 2,
     yOffset: 0,
@@ -1506,7 +1506,7 @@ var LandsatNext_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "26",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 2,
     yOffset: 0,
@@ -1522,7 +1522,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1536,7 +1536,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -1550,7 +1550,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -1564,7 +1564,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -1578,7 +1578,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: 0,
@@ -1592,7 +1592,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1606,7 +1606,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1620,7 +1620,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -1634,7 +1634,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8a",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1648,7 +1648,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
@@ -1662,7 +1662,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -1676,7 +1676,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -1690,7 +1690,7 @@ var Sentinel2_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '20m',
     graphNumb: 1,
     yOffset: 0,
@@ -2002,7 +2002,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2016,7 +2016,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -2030,7 +2030,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2044,7 +2044,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2058,7 +2058,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2072,7 +2072,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -2086,7 +2086,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2100,7 +2100,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2114,7 +2114,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '30m',
     graphNumb: 1,
     yOffset: 0,
@@ -2128,7 +2128,7 @@ var EO1_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '10m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -2143,7 +2143,7 @@ var DESIS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -2158,7 +2158,7 @@ var ECOSTRESS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '70m',
     graphNumb: 1,
     yOffset: 0,
@@ -2171,7 +2171,7 @@ var ECOSTRESS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '70m',
     graphNumb: 2,
     yOffset: 0,
@@ -2184,7 +2184,7 @@ var ECOSTRESS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '70m',
     graphNumb: 2,
     yOffset: 0,
@@ -2197,7 +2197,7 @@ var ECOSTRESS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '70m',
     graphNumb: 2,
     yOffset: 0,
@@ -2210,7 +2210,7 @@ var ECOSTRESS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '70m',
     graphNumb: 2,
     yOffset: 0,
@@ -2223,7 +2223,7 @@ var ECOSTRESS_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '70m',
     graphNumb: 2,
     yOffset: 0,
@@ -2238,7 +2238,7 @@ var EMIT_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -2759,7 +2759,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: 0,
@@ -2772,7 +2772,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: 0,
@@ -2785,7 +2785,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: 0.05,
@@ -2798,7 +2798,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: 0,
@@ -2811,7 +2811,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: 0,
@@ -2824,7 +2824,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: 0,
@@ -2837,7 +2837,7 @@ var PACE_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '50m',
     graphNumb: 1,
     yOffset: -0.05,
@@ -2865,7 +2865,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0.05,
@@ -2878,7 +2878,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "2",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -2891,7 +2891,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "3",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: -0.05,
@@ -2904,7 +2904,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "4",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0.05,
@@ -2917,7 +2917,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "5",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0.1,
@@ -2930,7 +2930,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "6",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -2943,7 +2943,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "7",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: -0.05,
@@ -2956,7 +2956,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "8",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -2969,7 +2969,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "9",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -2982,7 +2982,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "10",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: -0.05,
@@ -2995,7 +2995,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "11",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -3008,7 +3008,7 @@ var STELLA_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "12",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -3036,7 +3036,7 @@ var CUSTOM_values = [
     yHeight: boxHeight,
     labelSize: 15,
     labelText: "1",
-    sublabelSize: 15, 
+    sublabelSize: 12, 
     subLabelText: '',
     graphNumb: 1,
     yOffset: 0,
@@ -3134,6 +3134,7 @@ function addPreset(title, preset)
     var title_label_removeIcon = document.createElement("i");
     title_label_removeIcon.classList = "fa fa-ellipsis-v";
     title_label_removeIcon.id = "removeIcon";
+    title_label_removeIcon.title = title;
     title_label_removeIcon.setAttribute("contentEditable", false);
     title_label.appendChild(title_label_removeIcon);
 
@@ -3144,7 +3145,24 @@ function addPreset(title, preset)
       var index = enabledPresets.indexOf(this.title);
       enabledPresets.splice(index, 1);
       sensorNumb--;
-      loopThroughLayers();
+
+      for(var i = boxAnnotations.length-1; i >=0; i--)
+      {
+        if(boxAnnotations[i].title.includes(this.title))
+        {
+          boxAnnotations.splice(i, 1);
+        }
+      }
+      for(var x = boxAnnotations2.length-1; x >=0; x--)
+      {
+        if(boxAnnotations2[x].title.includes(this.title))
+        {
+          boxAnnotations2.splice(x, 1);
+        }
+      }
+
+      chart.update();
+      chart2.update();
     }, false);
 
     //** DROP DOWN */
@@ -3873,11 +3891,32 @@ function addPreset(title, preset)
           var input_container_xMin_input = document.createElement('input');
           input_container_xMin_input.type = "number";
           input_container_xMin_input.value = preset[i].xMin;
+          input_container_xMin_input.id = "b" + (i+1) + title;
           input_container_xMin.appendChild(input_container_xMin_input);
   
           //** ON CHANGE EVENT FOR XMIN */
           input_container_xMin_input.addEventListener('change', function() {
-            loopThroughLayers();
+            var groupId = this.id;
+
+            for(var i = 0; i < boxAnnotations.length; i++)
+            {
+              if(boxAnnotations[i].title.includes(groupId))
+              {
+                boxAnnotations[i].xMin = parseFloat(this.value);
+              }
+            }
+            for(var x = 0; x < boxAnnotations2.length; x++)
+            {
+              if(boxAnnotations2[x].title.includes(groupId))
+              {
+                boxAnnotations2[x].xMin = this.value;
+              }
+            }
+
+            updateGraphMinMax();
+
+            chart.update();
+            chart2.update();
           }, false);
   
         //** INPUT - xMax */
@@ -3895,126 +3934,151 @@ function addPreset(title, preset)
           var input_container_xMax_input = document.createElement('input');
           input_container_xMax_input.type = "number";
           input_container_xMax_input.value = preset[i].xMax;
+          input_container_xMax_input.id = "b" + (i+1) + title;
           input_container_xMax.appendChild(input_container_xMax_input);
   
           //** ON CHANGE EVENT FOR xMax */
           input_container_xMax_input.addEventListener('change', function() {
-            loopThroughLayers();
+            var groupId = this.id;
+
+            for(var i = 0; i < boxAnnotations.length; i++)
+            {
+              if(boxAnnotations[i].title.includes(groupId))
+              {
+                boxAnnotations[i].xMax = parseFloat(this.value);
+              }
+            }
+            for(var x = 0; x < boxAnnotations2.length; x++)
+            {
+              if(boxAnnotations2[x].title.includes(groupId))
+              {
+                boxAnnotations2[x].xMax = this.value;
+              }
+            }
+
+            updateGraphMinMax();
+
+            chart.update();
+            chart2.update();
+          }, false);
+            
+        //** INPUT - LABEL CONTENT */
+        var input_container_labelContent = document.createElement('div');
+        input_container_labelContent.classList = "inputContainer";
+        input_container_labelContent.id = "label_content";
+        band_content.appendChild(input_container_labelContent);
+  
+          //** INPUT - LABEL CONTENT - TITLE */
+          var input_container_labelContent_title = document.createElement('div');
+          input_container_labelContent_title.innerHTML = "Label Text";
+          input_container_labelContent.appendChild(input_container_labelContent_title);
+  
+          //** INPUT - LABEL CONTENT - INPUT */
+          var input_container_labelContent_input = document.createElement('input');
+          input_container_labelContent_input.type = "text";
+          input_container_labelContent_input.value = preset[i].labelText;
+          input_container_labelContent_input.id = "b" + (i+1) + title;
+          input_container_labelContent.appendChild(input_container_labelContent_input);
+  
+          //** ON CHANGE EVENT FOR LABEL CONTENT */
+          input_container_labelContent_input.addEventListener('change', function() {
+            var groupId = this.id;
+
+            for(var i = 0; i < boxAnnotations.length; i++)
+            {
+              if(boxAnnotations[i].title.includes(groupId))
+              {
+                if(!boxAnnotations[i].title.includes("sublabel") && boxAnnotations[i].title.includes("label"))
+                {
+                  boxAnnotations[i].content[0] = this.value;
+                }
+              }
+            }
+            for(var x = 0; x < boxAnnotations2.length; x++)
+            {
+              if(boxAnnotations2[x].title.includes(groupId))
+              {
+                if(!boxAnnotations2[x].title.includes("sublabel") && boxAnnotations2[x].title.includes("label"))
+                {
+                  boxAnnotations2[x].content[0] = this.value;
+                }
+              }
+            }
+
+            chart.update()
+            chart2.update();
           }, false);
           
-          //** INPUT - LABEL SIZE */
-          var input_container_labelSize = document.createElement('div');
-          input_container_labelSize.classList = "inputContainer";
-          input_container_labelSize.id = "label_size";
-          band_content.appendChild(input_container_labelSize);
-    
-            //** INPUT - LABEL SIZE - TITLE */
-            var input_container_labelSize_title = document.createElement('div');
-            input_container_labelSize_title.innerHTML = "Label size";
-            input_container_labelSize.appendChild(input_container_labelSize_title);
-    
-            //** INPUT - LABEL SIZE - INPUT */
-            var input_container_labelSize_input = document.createElement('input');
-            input_container_labelSize_input.id = "b" + (i+1) + title + "color_input";
-            input_container_labelSize_input.type = "number";
-            input_container_labelSize_input.value = preset[i].labelSize;
-            input_container_labelSize.appendChild(input_container_labelSize_input);
-    
-            //** ON CHANGE EVENT FOR LABEL SIZE */
-            input_container_labelSize_input.addEventListener('change', function() {
-              //loopThroughLayers();
-              console.log("CHANGE LABEL SIZE");
-            }, false);
-            
-            //** INPUT - LABEL CONTENT */
-            var input_container_labelContent = document.createElement('div');
-            input_container_labelContent.classList = "inputContainer";
-            input_container_labelContent.id = "label_content";
-            band_content.appendChild(input_container_labelContent);
-      
-              //** INPUT - LABEL CONTENT - TITLE */
-              var input_container_labelContent_title = document.createElement('div');
-              input_container_labelContent_title.innerHTML = "Label Text";
-              input_container_labelContent.appendChild(input_container_labelContent_title);
-      
-              //** INPUT - LABEL CONTENT - INPUT */
-              var input_container_labelContent_input = document.createElement('input');
-              input_container_labelContent_input.type = "text";
-              input_container_labelContent_input.value = preset[i].labelText;
-              input_container_labelContent.appendChild(input_container_labelContent_input);
-      
-              //** ON CHANGE EVENT FOR LABEL CONTENT */
-              input_container_labelContent_input.addEventListener('change', function() {
-                loopThroughLayers();
-              }, false);
-      
-            //** INPUT - SUBLABEL SIZE */
-            var input_container_subLabelSize = document.createElement('div');
-            input_container_subLabelSize.classList = "inputContainer";
-            input_container_subLabelSize.id = "sublabel_size";
-            band_content.appendChild(input_container_subLabelSize);
-      
-              //** INPUT - SUBLABEL SIZE - TITLE */
-              var input_container_subLabelSize_title = document.createElement('div');
-              input_container_subLabelSize_title.innerHTML = "SubLabel Size";
-              input_container_subLabelSize.appendChild(input_container_subLabelSize_title);
-      
-              //** INPUT - SUBLABEL SIZE - INPUT */
-              var input_container_sublabel_input = document.createElement('input');
-              input_container_sublabel_input.type = "number";
-              input_container_sublabel_input.value = preset[i].sublabelSize;
-              input_container_subLabelSize.appendChild(input_container_sublabel_input);
-      
-              //** ON CHANGE EVENT FOR SUBLABEL SIZE */
-              input_container_sublabel_input.addEventListener('change', function() {
-                loopThroughLayers();
-              }, false);
-              
-              //** INPUT - SUBLABEL OFFSET */
-              var input_container_subLabelOffset = document.createElement('div');
-              input_container_subLabelOffset.classList = "inputContainer";
-              input_container_subLabelOffset.id = "sublabel_offset";
-              band_content.appendChild(input_container_subLabelOffset);
-        
-                //** INPUT - SUBLABEL OFFSET - TITLE */
-                var input_container_subLabelOffset_title = document.createElement('div');
-                input_container_subLabelOffset_title.innerHTML = "SubLabel Offset";
-                input_container_subLabelOffset.appendChild(input_container_subLabelOffset_title);
-        
-                //** INPUT - SUBLABEL OFFSET - INPUT */
-                var input_container_sublabelOffset_input = document.createElement('input');
-                input_container_sublabelOffset_input.type = "number";
-                input_container_sublabelOffset_input.value = 0.1;
-                input_container_subLabelOffset.appendChild(input_container_sublabelOffset_input);
-        
-                //** ON CHANGE EVENT FOR SUBLABEL OFFSET */
-                input_container_sublabelOffset_input.addEventListener('change', function() {
-                  loopThroughLayers();
-                }, false);
-        
-              //** INPUT - SUBLABEL CONTENT */
-              var input_container_subLabelContent = document.createElement('div');
-              input_container_subLabelContent.classList = "inputContainer";
-              input_container_subLabelContent.id = "sublabel_content";
-              band_content.appendChild(input_container_subLabelContent);
-        
-                //** INPUT - SUBLABEL Content - TITLE */
-                var input_container_subLabelContent_title = document.createElement('div');
-                input_container_subLabelContent_title.innerHTML = "SubLabel Text";
-                input_container_subLabelContent.appendChild(input_container_subLabelContent_title);
-        
-                //** INPUT - SUBLABEL Content - INPUT */
-                var input_container_sublabelContent_input = document.createElement('input');
-                input_container_sublabelContent_input.type = "text";
-                input_container_sublabelContent_input.value = preset[i].subLabelText;
-                input_container_subLabelContent.appendChild(input_container_sublabelContent_input);
-        
-                //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
-                input_container_sublabelContent_input.addEventListener('change', function() {
-                  loopThroughLayers();
-                }, false);
-      }
+        // //** INPUT - SUBLABEL OFFSET */
+        // var input_container_subLabelOffset = document.createElement('div');
+        // input_container_subLabelOffset.classList = "inputContainer";
+        // input_container_subLabelOffset.id = "sublabel_offset";
+        // band_content.appendChild(input_container_subLabelOffset);
+  
+        //   //** INPUT - SUBLABEL OFFSET - TITLE */
+        //   var input_container_subLabelOffset_title = document.createElement('div');
+        //   input_container_subLabelOffset_title.innerHTML = "SubLabel Offset";
+        //   input_container_subLabelOffset.appendChild(input_container_subLabelOffset_title);
+  
+        //   //** INPUT - SUBLABEL OFFSET - INPUT */
+        //   var input_container_sublabelOffset_input = document.createElement('input');
+        //   input_container_sublabelOffset_input.type = "number";
+        //   input_container_sublabelOffset_input.value = 0.1;
+        //   input_container_subLabelOffset.appendChild(input_container_sublabelOffset_input);
+  
+        //   //** ON CHANGE EVENT FOR SUBLABEL OFFSET */
+        //   input_container_sublabelOffset_input.addEventListener('change', function() {
+        //     loopThroughLayers();
+        //   }, false);
+  
+        //** INPUT - SUBLABEL CONTENT */
+        var input_container_subLabelContent = document.createElement('div');
+        input_container_subLabelContent.classList = "inputContainer";
+        input_container_subLabelContent.id = "sublabel_content";
+        band_content.appendChild(input_container_subLabelContent);
+  
+          //** INPUT - SUBLABEL Content - TITLE */
+          var input_container_subLabelContent_title = document.createElement('div');
+          input_container_subLabelContent_title.innerHTML = "SubLabel Text";
+          input_container_subLabelContent.appendChild(input_container_subLabelContent_title);
+  
+          //** INPUT - SUBLABEL Content - INPUT */
+          var input_container_sublabelContent_input = document.createElement('input');
+          input_container_sublabelContent_input.type = "text";
+          input_container_sublabelContent_input.value = preset[i].subLabelText;
+          input_container_sublabelContent_input.id = "b" + (i+1) + title;
+          input_container_subLabelContent.appendChild(input_container_sublabelContent_input);
+  
+          //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
+          input_container_sublabelContent_input.addEventListener('change', function() {
+            console.log("CHANGE CUSTOM TEXT");
+            var groupId = this.id;
 
+            for(var i = 0; i < boxAnnotations.length; i++)
+            {
+              if(boxAnnotations[i].title.includes(groupId))
+              {
+                if(boxAnnotations[i].title.includes("sublabel"))
+                {
+                  boxAnnotations[i].content[0] = this.value;
+                }
+              }
+            }
+            for(var x = 0; x < boxAnnotations2.length; x++)
+            {
+              if(boxAnnotations2[x].title.includes(groupId))
+              {
+                if(boxAnnotations2[x].title.includes("sublabel"))
+                {
+                  boxAnnotations2[x].content[0] = this.value;
+                }
+              }
+            }
+
+            chart.update();
+            chart2.update();
+          }, false);
+      }
 
       //** INPUT - GRAPH NUMB */
       var input_container_graphNumb = document.createElement('div');
@@ -4065,28 +4129,8 @@ function addPreset(title, preset)
 
               boxAnnotations.splice(i, 1);
               groupId_counter++;
-              chart2.options.scales.x.min = 0;
+              //chart2.options.scales.x.min = 0;
             }
-            // if(boxAnnotations[i].title.includes(groupId) && groupId_counter < 3)
-            // {
-            //   console.log(boxAnnotations[i].title);
-
-            //   //** IF ITS A BOX, MAKE SURE IT APPEARS UNDER THE LABELS */
-            //   if(boxAnnotations[i].title.includes("box"))
-            //   {
-            //     boxAnnotations2.splice(boxAnnotations2.length-2, 0, boxAnnotations[i]);
-            //   }
-            //   else
-            //   {
-            //     boxAnnotations2.push(boxAnnotations[i]);
-            //   }
-
-            //   boxAnnotations.splice(i, 1);
-            //   groupId_counter++;
-
-            //   console.log("SPLICE");
-            //   chart2.options.scales.x.min = 0;
-            // }
           }
 
           if(typeof box_1 !== "undefined" && typeof label_1 !== "undefined" && typeof sublabel_1 !== "undefined")
@@ -4164,73 +4208,106 @@ function addPreset(title, preset)
         var input_container_yOffset_input = document.createElement('input');
         input_container_yOffset_input.type = "number";
         input_container_yOffset_input.value = preset[i].yOffset;
-        input_container_yOffset_input.step = 0.1;
+        input_container_yOffset_input.oldValue = preset[i].yOffset;
+        input_container_yOffset_input.step = 0.05;
         input_container_yOffset_input.id = "b" + (i+1) + title + "_yOffset";
+        input_container_yOffset_input.title = "b" + (i+1) + title;
         input_container_yOffset.appendChild(input_container_yOffset_input);
 
         //** ON CHANGE EVENT FOR xMax */
         input_container_yOffset_input.addEventListener('change', function() {
-          loopThroughLayers();
+          var groupId = this.title;
+
+          for(var i=0; i < boxAnnotations.length; i++)
+          {
+            if(boxAnnotations[i].title.includes(groupId))
+            {
+              var xBaselineMin = parseFloat(boxAnnotations[i].yMin) - this.oldValue;
+              var xBaselineMax = parseFloat(boxAnnotations[i].yMax) - this.oldValue;
+              
+              boxAnnotations[i].yMin = parseFloat(this.value) + xBaselineMin;
+              boxAnnotations[i].yMax = parseFloat(this.value) + xBaselineMax;
+            }
+          }
+
+          for(var x=0; x < boxAnnotations2.length; x++)
+          {
+            if(boxAnnotations2[x].title.includes(groupId))
+            {
+              var xBaselineMin = parseFloat(boxAnnotations2[x].yMin) - this.oldValue;
+              var xBaselineMax = parseFloat(boxAnnotations2[x].yMax) - this.oldValue;
+              
+              boxAnnotations2[x].yMin = parseFloat(this.value) + xBaselineMin;
+              boxAnnotations2[x].yMax = parseFloat(this.value) + xBaselineMax;
+            }
+          }
+
+          chart.update();
+          chart2.update();
+
+          this.oldValue = this.value;
         }, false);
 
   }
 
   //** FOR ADDING ADDITIONAL BANDS */
+
+  if(isCustomBand)
+  {
+    //** ADDITIONAL BAND LIST CONTAINER */
+    var add_band_li = document.createElement("li");
+    add_band_li.id = "add_" + title;
+    add_band_li.title = "add additional bands";
+    groupList.appendChild(add_band_li);
   
-  //** ADDITIONAL BAND LIST CONTAINER */
-  var add_band_li = document.createElement("li");
-  add_band_li.id = "add_" + title;
-  add_band_li.title = "add additional bands";
-  groupList.appendChild(add_band_li);
+    //** ADDITIONAL BAND LABEL */
+    var add_band_label = document.createElement("label");
+    add_band_label.innerHTML = "+";
+    add_band_label.id = "add_label_" + title;
+    add_band_label.style = "text-align: center;";
+    add_band_li.appendChild(add_band_label);
+  
+    //**----      CLICK EVENT FOR ADDING ADDITIONAL BAND       ----*/
+    add_band_label.addEventListener('click', function() {
+      
+      //** BAND LIST CONTAINER */
+      var band_li = document.createElement("li");
+  
+      //* PLACE BEFORE THE LAST ELEMENT (add icon) */
+      var label_index = (groupList.children.length);
+      groupList.insertBefore(band_li, groupList.childNodes[label_index-1]);
 
-  //** ADDITIONAL BAND LABEL */
-  var add_band_label = document.createElement("label");
-  add_band_label.innerHTML = "+";
-  add_band_label.id = "add_label_" + title;
-  add_band_label.style = "text-align: center;";
-  add_band_li.appendChild(add_band_label);
-
-  //**----      CLICK EVENT FOR ADDING ADDITIONAL BAND       ----*/
-  add_band_label.addEventListener('click', function() {
-    
-    //** BAND LIST CONTAINER */
-    var band_li = document.createElement("li");
-
-    //* PLACE BEFORE THE LAST ELEMENT (add icon) */
-    var label_index = (groupList.children.length);
-    groupList.insertBefore(band_li, groupList.childNodes[label_index-1]);
-
-    console.log(groupList.childNodes[label_index-2]);
-    console.log(groupList.childNodes[label_index-2].childNodes[2].childNodes[8].childNodes[1].value);
-
-    var previousColor = groupList.childNodes[label_index-2].childNodes[2].childNodes[0].childNodes[1].value;
-    var previousMax = groupList.childNodes[label_index-2].childNodes[2].childNodes[2].childNodes[1].value;
-    var previous_labelSize = groupList.childNodes[label_index-2].childNodes[2].childNodes[5].childNodes[1].value;
-    var previous_sublabelSize = groupList.childNodes[label_index-2].childNodes[2].childNodes[5].childNodes[1].value;
-    var previous_graphNumb = groupList.childNodes[label_index-2].childNodes[2].childNodes[8].childNodes[1].value;
-    var previous_Label_Text = groupList.childNodes[label_index-2].childNodes[2].childNodes[4].childNodes[1].value;
-    var previous_subLabel_Text = groupList.childNodes[label_index-2].childNodes[2].childNodes[7].childNodes[1].value;
-
-    //** BAND HIDDEN CHECKBOX */
-    var band_checkbox = document.createElement("input");
-    band_checkbox.id = "sub-group-b" + label_index + title;
-    band_checkbox.type = "checkbox";
-    band_checkbox.hidden = true;
-    band_li.appendChild(band_checkbox);
-
-    //** BAND LABEL */
-    var band_label = document.createElement("label");
-    band_label.setAttribute("for", "sub-group-b" + label_index + title);
-    band_label.innerHTML = "B" + label_index;
-    band_label.id = "band_label_b" + label_index + title;
-    band_label.setAttribute("contentEditable", false);
-    band_li.appendChild(band_label);
-
+      console.log(groupList.childNodes[label_index-2].childNodes[2].childNodes[1].childNodes[1].value);
+  
+      var previousColor = groupList.childNodes[label_index-2].childNodes[2].childNodes[0].childNodes[1].value;
+      var previousMin = groupList.childNodes[label_index-2].childNodes[2].childNodes[1].childNodes[1].value;
+      var previousMax = groupList.childNodes[label_index-2].childNodes[2].childNodes[2].childNodes[1].value;
+      var previous_labelSize = groupList.childNodes[0].childNodes[2].childNodes[3].childNodes[1].value;
+      var previous_sublabelSize = groupList.childNodes[0].childNodes[2].childNodes[5].childNodes[1].value;
+      var previous_graphNumb = groupList.childNodes[label_index-2].childNodes[2].childNodes[5].childNodes[1].value;
+      var previous_Label_Text = groupList.childNodes[label_index-2].childNodes[2].childNodes[4].childNodes[1].value;
+      var previous_subLabel_Text = groupList.childNodes[label_index-2].childNodes[2].childNodes[4].childNodes[1].value;
+  
+      //** BAND HIDDEN CHECKBOX */
+      var band_checkbox = document.createElement("input");
+      band_checkbox.id = "sub-group-b" + (label_index-1) + title;
+      band_checkbox.type = "checkbox";
+      band_checkbox.hidden = true;
+      band_li.appendChild(band_checkbox);
+  
+      //** BAND LABEL */
+      var band_label = document.createElement("label");
+      band_label.setAttribute("for", "sub-group-b" + (label_index-1) + title);
+      band_label.innerHTML = "B" + (label_index-1);
+      band_label.id = "band_label_b" + (label_index-1) + title;
+      band_label.setAttribute("contentEditable", false);
+      band_li.appendChild(band_label);
+      
       //** BAND LABEL SPAN */
       var band_label_span = document.createElement("span");
       band_label_span.innerHTML = "›";
       band_label.appendChild(band_label_span);
-
+      
       //** TITLE REMOVE ICON */
       var additional_band_removeIcon = document.createElement("i");
       additional_band_removeIcon.classList = "fa fa-trash";
@@ -4267,273 +4344,306 @@ function addPreset(title, preset)
         chart2.update();
         
       }, false);
-
-    //** BAND CONTENT CONTAINER */
-    var band_content = document.createElement("ul");
-    band_content.classList = "sub-group-list";
-    band_li.appendChild(band_content);
-
-      //** INPUT - COLOR */
-      var input_container_color = document.createElement('div');
-      input_container_color.classList = "inputContainer";
-      input_container_color.id = "color";
-      band_content.appendChild(input_container_color);
-
-        //** INPUT - COLOR - TITLE */
-        var input_container_color_title = document.createElement('div');
-        input_container_color_title.innerHTML = "Color";
-        input_container_color.appendChild(input_container_color_title);
-
-        //** INPUT - COLOR - INPUT */
-        var input_container_color_input = document.createElement('input');
-        input_container_color_input.id = "b" + label_index + title;
-        input_container_color_input.type = "color";
-        input_container_color_input.value = previousColor;
-        band_label.style.backgroundColor = previousColor;
-        input_container_color.appendChild(input_container_color_input);
-        console.log(input_container_color_input.id);
-        
-        //** ON CHANGE EVENT FOR COLOR PICKER */
-        input_container_color_input.addEventListener('change', function() {
-          var id = "band_label_" + this.id;
-          document.getElementById(id).style.backgroundColor = this.value;
-          var groupId = this.id;
-
-          //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
-          for(var i = 0; i < boxAnnotations.length; i++)
-          {
-            if(boxAnnotations[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
+  
+      //** BAND CONTENT CONTAINER */
+      var band_content = document.createElement("ul");
+      band_content.classList = "sub-group-list";
+      band_li.appendChild(band_content);
+  
+        //** INPUT - COLOR */
+        var input_container_color = document.createElement('div');
+        input_container_color.classList = "inputContainer";
+        input_container_color.id = "color";
+        band_content.appendChild(input_container_color);
+  
+          //** INPUT - COLOR - TITLE */
+          var input_container_color_title = document.createElement('div');
+          input_container_color_title.innerHTML = "Color";
+          input_container_color.appendChild(input_container_color_title);
+  
+          //** INPUT - COLOR - INPUT */
+          var input_container_color_input = document.createElement('input');
+          input_container_color_input.id = "b" + (label_index-1) + title;
+          input_container_color_input.type = "color";
+          input_container_color_input.value = previousColor;
+          band_label.style.backgroundColor = previousColor;
+          input_container_color.appendChild(input_container_color_input);
+          
+          //** ON CHANGE EVENT FOR COLOR PICKER */
+          input_container_color_input.addEventListener('change', function() {
+            var id = "band_label_" + this.id;
+            document.getElementById(id).style.backgroundColor = this.value;
+            var groupId = this.id;
+  
+            //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+            for(var i = 0; i < boxAnnotations.length; i++)
             {
-              if(boxAnnotations[i].title.includes("box"))
+              if(boxAnnotations[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
               {
-                boxAnnotations[i].backgroundColor = this.value;
+                if(boxAnnotations[i].title.includes("box"))
+                {
+                  boxAnnotations[i].backgroundColor = this.value;
+                }
+              }
+            }
+            //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+            for(var i = 0; i < boxAnnotations2.length; i++)
+            {
+              if(boxAnnotations2[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
+              {
+                if(boxAnnotations2[i].title.includes("box"))
+                {
+                  boxAnnotations2[i].backgroundColor = this.value;
+                  console.log(boxAnnotations2[i]);
+                  console.log(groupId);
+                }
+              }
+            }
+  
+            chart.update();
+            chart2.update();
+          }, false);
+  
+        //** INPUT - xMin */
+        var input_container_xMin = document.createElement('div');
+        input_container_xMin.classList = "inputContainer";
+        input_container_xMin.id = "xMin";
+        band_content.appendChild(input_container_xMin);
+  
+          //** INPUT - xMin - TITLE */
+          var input_container_xMin_title = document.createElement('div');
+          input_container_xMin_title.innerHTML = "xMin";
+          input_container_xMin.appendChild(input_container_xMin_title);
+  
+          //** INPUT - xMin - INPUT */
+          var input_container_xMin_input = document.createElement('input');
+          input_container_xMin_input.type = "number";
+          input_container_xMin_input.value = previousMax;
+          input_container_xMin.appendChild(input_container_xMin_input);
+  
+          //** ON CHANGE EVENT FOR XMIN */
+          input_container_xMin_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - xMax */
+        var input_container_xMax = document.createElement('div');
+        input_container_xMax.classList = "inputContainer";
+        input_container_xMax.id = "xMax";
+        band_content.appendChild(input_container_xMax);
+  
+          //** INPUT - xMax - TITLE */
+          var input_container_xMax_title = document.createElement('div');
+          input_container_xMax_title.innerHTML = "xMax";
+          input_container_xMax.appendChild(input_container_xMax_title);
+  
+          //** INPUT - xMax - INPUT */
+          var input_container_xMax_input = document.createElement('input');
+          input_container_xMax_input.type = "number";
+          input_container_xMax_input.value = parseFloat(previousMax) + 100;
+          input_container_xMax.appendChild(input_container_xMax_input);
+  
+          //** ON CHANGE EVENT FOR xMax */
+          input_container_xMax_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - LABEL SIZE */
+        var input_container_labelSize = document.createElement('div');
+        input_container_labelSize.classList = "inputContainer";
+        input_container_labelSize.id = "label_Size";
+        band_content.appendChild(input_container_labelSize);
+  
+          //** INPUT - LABEL SIZE - TITLE */
+          var input_container_labelSize_title = document.createElement('div');
+          input_container_labelSize_title.innerHTML = "Label size";
+          input_container_labelSize.appendChild(input_container_labelSize_title);
+  
+          //** INPUT - LABEL SIZE - INPUT */
+          var input_container_labelSize_input = document.createElement('input');
+          input_container_labelSize_input.id = "b" + (label_index-1) + title + "color_input";
+          input_container_labelSize_input.type = "number";
+          input_container_labelSize_input.value = previous_labelSize;
+          input_container_labelSize.appendChild(input_container_labelSize_input);
+  
+          //** ON CHANGE EVENT FOR LABEL SIZE */
+          input_container_labelSize_input.addEventListener('change', function() {
+            //loopThroughLayers();
+            console.log("CHANGE LABEL SIZE");
+          }, false);
+  
+        //** INPUT - LABEL CONTENT */
+        var input_container_labelContent = document.createElement('div');
+        input_container_labelContent.classList = "inputContainer";
+        input_container_labelContent.id = "label_content";
+        band_content.appendChild(input_container_labelContent);
+  
+          //** INPUT - LABEL CONTENT - TITLE */
+          var input_container_labelContent_title = document.createElement('div');
+          input_container_labelContent_title.innerHTML = "Label Text";
+          input_container_labelContent.appendChild(input_container_labelContent_title);
+  
+          //** INPUT - LABEL CONTENT - INPUT */
+          var input_container_labelContent_input = document.createElement('input');
+          input_container_labelContent_input.type = "text";
+          input_container_labelContent_input.value = previous_Label_Text;
+          input_container_labelContent.appendChild(input_container_labelContent_input);
+  
+          //** ON CHANGE EVENT FOR LABEL CONTENT */
+          input_container_labelContent_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - SUBLABEL SIZE */
+        var input_container_subLabelSize = document.createElement('div');
+        input_container_subLabelSize.classList = "inputContainer";
+        input_container_subLabelSize.id = "sublabel_size";
+        band_content.appendChild(input_container_subLabelSize);
+  
+          //** INPUT - SUBLABEL SIZE - TITLE */
+          var input_container_subLabelSize_title = document.createElement('div');
+          input_container_subLabelSize_title.innerHTML = "SubLabel Size";
+          input_container_subLabelSize.appendChild(input_container_subLabelSize_title);
+  
+          //** INPUT - SUBLABEL SIZE - INPUT */
+          var input_container_sublabel_input = document.createElement('input');
+          input_container_sublabel_input.type = "number";
+          input_container_sublabel_input.value = previous_sublabelSize;
+          input_container_subLabelSize.appendChild(input_container_sublabel_input);
+  
+          //** ON CHANGE EVENT FOR SUBLABEL SIZE */
+          input_container_sublabel_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - SUBLABEL OFFSET */
+        var input_container_subLabelOffset = document.createElement('div');
+        input_container_subLabelOffset.classList = "inputContainer";
+        input_container_subLabelOffset.id = "sublabel_offset";
+        band_content.appendChild(input_container_subLabelOffset);
+  
+          //** INPUT - SUBLABEL OFFSET - TITLE */
+          var input_container_subLabelOffset_title = document.createElement('div');
+          input_container_subLabelOffset_title.innerHTML = "SubLabel Offset";
+          input_container_subLabelOffset.appendChild(input_container_subLabelOffset_title);
+  
+          //** INPUT - SUBLABEL OFFSET - INPUT */
+          var input_container_sublabelOffset_input = document.createElement('input');
+          input_container_sublabelOffset_input.type = "number";
+          input_container_sublabelOffset_input.value = 0;
+          input_container_subLabelOffset.appendChild(input_container_sublabelOffset_input);
+  
+          //** ON CHANGE EVENT FOR SUBLABEL OFFSET */
+          input_container_sublabelOffset_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - SUBLABEL CONTENT */
+        var input_container_subLabelContent = document.createElement('div');
+        input_container_subLabelContent.classList = "inputContainer";
+        input_container_subLabelContent.id = "sublabel_content";
+        band_content.appendChild(input_container_subLabelContent);
+  
+          //** INPUT - SUBLABEL Content - TITLE */
+          var input_container_subLabelContent_title = document.createElement('div');
+          input_container_subLabelContent_title.innerHTML = "SubLabel Text";
+          input_container_subLabelContent.appendChild(input_container_subLabelContent_title);
+  
+          //** INPUT - SUBLABEL Content - INPUT */
+          var input_container_sublabelContent_input = document.createElement('input');
+          input_container_sublabelContent_input.type = "text";
+          input_container_sublabelContent_input.value = previous_subLabel_Text;
+          input_container_subLabelContent.appendChild(input_container_sublabelContent_input);
+  
+          //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
+          input_container_sublabelContent_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - GRAPH NUMB */
+        var input_container_graphNumb = document.createElement('div');
+        input_container_graphNumb.classList = "inputContainer";
+        input_container_graphNumb.id = "graph_number";
+        band_content.appendChild(input_container_graphNumb);
+  
+          //** INPUT - SUBLABEL Content - TITLE */
+          var input_container_graphNumb_title = document.createElement('div');
+          input_container_graphNumb_title.innerHTML = "Graph Number";
+          input_container_graphNumb.appendChild(input_container_graphNumb_title);
+  
+          //** INPUT - SUBLABEL Content - INPUT */
+          var input_container_graphNumb_input = document.createElement('input');
+          input_container_graphNumb_input.type = "number";
+          input_container_graphNumb_input.value = previous_graphNumb;
+          input_container_graphNumb_input.min = 1;
+          input_container_graphNumb_input.max = 2;
+          input_container_graphNumb.appendChild(input_container_graphNumb_input);
+  
+          //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
+          input_container_graphNumb_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+  
+        //** INPUT - yOffset */
+        var input_container_yOffset = document.createElement('div');
+        input_container_yOffset.classList = "inputContainer";
+        input_container_yOffset.id = "yOffset";
+        band_content.appendChild(input_container_yOffset);
+  
+          //** INPUT - yOffset - TITLE */
+          var input_container_yOffset_title = document.createElement('div');
+          input_container_yOffset_title.innerHTML = "yOffset";
+          input_container_yOffset.appendChild(input_container_yOffset_title);
+  
+          //** INPUT - yOffset - INPUT */
+          var input_container_yOffset_input = document.createElement('input');
+          input_container_yOffset_input.type = "number";
+          input_container_yOffset_input.value = 0;
+          input_container_yOffset_input.step = 0.1;
+          input_container_yOffset.appendChild(input_container_yOffset_input);
+  
+          //** ON CHANGE EVENT FOR xMax */
+          input_container_yOffset_input.addEventListener('change', function() {
+            //loopThroughLayers();
+          }, false);
+
+          
+          if(previous_graphNumb == 1)
+          {
+            for(var i = 0; i < boxAnnotations.length; i++)
+            {
+              if(boxAnnotations[i].title.includes(title))
+              {
+                if(boxAnnotations[i].title.includes("box"))
+                {
+                  addBox(previousMax, 
+                    parseFloat(previousMax) + 100, 
+                    boxAnnotations[i].yMin, 
+                    boxAnnotations[i].yMax, 
+                    boxAnnotations[i].backgroundColor, 
+                    (label_index-1), 
+                    previous_labelSize, 
+                    "", 
+                    previous_sublabelSize, 
+                    previous_graphNumb, 
+                    "");
+
+                  console.log("ADD BOX");
+                }
               }
             }
           }
-          //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
-          for(var i = 0; i < boxAnnotations2.length; i++)
+          else if(previous_graphNumb == 2)
           {
-            if(boxAnnotations2[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
-            {
-              if(boxAnnotations2[i].title.includes("box"))
-              {
-                boxAnnotations2[i].backgroundColor = this.value;
-                console.log(boxAnnotations2[i]);
-                console.log(groupId);
-              }
-            }
+            console.log("box2");
           }
+
+          updateGraphMinMax();
 
           chart.update();
           chart2.update();
-        }, false);
-
-      //** INPUT - xMin */
-      var input_container_xMin = document.createElement('div');
-      input_container_xMin.classList = "inputContainer";
-      input_container_xMin.id = "xMin";
-      band_content.appendChild(input_container_xMin);
-
-        //** INPUT - xMin - TITLE */
-        var input_container_xMin_title = document.createElement('div');
-        input_container_xMin_title.innerHTML = "xMin";
-        input_container_xMin.appendChild(input_container_xMin_title);
-
-        //** INPUT - xMin - INPUT */
-        var input_container_xMin_input = document.createElement('input');
-        input_container_xMin_input.type = "number";
-        input_container_xMin_input.value = previousMax;
-        input_container_xMin.appendChild(input_container_xMin_input);
-
-        //** ON CHANGE EVENT FOR XMIN */
-        input_container_xMin_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - xMax */
-      var input_container_xMax = document.createElement('div');
-      input_container_xMax.classList = "inputContainer";
-      input_container_xMax.id = "xMax";
-      band_content.appendChild(input_container_xMax);
-
-        //** INPUT - xMax - TITLE */
-        var input_container_xMax_title = document.createElement('div');
-        input_container_xMax_title.innerHTML = "xMax";
-        input_container_xMax.appendChild(input_container_xMax_title);
-
-        //** INPUT - xMax - INPUT */
-        var input_container_xMax_input = document.createElement('input');
-        input_container_xMax_input.type = "number";
-        input_container_xMax_input.value = parseFloat(previousMax) + 100;
-        input_container_xMax.appendChild(input_container_xMax_input);
-
-        //** ON CHANGE EVENT FOR xMax */
-        input_container_xMax_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - LABEL SIZE */
-      var input_container_labelSize = document.createElement('div');
-      input_container_labelSize.classList = "inputContainer";
-      input_container_labelSize.id = "label_Size";
-      band_content.appendChild(input_container_labelSize);
-
-        //** INPUT - LABEL SIZE - TITLE */
-        var input_container_labelSize_title = document.createElement('div');
-        input_container_labelSize_title.innerHTML = "Label size";
-        input_container_labelSize.appendChild(input_container_labelSize_title);
-
-        //** INPUT - LABEL SIZE - INPUT */
-        var input_container_labelSize_input = document.createElement('input');
-        input_container_labelSize_input.id = "b" + label_index + title + "color_input";
-        input_container_labelSize_input.type = "number";
-        input_container_labelSize_input.value = previous_labelSize;
-        input_container_labelSize.appendChild(input_container_labelSize_input);
-
-        //** ON CHANGE EVENT FOR LABEL SIZE */
-        input_container_labelSize_input.addEventListener('change', function() {
-          //loopThroughLayers();
-          console.log("CHANGE LABEL SIZE");
-        }, false);
-
-      //** INPUT - LABEL CONTENT */
-      var input_container_labelContent = document.createElement('div');
-      input_container_labelContent.classList = "inputContainer";
-      input_container_labelContent.id = "label_content";
-      band_content.appendChild(input_container_labelContent);
-
-        //** INPUT - LABEL CONTENT - TITLE */
-        var input_container_labelContent_title = document.createElement('div');
-        input_container_labelContent_title.innerHTML = "Label Text";
-        input_container_labelContent.appendChild(input_container_labelContent_title);
-
-        //** INPUT - LABEL CONTENT - INPUT */
-        var input_container_labelContent_input = document.createElement('input');
-        input_container_labelContent_input.type = "text";
-        input_container_labelContent_input.value = previous_Label_Text;
-        input_container_labelContent.appendChild(input_container_labelContent_input);
-
-        //** ON CHANGE EVENT FOR LABEL CONTENT */
-        input_container_labelContent_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - SUBLABEL SIZE */
-      var input_container_subLabelSize = document.createElement('div');
-      input_container_subLabelSize.classList = "inputContainer";
-      input_container_subLabelSize.id = "sublabel_size";
-      band_content.appendChild(input_container_subLabelSize);
-
-        //** INPUT - SUBLABEL SIZE - TITLE */
-        var input_container_subLabelSize_title = document.createElement('div');
-        input_container_subLabelSize_title.innerHTML = "SubLabel Size";
-        input_container_subLabelSize.appendChild(input_container_subLabelSize_title);
-
-        //** INPUT - SUBLABEL SIZE - INPUT */
-        var input_container_sublabel_input = document.createElement('input');
-        input_container_sublabel_input.type = "number";
-        input_container_sublabel_input.value = previous_sublabelSize;
-        input_container_subLabelSize.appendChild(input_container_sublabel_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL SIZE */
-        input_container_sublabel_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - SUBLABEL OFFSET */
-      var input_container_subLabelOffset = document.createElement('div');
-      input_container_subLabelOffset.classList = "inputContainer";
-      input_container_subLabelOffset.id = "sublabel_offset";
-      band_content.appendChild(input_container_subLabelOffset);
-
-        //** INPUT - SUBLABEL OFFSET - TITLE */
-        var input_container_subLabelOffset_title = document.createElement('div');
-        input_container_subLabelOffset_title.innerHTML = "SubLabel Offset";
-        input_container_subLabelOffset.appendChild(input_container_subLabelOffset_title);
-
-        //** INPUT - SUBLABEL OFFSET - INPUT */
-        var input_container_sublabelOffset_input = document.createElement('input');
-        input_container_sublabelOffset_input.type = "number";
-        input_container_sublabelOffset_input.value = 0;
-        input_container_subLabelOffset.appendChild(input_container_sublabelOffset_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL OFFSET */
-        input_container_sublabelOffset_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - SUBLABEL CONTENT */
-      var input_container_subLabelContent = document.createElement('div');
-      input_container_subLabelContent.classList = "inputContainer";
-      input_container_subLabelContent.id = "sublabel_content";
-      band_content.appendChild(input_container_subLabelContent);
-
-        //** INPUT - SUBLABEL Content - TITLE */
-        var input_container_subLabelContent_title = document.createElement('div');
-        input_container_subLabelContent_title.innerHTML = "SubLabel Text";
-        input_container_subLabelContent.appendChild(input_container_subLabelContent_title);
-
-        //** INPUT - SUBLABEL Content - INPUT */
-        var input_container_sublabelContent_input = document.createElement('input');
-        input_container_sublabelContent_input.type = "text";
-        input_container_sublabelContent_input.value = previous_subLabel_Text;
-        input_container_subLabelContent.appendChild(input_container_sublabelContent_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
-        input_container_sublabelContent_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - GRAPH NUMB */
-      var input_container_graphNumb = document.createElement('div');
-      input_container_graphNumb.classList = "inputContainer";
-      input_container_graphNumb.id = "graph_number";
-      band_content.appendChild(input_container_graphNumb);
-
-        //** INPUT - SUBLABEL Content - TITLE */
-        var input_container_graphNumb_title = document.createElement('div');
-        input_container_graphNumb_title.innerHTML = "Graph Number";
-        input_container_graphNumb.appendChild(input_container_graphNumb_title);
-
-        //** INPUT - SUBLABEL Content - INPUT */
-        var input_container_graphNumb_input = document.createElement('input');
-        input_container_graphNumb_input.type = "number";
-        input_container_graphNumb_input.value = previous_graphNumb;
-        input_container_graphNumb_input.min = 1;
-        input_container_graphNumb_input.max = 2;
-        input_container_graphNumb.appendChild(input_container_graphNumb_input);
-
-        //** ON CHANGE EVENT FOR SUBLABEL CONTENT */
-        input_container_graphNumb_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-
-      //** INPUT - yOffset */
-      var input_container_yOffset = document.createElement('div');
-      input_container_yOffset.classList = "inputContainer";
-      input_container_yOffset.id = "yOffset";
-      band_content.appendChild(input_container_yOffset);
-
-        //** INPUT - yOffset - TITLE */
-        var input_container_yOffset_title = document.createElement('div');
-        input_container_yOffset_title.innerHTML = "yOffset";
-        input_container_yOffset.appendChild(input_container_yOffset_title);
-
-        //** INPUT - yOffset - INPUT */
-        var input_container_yOffset_input = document.createElement('input');
-        input_container_yOffset_input.type = "number";
-        input_container_yOffset_input.value = 0;
-        input_container_yOffset_input.step = 0.1;
-        input_container_yOffset.appendChild(input_container_yOffset_input);
-
-        //** ON CHANGE EVENT FOR xMax */
-        input_container_yOffset_input.addEventListener('change', function() {
-          loopThroughLayers();
-        }, false);
-      
-        loopThroughLayers();
-  })
-  
+    })
+  }
 
   updateGraphMinMax();
   layers.appendChild(nav);
@@ -5042,62 +5152,130 @@ groupSeperation_Global.addEventListener("change", function () {
   Array.from(navs).forEach(function (element, i) {
     
     var groupId = element.getAttribute("name");
+    var currentBoxHeight = 0;
 
     for(var x=0; x < boxAnnotations.length; x++)
     {
       if(boxAnnotations[x].title.includes(groupId))
       {
-        var yStart = 0.1; //+ offset
-        var yEnd = 0.1;
+        var yStart = 0; //+ offset
+        var yEnd = 0;
 
-        var inputName = boxAnnotations[x].title.slice(0, 2);
+        var inputName;
+
+        if(!isNaN(boxAnnotations[x].title.slice(2, 3)))
+        {
+          inputName = boxAnnotations[x].title.slice(0, 3);
+        }
+        else
+        {
+          inputName = boxAnnotations[x].title.slice(0, 2);
+        }
+
         var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
 
+        //** SET THE HEIGHT IF ITS A BOX */
+        if(boxAnnotations[x].title.includes("box"))
+        {
+          currentBoxHeight = parseFloat(boxAnnotations[x].yMax) - parseFloat(boxAnnotations[x].yMin);
+        }
+
         yStart = (groupSeperation_Global.value * i) + 0.1 + parseFloat(yOffset); //+ offset
-        yEnd = yStart + 0.03;
+        yEnd = yStart + currentBoxHeight;
 
         if(boxAnnotations[x].title.includes("sublabel"))
         {
-          yEnd += 0.01;
-          yStart = yEnd;
+          boxAnnotations[x].yMin = yEnd + 0.01;
+          boxAnnotations[x].yMax = yEnd + 0.01;
         }
-
-        boxAnnotations[x].yMin = yStart;
-        boxAnnotations[x].yMax = yEnd;
-
+        else
+        {
+          boxAnnotations[x].yMin = yStart;
+          boxAnnotations[x].yMax = yEnd;
+        }
       }
     }
     for(var y=0; y < boxAnnotations2.length; y++)
     {
       if(boxAnnotations2[y].title.includes(groupId))
       {
-        var yStart = 0.1; //+ offset
-        var yEnd = 0.1;
+        var yStart = 0; //+ offset
+        var yEnd = 0;
 
-        var inputName = boxAnnotations2[y].title.slice(0, 2);
+        var inputName;
+
+        //** IF THE 3RD INDEX IS A NUMBER (EX: B11 as appose to B1) */
+        if(!isNaN(boxAnnotations2[y].title.slice(2, 3)))
+        {
+          inputName = boxAnnotations2[y].title.slice(0, 3);
+        }
+        else
+        {
+          inputName = boxAnnotations2[y].title.slice(0, 2);
+        }
+
+        //var inputName = boxAnnotations2[y].title.slice(0, 2);
         var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
 
+        console.log(boxAnnotations2[y]);
+
+        //** SET THE HEIGHT IF ITS A BOX */
+        if(boxAnnotations2[y].title.includes("box"))
+        {
+          currentBoxHeight = parseFloat(boxAnnotations2[y].yMax) - parseFloat(boxAnnotations2[y].yMin);
+        }
+
         yStart = (groupSeperation_Global.value * i) + 0.1 + parseFloat(yOffset); //+ offset
-        yEnd = yStart + 0.03;
+        yEnd = yStart + currentBoxHeight;
 
         if(boxAnnotations2[y].title.includes("sublabel"))
         {
-          yEnd += 0.01;
-          yStart = yEnd;
+          boxAnnotations2[y].yMin = yEnd + 0.01;
+          boxAnnotations2[y].yMax = yEnd + 0.01;
         }
+        else
+        {
+          boxAnnotations2[y].yMin = yStart;
+          boxAnnotations2[y].yMax = yEnd;
 
-        boxAnnotations2[y].yMin = yStart;
-        boxAnnotations2[y].yMax = yEnd;
-
+          console.log(yStart);
+        }
       }
     }
+    // for(var y=0; y < boxAnnotations2.length; y++)
+    // {
+    //   if(boxAnnotations2[y].title.includes(groupId))
+    //   {
+    //     var yStart = 0; //+ offset
+    //     var yEnd = 0;
+
+    //     var inputName = boxAnnotations2[y].title.slice(0, 2);
+    //     var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
+
+    //     yStart = (groupSeperation_Global.value * i) + 0.1 + parseFloat(yOffset); //+ offset
+
+    //     var height = boxAnnotations2[y].yMax - boxAnnotations2[y].yMin;
+    //     yEnd = yStart + height;
+
+    //     if(boxAnnotations2[y].title.includes("sublabel"))
+    //     {
+    //       yEnd += 0.01;
+    //       yStart = yEnd;
+    //     }
+
+    //     boxAnnotations2[y].yMin = yStart;
+    //     boxAnnotations2[y].yMax = yEnd;
+
+    //     console.log(yStart + boxAnnotations2[y].title);
+
+    //   }
+    // }
   });
+
+  chart2.options.scales.y.min = 0;
 
   chart.update();
   chart2.update();
-
-  //console.log(layers.children);
-
 });
 
 // labelSize_Global.addEventListener("change", function () {
