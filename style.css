@@ -399,8 +399,8 @@ li .dropdown{
  * Styling first level lists items
  */
  .group-list a, .group-list label{
-  font-size: 125%;
-  padding-left: 1.5rem;
+  font-size: 100%;
+  padding-left: 12%;
   color: black;
   background: #E6E6E6;
   box-shadow: inset 0 -1px #373737;
@@ -417,10 +417,10 @@ li .dropdown{
  * Styling second level list items
  */
 .sub-group-list a, .sub-group-list label, .sub-group-list .inputContainer, input {
-  font-size: 125%;
+  font-size: 100%;
   outline: solid 1px #353535;
   margin: auto;
-  height: 50px;
+  height: 2.5rem;
   color: black;
   background: white;
   /* box-shadow: inset 0 -1px #474747; */
@@ -538,7 +538,7 @@ ul {
 
 .title_Label i{
   /* float: left; */
-  margin-right: 1%;
+  margin-right: 5%;
   margin-left: 0;
   
   /* padding-left: 2.5%; */
