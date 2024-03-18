@@ -235,7 +235,7 @@ const config = {
       y: {
         title: {
           display: true,
-          text: "Atmospheric Transmission",
+          text: "Atmospheric Transmission (%)",
           font: {
             size: 15,
           },
@@ -376,6 +376,9 @@ const chart2 = new Chart(ctx2, config2);
 
 init();
 function init() {
+  setTimeout(() => {
+    addPreset("Landsat 8-9", Landsat8_9_values);
+  }, 1000);
   //transmissionData = readTextFile("/myData.csv", true);
   // console.log(chart.options.plugins.annotation.annotations[0]);
   // console.log(chart2.options.plugins.annotation.annotations[0]);
@@ -734,7 +737,7 @@ var Landsat1_3_values = [
     yOffset: 0,
   },
   {
-    title: 'Band 6 - NIR',
+    title: 'Band 6 - Near Infrared (NIR)',
     color: '#7d2652',
     xMin: 700, 
     xMax: 800,
@@ -747,7 +750,7 @@ var Landsat1_3_values = [
     yOffset: 0,
   },
   {
-    title: 'Band 7 - NIR',
+    title: 'Band 7 - Near Infrared (NIR)',
     color: '#c5a2bd',
     xMin: 800, 
     xMax: 1100,
@@ -1116,8 +1119,8 @@ var Landsat8_9_values = [
     yOffset: -0.05,
   },
   {
-    //** Band 9 - Panchromatic */
-    title: "Band 9 - Panchromatic",
+    //** Band 9 - Cirrus */
+    title: "Band 9 - Cirrus",
     color: '#7480a1',
     xMin: 1360, 
     xMax: 1380,
@@ -1130,8 +1133,8 @@ var Landsat8_9_values = [
     yOffset: 0.05,
   },
   {
-    //** Band 10 - Thermal Infrared (TIRS) 1 */
-    title: "Band 10 - Thermal Infrared (TIRS) 1",
+    //** Band 10 - Thermal Infrared (TIR) 1 */
+    title: "Band 10 - Thermal Infrared (TIR) 1",
     color: '#bc7a82',
     xMin: 10600, 
     xMax: 11190,
@@ -1144,8 +1147,8 @@ var Landsat8_9_values = [
     yOffset: 0,
   },
   {
-    //** Band 11 - Thermal Infrared (TIRS) 2 */
-    title: "Band 11 - Thermal Infrared (TIRS) 2",
+    //** Band 11 - Thermal Infrared (TIR) 2 */
+    title: "Band 11 - Thermal Infrared (TIR) 2",
     color: '#bc7a82',
     xMin: 11500, 
     xMax: 12510,
@@ -3049,9 +3052,11 @@ var CUSTOM_values = [
 var enabledPresets = [];
 function addPreset(title, preset)
 {
-  enabledPresets.push(title);
-  var count = 0; 
-  enabledPresets.forEach((v) => (v=== title && count++));
+  var count = 0;
+  enabledPresets.forEach((v) => (v.includes(title) && count++));
+  console.log("Count: " + count);
+  console.log(enabledPresets);
+
   var title_text = title;
   let isCustomBand = false;
   
@@ -3060,12 +3065,12 @@ function addPreset(title, preset)
   {
     isCustomBand = true;
   }
-
-  if(count > 1)
+  if(count > 0)
   {
     title_text += "(" + count + ")";
   }
   title += count;
+  enabledPresets.push(title); 
 
   //** ADD PRESET TO INPUT */
   for(var i = 0; i < preset.length; i++)
@@ -3130,51 +3135,123 @@ function addPreset(title, preset)
   title_label.setAttribute("contentEditable", false);
   li.appendChild(title_label);
 
+  //** 3 DOT DROPDOWN */
+  // var threeDot_Dropdown = document.createElement("div")
+  // threeDot_Dropdown.id = "dropdown_" + title;
+  // threeDot_Dropdown.classList = "dropdown-content";
+  
+  // var threeDot_Btn_delete = document.createElement("a");
+  // threeDot_Btn_delete.id = "dropdown_" + title;
+  // threeDot_Btn_delete.innerHTML = "delete";
+
+  // threeDot_Btn_delete.addEventListener('click', function() {
+  //   nav.innerHTML = "";
+  //   nav.remove();
+  //   var index = enabledPresets.indexOf(this.title);
+  //   enabledPresets.splice(index, 1);
+  //   sensorNumb--;
+
+  //   //** REMOVE BOX FROM GROUP */
+  //   for(var i = boxAnnotations.length-1; i >=0; i--)
+  //   {
+  //     if(boxAnnotations[i].title.includes(this.title))
+  //     {
+  //       boxAnnotations.splice(i, 1);
+  //     }
+  //   }
+  //   for(var x = boxAnnotations2.length-1; x >=0; x--)
+  //   {
+  //     if(boxAnnotations2[x].title.includes(this.title))
+  //     {
+  //       boxAnnotations2.splice(x, 1);
+  //     }
+  //   }
+
+  //   correctGroupSeperation();
+
+  //   chart.update();
+  //   chart2.update();
+  // }, false);
+  
+  // threeDot_Dropdown.appendChild(threeDot_Btn_delete);
+  // nav.appendChild(threeDot_Dropdown);
+
+  var threeDot_Dropdown = document.createElement("div");
+  threeDot_Dropdown.classList = "dropdown";
+
+  var threeDot_Button = document.createElement("button");
+  threeDot_Button.id = "dropDownBtn";
+  threeDot_Button.classList = "dropbtn";
+  threeDot_Button.innerHTML = "+";
+  threeDot_Dropdown.appendChild(threeDot_Button);
+
+  //** TITLE REMOVE ICON */
+  // var title_label_removeIcon = document.createElement("i");
+  // title_label_removeIcon.classList = "fa fa-ellipsis-v";
+  // title_label_removeIcon.id = "removeIcon";
+  // title_label_removeIcon.title = title;
+  // title_label_removeIcon.setAttribute("contentEditable", false);
+  // threeDot_Dropdown.appendChild(title_label_removeIcon);
+
+  var threeDot_Dropdown_Container = document.createElement("div");
+  threeDot_Dropdown_Container.id = "dropdown_" + title;
+  threeDot_Dropdown_Container.classList = "dropdown-content";
+  threeDot_Dropdown.appendChild(threeDot_Dropdown_Container);
+
+  var threeDot_Btn_delete = document.createElement("a");
+  threeDot_Btn_delete.id = "dropdown_" + title;
+  threeDot_Btn_delete.innerHTML = "delete";
+  threeDot_Dropdown_Container.appendChild(threeDot_Btn_delete);
+
+  title_label.appendChild(threeDot_Dropdown);
+
+  threeDot_Btn_delete.addEventListener('click', function() {
+    nav.innerHTML = "";
+    nav.remove();
+    var index = enabledPresets.indexOf(this.title);
+    enabledPresets.splice(index, 1);
+    sensorNumb--;
+
+    //** REMOVE BOX FROM GROUP */
+    for(var i = boxAnnotations.length-1; i >=0; i--)
+    {
+      if(boxAnnotations[i].title.includes(this.title))
+      {
+        boxAnnotations.splice(i, 1);
+      }
+    }
+    for(var x = boxAnnotations2.length-1; x >=0; x--)
+    {
+      if(boxAnnotations2[x].title.includes(this.title))
+      {
+        boxAnnotations2.splice(x, 1);
+      }
+    }
+
+    correctGroupSeperation();
+
+    chart.update();
+    chart2.update();
+  }, false);
+
+  //** ON CHANGE EVENT FOR REMOVE ICON */
+  threeDot_Dropdown.addEventListener('click', function() {
+    threeDot_Dropdown_Container.classList.toggle("show");
+  }, false);
+
     //** TITLE REMOVE ICON */
-    var title_label_removeIcon = document.createElement("i");
-    title_label_removeIcon.classList = "fa fa-ellipsis-v";
-    title_label_removeIcon.id = "removeIcon";
-    title_label_removeIcon.title = title;
-    title_label_removeIcon.setAttribute("contentEditable", false);
-    title_label.appendChild(title_label_removeIcon);
+    // var title_label_removeIcon = document.createElement("i");
+    // title_label_removeIcon.classList = "fa fa-ellipsis-v";
+    // title_label_removeIcon.id = "removeIcon";
+    // title_label_removeIcon.title = title;
+    // title_label_removeIcon.setAttribute("contentEditable", false);
+    // title_label.appendChild(title_label_removeIcon);
 
     //** ON CHANGE EVENT FOR REMOVE ICON */
-    title_label_removeIcon.addEventListener('click', function() {
-      nav.innerHTML = "";
-      nav.remove();
-      var index = enabledPresets.indexOf(this.title);
-      enabledPresets.splice(index, 1);
-      sensorNumb--;
-
-      for(var i = boxAnnotations.length-1; i >=0; i--)
-      {
-        if(boxAnnotations[i].title.includes(this.title))
-        {
-          boxAnnotations.splice(i, 1);
-        }
-      }
-      for(var x = boxAnnotations2.length-1; x >=0; x--)
-      {
-        if(boxAnnotations2[x].title.includes(this.title))
-        {
-          boxAnnotations2.splice(x, 1);
-        }
-      }
-
-      chart.update();
-      chart2.update();
-    }, false);
-
-    //** DROP DOWN */
-    var menuList = document.createElement("div");
-    menuList.classList = "dropdown-content show";
-    title_label_removeIcon.appendChild(menuList);
-    menuList.classList.toggle("show");
-
-      var deleteList = document.createElement('a');
-      deleteList.id = "delete";
-      deleteList.innerHTML = "delete";
-      menuList.appendChild(deleteList);
+    // title_label_removeIcon.addEventListener('click', function() {
+    //   document.getElementById("dropdown_" + this.title).classList.toggle("show");
+    //   console.log(this.title);
+    // }, false);
       
     var titleText = document.createElement("div");
     titleText.innerHTML = title_text;
@@ -3773,6 +3850,8 @@ function addPreset(title, preset)
     band_label.setAttribute("for", "sub-group-b" + (i+1) + title);
     band_label.setAttribute("contentEditable", false);
     band_label.id = "band_label_b" + (i+1) + title;
+    band_label.title = preset[i].xMin + "nm-" + preset[i].xMax + "nm";
+    console.log(preset[i]);
 
     // //** IF THE PRESET IS A TILE THEN CHANGE IT's ID */
     if(preset[i].title)
@@ -4302,7 +4381,9 @@ function addPreset(title, preset)
       band_label.id = "band_label_b" + (label_index-1) + title;
       band_label.setAttribute("contentEditable", false);
       band_li.appendChild(band_label);
-      
+      //band_label.title = preset[i].
+      console.log(preset[i]);
+
       //** BAND LABEL SPAN */
       var band_label_span = document.createElement("span");
       band_label_span.innerHTML = "›";
@@ -5143,8 +5224,11 @@ CUSTOM_Dropdown.addEventListener("click", function () {
 // });
 
 groupSeperation_Global.addEventListener("change", function () {
-  
-  console.log("change BoxHeight to: " + groupSeperation_Global.value);
+  correctGroupSeperation();
+});
+
+function correctGroupSeperation()
+{
   groupSeperation = parseFloat(groupSeperation_Global.value);
 
   var navs = layers.getElementsByClassName("nav");
@@ -5242,41 +5326,13 @@ groupSeperation_Global.addEventListener("change", function () {
         }
       }
     }
-    // for(var y=0; y < boxAnnotations2.length; y++)
-    // {
-    //   if(boxAnnotations2[y].title.includes(groupId))
-    //   {
-    //     var yStart = 0; //+ offset
-    //     var yEnd = 0;
-
-    //     var inputName = boxAnnotations2[y].title.slice(0, 2);
-    //     var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
-
-    //     yStart = (groupSeperation_Global.value * i) + 0.1 + parseFloat(yOffset); //+ offset
-
-    //     var height = boxAnnotations2[y].yMax - boxAnnotations2[y].yMin;
-    //     yEnd = yStart + height;
-
-    //     if(boxAnnotations2[y].title.includes("sublabel"))
-    //     {
-    //       yEnd += 0.01;
-    //       yStart = yEnd;
-    //     }
-
-    //     boxAnnotations2[y].yMin = yStart;
-    //     boxAnnotations2[y].yMax = yEnd;
-
-    //     console.log(yStart + boxAnnotations2[y].title);
-
-    //   }
-    // }
   });
 
   chart2.options.scales.y.min = 0;
 
   chart.update();
   chart2.update();
-});
+}
 
 // labelSize_Global.addEventListener("change", function () {
 //   labelSize = labelSize_Global.value + "%";

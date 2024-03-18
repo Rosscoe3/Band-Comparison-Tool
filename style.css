@@ -246,12 +246,11 @@ h1 {
 .dropbtn {
   height: fit-content;
   font-weight: 100;
-  font-size: 125%;
+  font-size: 100%;
   border: none;
   cursor: pointer;
   background-color: rgba(0, 100, 100, 0);
 }
-
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
@@ -278,9 +277,14 @@ li .dropdown{
   max-height:500px;
   overflow-y:scroll; 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 100;
+  z-index: 99 !important;
   right: 0%;
 }
+
+li .dropdown-content {
+  left: 0%;
+}
+
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
@@ -293,7 +297,7 @@ li .dropdown{
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.dropdown-content.show {display:block;}
 
 .sidebar.active{
   width: 20%;
@@ -393,7 +397,10 @@ li .dropdown{
   color: rgba(255, 255, 255, 1);
   background: #030303;
 }
-.nav label { cursor: pointer; }
+.nav label { 
+  cursor: pointer;
+  overflow: hidden;
+}
 
 /**
  * Styling first level lists items
@@ -545,7 +552,7 @@ ul {
   /* transform: translate(-75%, 20%); */
   font-size: 150%;
   transition: all 0.25s ease-in-out;
-  user-select: none;  
+  user-select: none; 
 }
 
 .title_Label i:hover{
