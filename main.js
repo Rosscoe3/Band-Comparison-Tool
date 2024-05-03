@@ -3078,7 +3078,8 @@ function addPreset(title, preset)
     title_text += "(" + count + ")";
   }
   title += count;
-  enabledPresets.push(title); 
+  enabledPresets.unshift(title);
+  console.log(enabledPresets); 
 
   //** ADD PRESET TO INPUT */
   for(var i = 0; i < preset.length; i++)
@@ -3205,6 +3206,9 @@ function addPreset(title, preset)
   threeDot_Dropdown_Container.id = "dropdown_" + title;
   threeDot_Dropdown_Container.classList = "dropdown-content";
   threeDot_Dropdown.appendChild(threeDot_Dropdown_Container);
+  threeDot_Dropdown.style.zIndex = "9000";
+  //title_label.appendChild(threeDot_Dropdown_Container);
+  //li.appendChild(threeDot_Dropdown_Container);
 
   var threeDot_Btn_delete = document.createElement("a");
   threeDot_Btn_delete.id = "dropdown_" + title;
@@ -3212,13 +3216,12 @@ function addPreset(title, preset)
   threeDot_Btn_delete.title = title;
   threeDot_Dropdown_Container.appendChild(threeDot_Btn_delete);
 
-  title_label.appendChild(threeDot_Dropdown);
-
   threeDot_Btn_delete.addEventListener('click', function() {
     nav.innerHTML = "";
     nav.remove();
     var index = enabledPresets.indexOf(this.title);
     enabledPresets.splice(index, 1);
+    console.log(enabledPresets);
     sensorNumb--;
 
     //** REMOVE BOX FROM GROUP */
@@ -3242,6 +3245,50 @@ function addPreset(title, preset)
     chart.update();
     chart2.update();
   }, false);
+
+  var threeDot_Btn_moveUp = document.createElement("a");
+  threeDot_Btn_moveUp.id = "dropdown_" + title;
+  threeDot_Btn_moveUp.innerHTML = "move up";
+  threeDot_Btn_moveUp.title = title;
+  threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveUp);
+
+  //** EVENT LISTENER FOR MOVE UP BUTTON */
+  threeDot_Btn_moveUp.addEventListener('click', function() {
+    var index = enabledPresets.indexOf(this.title);
+    
+    //**REORDER ARRAY OF enabledPresets */
+    reorderArray(enabledPresets, index, index-1)
+    console.log(index-1);
+    console.log(enabledPresets);
+
+    //** REORDER HTML */
+    var navAmount = document.getElementById("layers").children.length;
+    
+    console.log(document.getElementById("layers").children.length);
+
+    //** REMOVE BOX FROM GROUP */
+    for(var i = boxAnnotations.length-1; i >=0; i--)
+    {
+      // if(boxAnnotations[i].title.includes(this.title))
+      // {
+      //   boxAnnotations.splice(i, 1);
+      // }
+    }
+    for(var x = boxAnnotations2.length-1; x >=0; x--)
+    {
+      // if(boxAnnotations2[x].title.includes(this.title))
+      // {
+      //   boxAnnotations2.splice(x, 1);
+      // }
+    }
+
+    correctGroupSeperation();
+
+    chart.update();
+    chart2.update();
+  }, false);
+  
+  title_label.appendChild(threeDot_Dropdown);
 
   //** ON CHANGE EVENT FOR REMOVE ICON */
   threeDot_Dropdown.addEventListener('click', function() {
@@ -4736,7 +4783,7 @@ function addPreset(title, preset)
   }
 
   updateGraphMinMax();
-  layers.appendChild(nav);
+  layers.insertBefore(nav, layers.firstChild);
 }
 
 function loopThroughLayers()
@@ -4865,6 +4912,14 @@ function addAlpha(color, opacity) {
   // coerce values so ti is between 0 and 1.
   var _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
   return color + _opacity.toString(16).toUpperCase();
+}
+
+function reorderArray(array, from, to)
+{
+  // remove `from` item and store it
+  var f = array.splice(from, 1)[0];
+  // insert stored item into position `to`
+  array.splice(to, 0, f);
 }
 
 //** READS BOX ANNOTATIONS AND CALCULATES THE LOWEST AND HIGHEST VALUES TO TRIM THE GRAPH TOO */
@@ -5239,10 +5294,9 @@ groupSeperation_Global.addEventListener("change", function () {
 function correctGroupSeperation()
 {
   groupSeperation = parseFloat(groupSeperation_Global.value);
-
   var navs = layers.getElementsByClassName("nav");
 
-  Array.from(navs).forEach(function (element, i) {
+  Array.from(navs).slice().reverse().forEach(function (element, i) {
     
     var groupId = element.getAttribute("name");
     var currentBoxHeight = 0;
