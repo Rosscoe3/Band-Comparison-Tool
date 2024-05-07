@@ -3263,24 +3263,19 @@ function addPreset(title, preset)
 
     //** REORDER HTML */
     var navAmount = document.getElementById("layers").children.length;
-    
     console.log(document.getElementById("layers").children.length);
+    console.log(document.getElementById(title));
 
-    //** REMOVE BOX FROM GROUP */
-    for(var i = boxAnnotations.length-1; i >=0; i--)
+    //** Move html element up in the order*/
+    if(nav.previousElementSibling)
     {
-      // if(boxAnnotations[i].title.includes(this.title))
-      // {
-      //   boxAnnotations.splice(i, 1);
-      // }
+      nav.parentNode.insertBefore(nav, nav.previousElementSibling);
     }
-    for(var x = boxAnnotations2.length-1; x >=0; x--)
-    {
-      // if(boxAnnotations2[x].title.includes(this.title))
-      // {
-      //   boxAnnotations2.splice(x, 1);
-      // }
-    }
+    //** Move html element down in the order*/
+    // if(element.nextElementSibling)
+    // {
+    //   nav.parentNode.insertBefore(nav.nextElementSibling, nav);
+    // }
 
     correctGroupSeperation();
 
@@ -5364,8 +5359,6 @@ function correctGroupSeperation()
         //var inputName = boxAnnotations2[y].title.slice(0, 2);
         var yOffset = document.getElementById(inputName + groupId + "_yOffset").value;
 
-        console.log(boxAnnotations2[y]);
-
         //** SET THE HEIGHT IF ITS A BOX */
         if(boxAnnotations2[y].title.includes("box"))
         {
@@ -5384,8 +5377,6 @@ function correctGroupSeperation()
         {
           boxAnnotations2[y].yMin = yStart;
           boxAnnotations2[y].yMax = yEnd;
-
-          console.log(yStart);
         }
       }
     }
