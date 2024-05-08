@@ -3250,6 +3250,7 @@ function addPreset(title, preset)
   threeDot_Btn_moveUp.id = "dropdown_" + title;
   threeDot_Btn_moveUp.innerHTML = "move up";
   threeDot_Btn_moveUp.title = title;
+  threeDot_Btn_moveUp.classList.toggle("disabled");
   threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveUp);
 
   //** EVENT LISTENER FOR MOVE UP BUTTON */
@@ -3276,6 +3277,33 @@ function addPreset(title, preset)
     // {
     //   nav.parentNode.insertBefore(nav.nextElementSibling, nav);
     // }
+
+    correctGroupSeperation();
+
+    chart.update();
+    chart2.update();
+  }, false);
+
+  var threeDot_Btn_moveDown = document.createElement("a");
+  threeDot_Btn_moveDown.id = "dropdown_" + title;
+  threeDot_Btn_moveDown.innerHTML = "move down";
+  threeDot_Btn_moveDown.title = title;
+  threeDot_Btn_moveDown.classList.toggle("disabled");
+  threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveDown);
+
+
+  //** EVENT LISTENER FOR MOVE UP BUTTON */
+  threeDot_Btn_moveDown.addEventListener('click', function() {
+    var index = enabledPresets.indexOf(this.title);
+    
+    //**REORDER ARRAY OF enabledPresets */
+    reorderArray(enabledPresets, index, index+1);
+
+    //** Move html element down in the order*/
+    if(nav.nextElementSibling)
+    {
+      nav.parentNode.insertBefore(nav.nextElementSibling, nav);
+    }
 
     correctGroupSeperation();
 

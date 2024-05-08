@@ -301,6 +301,11 @@ li .dropdown-content {
   text-decoration: none;
   display: block;
   font-size: 75%;
+  pointer-events: auto;
+}
+.dropdown-content a.disabled {
+  opacity: 50%;
+  pointer-events: none;
 }
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
@@ -603,4 +608,14 @@ ul {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 5%;
+}
+
+.versionNumb{
+  position: inherit;
+  right: 0%;
+  top:0%;
+  text-align: justify;
+  font-size: 75%;
+  margin: 0.5%;
+  color: black;
 }
