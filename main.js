@@ -3206,7 +3206,7 @@ function addPreset(title, preset)
   threeDot_Dropdown_Container.id = "dropdown_" + title;
   threeDot_Dropdown_Container.classList = "dropdown-content";
   threeDot_Dropdown.appendChild(threeDot_Dropdown_Container);
-  threeDot_Dropdown.style.zIndex = "9000";
+  //threeDot_Dropdown.style.zIndex = "9000";
   //title_label.appendChild(threeDot_Dropdown_Container);
   //li.appendChild(threeDot_Dropdown_Container);
 
@@ -3250,7 +3250,7 @@ function addPreset(title, preset)
   threeDot_Btn_moveUp.id = "dropdown_" + title;
   threeDot_Btn_moveUp.innerHTML = "move up";
   threeDot_Btn_moveUp.title = title;
-  threeDot_Btn_moveUp.classList.toggle("disabled");
+  //threeDot_Btn_moveUp.classList.toggle("disabled");
   threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveUp);
 
   //** EVENT LISTENER FOR MOVE UP BUTTON */
@@ -3272,11 +3272,6 @@ function addPreset(title, preset)
     {
       nav.parentNode.insertBefore(nav, nav.previousElementSibling);
     }
-    //** Move html element down in the order*/
-    // if(element.nextElementSibling)
-    // {
-    //   nav.parentNode.insertBefore(nav.nextElementSibling, nav);
-    // }
 
     correctGroupSeperation();
 
@@ -3288,7 +3283,7 @@ function addPreset(title, preset)
   threeDot_Btn_moveDown.id = "dropdown_" + title;
   threeDot_Btn_moveDown.innerHTML = "move down";
   threeDot_Btn_moveDown.title = title;
-  threeDot_Btn_moveDown.classList.toggle("disabled");
+  //threeDot_Btn_moveDown.classList.toggle("disabled");
   threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveDown);
 
 

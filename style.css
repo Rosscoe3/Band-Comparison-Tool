@@ -181,7 +181,7 @@ h1 {
   flex-grow: 2;
   justify-content: center;
   height: fit-content;
-  padding-left: 2rem;
+  padding-left: 12.5%;
   line-height: 270%;
   user-select: none;
 }
@@ -265,6 +265,7 @@ h1 {
   position: relative;
   display: inline-block;
   float: right;
+  z-index: 1;
 }
 
 li .dropdown{
@@ -302,9 +303,11 @@ li .dropdown-content {
   display: block;
   font-size: 75%;
   pointer-events: auto;
+  z-index: 500000;
 }
 .dropdown-content a.disabled {
   opacity: 50%;
+  cursor: default;
   pointer-events: none;
 }
 /* Change color of dropdown links on hover */
