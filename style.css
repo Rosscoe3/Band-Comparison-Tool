@@ -228,7 +228,7 @@ h1 {
   margin: 1.5%;
   height: 100%;
   color: black;
-  z-index: 100;
+  z-index: 1;
   cursor: pointer;
 }
 
@@ -273,6 +273,12 @@ li .dropdown{
   position: fixed;
   display: inline-block;
 }
+
+.dropdown button{
+  position: absolute;
+  z-index: 10;
+}
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
@@ -286,6 +292,7 @@ li .dropdown{
   overflow-y:scroll; 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   right: 0%;
+  z-index: 1000;
 }
 
 li .dropdown-content {
@@ -303,7 +310,6 @@ li .dropdown-content {
   display: block;
   font-size: 75%;
   pointer-events: auto;
-  z-index: 500000;
 }
 .dropdown-content a.disabled {
   opacity: 50%;

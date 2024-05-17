@@ -3191,7 +3191,7 @@ function addPreset(title, preset)
   var threeDot_Button = document.createElement("button");
   threeDot_Button.id = "dropDownBtn";
   threeDot_Button.classList = "dropbtn";
-  threeDot_Button.innerHTML = "+";
+  threeDot_Button.innerHTML = "&#10247";
   threeDot_Dropdown.appendChild(threeDot_Button);
 
   //** TITLE REMOVE ICON */
@@ -3206,9 +3206,7 @@ function addPreset(title, preset)
   threeDot_Dropdown_Container.id = "dropdown_" + title;
   threeDot_Dropdown_Container.classList = "dropdown-content";
   threeDot_Dropdown.appendChild(threeDot_Dropdown_Container);
-  //threeDot_Dropdown.style.zIndex = "9000";
-  //title_label.appendChild(threeDot_Dropdown_Container);
-  //li.appendChild(threeDot_Dropdown_Container);
+  //threeDot_Dropdown.insertBefore(threeDot_Dropdown_Container, threeDot_Dropdown.firstChild)
 
   var threeDot_Btn_delete = document.createElement("a");
   threeDot_Btn_delete.id = "dropdown_" + title;
@@ -5283,15 +5281,14 @@ PACE_Dropdown.addEventListener("click", function () {
   addPreset("PACE", PACE_values);
   //loopThroughLayers();
 });
-STELLA_Dropdown.addEventListener("click", function () {
-  addPreset("STELLA", STELLA_values);
-  //loopThroughLayers();
-});
-
-CUSTOM_Dropdown.addEventListener("click", function () {
-  addPreset("Custom", CUSTOM_values);
-  //loopThroughLayers();
-});
+// STELLA_Dropdown.addEventListener("click", function () {
+//   addPreset("STELLA", STELLA_values);
+//   //loopThroughLayers();
+// });
+// CUSTOM_Dropdown.addEventListener("click", function () {
+//   addPreset("Custom", CUSTOM_values);
+//   //loopThroughLayers();
+// });
 
 //** TOGGLE GLOBALY STYLE */
 // boxHeight_Global.addEventListener("change", function () {
