@@ -274,11 +274,6 @@ li .dropdown{
   display: inline-block;
 }
 
-.dropdown button{
-  position: absolute;
-  z-index: 10;
-}
-
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
