@@ -68,7 +68,7 @@ let Chart1_max = document.getElementById("Chart1_max");
 let Chart2_min = document.getElementById("Chart2_min");
 let Chart2_max = document.getElementById("Chart2_max");
 
-let presetDropDown = document.getElementById("dropDownBtn");
+let presetDropDown = document.getElementById("dropDownBtn_layers");
 
 let boxHeight_Global = document.getElementById("boxHeight_Global");
 let boxSeperation_Global = document.getElementById("boxSeperation_Global");
@@ -3272,6 +3272,7 @@ function addPreset(title, preset)
     }
 
     correctGroupSeperation();
+    checkDropdowns();
 
     chart.update();
     chart2.update();
@@ -4798,6 +4799,9 @@ function addPreset(title, preset)
     })
   }
 
+  setTimeout(() => {
+    checkDropdowns();
+  }, 10);
   updateGraphMinMax();
   layers.insertBefore(nav, layers.firstChild);
 }
@@ -4938,6 +4942,52 @@ function reorderArray(array, from, to)
   array.splice(to, 0, f);
 }
 
+function checkDropdowns()
+{
+  //** DROPDOWNS **//
+  var dropdowns = layers.getElementsByClassName("dropdown-content");
+  console.log(dropdowns);
+  
+  //** ENABLE ALL TOO START */
+  for (var y = 0; y < dropdowns.length; y++) 
+  {
+    if(dropdowns[y].children[1].classList.contains("disabled"))
+    {
+      dropdowns[y].children[1].classList.toggle("disabled");
+    }
+    if(dropdowns[y].children[2].classList.contains("disabled"))
+    {
+      dropdowns[y].children[2].classList.toggle("disabled");
+    }
+  }
+  //** DISABLED CORRECT DROPDOWN OPTIONS */
+  for (var x = 0; x < dropdowns.length; x++) 
+  {
+    //** FOR THE TOP MOST LAYER's THREE DOT DROPDOWN */
+    if(x == 0)
+    {
+      console.log(dropdowns.length);
+      //** IF THERES ONLY ONE ELEMENT */
+      if(dropdowns.length == 1)
+      {
+        dropdowns[x].children[1].classList.toggle("disabled");
+        dropdowns[x].children[2].classList.toggle("disabled");
+      }
+      //** IF THERES MORE THAN ONE ELEMENT */
+      else if(dropdowns.length > 1)
+      {
+        dropdowns[x].children[1].classList.toggle("disabled");
+      }
+    }
+    else if(x == dropdowns.length-1)
+    {
+      dropdowns[x].children[2].classList.toggle("disabled");
+    }
+
+    console.log(dropdowns[x]);
+  }
+}
+
 //** READS BOX ANNOTATIONS AND CALCULATES THE LOWEST AND HIGHEST VALUES TO TRIM THE GRAPH TOO */
 function updateGraphMinMax()
 {
@@ -5009,20 +5059,6 @@ function updateGraphMinMax()
 
   console.log(boxAnnotations)
   console.log(boxAnnotations2)
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
 }
 
 //....** HTML OBJECTS ACTIONS ....*/
@@ -5509,15 +5545,57 @@ presetDropDown.addEventListener("click", function () {
   //console.log('dropdown');
 });
 
+var lastClickedButton;
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+window.onclick = function(event) 
+{
+  if (!event.target.matches('.dropbtn')) 
+  {
     var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
+    for (var i = 0; i < dropdowns.length; i++) 
+    {
       var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
+      if (openDropdown.classList.contains('show')) 
+      {
         openDropdown.classList.remove('show');
+      }
+    }
+    //** TOGGLE Threedot */
+    var dropdownButtons = document.getElementsByClassName("dropbtn");
+    for (var i = 0; i < dropdownButtons.length; i++) {
+      var Threedot = dropdownButtons[i];
+      if (Threedot.classList.contains('hide') && Threedot.id != "dropDownBtn_layers") 
+      {
+        Threedot.classList.remove('hide');
+      }
+    }
+  }
+  else
+  {
+    console.log(event.target.id);
+    lastClickedButton = event.target;
+
+    //** TOGGLE Threedot */
+    if (event.target.id != "dropDownBtn_layers")
+    {
+      var dropdownButtons = document.getElementsByClassName("dropbtn");
+      console.log(dropdownButtons);
+      for (var i = 0; i < dropdownButtons.length; i++) {
+        var Threedot = dropdownButtons[i];
+        if (Threedot.classList.contains('hide')) 
+        {
+          if(Threedot.id != "dropDownBtn_layers")
+          {
+            Threedot.classList.remove('hide');
+          }
+        }
+        else
+        {
+          if(Threedot.id != "dropDownBtn_layers")
+          {
+            Threedot.classList.toggle('hide');
+          }
+        }
       }
     }
   }

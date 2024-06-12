@@ -249,8 +249,14 @@ h1 {
   font-size: 100%;
   border: none;
   cursor: pointer;
+  opacity: 100%;
   background-color: rgba(0, 100, 100, 0);
   z-index: 0;
+}
+
+.dropbtn.hide{
+  pointer-events: none;
+  opacity: 0%;
 }
 
 /* Dropdown button on hover & focus */
@@ -265,7 +271,6 @@ h1 {
   position: relative;
   display: inline-block;
   float: right;
-  z-index: 1;
 }
 
 li .dropdown{
@@ -279,7 +284,6 @@ li .dropdown{
   display: none;
   position: absolute;
   background-color: white;
-  /* margin-left: 20%; */
   padding: 10%;
   margin: 10%;
   min-width: fit-content;
@@ -287,7 +291,7 @@ li .dropdown{
   overflow-y:scroll; 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   right: 0%;
-  z-index: 1000;
+  z-index: 0;
 }
 
 li .dropdown-content {
