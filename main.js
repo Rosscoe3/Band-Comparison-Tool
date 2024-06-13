@@ -3246,7 +3246,7 @@ function addPreset(title, preset)
 
   var threeDot_Btn_moveUp = document.createElement("a");
   threeDot_Btn_moveUp.id = "dropdown_" + title;
-  threeDot_Btn_moveUp.innerHTML = "move up";
+  threeDot_Btn_moveUp.innerHTML = "move " + "&#8593";
   threeDot_Btn_moveUp.title = title;
   //threeDot_Btn_moveUp.classList.toggle("disabled");
   threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveUp);
@@ -3280,13 +3280,13 @@ function addPreset(title, preset)
 
   var threeDot_Btn_moveDown = document.createElement("a");
   threeDot_Btn_moveDown.id = "dropdown_" + title;
-  threeDot_Btn_moveDown.innerHTML = "move down";
+  threeDot_Btn_moveDown.innerHTML = "move " + "&#8595";
   threeDot_Btn_moveDown.title = title;
   //threeDot_Btn_moveDown.classList.toggle("disabled");
   threeDot_Dropdown_Container.appendChild(threeDot_Btn_moveDown);
 
 
-  //** EVENT LISTENER FOR MOVE UP BUTTON */
+  //** EVENT LISTENER FOR MOVE DOWN BUTTON */
   threeDot_Btn_moveDown.addEventListener('click', function() {
     var index = enabledPresets.indexOf(this.title);
     
@@ -3300,6 +3300,7 @@ function addPreset(title, preset)
     }
 
     correctGroupSeperation();
+    checkDropdowns();
 
     chart.update();
     chart2.update();
@@ -3812,97 +3813,97 @@ function addPreset(title, preset)
       }, false);
 
     //** INPUT - titleVisibility */
-    var input_container_titleVisibility = document.createElement('div');
-    input_container_titleVisibility.classList = "inputContainer";
-    input_container_titleVisibility.id = "title_visibility";
-    band_content.appendChild(input_container_titleVisibility);
+    // var input_container_titleVisibility = document.createElement('div');
+    // input_container_titleVisibility.classList = "inputContainer";
+    // input_container_titleVisibility.id = "title_visibility";
+    // band_content.appendChild(input_container_titleVisibility);
 
-      //** INPUT - titleVisibility - TITLE */
-      var input_container_titleVisibility_title = document.createElement('div');
-      input_container_titleVisibility_title.innerHTML = "Title";
-      input_container_titleVisibility.appendChild(input_container_titleVisibility_title);
+    //   //** INPUT - titleVisibility - TITLE */
+    //   var input_container_titleVisibility_title = document.createElement('div');
+    //   input_container_titleVisibility_title.innerHTML = "Title";
+    //   input_container_titleVisibility.appendChild(input_container_titleVisibility_title);
 
-      //** INPUT - titleVisibility - INPUT */
-      var input_container_titleVisibility_input = document.createElement('input');
-      input_container_titleVisibility_input.type = "checkbox";
-      input_container_titleVisibility_input.setAttribute("checked", true);
-      input_container_titleVisibility.appendChild(input_container_titleVisibility_input);
+    //   //** INPUT - titleVisibility - INPUT */
+    //   var input_container_titleVisibility_input = document.createElement('input');
+    //   input_container_titleVisibility_input.type = "checkbox";
+    //   input_container_titleVisibility_input.setAttribute("checked", true);
+    //   input_container_titleVisibility.appendChild(input_container_titleVisibility_input);
 
-      //** ON CHANGE EVENT FOR titleVisibility */
-      input_container_titleVisibility_input.addEventListener('change', function() {
-        var groupId = this.parentElement.parentElement.
-          parentElement.parentElement.parentElement.children[0].id;
+    //   //** ON CHANGE EVENT FOR titleVisibility */
+    //   input_container_titleVisibility_input.addEventListener('change', function() {
+    //     var groupId = this.parentElement.parentElement.
+    //       parentElement.parentElement.parentElement.children[0].id;
         
-        //** LOOP THROUGH TO TURN OFF ALL LABELS */
-        for(var i = 0; i < groupList.children.length; i++)
-        {
-          //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
-          if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
-          {
-            //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
-            if (this.checked)
-            {
-              groupList.children[i].children[2].children[5].children[1].value = 15;
-            }
-            else
-            {
-              groupList.children[i].children[2].children[5].children[1].value = 0;
-            }
-          }
-        }
+    //     //** LOOP THROUGH TO TURN OFF ALL LABELS */
+    //     for(var i = 0; i < groupList.children.length; i++)
+    //     {
+    //       //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
+    //       if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
+    //       {
+    //         //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
+    //         if (this.checked)
+    //         {
+    //           groupList.children[i].children[2].children[5].children[1].value = 15;
+    //         }
+    //         else
+    //         {
+    //           groupList.children[i].children[2].children[5].children[1].value = 0;
+    //         }
+    //       }
+    //     }
 
-        //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF SUBLABELS */
-        for(var i = 0; i < boxAnnotations.length; i++)
-        {
-          if(boxAnnotations[i].title.includes(groupId) 
-          && boxAnnotations[i].title.includes("_Title"))
-          {
-            if(boxAnnotations[i].type == "label")
-            { 
-              if (this.checked)
-              {
-                boxAnnotations[i].font.size = 15;
-              }
-              else
-              {
-                boxAnnotations[i].font.size = 0;
-              }
-            }
-            if(boxAnnotations[i].type == "box")
-            { 
-              var inputValue = document.getElementById("b1" + groupId + "_Title").value;
+    //     //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF SUBLABELS */
+    //     for(var i = 0; i < boxAnnotations.length; i++)
+    //     {
+    //       if(boxAnnotations[i].title.includes(groupId) 
+    //       && boxAnnotations[i].title.includes("_Title"))
+    //       {
+    //         if(boxAnnotations[i].type == "label")
+    //         { 
+    //           if (this.checked)
+    //           {
+    //             boxAnnotations[i].font.size = 15;
+    //           }
+    //           else
+    //           {
+    //             boxAnnotations[i].font.size = 0;
+    //           }
+    //         }
+    //         if(boxAnnotations[i].type == "box")
+    //         { 
+    //           var inputValue = document.getElementById("b1" + groupId + "_Title").value;
 
-              if(inputValue)
-              {
-                console.log(boxAnnotations[i].backgroundColor);
-                if (this.checked)
-                {
-                  boxAnnotations[i].backgroundColor = addAlpha(inputValue, '0.75');
-                }
-                else
-                {
-                  boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
-                }
-              }
-              else
-              {
-                if (this.checked)
-                {
-                  boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.75)';
-                }
-                else
-                {
-                  boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
-                }
-              }
-            }
-          }
-        }
+    //           if(inputValue)
+    //           {
+    //             console.log(boxAnnotations[i].backgroundColor);
+    //             if (this.checked)
+    //             {
+    //               boxAnnotations[i].backgroundColor = addAlpha(inputValue, '0.75');
+    //             }
+    //             else
+    //             {
+    //               boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
+    //             }
+    //           }
+    //           else
+    //           {
+    //             if (this.checked)
+    //             {
+    //               boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.75)';
+    //             }
+    //             else
+    //             {
+    //               boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
 
-        chart.update();
-        chart2.update();
-        //loopThroughLayers();
-      }, false);
+    //     chart.update();
+    //     chart2.update();
+    //     //loopThroughLayers();
+    //   }, false);
   
   //** ADD SPECIFIC BANDS */
   for(var i = 0; i < preset.length; i++)

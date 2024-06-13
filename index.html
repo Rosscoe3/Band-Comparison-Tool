@@ -18,115 +18,6 @@
       </div>
       <div class="sidebar active" id="sidebar">
         <!-- Global Style Nav -->
-        <nav class="nav" role="navigation">
-          <ul class="nav__list">
-            <!-- GLOBAL STYLE -->
-            <li>
-              <input id="group-1" type="checkbox" hidden/>
-              <label for="group-1">
-                Global Style
-                <span class="">›</span> 
-              </label>
-              <ul class="group-list">
-                <!-- GLOBAL STYLE -->
-                <li>
-                  <input id="sub-group-1" type="checkbox" hidden />
-                  <label for="sub-group-1">
-                    Graphs
-                    <span class="">›</span> 
-                  </label>
-                  <ul class="sub-group-list">
-                    <div class="inputContainer">
-                      <div>Second Graph</div>
-                      <input id="secondGraph_Toggle" type="checkbox" checked />          
-                    </div>
-                    <div class="inputContainer">
-                      <div>Transmission Values</div>
-                      <input id="transmission_Toggle" type="checkbox" checked />          
-                    </div>
-                    <div class="inputContainer">
-                      <div><i>Chart1</i> start (nm)</div>
-                      <input id="Chart1_min" type="number" placeholder="Chart1 min" value='400' step="1">          
-                    </div>
-                    <div class="inputContainer">
-                      <div><i>Chart1</i> end (nm)</div>
-                      <input id="Chart1_max" type="number" placeholder="Chart1 max" value='2400' step="1">          
-                    </div>
-                    <div class="inputContainer">
-                      <div><i>Chart2</i> start (nm)</div>
-                      <input id="Chart2_min" type="number" placeholder="Chart2 min" value='7000' step="1">          
-                    </div>
-                    <div class="inputContainer">
-                      <div><i>Chart2</i> end (nm)</div>
-                      <input id="Chart2_max" type="number" placeholder="Chart2 max" value='14000' step="1">          
-                    </div>
-                  </ul>
-                </li>
-                <!-- BOX STYLE -->
-                <li>
-                  <input id="sub-group-2" type="checkbox" hidden />
-                  <label for="sub-group-2">
-                    Boxes
-                    <span class="">›</span> 
-                  </label>
-                  <ul class="sub-group-list">
-                    <!-- <div class="inputContainer">
-                      <div>Box Height:</div>
-                      <input id="boxHeight_Global" type="number" placeholder="Box Height..." value='0.05' step="0.01">
-                    </div>
-                    <div class="inputContainer">
-                      <div>Box Seperation:</div>
-                      <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
-                    </div> -->
-                    <div class="inputContainer">
-                      <div>Group Separation:</div>
-                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.15' step="0.01">          
-                    </div>
-                  </ul>
-                </li>
-                <!-- LABEL STYLE -->
-                <!-- <li>
-                  <input id="sub-group-3" type="checkbox" hidden />
-                  <label for="sub-group-3"><span class="">›</span> Labels</label>
-                  <ul class="sub-group-list">
-                    <div class="inputContainer">
-                      <div>Label Size:</div>
-                      <input id="labelSize_Global" type="number" placeholder="Chart Seperation..." value='15' step="1">          
-                    </div>
-                    <div class="inputContainer">
-                      <div>Sublabel Size:</div>
-                      <input id="labelSublabelSize_Global" type="number" placeholder="Chart Seperation..." value='15' step="1">          
-                    </div>
-                  </ul>
-                </li> -->
-              </ul>
-            </li>
-            <!-- LIST TWO -->
-            <!-- <li>
-              <input id="group-2" type="checkbox" hidden />
-              <label for="group-2"><span class=""></span> First level</label>
-              <ul class="group-list">
-                <li>
-                  <li><a href="#">1st level item</a></li>
-                  <li><a href="#">1st level item</a></li>
-                  <input id="sub-group-3" type="checkbox" hidden />
-                  <label for="sub-group-3"><span class=""></span> Second level</label>
-                  <ul class="sub-group-list">
-                    <li><a href="#">2nd level nav item</a></li>
-                    <li><a href="#">2nd level nav item</a></li>
-                    <li>
-                      <input id="sub-sub-group-2" type="checkbox" hidden />
-                      <label for="sub-sub-group-2"><span class=""></span> Third level</label>
-                      <ul class="sub-sub-group-list">
-                        <li><a href="#">3rd level nav item</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li> -->
-          </ul>
-        </nav>
         <div class="sidebarTitle">
           <label>Layers</label>
           <div class="dropdown">
@@ -232,6 +123,115 @@
             </nav> -->
           </div>
         </div>
+        <nav class="nav" role="navigation">
+          <ul class="nav__list">
+            <!-- GLOBAL STYLE -->
+            <li>
+              <input id="group-1" type="checkbox" hidden/>
+              <label for="group-1" style="padding-left: 5%;">
+                Global Style
+                <span class="">›</span> 
+              </label>
+              <ul class="group-list">
+                <!-- GLOBAL STYLE -->
+                <li>
+                  <input id="sub-group-1" type="checkbox" hidden />
+                  <label for="sub-group-1">
+                    Graphs
+                    <span class="">›</span> 
+                  </label>
+                  <ul class="sub-group-list">
+                    <div class="inputContainer">
+                      <div>Second Graph</div>
+                      <input id="secondGraph_Toggle" type="checkbox" checked />          
+                    </div>
+                    <div class="inputContainer">
+                      <div>Transmission Values</div>
+                      <input id="transmission_Toggle" type="checkbox" checked />          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart1</i> start (nm)</div>
+                      <input id="Chart1_min" type="number" placeholder="Chart1 min" value='400' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart1</i> end (nm)</div>
+                      <input id="Chart1_max" type="number" placeholder="Chart1 max" value='2400' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart2</i> start (nm)</div>
+                      <input id="Chart2_min" type="number" placeholder="Chart2 min" value='7000' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div><i>Chart2</i> end (nm)</div>
+                      <input id="Chart2_max" type="number" placeholder="Chart2 max" value='14000' step="1">          
+                    </div>
+                  </ul>
+                </li>
+                <!-- BOX STYLE -->
+                <li>
+                  <input id="sub-group-2" type="checkbox" hidden />
+                  <label for="sub-group-2">
+                    Boxes
+                    <span class="">›</span> 
+                  </label>
+                  <ul class="sub-group-list">
+                    <!-- <div class="inputContainer">
+                      <div>Box Height:</div>
+                      <input id="boxHeight_Global" type="number" placeholder="Box Height..." value='0.05' step="0.01">
+                    </div>
+                    <div class="inputContainer">
+                      <div>Box Seperation:</div>
+                      <input id="boxSeperation_Global" type="number" placeholder="Box Seperation..." value='0.1' step="0.01">
+                    </div> -->
+                    <div class="inputContainer">
+                      <div>Group Separation:</div>
+                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0.15' step="0.01">          
+                    </div>
+                  </ul>
+                </li>
+                <!-- LABEL STYLE -->
+                <!-- <li>
+                  <input id="sub-group-3" type="checkbox" hidden />
+                  <label for="sub-group-3"><span class="">›</span> Labels</label>
+                  <ul class="sub-group-list">
+                    <div class="inputContainer">
+                      <div>Label Size:</div>
+                      <input id="labelSize_Global" type="number" placeholder="Chart Seperation..." value='15' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div>Sublabel Size:</div>
+                      <input id="labelSublabelSize_Global" type="number" placeholder="Chart Seperation..." value='15' step="1">          
+                    </div>
+                  </ul>
+                </li> -->
+              </ul>
+            </li>
+            <!-- LIST TWO -->
+            <!-- <li>
+              <input id="group-2" type="checkbox" hidden />
+              <label for="group-2"><span class=""></span> First level</label>
+              <ul class="group-list">
+                <li>
+                  <li><a href="#">1st level item</a></li>
+                  <li><a href="#">1st level item</a></li>
+                  <input id="sub-group-3" type="checkbox" hidden />
+                  <label for="sub-group-3"><span class=""></span> Second level</label>
+                  <ul class="sub-group-list">
+                    <li><a href="#">2nd level nav item</a></li>
+                    <li><a href="#">2nd level nav item</a></li>
+                    <li>
+                      <input id="sub-sub-group-2" type="checkbox" hidden />
+                      <label for="sub-sub-group-2"><span class=""></span> Third level</label>
+                      <ul class="sub-sub-group-list">
+                        <li><a href="#">3rd level nav item</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li> -->
+          </ul>
+        </nav>
       </div>
 
       <div class="content-area">
