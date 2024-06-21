@@ -5062,17 +5062,49 @@ function updateGraphMinMax()
   console.log(boxAnnotations2)
 }
 
+var sidebar_open = true;
+
 //....** HTML OBJECTS ACTIONS ....*/
 
 //** SIDEBAR FUNCTIONALITY */
-sidebarButton.addEventListener("click", function () {
+sidebarButton.addEventListener("click", function () 
+{
+  //** TOGGLE Threedot */
+  var dropdownButtons = document.getElementsByClassName("dropbtn");
+
   if(sidebar.classList.contains("active"))
   {
     sidebarButton.innerHTML = "›";
+    sidebar_open = false;
+
+    setTimeout(() => {
+      //** HIDE ALL THREEDOTS */
+      for (var i = 0; i < dropdownButtons.length; i++) 
+      {
+        var Threedot = dropdownButtons[i];
+        console.log(Threedot.id);
+        if (!Threedot.classList.contains('hide') && Threedot.id != "dropDownBtn_layers") 
+        {
+          Threedot.classList.toggle('hide');
+          console.log("HIDE!");
+        }
+      }
+    }, 100);
+    
   }
   else
   {
     sidebarButton.innerHTML = "‹";
+    sidebar_open = true;
+
+    //** HIDE ALL THREEDOTS */
+    for (var i = 0; i < dropdownButtons.length; i++) {
+      var Threedot = dropdownButtons[i];
+      if (Threedot.classList.contains('hide') && Threedot.id != "dropDownBtn_layers") 
+      {
+        Threedot.classList.remove('hide');
+      }
+    }
   }
 
   setTimeout(() => {
@@ -5563,17 +5595,21 @@ window.onclick = function(event)
     }
     //** TOGGLE Threedot */
     var dropdownButtons = document.getElementsByClassName("dropbtn");
-    for (var i = 0; i < dropdownButtons.length; i++) {
-      var Threedot = dropdownButtons[i];
-      if (Threedot.classList.contains('hide') && Threedot.id != "dropDownBtn_layers") 
-      {
-        Threedot.classList.remove('hide');
+    
+    if(sidebar_open)
+    {
+      for (var i = 0; i < dropdownButtons.length; i++) {
+        var Threedot = dropdownButtons[i];
+        if (Threedot.classList.contains('hide') && Threedot.id != "dropDownBtn_layers") 
+        {
+          Threedot.classList.remove('hide');
+        }
       }
     }
+    
   }
   else
   {
-    console.log(event.target.id);
     lastClickedButton = event.target;
 
     //** TOGGLE Threedot */

@@ -67,6 +67,19 @@ h1 {
   pointer-events: auto;
 }
 
+.graphConnector {
+  position: inherit;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  width: 5.6%;
+  height: fit-content;
+  color: #C0C0C0;
+  z-index: 100;
+  text-align: center;
+  font-size: 200%;
+}
+
 .chartBox {
   position: absolute;
   pointer-events: none;
@@ -223,6 +236,13 @@ h1 {
   transform: translate(0%, 10%);
 }
 
+.layersSpacer{
+  user-select: none;
+  height: 2.5%;
+
+  background-color: #B3B3B3;
+}
+
 .group-list i{
   float: right;
   margin-right: 0%;
@@ -269,7 +289,7 @@ h1 {
 }
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  position: relative;
+  
   display: inline-block;
   float: right;
 }
@@ -285,7 +305,7 @@ li .dropdown{
   display: none;
   position: absolute;
   background-color: white;
-  padding: 10%;
+  padding: 1%;
   margin: 10%;
   min-width: fit-content;
   max-height:500px;
