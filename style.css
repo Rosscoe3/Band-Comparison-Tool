@@ -72,12 +72,19 @@ h1 {
   left: 50%;
   top: 90%;
   transform: translate(-50%, -50%);
-  width: 5.6%;
-  height: fit-content;
+  padding: 1%;
+
+  width: 6.75%;
+  height: 12.5%;
   color: #C0C0C0;
   z-index: 100;
   text-align: center;
   font-size: 200%;
+  pointer-events: none;
+}
+
+.graphConnector.disabled {
+  opacity: 0%;
 }
 
 .chartBox {
@@ -185,18 +192,22 @@ h1 {
   width: 100%;
 }
 .inputContainer input{
-  min-width: 10%;
-  max-width: 30%;
-  /* height: 100%; */
+  /* min-width: 10%;
+  max-width: 25%; */
+  width: 25%;
   margin-left: 0;
+  padding: 1.5%;
   outline: none;
+}
+.inputContainer input[type=checkbox] {
+  transform: scale(0.5);
 }
 .inputContainer div{
   flex-grow: 2;
   justify-content: center;
-  height: fit-content;
+  height: 100%;
   padding-left: 12.5%;
-  line-height: 270%;
+  line-height: 350%;
   user-select: none;
 }
 

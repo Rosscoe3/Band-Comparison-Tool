@@ -70,6 +70,7 @@ let Chart2_max = document.getElementById("Chart2_max");
 
 let presetDropDown = document.getElementById("dropDownBtn_layers");
 
+let graphConnector = document.getElementById("graphConnector");
 let boxHeight_Global = document.getElementById("boxHeight_Global");
 let boxSeperation_Global = document.getElementById("boxSeperation_Global");
 let groupSeperation_Global = document.getElementById("groupSeperation_Global");
@@ -94,7 +95,7 @@ var data = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
-      lineTension: 0.1,
+      lineTension: 0.2,
     },
   ],
 };
@@ -110,7 +111,7 @@ var data2 = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
-      lineTension: 0.1,
+      lineTension: 0.2,
     },
   ],
 };
@@ -451,8 +452,6 @@ function plotCSV()
     return index % transmissionDataResolution === 0;
   });
 
-  console.log(compressedArray);
-
   //** DETERMINE TRANSMISSION CURVE FOR CHART 1 */
   // - arrayEndCut_chart1
   for (var i = 0; i < compressedArray.length; i++) 
@@ -619,8 +618,6 @@ function addBox(
     boxAnnotations2.push(label);
     boxAnnotations2.push(subLabel);
   }
-
-  console.log(boxAnnotations);
 }
 
 //** CLEARS ALL ANNOTATIONS AND UPDATES THEM IN updateAnnotations() */
@@ -710,7 +707,7 @@ var Landsat1_3_values = [
   //   xMin: 1125, 
   //   xMax: 1130,
   //   yHeight: 0.1,
-  //   labelSize: 15,
+  //   labelSize: 10,
   //   labelText: "",
   //   sublabelSize: 20, 
   //   subLabelText: 'Landsat 1-3',
@@ -723,7 +720,7 @@ var Landsat1_3_values = [
     xMin: 500, 
     xMax: 600,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '80m',
@@ -737,7 +734,7 @@ var Landsat1_3_values = [
     xMin: 600, 
     xMax: 700,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '80m',
@@ -750,7 +747,7 @@ var Landsat1_3_values = [
     xMin: 700, 
     xMax: 800,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '80m',
@@ -763,7 +760,7 @@ var Landsat1_3_values = [
     xMin: 800, 
     xMax: 1100,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '80m',
@@ -778,7 +775,7 @@ var Landsat4_5_values = [
   //   xMin: 10300, 
   //   xMax: 12600,
   //   yHeight: 0.1,
-  //   labelSize: 15,
+  //   labelSize: 10,
   //   labelText: "",
   //   sublabelSize: 20, 
   //   subLabelText: 'Landsat 4-5',
@@ -791,7 +788,7 @@ var Landsat4_5_values = [
     xMin: 450, 
     xMax: 520,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -805,7 +802,7 @@ var Landsat4_5_values = [
     xMin: 520, 
     xMax: 600,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -818,7 +815,7 @@ var Landsat4_5_values = [
     xMin: 630, 
     xMax: 690,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -831,7 +828,7 @@ var Landsat4_5_values = [
     xMin: 760, 
     xMax: 900,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -844,7 +841,7 @@ var Landsat4_5_values = [
     xMin: 1550, 
     xMax: 1750,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -857,7 +854,7 @@ var Landsat4_5_values = [
     xMin: 10400, 
     xMax: 12500,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '120m',
@@ -870,7 +867,7 @@ var Landsat4_5_values = [
     xMin: 2080, 
     xMax: 2350,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -885,7 +882,7 @@ var Landsat7_values = [
   //   xMin: 10300, 
   //   xMax: 12600,
   //   yHeight: 0.1,
-  //   labelSize: 15,
+  //   labelSize: 10,
   //   labelText: "",
   //   sublabelSize: 20, 
   //   subLabelText: 'Landsat 7',
@@ -898,7 +895,7 @@ var Landsat7_values = [
     xMin: 450, 
     xMax: 520,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -911,7 +908,7 @@ var Landsat7_values = [
     xMin: 520, 
     xMax: 600,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -924,7 +921,7 @@ var Landsat7_values = [
     xMin: 630, 
     xMax: 690,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -937,7 +934,7 @@ var Landsat7_values = [
     xMin: 770, 
     xMax: 900,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -950,7 +947,7 @@ var Landsat7_values = [
     xMin: 1550, 
     xMax: 1750,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -963,7 +960,7 @@ var Landsat7_values = [
     xMin: 10400, 
     xMax: 12500,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '120m',
@@ -976,7 +973,7 @@ var Landsat7_values = [
     xMin: 2090, 
     xMax: 2350,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -989,7 +986,7 @@ var Landsat7_values = [
     xMin: 520, 
     xMax: 900,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 9, 
     subLabelText: '15m',
@@ -1020,7 +1017,7 @@ var Landsat8_9_values = [
     xMin: 430, 
     xMax: 450,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1035,7 +1032,7 @@ var Landsat8_9_values = [
     xMin: 450, 
     xMax: 510,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1049,7 +1046,7 @@ var Landsat8_9_values = [
     xMin: 530, 
     xMax: 590,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1063,7 +1060,7 @@ var Landsat8_9_values = [
     xMin: 640, 
     xMax: 670,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1077,7 +1074,7 @@ var Landsat8_9_values = [
     xMin: 850, 
     xMax: 880,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1091,7 +1088,7 @@ var Landsat8_9_values = [
     xMin: 1570, 
     xMax: 1650,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1105,7 +1102,7 @@ var Landsat8_9_values = [
     xMin: 2110, 
     xMax: 2290,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1119,7 +1116,7 @@ var Landsat8_9_values = [
     xMin: 500, 
     xMax: 680,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 9, 
     subLabelText: '15m',
@@ -1133,7 +1130,7 @@ var Landsat8_9_values = [
     xMin: 1360, 
     xMax: 1380,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -1147,7 +1144,7 @@ var Landsat8_9_values = [
     xMin: 10600, 
     xMax: 11190,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 9, 
     subLabelText: '100m',
@@ -1161,7 +1158,7 @@ var Landsat8_9_values = [
     xMin: 11500, 
     xMax: 12510,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "11",
     sublabelSize: 9, 
     subLabelText: '100m',
@@ -1176,7 +1173,7 @@ var LandsatNext_values = [
   //   xMin: 7950, 
   //   xMax: 12325,
   //   yHeight: 0.1,
-  //   labelSize: 15,
+  //   labelSize: 10,
   //   labelText: "",
   //   sublabelSize: 20, 
   //   subLabelText: 'Landsat Next',
@@ -1189,7 +1186,7 @@ var LandsatNext_values = [
     xMin: 402, 
     xMax: 422,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1203,7 +1200,7 @@ var LandsatNext_values = [
     xMin: 433, 
     xMax: 453,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1216,7 +1213,7 @@ var LandsatNext_values = [
     xMin: 457.5, 
     xMax: 522.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1229,7 +1226,7 @@ var LandsatNext_values = [
     xMin: 542.5, 
     xMax: 577.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1242,7 +1239,7 @@ var LandsatNext_values = [
     xMin: 585, 
     xMax: 615,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1255,7 +1252,7 @@ var LandsatNext_values = [
     xMin: 610, 
     xMax: 630,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1268,7 +1265,7 @@ var LandsatNext_values = [
     xMin: 640, 
     xMax: 660,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1281,7 +1278,7 @@ var LandsatNext_values = [
     xMin: 650, 
     xMax: 680,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1294,7 +1291,7 @@ var LandsatNext_values = [
     xMin: 697.5, 
     xMax: 712.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1307,7 +1304,7 @@ var LandsatNext_values = [
     xMin: 732.5, 
     xMax: 747.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1320,7 +1317,7 @@ var LandsatNext_values = [
     xMin: 784.5, 
     xMax: 899.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "11",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1333,7 +1330,7 @@ var LandsatNext_values = [
     xMin: 855, 
     xMax: 875,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "12",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1346,7 +1343,7 @@ var LandsatNext_values = [
     xMin: 935, 
     xMax: 955,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "13",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1359,7 +1356,7 @@ var LandsatNext_values = [
     xMin: 975, 
     xMax: 995,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "14",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1372,7 +1369,7 @@ var LandsatNext_values = [
     xMin: 1025, 
     xMax: 1045,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "15",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1385,7 +1382,7 @@ var LandsatNext_values = [
     xMin: 1080, 
     xMax: 1100,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "16",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1398,7 +1395,7 @@ var LandsatNext_values = [
     xMin: 1360, 
     xMax: 1390,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "17",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1411,7 +1408,7 @@ var LandsatNext_values = [
     xMin: 1565, 
     xMax: 1655,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "18",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1424,7 +1421,7 @@ var LandsatNext_values = [
     xMin: 2025.5, 
     xMax: 2050.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "19",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1437,7 +1434,7 @@ var LandsatNext_values = [
     xMin: 2088, 
     xMax: 2128,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "20",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1450,7 +1447,7 @@ var LandsatNext_values = [
     xMin: 2191, 
     xMax: 2231,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "21",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1463,7 +1460,7 @@ var LandsatNext_values = [
     xMin: 8050, 
     xMax: 8425,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "22",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1476,7 +1473,7 @@ var LandsatNext_values = [
     xMin: 8425, 
     xMax: 8775,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "23",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1489,7 +1486,7 @@ var LandsatNext_values = [
     xMin: 8925, 
     xMax: 9275,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "24",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1502,7 +1499,7 @@ var LandsatNext_values = [
     xMin: 11025, 
     xMax: 11575,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "25",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1515,7 +1512,7 @@ var LandsatNext_values = [
     xMin: 11775, 
     xMax: 12225,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "26",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1531,7 +1528,7 @@ var Sentinel2_values = [
     xMin: 433, 
     xMax: 453,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1545,7 +1542,7 @@ var Sentinel2_values = [
     xMin: 457.5, 
     xMax: 522.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1559,7 +1556,7 @@ var Sentinel2_values = [
     xMin: 542, 
     xMax: 577.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1573,7 +1570,7 @@ var Sentinel2_values = [
     xMin: 649.5, 
     xMax: 680.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1587,7 +1584,7 @@ var Sentinel2_values = [
     xMin: 697.5, 
     xMax: 712.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1601,7 +1598,7 @@ var Sentinel2_values = [
     xMin: 732.5, 
     xMax: 747.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1615,7 +1612,7 @@ var Sentinel2_values = [
     xMin: 773, 
     xMax: 793,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1629,7 +1626,7 @@ var Sentinel2_values = [
     xMin: 784.5, 
     xMax: 899.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -1643,7 +1640,7 @@ var Sentinel2_values = [
     xMin: 855, 
     xMax: 875,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8a",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1657,7 +1654,7 @@ var Sentinel2_values = [
     xMin: 935, 
     xMax: 945,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1671,7 +1668,7 @@ var Sentinel2_values = [
     xMin: 1365, 
     xMax: 1395,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 9, 
     subLabelText: '60m',
@@ -1685,7 +1682,7 @@ var Sentinel2_values = [
     xMin: 1565, 
     xMax: 1655,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "11",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1699,7 +1696,7 @@ var Sentinel2_values = [
     xMin: 2100, 
     xMax: 2280,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "12",
     sublabelSize: 9, 
     subLabelText: '20m',
@@ -1715,7 +1712,7 @@ var Sentinel3_values = [
     xMin: 395, 
     xMax: 405,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1729,7 +1726,7 @@ var Sentinel3_values = [
     xMin: 407, 
     xMax: 417,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1743,7 +1740,7 @@ var Sentinel3_values = [
     xMin: 438, 
     xMax: 448,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1757,7 +1754,7 @@ var Sentinel3_values = [
     xMin: 485, 
     xMax: 495,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1771,7 +1768,7 @@ var Sentinel3_values = [
     xMin: 505, 
     xMax: 515,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1785,7 +1782,7 @@ var Sentinel3_values = [
     xMin: 555, 
     xMax: 565,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1799,7 +1796,7 @@ var Sentinel3_values = [
     xMin: 615, 
     xMax: 625,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1813,7 +1810,7 @@ var Sentinel3_values = [
     xMin: 660, 
     xMax: 670,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1827,7 +1824,7 @@ var Sentinel3_values = [
     xMin: 670, 
     xMax: 677,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1841,7 +1838,7 @@ var Sentinel3_values = [
     xMin: 677, 
     xMax: 685,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1855,7 +1852,7 @@ var Sentinel3_values = [
     xMin: 703, 
     xMax: 713,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "11",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1869,7 +1866,7 @@ var Sentinel3_values = [
     xMin: 750, 
     xMax: 757,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "12",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1883,7 +1880,7 @@ var Sentinel3_values = [
     xMin: 760, 
     xMax: 762,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "13",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1897,7 +1894,7 @@ var Sentinel3_values = [
     xMin: 762, 
     xMax: 766,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "14",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1911,7 +1908,7 @@ var Sentinel3_values = [
     xMin: 766, 
     xMax: 769,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "15",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1925,7 +1922,7 @@ var Sentinel3_values = [
     xMin: 771, 
     xMax: 786,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "16",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1939,7 +1936,7 @@ var Sentinel3_values = [
     xMin: 855, 
     xMax: 875,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "17",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1953,7 +1950,7 @@ var Sentinel3_values = [
     xMin: 880, 
     xMax: 890,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "18",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1967,7 +1964,7 @@ var Sentinel3_values = [
     xMin: 895, 
     xMax: 905,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "19",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1981,7 +1978,7 @@ var Sentinel3_values = [
     xMin: 930, 
     xMax: 950,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "20",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -1995,7 +1992,7 @@ var Sentinel3_values = [
     xMin: 1000, 
     xMax: 1040,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "21",
     sublabelSize: 0, 
     subLabelText: '300m',
@@ -2011,7 +2008,7 @@ var EO1_values = [
     xMin: 433, 
     xMax: 453,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2025,7 +2022,7 @@ var EO1_values = [
     xMin: 450, 
     xMax: 515,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2039,7 +2036,7 @@ var EO1_values = [
     xMin: 525, 
     xMax: 605,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2053,7 +2050,7 @@ var EO1_values = [
     xMin: 630, 
     xMax: 690,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2067,7 +2064,7 @@ var EO1_values = [
     xMin: 775, 
     xMax: 805,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2081,7 +2078,7 @@ var EO1_values = [
     xMin: 845, 
     xMax: 890,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2095,7 +2092,7 @@ var EO1_values = [
     xMin: 1200, 
     xMax: 1300,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2109,7 +2106,7 @@ var EO1_values = [
     xMin: 1550, 
     xMax: 1750,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2123,7 +2120,7 @@ var EO1_values = [
     xMin: 2080, 
     xMax: 2350,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 9, 
     subLabelText: '30m',
@@ -2137,7 +2134,7 @@ var EO1_values = [
     xMin: 480, 
     xMax: 690,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 9, 
     subLabelText: '10m',
@@ -2152,7 +2149,7 @@ var DESIS_values = [
     xMin: 402, 
     xMax: 1000,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2167,7 +2164,7 @@ var ECOSTRESS_values = [
     xMin: 1475, 
     xMax: 1845,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '70m',
@@ -2180,7 +2177,7 @@ var ECOSTRESS_values = [
     xMin: 8113, 
     xMax: 8467,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '70m',
@@ -2193,7 +2190,7 @@ var ECOSTRESS_values = [
     xMin: 8625, 
     xMax: 8935,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '70m',
@@ -2206,7 +2203,7 @@ var ECOSTRESS_values = [
     xMin: 9002, 
     xMax: 9398,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '70m',
@@ -2219,7 +2216,7 @@ var ECOSTRESS_values = [
     xMin: 10285, 
     xMax: 10695,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '70m',
@@ -2232,7 +2229,7 @@ var ECOSTRESS_values = [
     xMin: 11784.5, 
     xMax: 12395.5,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '70m',
@@ -2247,7 +2244,7 @@ var EMIT_values = [
     xMin: 381, 
     xMax: 2493,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2263,7 +2260,7 @@ var MODIS_values = [
     xMin: 620, 
     xMax: 670,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 0, 
     subLabelText: '250m',
@@ -2277,7 +2274,7 @@ var MODIS_values = [
     xMin: 841, 
     xMax: 876,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 0, 
     subLabelText: '250m',
@@ -2291,7 +2288,7 @@ var MODIS_values = [
     xMin: 459, 
     xMax: 479,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 0, 
     subLabelText: '500m',
@@ -2305,7 +2302,7 @@ var MODIS_values = [
     xMin: 545, 
     xMax: 565,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 0, 
     subLabelText: '500m',
@@ -2319,7 +2316,7 @@ var MODIS_values = [
     xMin: 1230, 
     xMax: 1250,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 0, 
     subLabelText: '500m',
@@ -2333,7 +2330,7 @@ var MODIS_values = [
     xMin: 1628, 
     xMax: 1652,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 0, 
     subLabelText: '500m',
@@ -2347,7 +2344,7 @@ var MODIS_values = [
     xMin: 2105, 
     xMax: 2155,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 0, 
     subLabelText: '500m',
@@ -2361,7 +2358,7 @@ var MODIS_values = [
     xMin: 405, 
     xMax: 420,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2375,7 +2372,7 @@ var MODIS_values = [
     xMin: 438, 
     xMax: 448,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2389,7 +2386,7 @@ var MODIS_values = [
     xMin: 483, 
     xMax: 493,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2403,7 +2400,7 @@ var MODIS_values = [
     xMin: 483, 
     xMax: 493,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "11",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2417,7 +2414,7 @@ var MODIS_values = [
     xMin: 546, 
     xMax: 556,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "12",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2431,7 +2428,7 @@ var MODIS_values = [
     xMin: 662, 
     xMax: 672,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "13",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2445,7 +2442,7 @@ var MODIS_values = [
     xMin: 673, 
     xMax: 683,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "14",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2459,7 +2456,7 @@ var MODIS_values = [
     xMin: 743, 
     xMax: 753,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "15",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2473,7 +2470,7 @@ var MODIS_values = [
     xMin: 862, 
     xMax: 877,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "16",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2487,7 +2484,7 @@ var MODIS_values = [
     xMin: 890, 
     xMax: 920,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "17",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2501,7 +2498,7 @@ var MODIS_values = [
     xMin: 931, 
     xMax: 941,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "18",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2515,7 +2512,7 @@ var MODIS_values = [
     xMin: 915, 
     xMax: 965,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "19",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2529,7 +2526,7 @@ var MODIS_values = [
     xMin: 3660, 
     xMax: 3840,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "20",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2543,7 +2540,7 @@ var MODIS_values = [
     xMin: 3929, 
     xMax: 3989,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "21",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2557,7 +2554,7 @@ var MODIS_values = [
     xMin: 3929, 
     xMax: 3989,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "21",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2571,7 +2568,7 @@ var MODIS_values = [
     xMin: 4020, 
     xMax: 4080,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "23",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2585,7 +2582,7 @@ var MODIS_values = [
     xMin: 4433, 
     xMax: 4498,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "24",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2599,7 +2596,7 @@ var MODIS_values = [
     xMin: 4482, 
     xMax: 4549,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "25",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2613,7 +2610,7 @@ var MODIS_values = [
     xMin: 1360, 
     xMax: 1390,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "26",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2627,7 +2624,7 @@ var MODIS_values = [
     xMin: 6535, 
     xMax: 6895,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "27",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2641,7 +2638,7 @@ var MODIS_values = [
     xMin: 7175, 
     xMax: 7475,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "28",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2655,7 +2652,7 @@ var MODIS_values = [
     xMin: 8400, 
     xMax: 8700,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "29",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2669,7 +2666,7 @@ var MODIS_values = [
     xMin: 9580, 
     xMax: 9880,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "30",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2683,7 +2680,7 @@ var MODIS_values = [
     xMin: 10780, 
     xMax: 11280,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "31",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2697,7 +2694,7 @@ var MODIS_values = [
     xMin: 11770, 
     xMax: 12270,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "32",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2711,7 +2708,7 @@ var MODIS_values = [
     xMin: 13185, 
     xMax: 13485,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "33",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2725,7 +2722,7 @@ var MODIS_values = [
     xMin: 13485, 
     xMax: 13785,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "34",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2739,7 +2736,7 @@ var MODIS_values = [
     xMin: 13785, 
     xMax: 14085,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "35",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2753,7 +2750,7 @@ var MODIS_values = [
     xMin: 14085, 
     xMax: 14385,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "36",
     sublabelSize: 0, 
     subLabelText: '1000m',
@@ -2768,7 +2765,7 @@ var PACE_values = [
     xMin: 340, 
     xMax: 890,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2781,7 +2778,7 @@ var PACE_values = [
     xMin: 900, 
     xMax: 980,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2794,7 +2791,7 @@ var PACE_values = [
     xMin: 938, 
     xMax: 1138,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2807,7 +2804,7 @@ var PACE_values = [
     xMin: 1278, 
     xMax: 1478,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2820,7 +2817,7 @@ var PACE_values = [
     xMin: 1515, 
     xMax: 1715,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2833,7 +2830,7 @@ var PACE_values = [
     xMin: 2030, 
     xMax: 2230,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2846,7 +2843,7 @@ var PACE_values = [
     xMin: 2160, 
     xMax: 2360,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '50m',
@@ -2874,7 +2871,7 @@ var STELLA_values = [
     xMin: 410, 
     xMax: 490,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2887,7 +2884,7 @@ var STELLA_values = [
     xMin: 460, 
     xMax: 540,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2900,7 +2897,7 @@ var STELLA_values = [
     xMin: 510, 
     xMax: 590,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2913,7 +2910,7 @@ var STELLA_values = [
     xMin: 530, 
     xMax: 610,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2926,7 +2923,7 @@ var STELLA_values = [
     xMin: 560, 
     xMax: 640,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2939,7 +2936,7 @@ var STELLA_values = [
     xMin: 590, 
     xMax: 630,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2952,7 +2949,7 @@ var STELLA_values = [
     xMin: 610, 
     xMax: 690,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2965,7 +2962,7 @@ var STELLA_values = [
     xMin: 660, 
     xMax: 700,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "8",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2978,7 +2975,7 @@ var STELLA_values = [
     xMin: 710, 
     xMax: 750,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "9",
     sublabelSize: 9, 
     subLabelText: '',
@@ -2991,7 +2988,7 @@ var STELLA_values = [
     xMin: 740, 
     xMax: 780,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "10",
     sublabelSize: 9, 
     subLabelText: '',
@@ -3004,7 +3001,7 @@ var STELLA_values = [
     xMin: 790, 
     xMax: 830,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "11",
     sublabelSize: 9, 
     subLabelText: '',
@@ -3017,7 +3014,7 @@ var STELLA_values = [
     xMin: 840, 
     xMax: 880,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "12",
     sublabelSize: 9, 
     subLabelText: '',
@@ -3030,7 +3027,7 @@ var STELLA_values = [
     xMin: 5500, 
     xMax: 14000,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "13",
     sublabelSize: 13, 
     subLabelText: '',
@@ -3045,7 +3042,7 @@ var CUSTOM_values = [
     xMin: 500, 
     xMax: 700,
     yHeight: boxHeight,
-    labelSize: 15,
+    labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
     subLabelText: '',
@@ -3062,8 +3059,6 @@ function addPreset(title, preset)
 {
   var count = 0;
   enabledPresets.forEach((v) => (v.includes(title) && count++));
-  console.log("Count: " + count);
-  console.log(enabledPresets);
 
   var title_text = title;
   let isCustomBand = false;
@@ -3079,7 +3074,6 @@ function addPreset(title, preset)
   }
   title += count;
   enabledPresets.unshift(title);
-  console.log(enabledPresets); 
 
   //** ADD PRESET TO INPUT */
   for(var i = 0; i < preset.length; i++)
@@ -3102,8 +3096,6 @@ function addPreset(title, preset)
       preset[i].sublabelSize, 
       preset[i].graphNumb, 
       title_var);
-
-    console.log(preset[i]);
 
     chart.update();
     chart2.update();
@@ -3219,7 +3211,6 @@ function addPreset(title, preset)
     nav.remove();
     var index = enabledPresets.indexOf(this.title);
     enabledPresets.splice(index, 1);
-    console.log(enabledPresets);
     sensorNumb--;
 
     //** REMOVE BOX FROM GROUP */
@@ -3239,6 +3230,7 @@ function addPreset(title, preset)
     }
 
     correctGroupSeperation();
+    checkDropdowns();
 
     chart.update();
     chart2.update();
@@ -3257,13 +3249,9 @@ function addPreset(title, preset)
     
     //**REORDER ARRAY OF enabledPresets */
     reorderArray(enabledPresets, index, index-1)
-    console.log(index-1);
-    console.log(enabledPresets);
 
     //** REORDER HTML */
     var navAmount = document.getElementById("layers").children.length;
-    console.log(document.getElementById("layers").children.length);
-    console.log(document.getElementById(title));
 
     //** Move html element up in the order*/
     if(nav.previousElementSibling)
@@ -3406,8 +3394,6 @@ function addPreset(title, preset)
           if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values")
           && !groupList.children[i].children[2].children[0].children[1].id.includes("_Title"))
           {
-            console.log(groupList.children[i].children[2].children[0].children[1].id);
-
             groupList.children[i].children[2].children[0].children[1].value = this.value;
             groupList.children[i].children[1].style.backgroundColor = this.value;
           }
@@ -3416,7 +3402,6 @@ function addPreset(title, preset)
         //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
         for(var i = 0; i < boxAnnotations.length; i++)
         {
-          console.log(boxAnnotations[i].title.includes("_Title"));
           if(boxAnnotations[i].title.includes(groupId) && !boxAnnotations[i].title.includes("_Title"))
           {
             if(boxAnnotations[i].title.includes("box"))
@@ -3433,8 +3418,6 @@ function addPreset(title, preset)
             if(boxAnnotations2[i].title.includes("box"))
             {
               boxAnnotations2[i].backgroundColor = this.value;
-              console.log(boxAnnotations2[i]);
-              console.log(groupId);
             }
           }
         }
@@ -3467,7 +3450,6 @@ function addPreset(title, preset)
         //** LOOP THROUGH TO TURN OFF ALL LABELS */
         
         var groupId = this.parentElement.id;
-        console.log(this.parentElement);
 
         for(var i = 0; i < boxAnnotations.length; i++)
         {
@@ -3519,7 +3501,6 @@ function addPreset(title, preset)
               }
               else
               {
-                console.log(boxAnnotations2);
                 yValue = parseFloat(boxAnnotations2[i-2].yMin) + parseFloat(this.value) + 0.01;
                 boxAnnotations2[i].yMin = yValue;
                 boxAnnotations2[i].yMax = yValue;
@@ -3564,8 +3545,6 @@ function addPreset(title, preset)
         var groupId = this.parentElement.parentElement.
           parentElement.parentElement.parentElement.children[0].id;
         
-          console.log(groupId);
-        
         //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF LABELS */
         for(var i = 0; i < boxAnnotations.length; i++)
         {
@@ -3575,9 +3554,6 @@ function addPreset(title, preset)
           {
             if(boxAnnotations[i].type == "label")
             {
-              
-              console.log(boxAnnotations[i].title);
-              
               if (this.checked)
               {
                 boxAnnotations[i].display = true;
@@ -3599,9 +3575,6 @@ function addPreset(title, preset)
           {
             if(boxAnnotations2[i].type == "label")
             {
-              
-              console.log(boxAnnotations2[i].title);
-              
               if (this.checked)
               {
                 boxAnnotations2[i].font.size = 15;
@@ -3639,7 +3612,6 @@ function addPreset(title, preset)
       //** ON CHANGE EVENT FOR LABEL SIZE */
       input_container_labelSize_input.addEventListener('change', function() {
         var groupId = this.parentElement.id;
-        console.log(input_container_labelSize_input);
 
         //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
         for(var i = 0; i < boxAnnotations.length; i++)
@@ -3739,22 +3711,17 @@ function addPreset(title, preset)
           {
             if(boxAnnotations2[i].type == "label")
             {
-              
-              console.log(boxAnnotations2[i].title);
-              
               if (this.checked)
               {
-                boxAnnotations2[i].font.size = 15;
+                boxAnnotations2[i].display = true;
               }
               else
               {
-                boxAnnotations2[i].font.size = 0;
+                boxAnnotations2[i].display = false;
               }
             }
           }
         }
-
-        console.log(groupId);
 
         chart.update();
         chart2.update();
@@ -3779,12 +3746,9 @@ function addPreset(title, preset)
       input_container_subLabelSize.appendChild(input_container_sublabel_input);
 
       //** ON CHANGE EVENT FOR SUBLABEL SIZE */
-      input_container_sublabel_input.addEventListener('change', function() {
-        //loopThroughLayers();
-        console.log("CHANGE LABEL SIZE");
-        console.log(boxAnnotations);
+      input_container_sublabel_input.addEventListener('change', function() 
+      {
         var groupId = this.parentElement.id;
-        console.log(groupId);
 
         //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
         for(var i = 0; i < boxAnnotations.length; i++)
@@ -3925,7 +3889,6 @@ function addPreset(title, preset)
     band_label.setAttribute("contentEditable", false);
     band_label.id = "band_label_b" + (i+1) + title;
     band_label.title = preset[i].xMin + "nm-" + preset[i].xMax + "nm";
-    console.log(preset[i]);
 
     // //** IF THE PRESET IS A TILE THEN CHANGE IT's ID */
     if(preset[i].title)
@@ -3973,7 +3936,6 @@ function addPreset(title, preset)
         //** IF THE PRESET IS A TILE THEN CHANGE IT's ID */
         if(preset[i].title)
         {
-          console.log(preset[i].title);
           if(preset[i].title.includes("Title"))
           {
             input_container_color_input.id += "_Title";
@@ -3993,7 +3955,6 @@ function addPreset(title, preset)
         input_container_color_input.addEventListener('change', function() {
           //var bandLabel = document.getElementById("band_label_b" + input_container_color_input.id);
           var id = "band_label_" + this.id;
-          console.log(this.value);
           document.getElementById(id).style.backgroundColor = this.value;
           var groupId = this.id;
 
@@ -4290,7 +4251,6 @@ function addPreset(title, preset)
           {
             boxAnnotations2.push(box_1, label_1, sublabel_1);
           }
-          console.log(boxAnnotations2);
 
           for(var d = boxAnnotations2.length-1; d >=0; d--)
           {
@@ -4947,7 +4907,6 @@ function checkDropdowns()
 {
   //** DROPDOWNS **//
   var dropdowns = layers.getElementsByClassName("dropdown-content");
-  console.log(dropdowns);
   
   //** ENABLE ALL TOO START */
   for (var y = 0; y < dropdowns.length; y++) 
@@ -4967,7 +4926,6 @@ function checkDropdowns()
     //** FOR THE TOP MOST LAYER's THREE DOT DROPDOWN */
     if(x == 0)
     {
-      console.log(dropdowns.length);
       //** IF THERES ONLY ONE ELEMENT */
       if(dropdowns.length == 1)
       {
@@ -4984,8 +4942,6 @@ function checkDropdowns()
     {
       dropdowns[x].children[2].classList.toggle("disabled");
     }
-
-    console.log(dropdowns[x]);
   }
 }
 
@@ -5049,17 +5005,14 @@ function updateGraphMinMax()
     13950);
   }
   
-  console.log(min1);
-  console.log(Math.min.apply(Math, min1));
-  console.log(min2);
-  console.log(Math.min.apply(Math, min2));
-  console.log(max1);
-  console.log(Math.max.apply(Math, max1));
-  console.log(max2);
-  console.log(Math.max.apply(Math, max2));
-
-  console.log(boxAnnotations)
-  console.log(boxAnnotations2)
+  // console.log(min1);
+  // console.log(Math.min.apply(Math, min1));
+  // console.log(min2);
+  // console.log(Math.min.apply(Math, min2));
+  // console.log(max1);
+  // console.log(Math.max.apply(Math, max1));
+  // console.log(max2);
+  // console.log(Math.max.apply(Math, max2));
 }
 
 var sidebar_open = true;
@@ -5110,7 +5063,7 @@ sidebarButton.addEventListener("click", function ()
   setTimeout(() => {
     chart2.update();
     chart.update();
-  }, 1000);
+  }, 5000);
 
   sidebar.classList.toggle("active");
 });
@@ -5499,6 +5452,7 @@ secondGraph_Toggle.addEventListener("change", function () {
     chart_container.style.gridTemplateColumns = "minmax(200px, 1fr) minmax(200px, 1fr)";
   }
   chart2_element.classList.toggle("active");
+  graphConnector.classList.toggle("disabled");
 });
   //** TOGGLES TRANSMISSION CURVE */
 transmission_Toggle.addEventListener("change", function () {
@@ -5553,29 +5507,24 @@ downloadScreenshot.addEventListener("click", function () {
 });
 
 Chart1_min.addEventListener("change", function () {
-  console.log(chart.options.scales.x.min);
   chart.options.scales.x.min = parseInt(Chart1_min.value);
   chart.update();
 });
 Chart1_max.addEventListener("change", function () {
-  console.log(chart.options.scales.x.max);
   chart.options.scales.x.max = parseInt(Chart1_max.value);
   chart.update();
 });
 Chart2_min.addEventListener("change", function () {
-  console.log(chart2.options.scales.x.min);
   chart2.options.scales.x.min = parseInt(Chart2_min.value);
   chart2.update();
 });
 Chart2_max.addEventListener("change", function () {
-  console.log(Chart2_max.value);
   chart2.options.scales.x.max = parseInt(Chart2_max.value);
   chart2.update();
 });
 
 presetDropDown.addEventListener("click", function () {
   document.getElementById("myDropdown").classList.toggle("show");
-  //console.log('dropdown');
 });
 
 var lastClickedButton;
@@ -5616,7 +5565,6 @@ window.onclick = function(event)
     if (event.target.id != "dropDownBtn_layers")
     {
       var dropdownButtons = document.getElementsByClassName("dropbtn");
-      console.log(dropdownButtons);
       for (var i = 0; i < dropdownButtons.length; i++) {
         var Threedot = dropdownButtons[i];
         if (Threedot.classList.contains('hide')) 
@@ -5638,8 +5586,8 @@ window.onclick = function(event)
   }
 }
 
-console.log(boxAnnotations);
-console.log(boxAnnotations2);
+//console.log(boxAnnotations);
+//console.log(boxAnnotations2);
 
 //** REMOVE BOX ANNOTATION */
 // setTimeout(() => {
