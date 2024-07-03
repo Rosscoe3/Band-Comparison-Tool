@@ -111,7 +111,7 @@ var data2 = {
       borderColor: "rgb(255, 255, 255)",
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
-      lineTension: 0.2,
+      lineTension: 0.0,
     },
   ],
 };
@@ -466,20 +466,6 @@ function plotCSV()
       y: compressedArray[i].TotTrans,
     };
   }
-
-  //** DETERMINE TRANSMISSION CURVE FOR CHART 2 */
-  // for (var i = 0; i < compressedArray.length; i++) 
-  // {
-  //   if((compressedArray[i].Wave * 1000) >= minChartTwo)
-  //   {
-  //     console.log(compressedArray[i].Wave * 1000);
-  //     //** HAVE TO MAKE IT START AT DATA 0 */
-  //     chart2.data.datasets[0].data.push({
-  //       x: compressedArray[i].Wave * 1000,
-  //       y: compressedArray[i].TotTrans,
-  //     });
-  //   }
-  // }
 
   chart.update();
   chart2.update();
