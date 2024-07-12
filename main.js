@@ -112,6 +112,8 @@ var data2 = {
       pointBackgroundColor: "rgb(189, 195, 199)",
       pointRadius: 0,
       lineTension: 0.0,
+      tension: 0.2,
+      cubicInterpolationMode: "default",
     },
   ],
 };
@@ -375,6 +377,18 @@ const config2 = {
         max: parseInt(Chart2_max.value),
       },
     },
+    tooltips: {
+      mode: 'nearest',
+      intersect: false,
+      callbacks: {
+        label: (item) => item.dataset.label + ': ' + 
+           this.originalValues[item.datasetIndex].data[item.dataIndex]
+      }
+    },
+    hover: {
+      mode: 'index',
+      intersect: false
+    }
   },
   plugins: ["chartjs-plugin-annotation"],
   options2,
@@ -448,24 +462,31 @@ function csvToArray(str, delimiter = ",") {
 //** TAKES A CSV AND PLOTS THE TRANSMISSION DATA */
 function plotCSV() 
 {
-  let compressedArray = transmissionData.filter((element, index) => {
-    return index % transmissionDataResolution === 0;
-  });
+  // let compressedArray = transmissionData.filter((element, index) => {
+  //   return index % transmissionDataResolution === 0;
+  // });
+
+  let compressedArray = transmissionData;
 
   //** DETERMINE TRANSMISSION CURVE FOR CHART 1 */
   // - arrayEndCut_chart1
   for (var i = 0; i < compressedArray.length; i++) 
   {
     chart.data.datasets[0].data[i] = {
-      x: compressedArray[i].Wave * 1000,
-      y: compressedArray[i].TotTrans,
+      x: Number(compressedArray[i].Wave) * 1000,
+      y: Number(compressedArray[i].TotTrans),
     };
 
     chart2.data.datasets[0].data[i] = {
-      x: compressedArray[i].Wave * 1000,
-      y: compressedArray[i].TotTrans,
+      x: Number(compressedArray[i].Wave) * 1000,
+      y: Number(compressedArray[i].TotTrans),
     };
+
+    //console.log("" + Number(compressedArray[i].Wave) * 1000);
+    console.log(compressedArray[i].TotTrans);
   }
+
+  console.log(chart.data)
 
   chart.update();
   chart2.update();
