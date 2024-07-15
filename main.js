@@ -24,10 +24,29 @@ var groupSeperation = 0.15;
 
 var sensorNumb = 0;
 
+//** TUTORIAL HTML ELEMENTS */
+let tut_btn_prev = document.getElementById("tut-prev");
+let tut_btn_next = document.getElementById("tut-next");
+let tut_btn_skip = document.getElementById("tut-skip");
+let tut_text = document.getElementById("tut_text");
+let tut_wrap = document.getElementById("tutorial-wrap");
+let tutorialTextList = [
+  "Welcome to the <b>Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect.",
+  "To get started, select the <b>+</b> button to add an instrument.",
+  "All the instruments you have selected will appear here under the <b>Layers</b> tab. Select the dropdown icon “<b>›</b>” to expand your selection.",
+  "Each instrument’s values are customizable, select the dropdown icon “<b>›</b>” next to <b>Global Style</b> to affect all bands within an instrument.",
+  "These values will affect all bands within an instrument. Try toggling the “labels” checkmark to see how it affects the graph.",
+  "After you have edited the values to your liking, click on <b>Export (PNG)</b> to download an image of your creation.",
+];
+let tutorialIndex = 0;
+let tutorial = true;
+
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let layers = document.getElementById("layers");
 let loadingScreen = document.getElementById("loading");
+
+//** TUTORIAL BUTTONS */
 
 // let L8_9_Toggle = document.getElementById("Landsat8-9");
 // let L4_5_Toggle = document.getElementById("Landsat4-5");
@@ -481,9 +500,6 @@ function plotCSV()
       x: Number(compressedArray[i].Wave) * 1000,
       y: Number(compressedArray[i].TotTrans),
     };
-
-    //console.log("" + Number(compressedArray[i].Wave) * 1000);
-    console.log(compressedArray[i].TotTrans);
   }
 
   console.log(chart.data)
@@ -2775,7 +2791,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -3143,6 +3159,13 @@ function addPreset(title, preset)
   title_label.setAttribute("contentEditable", false);
   li.appendChild(title_label);
 
+  title_label.addEventListener("click", function(){
+    if(tutorial && tutorialIndex == 2)
+    {
+      progressTutorial(true);
+    }
+  }, false);
+
   //** 3 DOT DROPDOWN */
   // var threeDot_Dropdown = document.createElement("div")
   // threeDot_Dropdown.id = "dropdown_" + title;
@@ -3358,6 +3381,14 @@ function addPreset(title, preset)
   band_label.setAttribute("contentEditable", false);
   band_label.id = "band_label_b" + (i+1) + title;
   band_global_li.appendChild(band_label);
+
+  band_label.addEventListener("click", function()
+  {
+    if(tutorial && tutorialIndex == 3)
+    {
+      progressTutorial(true);
+    }
+  }, false);
 
     //** BAND LABEL SPAN */
     var band_label_span = document.createElement("span");
@@ -5024,6 +5055,85 @@ function updateGraphMinMax()
 
 var sidebar_open = true;
 
+function progressTutorial(forward) {
+  //** FORWARD NAVIGATION */
+  if (forward) {
+    tutorialIndex++;
+    tut_text.innerHTML = tutorialTextList[tutorialIndex];
+  }
+  //** BACKWARD NAVIGATION */
+  else {
+    tutorialIndex--;
+    tut_text.innerHTML = tutorialTextList[tutorialIndex];
+  }
+
+
+  //** POSITIONING OF TUT_WRAP */
+  if (tutorialIndex == 0) {
+    //** Welcome to the <b>Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect. */
+    tut_wrap.style.top = "35%";
+    tut_wrap.style.left = "25%";
+  } 
+  else if (tutorialIndex == 1) 
+  {
+    //** To get started, select the <b>+</b> button to add an instrument. */
+    var distance = document.getElementById("dropDownBtn_layers").offsetTop;
+    tut_wrap.style.top = distance + "px";
+    tut_wrap.style.left = "0.5%";
+  } 
+  else if (tutorialIndex == 2) 
+  {
+    //** All the instruments you have selected will appear here under the “Layers” tab. Select the dropdown icon “>” to expand your selection. */
+    var distance = layers.children[0].offsetTop;
+    tut_wrap.style.top = distance + "px";
+    tut_wrap.style.left = "0.5%";
+  } 
+  else if (tutorialIndex == 3) 
+  {
+    //** Each instrument’s values are customizable, select the dropdown icon “>” next to <b>Global Style</b> to affect all bands within an instrument. */
+    console.log(layers.children[0].children[0].children[0].children[2].children[0]);
+    //layers.children[0].children[0].children[0].children[0].value = "off";
+    
+    var distance = layers.children[0].children[0].children[0].children[2].children[0].offsetTop;
+    tut_wrap.style.top = distance + "px";
+    tut_wrap.style.left = "0.5%";
+  } 
+  else if (tutorialIndex == 4)
+  {
+    //** These values will affect all bands within an instrument. Try toggling the “labels” checkmark to see how it affects the graph. */
+    console.log(layers.children[0].children[0].children[0].children[2].children[0].children[2].children[2]);
+    
+    var distance = layers.children[0].children[0].children[0].children[2].children[0].children[2].children[2].offsetTop;
+    tut_wrap.style.top = distance + "px";
+    tut_wrap.style.left = "0.5%";
+  }
+  else if (tutorialIndex == 5)
+  {
+    //** These values will affect all bands within an instrument. Try toggling the “labels” checkmark to see how it affects the graph. */
+
+    tut_wrap.style.top = "77.5%";
+    tut_wrap.style.left = "50%";
+  }
+
+  //** FOR ENABELING AND DISABELING PREV BUTTON */
+  if (tutorialIndex == 0) {
+    if (!tut_btn_prev.classList.contains("disabled")) {
+      tut_btn_prev.classList.toggle("disabled");
+    }
+  } else {
+    if (tut_btn_prev.classList.contains("disabled")) {
+      tut_btn_prev.classList.toggle("disabled");
+    }
+  }
+  //** FOR ENABELING AND DISABELING NEXT BUTTON */
+  if (tutorialIndex == tutorialTextList.length - 1) {
+    tut_btn_next.innerHTML = "<b>DONE</b>";
+  } else {
+    tut_btn_next.innerHTML = "<b>&gt;</b>";
+  }
+  console.log("tutorial index: " + tutorialIndex);
+}
+
 //....** HTML OBJECTS ACTIONS ....*/
 
 //** SIDEBAR FUNCTIONALITY */
@@ -5260,55 +5370,107 @@ sidebarButton.addEventListener("click", function ()
 //** PRESET TOGGLES */
 L1_3_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 1-3", Landsat1_3_values);
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
   //loopThroughLayers();
 });
 L4_5_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 4-5", Landsat4_5_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 L7_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 7", Landsat7_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 L8_9_Dropdown.addEventListener("click", function () {
   addPreset("Landsat 8-9", Landsat8_9_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 LNext_Dropdown.addEventListener("click", function () {
   addPreset("Landsat Next", LandsatNext_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 Sentinel2_Dropdown.addEventListener("click", function () {
-  addPreset("Sentinel 2", Sentinel2_values);
-  //loopThroughLayers();
+  addPreset("Sentinel-2", Sentinel2_values);
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 Sentinel3_Dropdown.addEventListener("click", function () {
-  addPreset("Sentinel 3", Sentinel3_values);
-  //loopThroughLayers();
+  addPreset("Sentinel-3", Sentinel3_values);
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 EO1_Dropdown.addEventListener("click", function () {
   addPreset("EO1", EO1_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 DESIS_Dropdown.addEventListener("click", function () {
   addPreset("DESIS", DESIS_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 ECOSTRESS_Dropdown.addEventListener("click", function () {
   addPreset("ECOSTRESS", ECOSTRESS_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 EMIT_Dropdown.addEventListener("click", function () {
   addPreset("EMIT", EMIT_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 MODIS_Dropdown.addEventListener("click", function () {
   addPreset("MODIS", MODIS_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 PACE_Dropdown.addEventListener("click", function () {
   addPreset("PACE", PACE_values);
-  //loopThroughLayers();
+  
+  if(tutorial && tutorialIndex == 1)
+  {
+    progressTutorial(true);
+  }
 });
 // STELLA_Dropdown.addEventListener("click", function () {
 //   addPreset("STELLA", STELLA_values);
@@ -5532,6 +5694,30 @@ Chart2_max.addEventListener("change", function () {
 
 presetDropDown.addEventListener("click", function () {
   document.getElementById("myDropdown").classList.toggle("show");
+});
+
+//** TUTORIAL BUTTONS */
+tut_btn_prev.addEventListener("click", function () {
+  console.log("PREVIOUS");
+  progressTutorial(false);
+});
+tut_btn_next.addEventListener("click", function () {
+  console.log("NEXT");
+
+  if (tutorialIndex == tutorialTextList.length - 1) {
+    if (tut_wrap.classList.contains("active")) {
+      tut_wrap.classList.toggle("active");
+    }
+    tutorial = false;
+  } else {
+    progressTutorial(true);
+  }
+});
+tut_btn_skip.addEventListener("click", function () {
+  if (tut_wrap.classList.contains("active")) {
+    tut_wrap.classList.toggle("active");
+  }
+  tutorial = false;
 });
 
 var lastClickedButton;
