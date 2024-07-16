@@ -2286,7 +2286,7 @@ var MODIS_values = [
     labelSize: 10,
     labelText: "1",
     sublabelSize: 0, 
-    subLabelText: '250m',
+    subLabelText: '21.2km',
     graphNumb: 1,
     yOffset: 0.05,
   },
@@ -2804,7 +2804,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -2817,7 +2817,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0.05,
   },
@@ -2830,7 +2830,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -2843,7 +2843,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "5",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -2856,7 +2856,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -2869,7 +2869,7 @@ var PACE_values = [
     labelSize: 10,
     labelText: "7",
     sublabelSize: 9, 
-    subLabelText: '50m',
+    subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: -0.05,
   },
@@ -5465,7 +5465,7 @@ MODIS_Dropdown.addEventListener("click", function () {
   }
 });
 PACE_Dropdown.addEventListener("click", function () {
-  addPreset("PACE", PACE_values);
+  addPreset("PACE OCI", PACE_values);
   
   if(tutorial && tutorialIndex == 1)
   {
