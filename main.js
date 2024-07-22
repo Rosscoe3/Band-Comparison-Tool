@@ -35,7 +35,7 @@ let tutorialTextList = [
   "To get started, select the <b>+</b> button to add an instrument.",
   "All the instruments you have selected will appear here under the <b>Layers</b> tab. Select the dropdown icon “<b>›</b>” to expand your selection.",
   "Each instrument’s values are customizable, select the dropdown icon “<b>›</b>” next to <b>Global Style</b> to affect all bands within an instrument.",
-  "These values will affect all bands within an instrument. Try toggling the “labels” checkmark to see how it affects the graph.",
+  "These values control how the instrument is displayed on the graph. Try toggling the <b>Labels</b> checkmark to see how it affects the graph.",
   "After you have edited the values to your liking, click on <b>Export (PNG)</b> to download an image of your creation.",
 ];
 let tutorialIndex = 0;
@@ -419,7 +419,7 @@ const chart2 = new Chart(ctx2, config2);
 init();
 function init() {
   setTimeout(() => {
-    addPreset("Landsat 8-9", Landsat8_9_values);
+    addPreset("Landsat 8-9 (OLI & TIRS)", Landsat8_9_values);
   }, 1000);
   //transmissionData = readTextFile("/myData.csv", true);
   // console.log(chart.options.plugins.annotation.annotations[0]);
@@ -746,7 +746,7 @@ var Landsat1_3_values = [
     labelSize: 10,
     labelText: "1",
     sublabelSize: 9, 
-    subLabelText: '80m',
+    subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
     link: "https://landsat.gsfc.nasa.gov/satellites/",
@@ -760,7 +760,7 @@ var Landsat1_3_values = [
     labelSize: 10,
     labelText: "2",
     sublabelSize: 9, 
-    subLabelText: '80m',
+    subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -773,7 +773,7 @@ var Landsat1_3_values = [
     labelSize: 10,
     labelText: "3",
     sublabelSize: 9, 
-    subLabelText: '80m',
+    subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
   },
@@ -786,7 +786,7 @@ var Landsat1_3_values = [
     labelSize: 10,
     labelText: "4",
     sublabelSize: 9, 
-    subLabelText: '80m',
+    subLabelText: '60m',
     graphNumb: 1,
     yOffset: 0,
   },  
@@ -986,7 +986,7 @@ var Landsat7_values = [
     labelSize: 10,
     labelText: "6",
     sublabelSize: 9, 
-    subLabelText: '120m',
+    subLabelText: '60m',
     graphNumb: 2,
     yOffset: 0,
   },  
@@ -3615,14 +3615,20 @@ function addPreset(title, preset)
             {
               if (this.checked)
               {
-                boxAnnotations2[i].font.size = 15;
+                boxAnnotations[i].display = true;
               }
               else
               {
-                boxAnnotations2[i].font.size = 0;
+                boxAnnotations[i].display = false;
               }
             }
           }
+        }
+
+        console.log("LABELS: " + tutorialIndex);
+        if(tutorial && tutorialIndex == 4)
+        {
+          progressTutorial(true);
         }
         
         chart.update();
@@ -5369,15 +5375,14 @@ sidebarButton.addEventListener("click", function ()
 
 //** PRESET TOGGLES */
 L1_3_Dropdown.addEventListener("click", function () {
-  addPreset("Landsat 1-3", Landsat1_3_values);
+  addPreset("Landsat 1-5 (MSS)", Landsat1_3_values);
   if(tutorial && tutorialIndex == 1)
   {
     progressTutorial(true);
   }
-  //loopThroughLayers();
 });
 L4_5_Dropdown.addEventListener("click", function () {
-  addPreset("Landsat 4-5", Landsat4_5_values);
+  addPreset("Landsat 4-5 (TM)", Landsat4_5_values);
   
   if(tutorial && tutorialIndex == 1)
   {
@@ -5385,7 +5390,7 @@ L4_5_Dropdown.addEventListener("click", function () {
   }
 });
 L7_Dropdown.addEventListener("click", function () {
-  addPreset("Landsat 7", Landsat7_values);
+  addPreset("Landsat 7 (ETM+)", Landsat7_values);
   
   if(tutorial && tutorialIndex == 1)
   {
@@ -5393,7 +5398,7 @@ L7_Dropdown.addEventListener("click", function () {
   }
 });
 L8_9_Dropdown.addEventListener("click", function () {
-  addPreset("Landsat 8-9", Landsat8_9_values);
+  addPreset("Landsat 8-9 (OLI & TIRS)", Landsat8_9_values);
   
   if(tutorial && tutorialIndex == 1)
   {
@@ -5425,7 +5430,7 @@ Sentinel3_Dropdown.addEventListener("click", function () {
   }
 });
 EO1_Dropdown.addEventListener("click", function () {
-  addPreset("EO1", EO1_values);
+  addPreset("EO1 (ALI)", EO1_values);
   
   if(tutorial && tutorialIndex == 1)
   {
@@ -5457,7 +5462,7 @@ EMIT_Dropdown.addEventListener("click", function () {
   }
 });
 MODIS_Dropdown.addEventListener("click", function () {
-  addPreset("MODIS", MODIS_values);
+  addPreset("Terra/Aqua (MODIS)", MODIS_values);
   
   if(tutorial && tutorialIndex == 1)
   {
@@ -5465,7 +5470,7 @@ MODIS_Dropdown.addEventListener("click", function () {
   }
 });
 PACE_Dropdown.addEventListener("click", function () {
-  addPreset("PACE OCI", PACE_values);
+  addPreset("PACE (OCI)", PACE_values);
   
   if(tutorial && tutorialIndex == 1)
   {
