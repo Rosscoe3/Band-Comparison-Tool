@@ -739,12 +739,12 @@ var Landsat1_3_values = [
   // },
   {
     title: "Band 4 - Green",
-    color: '#4c9d5f',
+    color: '#418652',
     xMin: 500, 
     xMax: 600,
     yHeight: boxHeight,
     labelSize: 10,
-    labelText: "1",
+    labelText: "4",
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
@@ -753,12 +753,12 @@ var Landsat1_3_values = [
   },
   {
     title: "Band 5 - Red",
-    color: '#c22036',
+    color: '#DD2C44',
     xMin: 600, 
     xMax: 700,
     yHeight: boxHeight,
     labelSize: 10,
-    labelText: "2",
+    labelText: "5",
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
@@ -766,12 +766,12 @@ var Landsat1_3_values = [
   },
   {
     title: 'Band 6 - Near Infrared (NIR)',
-    color: '#7d2652',
+    color: '#EA0652',
     xMin: 700, 
     xMax: 800,
     yHeight: boxHeight,
     labelSize: 10,
-    labelText: "3",
+    labelText: "6",
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
@@ -779,12 +779,12 @@ var Landsat1_3_values = [
   },
   {
     title: 'Band 7 - Near Infrared (NIR)',
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 800, 
     xMax: 1100,
     yHeight: boxHeight,
     labelSize: 10,
-    labelText: "4",
+    labelText: "7",
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
@@ -807,7 +807,7 @@ var Landsat4_5_values = [
   // },
   {
     title: 'Band 1 - Blue',
-    color: '#00658d',
+    color: '#0084B8',
     xMin: 450, 
     xMax: 520,
     yHeight: boxHeight,
@@ -821,7 +821,7 @@ var Landsat4_5_values = [
   },
   {
     title: 'Band 2 - Green',
-    color: '#4c9d5f',
+    color: '#418652',
     xMin: 520, 
     xMax: 600,
     yHeight: boxHeight,
@@ -834,7 +834,7 @@ var Landsat4_5_values = [
   },
   {
     title: 'Band 3 - Red',
-    color: '#c22036',
+    color: '#DD2C44',
     xMin: 630, 
     xMax: 690,
     yHeight: boxHeight,
@@ -847,7 +847,7 @@ var Landsat4_5_values = [
   },
   {
     title: 'Band 4 - Near Infrared (NIR)',
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 760, 
     xMax: 900,
     yHeight: boxHeight,
@@ -860,7 +860,7 @@ var Landsat4_5_values = [
   },  
   {
     title: 'Band 5 - Shortwave Infrared (SWIR) 1',
-    color: '#d39979',
+    color: '#D76B23',
     xMin: 1550, 
     xMax: 1750,
     yHeight: boxHeight,
@@ -873,7 +873,7 @@ var Landsat4_5_values = [
   },  
   {
     title: 'Band 6 - Thermal',
-    color: '#bc7a82',
+    color: '#AD5C64',
     xMin: 10400, 
     xMax: 12500,
     yHeight: boxHeight,
@@ -886,7 +886,7 @@ var Landsat4_5_values = [
   },  
   {
     title: 'Band 7 - Shortwave Infrared (SWIR) 2',
-    color: '#999c96',
+    color: '#7B8179',
     xMin: 2080, 
     xMax: 2350,
     yHeight: boxHeight,
@@ -914,7 +914,7 @@ var Landsat7_values = [
   // },
   {
     title: 'Band 1 - Blue',
-    color: '#00658d',
+    color: '#0084B8',
     xMin: 450, 
     xMax: 520,
     yHeight: boxHeight,
@@ -927,7 +927,7 @@ var Landsat7_values = [
   },
   {
     title: 'Band 2 - Green',
-    color: '#4c9d5f',
+    color: '#418652',
     xMin: 520, 
     xMax: 600,
     yHeight: boxHeight,
@@ -940,7 +940,7 @@ var Landsat7_values = [
   },
   {
     title: 'Band 3 - Red',
-    color: '#c22036',
+    color: '#DD2C44',
     xMin: 630, 
     xMax: 690,
     yHeight: boxHeight,
@@ -953,7 +953,7 @@ var Landsat7_values = [
   },
   {
     title: 'Band 4 - Near Infrared (NIR)',
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 770, 
     xMax: 900,
     yHeight: boxHeight,
@@ -966,7 +966,7 @@ var Landsat7_values = [
   },  
   {
     title: 'Band 5 - Shortwave Infrared (SWIR) 1',
-    color: '#d39979',
+    color: '#D76B23',
     xMin: 1550, 
     xMax: 1750,
     yHeight: boxHeight,
@@ -979,7 +979,7 @@ var Landsat7_values = [
   },  
   {
     title: 'Band 6 - Thermal',
-    color: '#bc7a82',
+    color: '#AD5C64',
     xMin: 10400, 
     xMax: 12500,
     yHeight: boxHeight,
@@ -992,7 +992,7 @@ var Landsat7_values = [
   },  
   {
     title: 'Band 7 - Shortwave Infrared (SWIR) 2',
-    color: '#999c96',
+    color: '#7B8179',
     xMin: 2090, 
     xMax: 2350,
     yHeight: boxHeight,
@@ -1005,7 +1005,7 @@ var Landsat7_values = [
   },
   {
     title: 'Band 8 - Panchromatic',
-    color: '#999c96',
+    color: '#7B8179',
     xMin: 520, 
     xMax: 900,
     yHeight: boxHeight,
@@ -1033,10 +1033,11 @@ var Landsat8_9_values = [
   //   graphNumb: 1,
   //   yOffset: 1,
   // },
+  
   //** Band 1 - Coastal aerosol	*/
   {
     title: "Band 1 - Coastal aerosol",
-    color: '#679cbf',
+    color: '#4884AD',
     xMin: 430, 
     xMax: 450,
     yHeight: boxHeight,
@@ -1051,7 +1052,7 @@ var Landsat8_9_values = [
   //** Band 2 - Blue */
   {
     title: "Band 2 - Blue",
-    color: '#00658d',
+    color: '#0084B8',
     xMin: 450, 
     xMax: 510,
     yHeight: boxHeight,
@@ -1065,7 +1066,7 @@ var Landsat8_9_values = [
   //** Band 3 - Green */
   {
     title: "Band 3 - Green",
-    color: '#4c9d5f',
+    color: '#418652',
     xMin: 530, 
     xMax: 590,
     yHeight: boxHeight,
@@ -1079,7 +1080,7 @@ var Landsat8_9_values = [
   //** Band 4 - Red */
   {
     title: "Band 4 - Red",
-    color: '#c22036',
+    color: '#DD2C44',
     xMin: 640, 
     xMax: 670,
     yHeight: boxHeight,
@@ -1093,7 +1094,7 @@ var Landsat8_9_values = [
   //** Band 5 - Near Infrared (NIR) */
   {
     title: "Band 6 - Near Infrared (NIR)",
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 850, 
     xMax: 880,
     yHeight: boxHeight,
@@ -1107,7 +1108,7 @@ var Landsat8_9_values = [
   //** Band 6 - Shortwave Infrared (SWIR) 1	 */
   {
     title: "Band 6 - Shortwave Infrared (SWIR) 1",
-    color: '#d39979',
+    color: '#D76B23',
     xMin: 1570, 
     xMax: 1650,
     yHeight: boxHeight,
@@ -1121,7 +1122,7 @@ var Landsat8_9_values = [
   //** Band 7 - Shortwave Infrared (SWIR) 2 */
   {
     title: "Band 7 - Shortwave Infrared (SWIR) 2",
-    color: '#999c96',
+    color: '#7B8179',
     xMin: 2110, 
     xMax: 2290,
     yHeight: boxHeight,
@@ -1135,7 +1136,7 @@ var Landsat8_9_values = [
   //** Band 8 - Panchromatic */
   {
     title: "Band 8 - Panchromatic",
-    color: '#008fa2',
+    color: '#008799',
     xMin: 500, 
     xMax: 680,
     yHeight: boxHeight,
@@ -1149,7 +1150,7 @@ var Landsat8_9_values = [
   //** Band 9 - Cirrus */
   {
     title: "Band 9 - Cirrus",
-    color: '#7480a1',
+    color: '#657795',
     xMin: 1360, 
     xMax: 1380,
     yHeight: boxHeight,
@@ -1163,7 +1164,7 @@ var Landsat8_9_values = [
   //** Band 10 - Thermal Infrared (TIR) 1 */
   {
     title: "Band 10 - Thermal Infrared (TIR) 1",
-    color: '#bc7a82',
+    color: '#AD5C64',
     xMin: 10600, 
     xMax: 11190,
     yHeight: boxHeight,
@@ -1177,7 +1178,7 @@ var Landsat8_9_values = [
   //** Band 11 - Thermal Infrared (TIR) 2 */
   {
     title: "Band 11 - Thermal Infrared (TIR) 2",
-    color: '#bc7a82',
+    color: '#AD5C64',
     xMin: 11500, 
     xMax: 12510,
     yHeight: boxHeight,
@@ -1203,9 +1204,10 @@ var LandsatNext_values = [
   //   graphNumb: 2,
   //   yOffset: 0,
   // },
+  
+  //** Band 1 - Violet	*/
   {
-    //** Band 1 - Violet	*/
-    color: '#7fb0c6',
+    color: '#4884AD',
     xMin: 402, 
     xMax: 422,
     yHeight: boxHeight,
@@ -1217,9 +1219,9 @@ var LandsatNext_values = [
     yOffset: 0,
     link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
+  //** Band 2 - Coastal/Aerosol		*/
   {
-    //** Band 2 - Coastal/Aerosol		*/
-    color: '#7fb0c6',
+    color: '#4884AD',
     xMin: 433, 
     xMax: 453,
     yHeight: boxHeight,
@@ -1230,9 +1232,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 3 - Blue 	*/
   {
-    //** Band 3 - Blue 	*/
-    color: '#1a7d9e',
+    color: '#0084B8',
     xMin: 457.5, 
     xMax: 522.5,
     yHeight: boxHeight,
@@ -1243,9 +1245,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 4 - Green 	*/
   {
-    //** Band 4 - Green 	*/
-    color: '#74a97c',
+    color: '#418652',
     xMin: 542.5, 
     xMax: 577.5,
     yHeight: boxHeight,
@@ -1256,8 +1258,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },  
+  //** Band 5 - Yellow 	*/
   {
-    //** Band 5 - Yellow 	*/
     color: '#cac53f',
     xMin: 585, 
     xMax: 615,
@@ -1269,8 +1271,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },  
+  //** Band 6 - Orange	*/
   {
-    //** Band 6 - Orange	*/
     color: '#caa553',
     xMin: 610, 
     xMax: 630,
@@ -1282,9 +1284,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },  
+  //** Band 7 - Red 1	 */
   {
-    //** Band 7 - Red 1	 */
-    color: '#b63d4c',
+    color: '#DD2C44',
     xMin: 640, 
     xMax: 660,
     yHeight: boxHeight,
@@ -1295,9 +1297,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },  
+  //** Band 8 - Red 2  */
   {
-    //** Band 8 - Red 2  */
-    color: '#b63d4c',
+    color: '#DD2C44',
     xMin: 650, 
     xMax: 680,
     yHeight: boxHeight,
@@ -1308,9 +1310,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },  
+  //** Band 9 - Red Edge 1  */
   {
-    //** Band 9 - Red Edge 1  */
-    color: '#690022',
+    color: '#EA0652',
     xMin: 697.5, 
     xMax: 712.5,
     yHeight: boxHeight,
@@ -1321,9 +1323,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 10 - Red Edge 2  */
   {
-    //** Band 10 - Red Edge 2  */
-    color: '#690022',
+    color: '#EA0652',
     xMin: 732.5, 
     xMax: 747.5,
     yHeight: boxHeight,
@@ -1334,9 +1336,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 11 - NIR Broad  */
   {
-    //** Band 11 - NIR Broad  */
-    color: '#b5b0c4',
+    color: '#9D6289',
     xMin: 784.5, 
     xMax: 899.5,
     yHeight: boxHeight,
@@ -1347,9 +1349,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 12 - NIR 1  */
   {
-    //** Band 12 - NIR 1  */
-    color: '#b5b0c4',
+    color: '#9D6289',
     xMin: 855, 
     xMax: 875,
     yHeight: boxHeight,
@@ -1362,7 +1364,7 @@ var LandsatNext_values = [
   },
   {
     //** Band 13 - Water Vapor  */
-    color: '#7939a0',
+    color: '#9D5EC5',
     xMin: 935, 
     xMax: 955,
     yHeight: boxHeight,
@@ -1373,8 +1375,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 14 - Liquid Water  */
   {
-    //** Band 14 - Liquid Water  */
     color: '#b5b0c4',
     xMin: 975, 
     xMax: 995,
@@ -1386,8 +1388,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 15 - Snow/Ice 1  */
   {
-    //** Band 15 - Snow/Ice 1  */
     color: '#b5b0c4',
     xMin: 1025, 
     xMax: 1045,
@@ -1399,8 +1401,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 16 - Snow/Ice 2  */
   {
-    //** Band 16 - Snow/Ice 2  */
     color: '#b5b0c4',
     xMin: 1080, 
     xMax: 1100,
@@ -1412,9 +1414,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 17 - Cirrus  */
   {
-    //** Band 17 - Cirrus  */
-    color: '#8d96ab',
+    color: '#657795',
     xMin: 1360, 
     xMax: 1390,
     yHeight: boxHeight,
@@ -1425,9 +1427,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 18 - SWIR 1  */
   {
-    //** Band 18 - SWIR 1  */
-    color: '#c2aa94',
+    color: '#D76B23',
     xMin: 1565, 
     xMax: 1655,
     yHeight: boxHeight,
@@ -1438,8 +1440,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 19 - SWIR 2a  */
   {
-    //** Band 19 - SWIR 2a  */
     color: '#c88647',
     xMin: 2025.5, 
     xMax: 2050.5,
@@ -1451,8 +1453,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 20 - SWIR 2b  */
   {
-    //** Band 20 - SWIR 2b  */
     color: '#c88647',
     xMin: 2088, 
     xMax: 2128,
@@ -1464,9 +1466,9 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 21 - SWIR 2c  */
   {
-    //** Band 21 - SWIR 2c  */
-    color: '#c88647',
+    color: '#7B8179',
     xMin: 2191, 
     xMax: 2231,
     yHeight: boxHeight,
@@ -1477,8 +1479,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 22 - TIR 1  */
   {
-    //** Band 22 - TIR 1  */
     color: '#b79498',
     xMin: 8050, 
     xMax: 8425,
@@ -1490,8 +1492,8 @@ var LandsatNext_values = [
     graphNumb: 2,
     yOffset: 0,
   },
+  //** Band 23 - TIR 2  */
   {
-    //** Band 23 - TIR 2  */
     color: '#b79498',
     xMin: 8425, 
     xMax: 8775,
@@ -1503,8 +1505,8 @@ var LandsatNext_values = [
     graphNumb: 2,
     yOffset: 0,
   },
+  //** Band 24 - TIR 2  */
   {
-    //** Band 24 - TIR 2  */
     color: '#b79498',
     xMin: 8925, 
     xMax: 9275,
@@ -1516,9 +1518,9 @@ var LandsatNext_values = [
     graphNumb: 2,
     yOffset: 0,
   },
+  //** Band 25 - TIR 4  */
   {
-    //** Band 25 - TIR 4  */
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 11025, 
     xMax: 11575,
     yHeight: boxHeight,
@@ -1529,9 +1531,9 @@ var LandsatNext_values = [
     graphNumb: 2,
     yOffset: 0,
   },
+  //** Band 26 - TIR 5  */
   {
-    //** Band 26 - TIR 5  */
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 11775, 
     xMax: 12225,
     yHeight: boxHeight,
@@ -1544,10 +1546,10 @@ var LandsatNext_values = [
   },
 ];
 var Sentinel2_values = [
+  //** B1 - CA */
   {
-    //** B1 - CA */
     title: "B1 - CA",
-    color: '#679cbf',
+    color: '#4884AD',
     xMin: 433, 
     xMax: 453,
     yHeight: boxHeight,
@@ -1558,10 +1560,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** B2 - Blue */
   {
-    //** B2 - Blue */
     title: "B2 - Blue",
-    color: '#00658d',
+    color: '#0084B8',
     xMin: 457.5, 
     xMax: 522.5,
     yHeight: boxHeight,
@@ -1572,10 +1574,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: -5,
   },
+  //** B3 - Green */
   {
-    //** B3 - Green */
     title: "B3 - Green",
-    color: '#4c9d5f',
+    color: '#418652',
     xMin: 542, 
     xMax: 577.5,
     yHeight: boxHeight,
@@ -1586,10 +1588,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: -5,
   },
+  //** B4 - Red */
   {
-    //** B4 - Red */
     title: "B4 - Red",
-    color: '#c22036',
+    color: '#DD2C44',
     xMin: 649.5, 
     xMax: 680.5,
     yHeight: boxHeight,
@@ -1600,10 +1602,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: -5,
   }, 
+  //** B5 - Red Edge */
   {
-    //** B5 - Red Edge */
     title: "B5 - Red Edge",
-    color: '#c5a2bd',
+    color: '#EA0652',
     xMin: 697.5, 
     xMax: 712.5,
     yHeight: boxHeight,
@@ -1614,10 +1616,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 0,
   },  
+  //** B6 - NIR-1 */
   {
-    //** B6 - NIR-1 */
     title: "B6 - NIR-1",
-    color: '#d39979',
+    color: '#EA0652',
     xMin: 732.5, 
     xMax: 747.5,
     yHeight: boxHeight,
@@ -1628,10 +1630,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 5,
   },  
+  //** B7 - NIR-2 */
   {
-    //** B7 - NIR-2 */
     title: "B7 - NIR-2",
-    color: '#999c96',
+    color: '#9D6289',
     xMin: 773, 
     xMax: 793,
     yHeight: boxHeight,
@@ -1642,10 +1644,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 0,
   }, 
+  //** B8 - NIR-3	 */
   {
-    //** B8 - NIR-3	 */
     title: "B8 - NIR-3",
-    color: '#008fa2',
+    color: '#9D6289',
     xMin: 784.5, 
     xMax: 899.5,
     yHeight: boxHeight,
@@ -1656,10 +1658,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: -5,
   }, 
+  //** B8a - Water Vapor-1	 */
   {
-    //** B8a - Water Vapor-1	 */
     title: "B8a - Water Vapor-1",
-    color: '#7480a1',
+    color: '#9D6289',
     xMin: 855, 
     xMax: 875,
     yHeight: boxHeight,
@@ -1670,10 +1672,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 5,
   }, 
+  //** B9 - Water Vapor-2 */
   {
-    //** B9 - Water Vapor-2 */
     title: "B9 - Water Vapor-2",
-    color: '#d39979',
+    color: '#9D5EC5',
     xMin: 935, 
     xMax: 945,
     yHeight: boxHeight,
@@ -1684,10 +1686,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 0,
   }, 
+  //** B10 - Cirrus */
   {
-    //** B10 - Cirrus */
     title: "B10 - Cirrus",
-    color: '#bc7a82',
+    color: '#657795',
     xMin: 1365, 
     xMax: 1395,
     yHeight: boxHeight,
@@ -1698,10 +1700,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 5,
   }, 
+  //** B11 - SWIR1 */
   {
-    //** B11 - SWIR1 */
     title: "B11 - SWIR1",
-    color: '#bc7a82',
+    color: '#D76B23',
     xMin: 1565, 
     xMax: 1655,
     yHeight: boxHeight,
@@ -1712,10 +1714,10 @@ var Sentinel2_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** B12 - SWIR2 */
   {
-    //** B12 - SWIR2 */
     title: "B12 - SWIR2",
-    color: '#bc7a82',
+    color: '#c88647',
     xMin: 2100, 
     xMax: 2280,
     yHeight: boxHeight,
@@ -1728,10 +1730,10 @@ var Sentinel2_values = [
   },
 ];
 var Sentinel3_values = [
+  //** Oa01 - CA-1 */
   {
-    //** Oa01 - CA-1 */
     title: "B1 - CA-1",
-    color: '#679cbf',
+    color: '#4884AD',
     xMin: 395, 
     xMax: 405,
     yHeight: boxHeight,
@@ -1742,10 +1744,10 @@ var Sentinel3_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Oa02 - CA-2 */
   {
-    //** Oa02 - CA-2 */
     title: "B2 - CA-2",
-    color: '#00658d',
+    color: '#4884AD',
     xMin: 407, 
     xMax: 417,
     yHeight: boxHeight,
@@ -1756,10 +1758,10 @@ var Sentinel3_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Oa03 - CA-3 */
   {
-    //** Oa03 - CA-3 */
     title: "B3 - CA-3",
-    color: '#4c9d5f',
+    color: '#4884AD',
     xMin: 438, 
     xMax: 448,
     yHeight: boxHeight,
@@ -1773,7 +1775,7 @@ var Sentinel3_values = [
   {
     //** Oa04 - Blue-1 */
     title: "B4 - Blue-1",
-    color: '#c22036',
+    color: '#0084B8',
     xMin: 485, 
     xMax: 495,
     yHeight: boxHeight,
@@ -1787,7 +1789,7 @@ var Sentinel3_values = [
   {
     //** Oa05 - Blue-2 */
     title: "B5 - Blue-2",
-    color: '#c5a2bd',
+    color: '#0084B8',
     xMin: 505, 
     xMax: 515,
     yHeight: boxHeight,
@@ -1801,7 +1803,7 @@ var Sentinel3_values = [
   {
     //** Oa06 - Green */
     title: "B6 - Green",
-    color: '#c5a2bd',
+    color: '#418652',
     xMin: 555, 
     xMax: 565,
     yHeight: boxHeight,
@@ -1815,7 +1817,7 @@ var Sentinel3_values = [
   {
     //** Oa07 - Red-1 */
     title: "B7 - Red-1",
-    color: '#c5a2bd',
+    color: '#caa553',
     xMin: 615, 
     xMax: 625,
     yHeight: boxHeight,
@@ -1829,7 +1831,7 @@ var Sentinel3_values = [
   {
     //** Oa08 - Red-2 */
     title: "B8 - Red-2",
-    color: '#c5a2bd',
+    color: '#DD2C44',
     xMin: 660, 
     xMax: 670,
     yHeight: boxHeight,
@@ -1843,7 +1845,7 @@ var Sentinel3_values = [
   {
     //** Oa09 - Red-3 */
     title: "B9 - Red-3",
-    color: '#c5a2bd',
+    color: '#DD2C44',
     xMin: 670, 
     xMax: 677,
     yHeight: boxHeight,
@@ -1857,7 +1859,7 @@ var Sentinel3_values = [
   {
     //** Oa10 - Red-4 */
     title: "B10 - Red-4",
-    color: '#c5a2bd',
+    color: '#DD2C44',
     xMin: 677, 
     xMax: 685,
     yHeight: boxHeight,
@@ -1871,7 +1873,7 @@ var Sentinel3_values = [
   {
     //** Oa11 - NIR-1 */
     title: "B11 - NIR-1",
-    color: '#c5a2bd',
+    color: '#DD2C44',
     xMin: 703, 
     xMax: 713,
     yHeight: boxHeight,
@@ -1885,7 +1887,7 @@ var Sentinel3_values = [
   {
     //** Oa12 - NIR-2 */
     title: "B12 - NIR-2",
-    color: '#c5a2bd',
+    color: '#EA0652',
     xMin: 750, 
     xMax: 757,
     yHeight: boxHeight,
@@ -1899,7 +1901,7 @@ var Sentinel3_values = [
   {
     //** Oa13 - NIR-3 */
     title: "B13 - NIR-3",
-    color: '#c5a2bd',
+    color: '#EA0652',
     xMin: 760, 
     xMax: 762,
     yHeight: boxHeight,
@@ -1913,7 +1915,7 @@ var Sentinel3_values = [
   {
     //** Oa14 - NIR-4 */
     title: "B14 - NIR-4",
-    color: '#c5a2bd',
+    color: '#EA0652',
     xMin: 762, 
     xMax: 766,
     yHeight: boxHeight,
@@ -1927,7 +1929,7 @@ var Sentinel3_values = [
   {
     //** Oa15 - NIR-5 */
     title: "B15 - NIR-5",
-    color: '#c5a2bd',
+    color: '#EA0652',
     xMin: 766, 
     xMax: 769,
     yHeight: boxHeight,
@@ -1941,7 +1943,7 @@ var Sentinel3_values = [
   {
     //** Oa16 - NIR-6 */
     title: "B16 - NIR-6",
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 771, 
     xMax: 786,
     yHeight: boxHeight,
@@ -1955,7 +1957,7 @@ var Sentinel3_values = [
   {
     //** Oa17 - NIR-7 */
     title: "B17 - NIR-7",
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 855, 
     xMax: 875,
     yHeight: boxHeight,
@@ -1969,7 +1971,7 @@ var Sentinel3_values = [
   {
     //** Oa18 - NIR-8 */
     title: "B18 - NIR-8",
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 880, 
     xMax: 890,
     yHeight: boxHeight,
@@ -1983,7 +1985,7 @@ var Sentinel3_values = [
   {
     //** Oa19 - NIR-9 */
     title: "B19 - NIR-9",
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 895, 
     xMax: 905,
     yHeight: boxHeight,
@@ -1997,7 +1999,7 @@ var Sentinel3_values = [
   {
     //** Oa20 - NIR-10 */
     title: "B20 - NIR-10",
-    color: '#c5a2bd',
+    color: '#9D5EC5',
     xMin: 930, 
     xMax: 950,
     yHeight: boxHeight,
@@ -2011,7 +2013,7 @@ var Sentinel3_values = [
   {
     //** Oa21 - NIR-11 */
     title: "B21 - NIR-11",
-    color: '#c5a2bd',
+    color: '#b5b0c4',
     xMin: 1000, 
     xMax: 1040,
     yHeight: boxHeight,
@@ -2024,10 +2026,10 @@ var Sentinel3_values = [
   },
 ];
 var EO1_values = [
+  //** Band 1 CA */
   {
-    //** Band 1 CA */
     title: "B1 - CA",
-    color: '#679cbf',
+    color: '#4884AD',
     xMin: 433, 
     xMax: 453,
     yHeight: boxHeight,
@@ -2038,10 +2040,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 2 Blue */
   {
-    //** Band 2 Blue */
     title: "B2 - Blue",
-    color: '#1a7d9e',
+    color: '#0084B8',
     xMin: 450, 
     xMax: 515,
     yHeight: boxHeight,
@@ -2052,10 +2054,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 3 - Green */
   {
-    //** Band 3 - Green */
     title: "B3 - Green",
-    color: '#74a97c',
+    color: '#418652',
     xMin: 525, 
     xMax: 605,
     yHeight: boxHeight,
@@ -2066,10 +2068,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 4 - Red */
   {
-    //** Band 4 - Red */
     title: "B4 - Red",
-    color: '#b63d4c',
+    color: '#DD2C44',
     xMin: 630, 
     xMax: 690,
     yHeight: boxHeight,
@@ -2080,10 +2082,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 5 - NIR-1 */
   {
-    //** Band 5 - NIR-1 */
     title: "B5 - NIR-1",
-    color: '#690022',
+    color: '#DD2C44',
     xMin: 775, 
     xMax: 805,
     yHeight: boxHeight,
@@ -2094,10 +2096,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 6 - NIR-2 */
   {
-    //** Band 6 - NIR-2 */
     title: "B6 - NIR-2",
-    color: '#b5b0c4',
+    color: '#9D6289',
     xMin: 845, 
     xMax: 890,
     yHeight: boxHeight,
@@ -2108,10 +2110,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: -5,
   },
+  //** Band 7 - NIR-3 */
   {
-    //** Band 7 - NIR-3 */
     title: "B7 - NIR-3",
-    color: '#8d96ab',
+    color: '#657795',
     xMin: 1200, 
     xMax: 1300,
     yHeight: boxHeight,
@@ -2122,10 +2124,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 8 - SWIR1 */
   {
-    //** Band 8 - SWIR1 */
     title: "B8 - SWIR1",
-    color: '#d39979',
+    color: '#D76B23',
     xMin: 1550, 
     xMax: 1750,
     yHeight: boxHeight,
@@ -2136,10 +2138,10 @@ var EO1_values = [
     graphNumb: 1,
     yOffset: 0,
   },
+  //** Band 9 - SWIR2 */
   {
-    //** Band 9 - SWIR2 */
     title: "B9 - SWIR2",
-    color: '#c88647',
+    color: '#7B8179',
     xMin: 2080, 
     xMax: 2350,
     yHeight: boxHeight,
@@ -2153,7 +2155,7 @@ var EO1_values = [
   {
     //** Band 10 - Panchromatic */
     title: "B10 - Panchromatic",
-    color: '#679cbf',
+    color: '#418652',
     xMin: 480, 
     xMax: 690,
     yHeight: boxHeight,
@@ -2168,7 +2170,7 @@ var EO1_values = [
 var DESIS_values = [
   {
     title: "402nm-1000nm",
-    color: '#679cbf',
+    color: '#4884AD',
     xMin: 402, 
     xMax: 1000,
     yHeight: boxHeight,
@@ -2181,9 +2183,9 @@ var DESIS_values = [
   }, 
 ];
 var ECOSTRESS_values = [
+  //** B1 */
   {
-    //** B1 */
-    color: '#92d050',
+    color: '#D76B23',
     xMin: 1475, 
     xMax: 1845,
     yHeight: boxHeight,
@@ -2194,9 +2196,9 @@ var ECOSTRESS_values = [
     graphNumb: 1,
     yOffset: 0,
   }, 
+  //** B2 */
   {
-    //** B2 */
-    color: '#92d050',
+    color: '#b79498',
     xMin: 8113, 
     xMax: 8467,
     yHeight: boxHeight,
@@ -2207,9 +2209,9 @@ var ECOSTRESS_values = [
     graphNumb: 2,
     yOffset: 0,
   }, 
+  //** B3 */
   {
-    //** B3 */
-    color: '#92d050',
+    color: '#b79498',
     xMin: 8625, 
     xMax: 8935,
     yHeight: boxHeight,
@@ -2220,9 +2222,9 @@ var ECOSTRESS_values = [
     graphNumb: 2,
     yOffset: 0,
   }, 
+  //** B4 */
   {
-    //** B4 */
-    color: '#92d050',
+    color: '#b79498',
     xMin: 9002, 
     xMax: 9398,
     yHeight: boxHeight,
@@ -2233,9 +2235,9 @@ var ECOSTRESS_values = [
     graphNumb: 2,
     yOffset: 0,
   }, 
+  //** B5 */
   {
-    //** B5 */
-    color: '#92d050',
+    color: '#AD5C64',
     xMin: 10285, 
     xMax: 10695,
     yHeight: boxHeight,
@@ -2246,9 +2248,9 @@ var ECOSTRESS_values = [
     graphNumb: 2,
     yOffset: 0,
   }, 
+  //** B6 */
   {
-    //** B6 */
-    color: '#92d050',
+    color: '#AD5C64',
     xMin: 11784.5, 
     xMax: 12395.5,
     yHeight: boxHeight,
@@ -2263,7 +2265,7 @@ var ECOSTRESS_values = [
 var EMIT_values = [
   {
     title: "381nm-2493nm",
-    color: '#e2b280',
+    color: '#D76B23',
     xMin: 381, 
     xMax: 2493,
     yHeight: boxHeight,
@@ -2276,10 +2278,10 @@ var EMIT_values = [
   }, 
 ];
 var MODIS_values = [
+  //** Band 1 - Shortwave/VIS	*/
   {
-    //** Band 1 - Shortwave/VIS	*/
     title: "B1 - Shortwave/VIS",
-    color: '#caa553',
+    color: '#DD2C44',
     xMin: 620, 
     xMax: 670,
     yHeight: boxHeight,
@@ -2290,10 +2292,10 @@ var MODIS_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 2 - Shortwave/NIR	*/
   {
-    //** Band 2 - Shortwave/NIR	*/
     title: "B2 - Shortwave/NIR",
-    color: '#b5b0c4',
+    color: '#9D6289',
     xMin: 841, 
     xMax: 876,
     yHeight: boxHeight,
@@ -2321,7 +2323,7 @@ var MODIS_values = [
   {
     //** Band 4 - Shortwave/VIS	*/
     title: "B4 - Shortwave/VIS",
-    color: '#1a7d9e',
+    color: '#418652',
     xMin: 545, 
     xMax: 565,
     yHeight: boxHeight,
@@ -2335,7 +2337,7 @@ var MODIS_values = [
   {
     //** Band 5 - Shortwave/NIR	*/
     title: "B5 - Shortwave/NIR",
-    color: '#1a7d9e',
+    color: '#657795',
     xMin: 1230, 
     xMax: 1250,
     yHeight: boxHeight,
@@ -2349,7 +2351,7 @@ var MODIS_values = [
   {
     //** Band 6 - Shortwave Infrared/SWIR	*/
     title: "B6 - Shortwave Infrared/SWIR",
-    color: '#c2aa94',
+    color: '#D76B23',
     xMin: 1628, 
     xMax: 1652,
     yHeight: boxHeight,
@@ -2377,7 +2379,7 @@ var MODIS_values = [
   {
     //** Band 8 - Shortwave/VIS	*/
     title: "B8 - Shortwave/VIS",
-    color: '#7fb0c6',
+    color: '#4884AD',
     xMin: 405, 
     xMax: 420,
     yHeight: boxHeight,
@@ -2391,7 +2393,7 @@ var MODIS_values = [
   {
     //** Band 9 - Shortwave/VIS	*/
     title: "B9 - Shortwave/VIS",
-    color: '#7fb0c6',
+    color: '#4884AD',
     xMin: 438, 
     xMax: 448,
     yHeight: boxHeight,
@@ -2419,7 +2421,7 @@ var MODIS_values = [
   {
     //** Band 11 - Shortwave/VIS	*/
     title: "B11 - Shortwave/VIS",
-    color: '#1a7d9e',
+    color: '#0084B8',
     xMin: 483, 
     xMax: 493,
     yHeight: boxHeight,
@@ -2433,7 +2435,7 @@ var MODIS_values = [
   {
     //** Band 12 - Shortwave/VIS	*/
     title: "B12 - Shortwave/VIS",
-    color: '#1a7d9e',
+    color: '#418652',
     xMin: 546, 
     xMax: 556,
     yHeight: boxHeight,
@@ -2447,7 +2449,7 @@ var MODIS_values = [
   {
     //** Band 13 - Shortwave/VIS	*/
     title: "B13 - Shortwave/VIS",
-    color: '#b63d4c',
+    color: '#DD2C44',
     xMin: 662, 
     xMax: 672,
     yHeight: boxHeight,
@@ -2461,7 +2463,7 @@ var MODIS_values = [
   {
     //** Band 14 - Shortwave/VIS	*/
     title: "B14 - Shortwave/VIS",
-    color: '#b63d4c',
+    color: '#DD2C44',
     xMin: 673, 
     xMax: 683,
     yHeight: boxHeight,
@@ -2475,7 +2477,7 @@ var MODIS_values = [
   {
     //** Band 15 - Shortwave/VIS	*/
     title: "B15 - Shortwave/VIS",
-    color: '#b63d4c',
+    color: '#EA0652',
     xMin: 743, 
     xMax: 753,
     yHeight: boxHeight,
@@ -2489,7 +2491,7 @@ var MODIS_values = [
   {
     //** Band 16 - Shortwave/VIS	*/
     title: "B16 - Shortwave/VIS",
-    color: '#b5b0c4',
+    color: '#9D6289',
     xMin: 862, 
     xMax: 877,
     yHeight: boxHeight,
@@ -2503,7 +2505,7 @@ var MODIS_values = [
   {
     //** Band 17 - Shortwave/VIS	*/
     title: "B17 - Shortwave/VIS",
-    color: '#b5b0c4',
+    color: '#9D6289',
     xMin: 890, 
     xMax: 920,
     yHeight: boxHeight,
@@ -2517,7 +2519,7 @@ var MODIS_values = [
   {
     //** Band 18 - Shortwave/VIS	*/
     title: "B18 - Shortwave/VIS",
-    color: '#b5b0c4',
+    color: '#9D5EC5',
     xMin: 931, 
     xMax: 941,
     yHeight: boxHeight,
@@ -2531,7 +2533,7 @@ var MODIS_values = [
   {
     //** Band 19 - Shortwave/VIS	*/
     title: "B19 - Shortwave/VIS",
-    color: '#7939a0',
+    color: '#9D5EC5',
     xMin: 915, 
     xMax: 965,
     yHeight: boxHeight,
@@ -2545,7 +2547,7 @@ var MODIS_values = [
   {
     //** Band 20 - Longwave thermal Infrared/TIR	*/
     title: "B20 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 3660, 
     xMax: 3840,
     yHeight: boxHeight,
@@ -2559,7 +2561,7 @@ var MODIS_values = [
   {
     //** Band 21 - Longwave thermal Infrared/TIR	*/
     title: "B21 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 3929, 
     xMax: 3989,
     yHeight: boxHeight,
@@ -2573,7 +2575,7 @@ var MODIS_values = [
   {
     //** Band 22 - Longwave thermal Infrared/TIR	*/
     title: "B22 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 3929, 
     xMax: 3989,
     yHeight: boxHeight,
@@ -2587,7 +2589,7 @@ var MODIS_values = [
   {
     //** Band 23 - Longwave thermal Infrared/TIR	*/
     title: "B23 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 4020, 
     xMax: 4080,
     yHeight: boxHeight,
@@ -2601,7 +2603,7 @@ var MODIS_values = [
   {
     //** Band 24 - Longwave thermal Infrared/TIR	*/
     title: "B24 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 4433, 
     xMax: 4498,
     yHeight: boxHeight,
@@ -2615,7 +2617,7 @@ var MODIS_values = [
   {
     //** Band 25 - Longwave thermal Infrared/TIR	*/
     title: "B25 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 4482, 
     xMax: 4549,
     yHeight: boxHeight,
@@ -2629,7 +2631,7 @@ var MODIS_values = [
   {
     //** Band 26 - Longwave thermal Infrared/TIR	*/
     title: "B26 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#657795',
     xMin: 1360, 
     xMax: 1390,
     yHeight: boxHeight,
@@ -2643,7 +2645,7 @@ var MODIS_values = [
   {
     //** Band 27 - Longwave thermal Infrared/TIR	*/
     title: "B27 - Longwave thermal Infrared/TIR",
-    color: '#7fb0c6',
+    color: '#b79498',
     xMin: 6535, 
     xMax: 6895,
     yHeight: boxHeight,
@@ -2699,7 +2701,7 @@ var MODIS_values = [
   {
     //** Band 31 - Longwave thermal Infrared/TIR	*/
     title: "B31 - Longwave thermal Infrared/TIR",
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 10780, 
     xMax: 11280,
     yHeight: boxHeight,
@@ -2713,7 +2715,7 @@ var MODIS_values = [
   {
     //** Band 32 - Longwave thermal Infrared/TIR	*/
     title: "B32 - Longwave thermal Infrared/TIR",
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 11770, 
     xMax: 12270,
     yHeight: boxHeight,
@@ -2727,7 +2729,7 @@ var MODIS_values = [
   {
     //** Band 33 - Longwave thermal Infrared/TIR	*/
     title: "B33 - Longwave thermal Infrared/TIR",
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 13185, 
     xMax: 13485,
     yHeight: boxHeight,
@@ -2741,7 +2743,7 @@ var MODIS_values = [
   {
     //** Band 34 - Longwave thermal Infrared/TIR	*/
     title: "B34 - Longwave thermal Infrared/TIR",
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 13485, 
     xMax: 13785,
     yHeight: boxHeight,
@@ -2755,7 +2757,7 @@ var MODIS_values = [
   {
     //** Band 35 - Longwave thermal Infrared/TIR	*/
     title: "B35 - Longwave thermal Infrared/TIR",
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 13785, 
     xMax: 14085,
     yHeight: boxHeight,
@@ -2769,7 +2771,7 @@ var MODIS_values = [
   {
     //** Band 36 - Longwave thermal Infrared/TIR	*/
     title: "B36 - Longwave thermal Infrared/TIR",
-    color: '#b67f81',
+    color: '#AD5C64',
     xMin: 14085, 
     xMax: 14385,
     yHeight: boxHeight,
@@ -2784,7 +2786,7 @@ var MODIS_values = [
 var PACE_values = [
   {
     //** Band 1 - Hyperspectral	*/
-    color: '#c22036',
+    color: '#caa553',
     xMin: 340, 
     xMax: 890,
     yHeight: boxHeight,
@@ -2797,7 +2799,7 @@ var PACE_values = [
   },
   {
     //** Band 2 - NIR-1	*/
-    color: '#c5a2bd',
+    color: '#9D6289',
     xMin: 900, 
     xMax: 980,
     yHeight: boxHeight,
@@ -2810,7 +2812,7 @@ var PACE_values = [
   },
   {
     //** Band 3 - NIR-2	*/
-    color: '#c5a2bd',
+    color: '#b5b0c4',
     xMin: 938, 
     xMax: 1138,
     yHeight: boxHeight,
@@ -2823,7 +2825,7 @@ var PACE_values = [
   },
   {
     //** Band 4 - NIR-3	*/
-    color: '#7480a1',
+    color: '#657795',
     xMin: 1278, 
     xMax: 1478,
     yHeight: boxHeight,
@@ -2836,7 +2838,7 @@ var PACE_values = [
   },
   {
     //** Band 5 - SWIR1-1	*/
-    color: '#d39979',
+    color: '#D76B23',
     xMin: 1515, 
     xMax: 1715,
     yHeight: boxHeight,
@@ -2849,7 +2851,7 @@ var PACE_values = [
   },
   {
     //** Band 6 - SWIR2-1	*/
-    color: '#999c96',
+    color: '#c88647',
     xMin: 2030, 
     xMax: 2230,
     yHeight: boxHeight,
@@ -2862,7 +2864,7 @@ var PACE_values = [
   },
   {
     //** Band 7 - SWIR2-2	*/
-    color: '#999c96',
+    color: '#7B8179',
     xMin: 2160, 
     xMax: 2360,
     yHeight: boxHeight,
@@ -2903,7 +2905,7 @@ var STELLA_values = [
   },
   {
     //** Band 2 - Blue	*/
-    color: '#00658d',
+    color: '#0084B8',
     xMin: 460, 
     xMax: 540,
     yHeight: boxHeight,
@@ -2916,7 +2918,7 @@ var STELLA_values = [
   },
   {
     //** Band 3 - Green	*/
-    color: '#4C9D5F',
+    color: '#418652',
     xMin: 510, 
     xMax: 590,
     yHeight: boxHeight,
@@ -2968,7 +2970,7 @@ var STELLA_values = [
   },
   {
     //** Band 7 - Red 2	*/
-    color: '#c22036',
+    color: '#DD2C44',
     xMin: 610, 
     xMax: 690,
     yHeight: boxHeight,
@@ -5114,14 +5116,15 @@ function progressTutorial(forward) {
   {
     setTimeout(() => {
       //** To get started, select the <b>+</b> button to add an instrument. */
+
       var distanceY = document.getElementById("myDropdown").offsetTop;
-      var distanceX = document.getElementById("myDropdown").offsetLeft;
+      var distanceX = document.getElementById("myDropdown").offsetWidth;
   
       console.log("Distance Y: " + distanceY);
       console.log("Distance X: " + distanceX);
   
       tut_wrap.style.top = distanceY + "px";
-      tut_wrap.style.left = (50 + distanceX) + "px";
+      tut_wrap.style.left = (distanceX) + "px";
     }, 100);
   } 
   else if (tutorialIndex == 3) 
