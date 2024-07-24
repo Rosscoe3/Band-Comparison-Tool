@@ -33,10 +33,10 @@ let tut_wrap = document.getElementById("tutorial-wrap");
 let tutorialTextList = [
   "Welcome to the <b>Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect.",
   "To get started, select the <b>+</b> button to add an instrument.",
-  "Select an instrument from the list",
+  "Select an instrument from the list.",
   "All the instruments you have selected will appear here under the <b>Layers</b> tab. Select the dropdown icon “<b>›</b>” to expand your selection.",
   "Each instrument’s values are customizable, select the dropdown icon “<b>›</b>” next to <b>Global Style</b> to affect all bands within an instrument.",
-  "These values control how the instrument is displayed on the graph. Try toggling the <b>Labels</b> checkmark to see how it affects the graph.",
+  "These values control how the bands are displayed on the graph. Try toggling the <b>Labels</b> checkmark to see how it affects the visualization.",
   "After you have edited the values to your liking, click on <b>Export (PNG)</b> to download an image of your creation.",
 ];
 let tutorialIndex = 0;
@@ -45,7 +45,6 @@ let tutorial = true;
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let layers = document.getElementById("layers");
-let loadingScreen = document.getElementById("loading");
 
 //** TUTORIAL BUTTONS */
 
@@ -4960,8 +4959,6 @@ function loopThroughLayers()
     13950);
   }
   
-  //loadingScreen.classList.toggle('active');
-  console.log("END OF LOOP");
 
   chart.update();
   chart2.update();
