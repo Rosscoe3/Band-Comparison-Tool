@@ -45,6 +45,7 @@ let tutorial = true;
 //** GRAB HTML OBJECTS */
 let sidebarButton = document.getElementById("openSidebarIcon");
 let layers = document.getElementById("layers");
+let infoIcon = document.getElementById("infoIcon");
 
 //** TUTORIAL BUTTONS */
 
@@ -723,18 +724,19 @@ function updateMinAndMax(min1, min2, max1, max2)
 
 //** ARRAYS OF PRESET VALUES */
 var Landsat1_3_values = [
+  //** TITLE */
   // {
   //   title: "Title",
   //   color: '#d1d1d1',
-  //   xMin: 1125, 
-  //   xMax: 1130,
-  //   yHeight: 0.1,
-  //   labelSize: 10,
+  //   xMin: 500, 
+  //   xMax: 1100,
+  //   yHeight: 10,
+  //   labelSize: 50,
   //   labelText: "",
-  //   sublabelSize: 20, 
-  //   subLabelText: 'Landsat 1-3',
+  //   sublabelSize: 15, 
+  //   subLabelText: 'Landsat 1-5 (MSS)',
   //   graphNumb: 1,
-  //   yOffset: 0,
+  //   yOffset: -4,
   // },
   {
     title: "Band 4 - Green",
@@ -791,18 +793,19 @@ var Landsat1_3_values = [
   },  
 ];
 var Landsat4_5_values = [
+  //** TITLE */
   // {
   //   title: "Title",
   //   color: '#d1d1d1',
-  //   xMin: 10300, 
-  //   xMax: 12600,
-  //   yHeight: 0.1,
-  //   labelSize: 10,
+  //   xMin: 450, 
+  //   xMax: 2350,
+  //   yHeight: 10,
+  //   labelSize: 50,
   //   labelText: "",
-  //   sublabelSize: 20, 
-  //   subLabelText: 'Landsat 4-5',
-  //   graphNumb: 2,
-  //   yOffset: 0,
+  //   sublabelSize: 15, 
+  //   subLabelText: 'Landsat 4-5 (TM)',
+  //   graphNumb: 1,
+  //   yOffset: -4,
   // },
   {
     title: 'Band 1 - Blue',
@@ -898,18 +901,19 @@ var Landsat4_5_values = [
   },  
 ];
 var Landsat7_values = [
+  //** TITLE */
   // {
   //   title: "Title",
   //   color: '#d1d1d1',
-  //   xMin: 10300, 
-  //   xMax: 12600,
-  //   yHeight: 0.1,
-  //   labelSize: 10,
+  //   xMin: 450, 
+  //   xMax: 2350,
+  //   yHeight: 10,
+  //   labelSize: 50,
   //   labelText: "",
-  //   sublabelSize: 20, 
-  //   subLabelText: 'Landsat 7',
-  //   graphNumb: 2,
-  //   yOffset: 0,
+  //   sublabelSize: 15, 
+  //   subLabelText: 'Landsat 7 (ETM+)',
+  //   graphNumb: 1,
+  //   yOffset: -4,
   // },
   {
     title: 'Band 1 - Blue',
@@ -1017,11 +1021,12 @@ var Landsat7_values = [
   },  
 ];
 var Landsat8_9_values = [
+  //** TITLE */
   // {
   //   title: "Title",
   //   color: '#d1d1d1',
   //   xMin: 430, 
-  //   xMax: 1500,
+  //   xMax: 2290,
   //   xMin_2: 430, 
   //   xMax_2: 2290,
   //   yHeight: 10,
@@ -1030,7 +1035,7 @@ var Landsat8_9_values = [
   //   sublabelSize: 15, 
   //   subLabelText: 'Landsat 8-9 (OLI & TIRS)',
   //   graphNumb: 1,
-  //   yOffset: 1,
+  //   yOffset: 2,
   // },
   
   //** Band 1 - Coastal aerosol	*/
@@ -2025,6 +2030,20 @@ var Sentinel3_values = [
   },
 ];
 var EO1_values = [
+  // //** TITLE */
+  // {
+  //   title: "Title",
+  //   color: '#d1d1d1',
+  //   xMin: 433, 
+  //   xMax: 2350,
+  //   yHeight: 10,
+  //   labelSize: 50,
+  //   labelText: "",
+  //   sublabelSize: 15, 
+  //   subLabelText: 'EO1 (ALI)',
+  //   graphNumb: 1,
+  //   yOffset: 2,
+  // },
   //** Band 1 CA */
   {
     title: "B1 - CA",
@@ -3853,7 +3872,8 @@ function addPreset(title, preset)
         chart2.update();
       }, false);
 
-    //** INPUT - titleVisibility */
+    //** TOGGLE OF AND ON TITLE */  
+    // //** INPUT - titleVisibility */
     // var input_container_titleVisibility = document.createElement('div');
     // input_container_titleVisibility.classList = "inputContainer";
     // input_container_titleVisibility.id = "title_visibility";
@@ -3874,8 +3894,10 @@ function addPreset(title, preset)
     //   input_container_titleVisibility_input.addEventListener('change', function() {
     //     var groupId = this.parentElement.parentElement.
     //       parentElement.parentElement.parentElement.children[0].id;
+
+    //       console.log(groupId);
         
-    //     //** LOOP THROUGH TO TURN OFF ALL LABELS */
+    //     // //** LOOP THROUGH TO TURN OFF ALL LABELS */
     //     for(var i = 0; i < groupList.children.length; i++)
     //     {
     //       //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
@@ -3899,6 +3921,7 @@ function addPreset(title, preset)
     //       if(boxAnnotations[i].title.includes(groupId) 
     //       && boxAnnotations[i].title.includes("_Title"))
     //       {
+    //         console.log(boxAnnotations[i].title);
     //         if(boxAnnotations[i].type == "label")
     //         { 
     //           if (this.checked)
@@ -3943,7 +3966,6 @@ function addPreset(title, preset)
 
     //     chart.update();
     //     chart2.update();
-    //     //loopThroughLayers();
     //   }, false);
   
   //** ADD SPECIFIC BANDS */
@@ -5775,6 +5797,11 @@ tut_btn_skip.addEventListener("click", function () {
   tutorial = false;
 });
 
+//** Info Icon  */
+infoIcon.addEventListener("click", function () {
+  window.open('https://landsat.gsfc.nasa.gov/','mywindow');
+});
+
 var lastClickedButton;
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) 
@@ -5833,6 +5860,8 @@ window.onclick = function(event)
     }
   }
 }
+
+
 
 //console.log(boxAnnotations);
 //console.log(boxAnnotations2);
