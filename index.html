@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Band Comparison Tool</title>
+    <title>Spectral Band Comparison Tool</title>
   </head>
   <body>
     <div id="myDropdown" class="dropdown-content">
@@ -182,7 +182,11 @@
                     </div> -->
                     <div class="inputContainer">
                       <div>Group Separation:</div>
-                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='22' step="1">          
+                      <input id="groupSeperation_Global" type="number" placeholder="Group Seperation..." value='0' step="1">          
+                    </div>
+                    <div class="inputContainer">
+                      <div>yStart:</div>
+                      <input id="yStart_Global" type="number" placeholder="yStart..." value='5' step="1">          
                     </div>
                   </ul>
                 </li>
@@ -241,7 +245,7 @@
         </div>
         <div class="tutorial-wrap active" id="tutorial-wrap">
           <div class="tutorial-instructions" id="tut_text">
-            Welcome to the <b>Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and spectral bands they can detect.
+            Welcome to the <b>Spectral Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and spectral bands they can detect.
           </div>
           <div class="tut-button-wrapper">
             <div class="tutorial-button disabled" id="tut-prev">

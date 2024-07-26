@@ -21,6 +21,7 @@ var minChartTwo = 7000;
 var boxSeperation = 0.0;
 var boxHeight = 3;
 var groupSeperation = 22;
+var yStartValue = 5;
 
 var sensorNumb = 0;
 
@@ -31,7 +32,7 @@ let tut_btn_skip = document.getElementById("tut-skip");
 let tut_text = document.getElementById("tut_text");
 let tut_wrap = document.getElementById("tutorial-wrap");
 let tutorialTextList = [
-  "Welcome to the <b>Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect.",
+  "Welcome to the <b>Spectral Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect.",
   "To get started, select the <b>+</b> button to add an instrument.",
   "Select an instrument from the list.",
   "All the instruments you have selected will appear here under the <b>Layers</b> tab. Select the dropdown icon “<b>›</b>” to expand your selection.",
@@ -94,6 +95,7 @@ let graphConnector = document.getElementById("graphConnector");
 let boxHeight_Global = document.getElementById("boxHeight_Global");
 let boxSeperation_Global = document.getElementById("boxSeperation_Global");
 let groupSeperation_Global = document.getElementById("groupSeperation_Global");
+let yStart_Global = document.getElementById("yStart_Global");
 let labelSize_Global = document.getElementById("labelSize_Global");
 let labelSublabelSize_Global = document.getElementById("labelSublabelSize_Global");
 
@@ -547,6 +549,7 @@ function addBox(
   visibility,
 ) {
   
+  var extraText = "";
   var y_padding_box = 0;
   var borderWidth = 1;
   var color_update = color;
@@ -554,21 +557,29 @@ function addBox(
   var yAdjust = 0;
   var textWeight = "bold"; 
 
+  var box_visibility = true;
+  var label_visibility = true;
+  var sublabel_visibility = true;
+
   //sulabel
   var sub_rotation = 0;
   var sub_yMin = yHeight + sublabelYOffset + y_padding_box;
   var sub_yMax = yHeight + sublabelYOffset + y_padding_box;
   var sub_xMin = xMin;
   var sub_xMax = xMax;
+  box_visibility = visibility;
 
   if(title.includes("_Title"))
   {
-    y_padding_box = 5;
+    extraText = "_Title";
     borderWidth = 0;
     color_update = addAlpha("#000000", '0.5');
     labelColor = "rgb(0, 0, 0)";
-    yAdjust = -10;
     textWeight = "lighter";
+
+    box_visibility = false;
+    label_visibility = false;
+    sublabel_visibility = true;
 
     var subLabelPadding = 25;
 
@@ -578,11 +589,11 @@ function addBox(
     }
 
     //sublabel
-    sub_rotation = 90;
-    sub_yMin = yMin;
-    sub_yMax = yHeight;
-    sub_xMin = xMax;
-    sub_xMax = xMax;
+    // sub_rotation = 0;
+    // sub_yMin = yMin;
+    // sub_yMax = yHeight;
+    // sub_xMin = xMax;
+    // sub_xMax = xMax;
   }
 
   var box = {
@@ -593,8 +604,8 @@ function addBox(
     yMax: yHeight + y_padding_box,
     borderWidth: borderWidth,
     backgroundColor: color_update,
-    title: title + "_box",
-    display: visibility,
+    title: title + "_box" + extraText,
+    display: box_visibility,
   };
   var label = {
     type: "label",
@@ -609,8 +620,9 @@ function addBox(
       color: labelColor,
     },
     color: labelColor,
-    title: title + "_label",
+    title: title + "_label" + extraText,
     yAdjust: yAdjust,
+    display: label_visibility,
   };
   var subLabel = {
     type: "label",
@@ -619,14 +631,15 @@ function addBox(
     yMin: sub_yMin,
     yMax: sub_yMax,
     content: [subLabelText],
+    textAlign: 'left',
     font: {
       size: sublabelSize,
       color: "rgb(245,245,245)",
-      textAlign: "right",
     },
     rotation: sub_rotation,
     color: "rgb(0, 0, 0)",
-    title: title + "_sublabel",
+    title: title + "_sublabel" + extraText,
+    display: sublabel_visibility,
   };
 
   if(graphNumb == 1)
@@ -725,19 +738,19 @@ function updateMinAndMax(min1, min2, max1, max2)
 //** ARRAYS OF PRESET VALUES */
 var Landsat1_3_values = [
   //** TITLE */
-  // {
-  //   title: "Title",
-  //   color: '#d1d1d1',
-  //   xMin: 500, 
-  //   xMax: 1100,
-  //   yHeight: 10,
-  //   labelSize: 50,
-  //   labelText: "",
-  //   sublabelSize: 15, 
-  //   subLabelText: 'Landsat 1-5 (MSS)',
-  //   graphNumb: 1,
-  //   yOffset: -4,
-  // },
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450, 
+    xMax: 2350,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 1-5 (MSS)',
+    graphNumb: 1,
+    yOffset: 4,
+  },
   {
     title: "Band 4 - Green",
     color: '#418652',
@@ -794,19 +807,19 @@ var Landsat1_3_values = [
 ];
 var Landsat4_5_values = [
   //** TITLE */
-  // {
-  //   title: "Title",
-  //   color: '#d1d1d1',
-  //   xMin: 450, 
-  //   xMax: 2350,
-  //   yHeight: 10,
-  //   labelSize: 50,
-  //   labelText: "",
-  //   sublabelSize: 15, 
-  //   subLabelText: 'Landsat 4-5 (TM)',
-  //   graphNumb: 1,
-  //   yOffset: -4,
-  // },
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450, 
+    xMax: 2350,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 4-5 (TM)',
+    graphNumb: 1,
+    yOffset: 4,
+  },
   {
     title: 'Band 1 - Blue',
     color: '#0084B8',
@@ -902,19 +915,19 @@ var Landsat4_5_values = [
 ];
 var Landsat7_values = [
   //** TITLE */
-  // {
-  //   title: "Title",
-  //   color: '#d1d1d1',
-  //   xMin: 450, 
-  //   xMax: 2350,
-  //   yHeight: 10,
-  //   labelSize: 50,
-  //   labelText: "",
-  //   sublabelSize: 15, 
-  //   subLabelText: 'Landsat 7 (ETM+)',
-  //   graphNumb: 1,
-  //   yOffset: -4,
-  // },
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450, 
+    xMax: 2350,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 7 (ETM+)',
+    graphNumb: 1,
+    yOffset: 9,
+  },
   {
     title: 'Band 1 - Blue',
     color: '#0084B8',
@@ -926,7 +939,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     title: 'Band 2 - Green',
@@ -939,7 +952,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     title: 'Band 3 - Red',
@@ -952,7 +965,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     title: 'Band 4 - Near Infrared (NIR)',
@@ -965,7 +978,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },  
   {
     title: 'Band 5 - Shortwave Infrared (SWIR) 1',
@@ -978,7 +991,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },  
   {
     title: 'Band 6 - Thermal',
@@ -991,7 +1004,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   },  
   {
     title: 'Band 7 - Shortwave Infrared (SWIR) 2',
@@ -1004,7 +1017,7 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     title: 'Band 8 - Panchromatic',
@@ -1017,26 +1030,26 @@ var Landsat7_values = [
     sublabelSize: 9, 
     subLabelText: '15m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },  
 ];
 var Landsat8_9_values = [
   //** TITLE */
-  // {
-  //   title: "Title",
-  //   color: '#d1d1d1',
-  //   xMin: 430, 
-  //   xMax: 2290,
-  //   xMin_2: 430, 
-  //   xMax_2: 2290,
-  //   yHeight: 10,
-  //   labelSize: 50,
-  //   labelText: "",
-  //   sublabelSize: 15, 
-  //   subLabelText: 'Landsat 8-9 (OLI & TIRS)',
-  //   graphNumb: 1,
-  //   yOffset: 2,
-  // },
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat 8-9 (OLI & TIRS)',
+    graphNumb: 1,
+    yOffset: 14,
+  },
   
   //** Band 1 - Coastal aerosol	*/
   {
@@ -1050,7 +1063,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
     link: "https://landsat.gsfc.nasa.gov/satellites/",
   },
   //** Band 2 - Blue */
@@ -1065,7 +1078,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 3 - Green */
   {
@@ -1079,7 +1092,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 4 - Red */
   {
@@ -1093,7 +1106,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 5 - Near Infrared (NIR) */
   {
@@ -1107,7 +1120,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 6 - Shortwave Infrared (SWIR) 1	 */
   {
@@ -1121,7 +1134,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 7 - Shortwave Infrared (SWIR) 2 */
   {
@@ -1135,7 +1148,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 8 - Panchromatic */
   {
@@ -1149,7 +1162,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '15m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
   //** Band 9 - Cirrus */
   {
@@ -1163,7 +1176,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   //** Band 10 - Thermal Infrared (TIR) 1 */
   {
@@ -1177,7 +1190,7 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '100m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 11 - Thermal Infrared (TIR) 2 */
   {
@@ -1191,23 +1204,26 @@ var Landsat8_9_values = [
     sublabelSize: 9, 
     subLabelText: '100m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   },
 ];
 var LandsatNext_values = [
-  // {
-  //   title: "Title",
-  //   color: '#d1d1d1',
-  //   xMin: 7950, 
-  //   xMax: 12325,
-  //   yHeight: 0.1,
-  //   labelSize: 10,
-  //   labelText: "",
-  //   sublabelSize: 20, 
-  //   subLabelText: 'Landsat Next',
-  //   graphNumb: 2,
-  //   yOffset: 0,
-  // },
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Landsat Next',
+    graphNumb: 1,
+    yOffset: 9,
+  },
   
   //** Band 1 - Violet	*/
   {
@@ -1550,6 +1566,22 @@ var LandsatNext_values = [
   },
 ];
 var Sentinel2_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Sentinel-2',
+    graphNumb: 1,
+    yOffset: 14,
+  },
   //** B1 - CA */
   {
     title: "B1 - CA",
@@ -1562,7 +1594,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   //** B2 - Blue */
   {
@@ -1576,7 +1608,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '10m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
   //** B3 - Green */
   {
@@ -1590,7 +1622,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '10m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
   //** B4 - Red */
   {
@@ -1604,7 +1636,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '10m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   //** B5 - Red Edge */
   {
@@ -1618,7 +1650,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '10m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },  
   //** B6 - NIR-1 */
   {
@@ -1632,7 +1664,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '20m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },  
   //** B7 - NIR-2 */
   {
@@ -1646,7 +1678,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '20m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   //** B8 - NIR-3	 */
   {
@@ -1660,7 +1692,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '10m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   //** B8a - Water Vapor-1	 */
   {
@@ -1674,7 +1706,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '20m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   }, 
   //** B9 - Water Vapor-2 */
   {
@@ -1688,7 +1720,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   //** B10 - Cirrus */
   {
@@ -1702,7 +1734,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '60m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   }, 
   //** B11 - SWIR1 */
   {
@@ -1716,7 +1748,7 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '20m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** B12 - SWIR2 */
   {
@@ -1730,10 +1762,26 @@ var Sentinel2_values = [
     sublabelSize: 9, 
     subLabelText: '20m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
 ];
 var Sentinel3_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Sentinel-3',
+    graphNumb: 1,
+    yOffset: 14,
+  },
   //** Oa01 - CA-1 */
   {
     title: "B1 - CA-1",
@@ -1746,7 +1794,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Oa02 - CA-2 */
   {
@@ -1760,7 +1808,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Oa03 - CA-3 */
   {
@@ -1774,10 +1822,10 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
+  //** Oa04 - Blue-1 */
   {
-    //** Oa04 - Blue-1 */
     title: "B4 - Blue-1",
     color: '#0084B8',
     xMin: 485, 
@@ -1788,10 +1836,10 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },  
+  //** Oa05 - Blue-2 */
   {
-    //** Oa05 - Blue-2 */
     title: "B5 - Blue-2",
     color: '#0084B8',
     xMin: 505, 
@@ -1802,10 +1850,10 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
+  //** Oa06 - Green */
   {
-    //** Oa06 - Green */
     title: "B6 - Green",
     color: '#418652',
     xMin: 555, 
@@ -1816,10 +1864,10 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
+  //** Oa07 - Red-1 */
   {
-    //** Oa07 - Red-1 */
     title: "B7 - Red-1",
     color: '#caa553',
     xMin: 615, 
@@ -1830,7 +1878,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa08 - Red-2 */
@@ -1844,7 +1892,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa09 - Red-3 */
@@ -1858,7 +1906,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   {
     //** Oa10 - Red-4 */
@@ -1872,7 +1920,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
   {
     //** Oa11 - NIR-1 */
@@ -1886,7 +1934,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa12 - NIR-2 */
@@ -1900,7 +1948,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa13 - NIR-3 */
@@ -1914,7 +1962,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   {
     //** Oa14 - NIR-4 */
@@ -1928,7 +1976,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
   {
     //** Oa15 - NIR-5 */
@@ -1942,7 +1990,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa16 - NIR-6 */
@@ -1956,7 +2004,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa17 - NIR-7 */
@@ -1970,7 +2018,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa18 - NIR-8 */
@@ -1984,7 +2032,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   {
     //** Oa19 - NIR-9 */
@@ -1998,7 +2046,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa20 - NIR-10 */
@@ -2012,7 +2060,7 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Oa21 - NIR-11 */
@@ -2026,24 +2074,26 @@ var Sentinel3_values = [
     sublabelSize: 0, 
     subLabelText: '300m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
 ];
 var EO1_values = [
-  // //** TITLE */
-  // {
-  //   title: "Title",
-  //   color: '#d1d1d1',
-  //   xMin: 433, 
-  //   xMax: 2350,
-  //   yHeight: 10,
-  //   labelSize: 50,
-  //   labelText: "",
-  //   sublabelSize: 15, 
-  //   subLabelText: 'EO1 (ALI)',
-  //   graphNumb: 1,
-  //   yOffset: 2,
-  // },
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'EO1 (ALI)',
+    graphNumb: 1,
+    yOffset: 12,
+  },
   //** Band 1 CA */
   {
     title: "B1 - CA",
@@ -2056,7 +2106,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 2 Blue */
   {
@@ -2070,7 +2120,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   //** Band 3 - Green */
   {
@@ -2084,7 +2134,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 4 - Red */
   {
@@ -2098,7 +2148,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 5 - NIR-1 */
   {
@@ -2112,7 +2162,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 6 - NIR-2 */
   {
@@ -2126,7 +2176,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
   //** Band 7 - NIR-3 */
   {
@@ -2140,7 +2190,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 8 - SWIR1 */
   {
@@ -2154,7 +2204,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   //** Band 9 - SWIR2 */
   {
@@ -2168,7 +2218,7 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '30m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 10 - Panchromatic */
@@ -2182,10 +2232,26 @@ var EO1_values = [
     sublabelSize: 9, 
     subLabelText: '10m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
 ];
 var DESIS_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'DESIS',
+    graphNumb: 1,
+    yOffset: 3,
+  },
   {
     title: "402nm-1000nm",
     color: '#4884AD',
@@ -2201,6 +2267,22 @@ var DESIS_values = [
   }, 
 ];
 var ECOSTRESS_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'ECOSTRESS',
+    graphNumb: 1,
+    yOffset: 3,
+  },
   //** B1 */
   {
     color: '#D76B23',
@@ -2281,6 +2363,22 @@ var ECOSTRESS_values = [
   }, 
 ];
 var EMIT_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'EMIT',
+    graphNumb: 1,
+    yOffset: 3,
+  },
   {
     title: "381nm-2493nm",
     color: '#D76B23',
@@ -2296,6 +2394,22 @@ var EMIT_values = [
   }, 
 ];
 var MODIS_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Terra/Aqua (MODIS)',
+    graphNumb: 1,
+    yOffset: 13,
+  },
   //** Band 1 - Shortwave/VIS	*/
   {
     title: "B1 - Shortwave/VIS",
@@ -2308,7 +2422,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '21.2km',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   //** Band 2 - Shortwave/NIR	*/
   {
@@ -2322,7 +2436,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '250m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   {
     //** Band 3 - Shortwave/VIS	*/
@@ -2336,7 +2450,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '500m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   {
     //** Band 4 - Shortwave/VIS	*/
@@ -2350,7 +2464,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '500m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   }, 
   {
     //** Band 5 - Shortwave/NIR	*/
@@ -2364,7 +2478,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '500m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 6 - Shortwave Infrared/SWIR	*/
@@ -2378,7 +2492,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '500m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 7 - Shortwave Infrared/SWIR	*/
@@ -2392,7 +2506,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '500m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 8 - Shortwave/VIS	*/
@@ -2406,7 +2520,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 9 - Shortwave/VIS	*/
@@ -2420,7 +2534,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   {
     //** Band 10 - Shortwave/VIS	*/
@@ -2434,7 +2548,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 11 - Shortwave/VIS	*/
@@ -2448,7 +2562,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 12 - Shortwave/VIS	*/
@@ -2462,7 +2576,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   {
     //** Band 13 - Shortwave/VIS	*/
@@ -2476,7 +2590,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 14 - Shortwave/VIS	*/
@@ -2490,7 +2604,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   {
     //** Band 15 - Shortwave/VIS	*/
@@ -2504,7 +2618,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 16 - Shortwave/VIS	*/
@@ -2518,7 +2632,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 17 - Shortwave/VIS	*/
@@ -2532,7 +2646,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   }, 
   {
     //** Band 18 - Shortwave/VIS	*/
@@ -2546,7 +2660,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 19 - Shortwave/VIS	*/
@@ -2560,7 +2674,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   {
     //** Band 20 - Longwave thermal Infrared/TIR	*/
@@ -2574,7 +2688,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 21 - Longwave thermal Infrared/TIR	*/
@@ -2588,7 +2702,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 22 - Longwave thermal Infrared/TIR	*/
@@ -2602,7 +2716,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: -5,
+    yOffset: 0,
   }, 
   {
     //** Band 23 - Longwave thermal Infrared/TIR	*/
@@ -2616,7 +2730,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 5,
+    yOffset: 10,
   }, 
   {
     //** Band 24 - Longwave thermal Infrared/TIR	*/
@@ -2630,7 +2744,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 5,
+    yOffset: 10,
   }, 
   {
     //** Band 25 - Longwave thermal Infrared/TIR	*/
@@ -2644,7 +2758,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 26 - Longwave thermal Infrared/TIR	*/
@@ -2658,7 +2772,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 27 - Longwave thermal Infrared/TIR	*/
@@ -2672,7 +2786,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 28 - Longwave thermal Infrared/TIR	*/
@@ -2686,7 +2800,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 29 - Longwave thermal Infrared/TIR	*/
@@ -2700,7 +2814,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 30 - Longwave thermal Infrared/TIR	*/
@@ -2714,7 +2828,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 31 - Longwave thermal Infrared/TIR	*/
@@ -2728,7 +2842,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 32 - Longwave thermal Infrared/TIR	*/
@@ -2742,7 +2856,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 33 - Longwave thermal Infrared/TIR	*/
@@ -2756,7 +2870,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 34 - Longwave thermal Infrared/TIR	*/
@@ -2770,7 +2884,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 35 - Longwave thermal Infrared/TIR	*/
@@ -2784,7 +2898,7 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
   {
     //** Band 36 - Longwave thermal Infrared/TIR	*/
@@ -2798,10 +2912,26 @@ var MODIS_values = [
     sublabelSize: 0, 
     subLabelText: '1000m',
     graphNumb: 2,
-    yOffset: 0,
+    yOffset: 5,
   }, 
 ];
 var PACE_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'PACE (OCI)',
+    graphNumb: 1,
+    yOffset: 14,
+  },
   {
     //** Band 1 - Hyperspectral	*/
     color: '#caa553',
@@ -2813,7 +2943,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 2 - NIR-1	*/
@@ -2826,7 +2956,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 3 - NIR-2	*/
@@ -2839,7 +2969,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: 5,
+    yOffset: 10,
   },
   {
     //** Band 4 - NIR-3	*/
@@ -2852,7 +2982,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 5 - SWIR1-1	*/
@@ -2865,7 +2995,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 6 - SWIR2-1	*/
@@ -2878,7 +3008,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: 0,
+    yOffset: 5,
   },
   {
     //** Band 7 - SWIR2-2	*/
@@ -2891,7 +3021,7 @@ var PACE_values = [
     sublabelSize: 9, 
     subLabelText: '1.2km',
     graphNumb: 1,
-    yOffset: -5,
+    yOffset: 0,
   },
 ];
 var STELLA_values = [
@@ -3127,11 +3257,11 @@ function addPreset(title, preset)
     var yStart = offsetY + 10 + parseFloat(preset[i].yOffset);
     var yEnd = yStart + preset[i].yHeight;
 
-    var title_var = "b" + (i+1) + title;
-
     //** TO PICK THE DISPLAY DEPENDING ON IF ITS A TITLE OR NOT */
     if(preset[i].title == "Title")
     {
+      var title_var = "b" + (i+1) + title + "_Title";
+
       addBox(
         preset[i].xMin, preset[i].xMax, 
         yStart, yEnd, 
@@ -3145,6 +3275,8 @@ function addPreset(title, preset)
     }
     else
     {
+      var title_var = "b" + (i+1) + title;
+
       addBox(
         preset[i].xMin, preset[i].xMax, 
         yStart, yEnd, 
@@ -3156,7 +3288,6 @@ function addPreset(title, preset)
         preset[i].graphNumb, 
         title_var, true);
     }
-
 
     chart.update();
     chart2.update();
@@ -3546,60 +3677,25 @@ function addPreset(title, preset)
           {
             if(boxAnnotations[i].title.includes("sublabel"))
             {
-              var yValue;
-              if(boxAnnotations[i].title.includes("_Title"))
-              { 
-                yValue = parseFloat(boxAnnotations[i-2].yMax) + 1;
-                //yValue = parseFloat(boxAnnotations[i-2].yMax) - 15;
-                boxAnnotations[i].yMin = yValue;
-                boxAnnotations[i].yMax = yValue;
-              }
-              else
-              {
-                yValue = parseFloat(boxAnnotations[i-2].yMin) + parseFloat(this.value) + 1;
-                boxAnnotations[i].yMin = yValue;
-                boxAnnotations[i].yMax = yValue;
-              }
-            }
-            //** CHECKS ON BOXES AND MAIN LABEL OF TITLE */
-            else if(boxAnnotations[i].title.includes("_Title"))
-            {
-              boxAnnotations[i].yMin = (parseFloat(boxAnnotations[i+3].yMin)) - 0.05;
-              boxAnnotations[i].yMax = parseFloat(boxAnnotations[i+3].yMin) + parseFloat(this.value) + 0.05;
+              var yValue = parseFloat(boxAnnotations[i-2].yMin) + parseFloat(this.value) + 1;
+              boxAnnotations[i].yMin = yValue;
+              boxAnnotations[i].yMax = yValue;
             }
             else
             {
               boxAnnotations[i].yMax = parseFloat(boxAnnotations[i].yMin) + parseFloat(this.value);
-            }
-            
+            }  
           }
         }
-
         for(var i = 0; i < boxAnnotations2.length; i++)
         {
           if(boxAnnotations2[i].title.includes(groupId))
           {
             if(boxAnnotations2[i].title.includes("sublabel"))
             {
-              var yValue;
-              if(boxAnnotations2[i].title.includes("_Title"))
-              { 
-                yValue = parseFloat(boxAnnotations2[i-2].yMax) + 1;
-                boxAnnotations2[i].yMin = yValue;
-                boxAnnotations2[i].yMax = yValue;
-              }
-              else
-              {
-                yValue = parseFloat(boxAnnotations2[i-2].yMin) + parseFloat(this.value) + 1;
-                boxAnnotations2[i].yMin = yValue;
-                boxAnnotations2[i].yMax = yValue;
-              }
-            }
-            //** CHECKS ON BOXES AND MAIN LABEL OF TITLE */
-            else if(boxAnnotations2[i].title.includes("_Title"))
-            {
-              boxAnnotations2[i].yMin = (parseFloat(boxAnnotations2[i+3].yMin)) - 0.05;
-              boxAnnotations2[i].yMax = parseFloat(boxAnnotations2[i+3].yMin) + parseFloat(this.value) + 0.05;
+              var yValue = parseFloat(boxAnnotations2[i-2].yMin) + parseFloat(this.value) + 1;
+              boxAnnotations2[i].yMin = yValue;
+              boxAnnotations2[i].yMax = yValue;
             }
             else
             {
@@ -3608,6 +3704,7 @@ function addPreset(title, preset)
           }
         }
 
+        correctGroupSeperation();
         chart.update();
         chart2.update();
       }, false);
@@ -3837,7 +3934,7 @@ function addPreset(title, preset)
       //** INPUT - SUBLABEL SIZE - INPUT */
       var input_container_sublabel_input = document.createElement('input');
       input_container_sublabel_input.type = "number";
-      input_container_sublabel_input.value = preset[0].sublabelSize;
+      input_container_sublabel_input.value = preset[1].sublabelSize;
       input_container_subLabelSize.appendChild(input_container_sublabel_input);
 
       //** ON CHANGE EVENT FOR SUBLABEL SIZE */
@@ -3850,9 +3947,9 @@ function addPreset(title, preset)
         {
           if(boxAnnotations[i].title.includes(groupId))
           {
-            if(boxAnnotations[i].title.includes("sublabel"))
+            console.log(boxAnnotations[i]);
+            if(boxAnnotations[i].title.includes("sublabel") && !boxAnnotations[i].title.includes("_Title"))
             {
-              console.log(boxAnnotations[i]);
               boxAnnotations[i].font.size = this.value;
             }
           }
@@ -3862,7 +3959,7 @@ function addPreset(title, preset)
         {
           if(boxAnnotations2[i].title.includes(groupId))
           {
-            if(boxAnnotations2[i].title.includes("sublabel"))
+            if(boxAnnotations2[i].title.includes("sublabel") && !boxAnnotations2[i].title.includes("_Title"))
             {
               boxAnnotations2[i].font.size = this.value;
             }
@@ -3873,100 +3970,68 @@ function addPreset(title, preset)
       }, false);
 
     //** TOGGLE OF AND ON TITLE */  
-    // //** INPUT - titleVisibility */
-    // var input_container_titleVisibility = document.createElement('div');
-    // input_container_titleVisibility.classList = "inputContainer";
-    // input_container_titleVisibility.id = "title_visibility";
-    // band_content.appendChild(input_container_titleVisibility);
+    //** INPUT - titleVisibility */
+    var input_container_titleVisibility = document.createElement('div');
+    input_container_titleVisibility.classList = "inputContainer";
+    input_container_titleVisibility.id = title;
+    band_content.appendChild(input_container_titleVisibility);
 
-    //   //** INPUT - titleVisibility - TITLE */
-    //   var input_container_titleVisibility_title = document.createElement('div');
-    //   input_container_titleVisibility_title.innerHTML = "Title";
-    //   input_container_titleVisibility.appendChild(input_container_titleVisibility_title);
+      //** INPUT - titleVisibility - TITLE */
+      var input_container_titleVisibility_title = document.createElement('div');
+      input_container_titleVisibility_title.innerHTML = "Title";
+      input_container_titleVisibility.appendChild(input_container_titleVisibility_title);
 
-    //   //** INPUT - titleVisibility - INPUT */
-    //   var input_container_titleVisibility_input = document.createElement('input');
-    //   input_container_titleVisibility_input.type = "checkbox";
-    //   input_container_titleVisibility_input.setAttribute("checked", true);
-    //   input_container_titleVisibility.appendChild(input_container_titleVisibility_input);
+      //** INPUT - titleVisibility - INPUT */
+      var input_container_titleVisibility_input = document.createElement('input');
+      input_container_titleVisibility_input.type = "checkbox";
+      input_container_titleVisibility_input.setAttribute("checked", true);
+      input_container_titleVisibility.appendChild(input_container_titleVisibility_input);
 
-    //   //** ON CHANGE EVENT FOR titleVisibility */
-    //   input_container_titleVisibility_input.addEventListener('change', function() {
-    //     var groupId = this.parentElement.parentElement.
-    //       parentElement.parentElement.parentElement.children[0].id;
+      //** ON CHANGE EVENT FOR titleVisibility */
+      input_container_titleVisibility_input.addEventListener('change', function() {
+        var groupId = this.parentElement.id;
+        console.log(input_container_titleVisibility_input.checked);
 
-    //       console.log(groupId);
-        
-    //     // //** LOOP THROUGH TO TURN OFF ALL LABELS */
-    //     for(var i = 0; i < groupList.children.length; i++)
-    //     {
-    //       //** MAKE SURE ITS NOT THE ADD BUTTON, OR GLOBAL VALUES TAB */
-    //       if(!groupList.children[i].id.includes("add_") && !groupList.children[i].id.includes("global_values"))
-    //       {
-    //         //** CHECK IF THE LABEL IS CHECK THEN CHANGE TEXT SIZE */
-    //         if (this.checked)
-    //         {
-    //           groupList.children[i].children[2].children[5].children[1].value = 15;
-    //         }
-    //         else
-    //         {
-    //           groupList.children[i].children[2].children[5].children[1].value = 0;
-    //         }
-    //       }
-    //     }
+        //** LOOP THROUGH ANNOTATIONS TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations.length; i++)
+        {
+          if(boxAnnotations[i].title.includes(groupId) 
+            && boxAnnotations[i].title.includes("_Title") 
+            && boxAnnotations[i].title.includes("_sublabel"))
+          {
+            console.log(boxAnnotations[i].title)
+            if(this.checked)
+            {
+              boxAnnotations[i].display = true;
+            }
+            else
+            {
+              boxAnnotations[i].display = false;
+            }
+          }
+        }
+        //** LOOP THROUGH ANNOTATIONS2 TO CHANGE COLOR VALUES */
+        for(var i = 0; i < boxAnnotations2.length; i++)
+        {
+          if(boxAnnotations2[i].title.includes(groupId) 
+            && boxAnnotations2[i].title.includes("_Title")
+            && boxAnnotations2[i].title.includes("_sublabel"))
+          {
+            if(this.checked)
+            {
+              boxAnnotations[i].display = false;
+            }
+            else
+            {
+              boxAnnotations[i].display = true;
+            }
+          }
+        }
+        correctGroupSeperation();
 
-    //     //** LOOP THROUGH BOX ANNOTATIONS TO TURN OFF SUBLABELS */
-    //     for(var i = 0; i < boxAnnotations.length; i++)
-    //     {
-    //       if(boxAnnotations[i].title.includes(groupId) 
-    //       && boxAnnotations[i].title.includes("_Title"))
-    //       {
-    //         console.log(boxAnnotations[i].title);
-    //         if(boxAnnotations[i].type == "label")
-    //         { 
-    //           if (this.checked)
-    //           {
-    //             boxAnnotations[i].font.size = 15;
-    //           }
-    //           else
-    //           {
-    //             boxAnnotations[i].font.size = 0;
-    //           }
-    //         }
-    //         if(boxAnnotations[i].type == "box")
-    //         { 
-    //           var inputValue = document.getElementById("b1" + groupId + "_Title").value;
-
-    //           if(inputValue)
-    //           {
-    //             console.log(boxAnnotations[i].backgroundColor);
-    //             if (this.checked)
-    //             {
-    //               boxAnnotations[i].backgroundColor = addAlpha(inputValue, '0.75');
-    //             }
-    //             else
-    //             {
-    //               boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
-    //             }
-    //           }
-    //           else
-    //           {
-    //             if (this.checked)
-    //             {
-    //               boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.75)';
-    //             }
-    //             else
-    //             {
-    //               boxAnnotations[i].backgroundColor = 'rgba(200, 200, 200, 0.0)';
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-
-    //     chart.update();
-    //     chart2.update();
-    //   }, false);
+        chart.update();
+        chart2.update();
+      }, false);
   
   //** ADD SPECIFIC BANDS */
   for(var i = 0; i < preset.length; i++)
@@ -4454,9 +4519,9 @@ function addPreset(title, preset)
             }
           }
 
+          correctGroupSeperation();
           chart.update();
           chart2.update();
-
           this.oldValue = this.value;
         }, false);
 
@@ -4861,6 +4926,7 @@ function addPreset(title, preset)
 
   setTimeout(() => {
     checkDropdowns();
+    correctGroupSeperation();
   }, 10);
   updateGraphMinMax();
   layers.insertBefore(nav, layers.firstChild);
@@ -5120,7 +5186,7 @@ function progressTutorial(forward) {
 
   //** POSITIONING OF TUT_WRAP */
   if (tutorialIndex == 0) {
-    //** Welcome to the <b>Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect. */
+    //** Welcome to the <b>Spectral Band Comparison Tool!</b> This app helps you compare different Earth-observing satellites and the spectral bands they can detect. */
     tut_wrap.style.top = "35%";
     tut_wrap.style.left = "25%";
   } 
@@ -5566,11 +5632,21 @@ groupSeperation_Global.addEventListener("change", function () {
   correctGroupSeperation();
 });
 
+yStart_Global.addEventListener("change", function () {
+  console.log(yStart_Global.value);
+
+  yStartValue = yStart_Global.value;
+  correctGroupSeperation();
+});
+
 function correctGroupSeperation()
 {
   groupSeperation = parseFloat(groupSeperation_Global.value);
   var navs = layers.getElementsByClassName("nav");
+  var lastYEnd = 0;
+  var currentLastYend = 0;
 
+  //** GO THROUGH EACH LAYER IN THE LAYERS TAB */
   Array.from(navs).slice().reverse().forEach(function (element, i) {
     
     var groupId = element.getAttribute("name");
@@ -5602,9 +5678,20 @@ function correctGroupSeperation()
           currentBoxHeight = parseFloat(boxAnnotations[x].yMax) - parseFloat(boxAnnotations[x].yMin);
         }
 
-        yStart = (groupSeperation_Global.value * i) + 10 + parseFloat(yOffset); //+ offset
-        yEnd = yStart + currentBoxHeight;
-
+        if(i == 0)
+        {
+          yStart = (groupSeperation_Global.value * i) + parseFloat(yStartValue) + parseFloat(yOffset); //+ offset
+          yEnd = yStart + currentBoxHeight;
+        }
+        else
+        {
+          //console.log(currentLastYend);
+          yStart = parseFloat(currentLastYend) + parseFloat(yOffset) + parseFloat(groupSeperation_Global.value);
+          yStart += 4;
+          yEnd = yStart + currentBoxHeight;
+        }
+        
+        //If its a sublabel, add extra padding
         if(boxAnnotations[x].title.includes("sublabel"))
         {
           boxAnnotations[x].yMin = yEnd + 1;
@@ -5614,6 +5701,15 @@ function correctGroupSeperation()
         {
           boxAnnotations[x].yMin = yStart;
           boxAnnotations[x].yMax = yEnd;
+        }
+
+        //** Checks to see what the greatest last value is */
+        if(boxAnnotations[x].yMax > lastYEnd)
+        {
+          if(boxAnnotations[x].display)
+          {
+            lastYEnd = boxAnnotations[x].yMax;
+          }
         }
       }
     }
@@ -5645,8 +5741,18 @@ function correctGroupSeperation()
           currentBoxHeight = parseFloat(boxAnnotations2[y].yMax) - parseFloat(boxAnnotations2[y].yMin);
         }
 
-        yStart = (groupSeperation_Global.value * i) + 10 + parseFloat(yOffset); //+ offset
-        yEnd = yStart + currentBoxHeight;
+        if(i == 0)
+        {
+          yStart = (groupSeperation_Global.value * i) + parseFloat(yStartValue) + parseFloat(yOffset);
+          yEnd = yStart + currentBoxHeight;
+        }
+        else
+        {
+          //console.log(currentLastYend);
+          yStart = parseFloat(currentLastYend) + parseFloat(yOffset) + parseFloat(groupSeperation_Global.value);
+          yStart += 4;
+          yEnd = yStart + currentBoxHeight;
+        }
 
         if(boxAnnotations2[y].title.includes("sublabel"))
         {
@@ -5658,8 +5764,19 @@ function correctGroupSeperation()
           boxAnnotations2[y].yMin = yStart;
           boxAnnotations2[y].yMax = yEnd;
         }
+
+        //** Checks to see what the greatest last value is */
+        if(boxAnnotations2[y].yMax > lastYEnd)
+        {
+          lastYEnd = boxAnnotations2[y].yMax;
+          // if(boxAnnotations2[y].display == true)
+          // {
+          // }
+        }
       }
     }
+
+    currentLastYend = lastYEnd;
   });
 
   chart2.options.scales.y.min = 0;
@@ -5805,7 +5922,7 @@ infoIcon.addEventListener("click", function () {
 var lastClickedButton;
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) 
-{
+{ 
   if (!event.target.matches('.dropbtn')) 
   {
     var dropdowns = document.getElementsByClassName("dropdown-content");
