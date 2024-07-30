@@ -631,7 +631,6 @@ function addBox(
     yMin: sub_yMin,
     yMax: sub_yMax,
     content: [subLabelText],
-    textAlign: 'left',
     font: {
       size: sublabelSize,
       color: "rgb(245,245,245)",
@@ -646,6 +645,7 @@ function addBox(
   {
     boxAnnotations.push(box);
     boxAnnotations.push(label);
+    console.log(boxAnnotations);
     boxAnnotations.push(subLabel);
   }
   else if(graphNumb == 2)
@@ -741,8 +741,8 @@ var Landsat1_3_values = [
   {
     title: "Title",
     color: '#d1d1d1',
-    xMin: 450, 
-    xMax: 2350,
+    xMin: 430, 
+    xMax: 2290,
     yHeight: boxHeight,
     labelSize: 50,
     labelText: "",
@@ -1110,7 +1110,7 @@ var Landsat8_9_values = [
   },
   //** Band 5 - Near Infrared (NIR) */
   {
-    title: "Band 6 - Near Infrared (NIR)",
+    title: "Band 5 - Near Infrared (NIR)",
     color: '#9D6289',
     xMin: 850, 
     xMax: 880,
@@ -1212,7 +1212,7 @@ var LandsatNext_values = [
   {
     title: "Title",
     color: '#d1d1d1',
-    xMin: 430, 
+    xMin: 400, 
     xMax: 2290,
     xMin_2: 430, 
     xMax_2: 2290,
@@ -2930,7 +2930,7 @@ var PACE_values = [
     sublabelSize: 15, 
     subLabelText: 'PACE (OCI)',
     graphNumb: 1,
-    yOffset: 14,
+    yOffset: 13,
   },
   {
     //** Band 1 - Hyperspectral	*/
@@ -3670,6 +3670,7 @@ function addPreset(title, preset)
         //** LOOP THROUGH TO TURN OFF ALL LABELS */
         
         var groupId = this.parentElement.id;
+        
 
         for(var i = 0; i < boxAnnotations.length; i++)
         {
@@ -3680,6 +3681,7 @@ function addPreset(title, preset)
               var yValue = parseFloat(boxAnnotations[i-2].yMin) + parseFloat(this.value) + 1;
               boxAnnotations[i].yMin = yValue;
               boxAnnotations[i].yMax = yValue;
+              console.log(boxAnnotations[i]);
             }
             else
             {
@@ -3798,7 +3800,7 @@ function addPreset(title, preset)
       var input_container_labelSize_input = document.createElement('input');
       input_container_labelSize_input.id = "b" + (i+1) + title + "color_input";
       input_container_labelSize_input.type = "number";
-      input_container_labelSize_input.value = preset[0].labelSize;
+      input_container_labelSize_input.value = preset[1].labelSize;
       input_container_labelSize.appendChild(input_container_labelSize_input);
 
       //** ON CHANGE EVENT FOR LABEL SIZE */
@@ -3810,7 +3812,9 @@ function addPreset(title, preset)
         {
           if(boxAnnotations[i].title.includes(groupId))
           {
-            if(!boxAnnotations[i].title.includes("box") && !boxAnnotations[i].title.includes("sublabel"))
+            if(!boxAnnotations[i].title.includes("box") 
+              && !boxAnnotations[i].title.includes("sublabel")
+              && !boxAnnotations[i].title.includes("_title"))
             {
               boxAnnotations[i].font.size = this.value;
             }
@@ -3821,7 +3825,9 @@ function addPreset(title, preset)
         {
           if(boxAnnotations2[i].title.includes(groupId))
           {
-            if(!boxAnnotations2[i].title.includes("box") && !boxAnnotations2[i].title.includes("sublabel"))
+            if(!boxAnnotations2[i].title.includes("box") 
+              && !boxAnnotations2[i].title.includes("sublabel")
+              && !boxAnnotations[i].title.includes("_title"))
             {
               boxAnnotations2[i].font.size = this.value;
             }
@@ -4491,7 +4497,7 @@ function addPreset(title, preset)
         input_container_yOffset_input.title = "b" + (i+1) + title;
         input_container_yOffset.appendChild(input_container_yOffset_input);
 
-        //** ON CHANGE EVENT FOR xMax */
+        //** ON CHANGE EVENT FOR yOffset */
         input_container_yOffset_input.addEventListener('change', function() {
           var groupId = this.title;
 
@@ -4524,7 +4530,58 @@ function addPreset(title, preset)
           chart2.update();
           this.oldValue = this.value;
         }, false);
+      
+      if(preset[i].title == "Title")
+      {
+        //** INPUT - xMin */
+        var input_container_xMin = document.createElement('div');
+        input_container_xMin.classList = "inputContainer";
+        input_container_xMin.id = "xMin";
+        band_content.appendChild(input_container_xMin);
+  
+          //** INPUT - xMin - TITLE */
+          var input_container_xMin_title = document.createElement('div');
+          input_container_xMin_title.innerHTML = "xMin";
+          input_container_xMin.appendChild(input_container_xMin_title);
+  
+          console.log(preset[i].xMin);
 
+          //** INPUT - xMin - INPUT */
+          var input_container_xMin_input = document.createElement('input');
+          input_container_xMin_input.type = "number";
+          input_container_xMin_input.value = preset[i].xMin;
+          input_container_xMin_input.step = 1;
+          input_container_xMin_input.id = "b" + (i+1) + title + "_xMin";
+          input_container_xMin_input.title = "b" + (i+1) + title;
+          input_container_xMin.appendChild(input_container_xMin_input);
+  
+          //** ON CHANGE EVENT FOR xMin */
+          input_container_xMin_input.addEventListener('change', function() {
+            var groupId = this.title;
+  
+            for(var i=0; i < boxAnnotations.length; i++)
+            {
+              if(boxAnnotations[i].title.includes(groupId))
+              {
+                console.log(boxAnnotations[i]);
+                boxAnnotations[i].xMin = parseFloat(this.value);
+              }
+            }
+  
+            for(var x=0; x < boxAnnotations2.length; x++)
+            {
+              if(boxAnnotations2[x].title.includes(groupId))
+              {
+                boxAnnotations2[i].xMin = parseFloat(this.value);
+              }
+            }
+  
+            correctGroupSeperation();
+            chart.update();
+            chart2.update();
+            this.oldValue = this.value;
+          }, false);
+      }
   }
 
   //** FOR ADDING ADDITIONAL BANDS */
@@ -5118,8 +5175,11 @@ function updateGraphMinMax()
   {
     if(!boxAnnotations[i].title.includes("box") || boxAnnotations[i].title.includes("label") || boxAnnotations[i].title.includes("sublabel"))
     {
-      min1.push(boxAnnotations[i].xMin);
-      max1.push(boxAnnotations[i].xMax);
+      if(!boxAnnotations[i].title.includes("Title"))
+      { 
+        min1.push(boxAnnotations[i].xMin);
+        max1.push(boxAnnotations[i].xMax);
+      }
     }
   }
 
@@ -5128,14 +5188,17 @@ function updateGraphMinMax()
   {
     if(!boxAnnotations2[x].title.includes("box") || boxAnnotations2[x].title.includes("label") || boxAnnotations2[x].title.includes("sublabel"))
     {
-      min2.push(boxAnnotations2[x].xMin);
-      max2.push(boxAnnotations2[x].xMax);
+      if(!boxAnnotations[x].title.includes("Title"))
+      {
+        min2.push(boxAnnotations2[x].xMin);
+        max2.push(boxAnnotations2[x].xMax);
+      }
     }
   }
 
   //** FIGURE OUT MIN & MAX */
   if(min1.length > 0 && min2.length > 0)
-    {
+  {
       //** Update min and max values of charts manually *//
       updateMinAndMax(
       Math.min.apply(Math, min1), 
@@ -5678,10 +5741,14 @@ function correctGroupSeperation()
           currentBoxHeight = parseFloat(boxAnnotations[x].yMax) - parseFloat(boxAnnotations[x].yMin);
         }
 
+        //** IF ITS THE FIRST  */
         if(i == 0)
         {
           yStart = (groupSeperation_Global.value * i) + parseFloat(yStartValue) + parseFloat(yOffset); //+ offset
           yEnd = yStart + currentBoxHeight;
+
+          // yStart = (groupSeperation_Global.value * i) + parseFloat(yStartValue) + parseFloat(yOffset); //+ offset
+          // yEnd = yStart + currentBoxHeight;
         }
         else
         {
@@ -5916,7 +5983,7 @@ tut_btn_skip.addEventListener("click", function () {
 
 //** Info Icon  */
 infoIcon.addEventListener("click", function () {
-  window.open('https://landsat.gsfc.nasa.gov/','mywindow');
+  window.open('https://landsat.gsfc.nasa.gov/spectral-band-comparison-tool','mywindow');
 });
 
 var lastClickedButton;
