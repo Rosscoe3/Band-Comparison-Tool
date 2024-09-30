@@ -22,6 +22,7 @@ var boxSeperation = 0.0;
 var boxHeight = 3;
 var groupSeperation = 22;
 var yStartValue = 5;
+var boxPadding = 2;
 
 var sensorNumb = 0;
 
@@ -76,6 +77,11 @@ let ECOSTRESS_Dropdown = document.getElementById("preset_ECOSTRESS");
 let EMIT_Dropdown = document.getElementById("preset_EMIT");
 let MODIS_Dropdown = document.getElementById("preset_MODIS");
 let PACE_Dropdown = document.getElementById("preset_PACE");
+let WorldView_1_Dropdown = document.getElementById("preset_Worldview1");
+let WorldView_2_Dropdown = document.getElementById("preset_Worldview2");
+let WorldView_3_Dropdown = document.getElementById("preset_Worldview3");
+let WorldView_4_Dropdown = document.getElementById("preset_Worldview4");
+
 let STELLA_Dropdown = document.getElementById("preset_STELLA");
 let CUSTOM_Dropdown = document.getElementById("preset_CUSTOM");
 
@@ -505,8 +511,6 @@ function plotCSV()
     };
   }
 
-  console.log(chart.data)
-
   chart.update();
   chart2.update();
 }
@@ -645,7 +649,6 @@ function addBox(
   {
     boxAnnotations.push(box);
     boxAnnotations.push(label);
-    console.log(boxAnnotations);
     boxAnnotations.push(subLabel);
   }
   else if(graphNumb == 2)
@@ -656,62 +659,9 @@ function addBox(
   }
 }
 
-//** CLEARS ALL ANNOTATIONS AND UPDATES THEM IN updateAnnotations() */
-function clearAnnotations(graph)
-{
-  boxAnnotations.splice(0, boxAnnotations.length);
-  boxAnnotations2.splice(0, boxAnnotations2.length);
-
-  boxAnnotations.length = 0;
-  boxAnnotations2.length = 0;
-
-  //** takes out specific graph in the graph list */
-  if(groupsToggled.includes(graph))
-  {          
-    groupsToggled.splice(groupsToggled.indexOf(graph), 1);
-  }
-  updateAnnotations();
-}
-
-//** UPDATES ALL CURRENTLY SELECTED ANNOTATIONS */
-function updateAnnotations()
-{
-  var offsetY = groupSeperation; 
-  var mins1 = [];
-  var maxes1 = [];
-  var mins2 = [];
-  var maxes2 = [];
-
-  for(var i = 0; i < groupsToggled.length; i++)
-  {
-    offsetY = groupSeperation * i;
-  }
-
-  if(mins1.length > 0 && mins2.length > 0)
-  {
-    //** Update min and max values of charts manually *//
-    updateMinAndMax(
-      Math.min.apply(Math, mins1), 
-      Math.min.apply(Math, mins2),
-      Math.max.apply(Math, maxes1),
-      Math.max.apply(Math, maxes2));
-  }
-  else
-  {
-    updateMinAndMax(
-      450, 
-      7050,
-      2450,
-      13950);
-  }
-
-  chart.update();
-  chart2.update();
-}
-
 //** UPDATE MIN AND MAX FOR CHARTS DEPENDING ON PRESETS SELECTED */
 function updateMinAndMax(min1, min2, max1, max2)
-{
+{ 
   var padding = 50;
 
   chart.options.scales.x.min = parseInt(min1) - padding;
@@ -1382,8 +1332,8 @@ var LandsatNext_values = [
     graphNumb: 1,
     yOffset: 5,
   },
+  //** Band 13 - Water Vapor  */
   {
-    //** Band 13 - Water Vapor  */
     color: '#9D5EC5',
     xMin: 935, 
     xMax: 955,
@@ -1780,7 +1730,7 @@ var Sentinel3_values = [
     sublabelSize: 15, 
     subLabelText: 'Sentinel-3',
     graphNumb: 1,
-    yOffset: 14,
+    yOffset: 10,
   },
   //** Oa01 - CA-1 */
   {
@@ -2250,7 +2200,7 @@ var DESIS_values = [
     sublabelSize: 15, 
     subLabelText: 'DESIS',
     graphNumb: 1,
-    yOffset: 3,
+    yOffset: 0,
   },
   {
     title: "402nm-1000nm",
@@ -2408,7 +2358,7 @@ var MODIS_values = [
     sublabelSize: 15, 
     subLabelText: 'Terra/Aqua (MODIS)',
     graphNumb: 1,
-    yOffset: 13,
+    yOffset: 10,
   },
   //** Band 1 - Shortwave/VIS	*/
   {
@@ -3022,6 +2972,680 @@ var PACE_values = [
     subLabelText: '1.2km',
     graphNumb: 1,
     yOffset: 0,
+  },
+];
+var WorldView_1_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Worldview-1',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Band 1 - Panchromatic	*/
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 400, 
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '0.5m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var WorldView_2_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Worldview-2',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Panchromatic	*/
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450, 
+    xMax: 800,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '0.46m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Multispectral - Coastal	*/
+    title: "Multispectral - Coastal",
+    color: '#4884AD',
+    xMin: 400, 
+    xMax: 450,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Blue	*/
+    title: "Multispectral - Blue",
+    color: '#0084B8',
+    xMin: 450, 
+    xMax: 510,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Green	*/
+    title: "Multispectral - Green",
+    color: '#418652',
+    xMin: 510, 
+    xMax: 580,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Yellow	*/
+    title: "Multispectral - Yellow",
+    color: '#cac53f',
+    xMin: 585, 
+    xMax: 625,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Red */
+    title: "Multispectral - Red",
+    color: '#DD2C44',
+    xMin: 630, 
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Red Edge */
+    title: "Multispectral - Red Edge",
+    color: '#EA0652',
+    xMin: 705, 
+    xMax: 745,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Near-IR1 */
+    title: "Multispectral - Near-IR1",
+    color: '#9D6289',
+    xMin: 770, 
+    xMax: 895,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Near-IR2 */
+    title: "Multispectral - IR2",
+    color: '#9D5EC5',
+    xMin: 860, 
+    xMax: 1040,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.85m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var WorldView_3_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Worldview-3',
+    graphNumb: 1,
+    yOffset: 15,
+  },
+  {
+    //** Panchromatic	*/
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450, 
+    xMax: 800,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '0.31m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Multispectral - Coastal	*/
+    title: "Multispectral - Coastal",
+    color: '#4884AD',
+    xMin: 397, 
+    xMax: 454,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Blue	*/
+    title: "Multispectral - Blue",
+    color: '#0084B8',
+    xMin: 445, 
+    xMax: 517,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Green */
+    title: "Multispectral - Green",
+    color: '#418652',
+    xMin: 507, 
+    xMax: 586,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 15,
+  },
+  {
+    //** Multispectral - Yellow */
+    title: "Multispectral - Yellow",
+    color: '#cac53f',
+    xMin: 580, 
+    xMax: 629,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Red */
+    title: "Multispectral - Red",
+    color: '#DD2C44',
+    xMin: 626, 
+    xMax: 696,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Red Edge */
+    title: "Multispectral - Red Edge",
+    color: '#EA0652',
+    xMin: 698, 
+    xMax: 749,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Near-IR1 */
+    title: "Multispectral - Near-IR1",
+    color: '#9D6289',
+    xMin: 765, 
+    xMax: 899,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Near-IR2 */
+    title: "Multispectral - Near-IR2",
+    color: '#9D5EC5',
+    xMin: 857, 
+    xMax: 1039,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** SWIR - SWIR-1 */
+    title: "SWIR - SWIR-1",
+    color: '#b5b0c4',
+    xMin: 1184, 
+    xMax: 1235,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** SWIR - SWIR-2 */
+    title: "SWIR - SWIR-2",
+    color: '#D76B23',
+    xMin: 1546, 
+    xMax: 1598,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** SWIR - SWIR-3 */
+    title: "SWIR - SWIR-3",
+    color: '#D76B23',
+    xMin: 1636, 
+    xMax: 1686,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** SWIR - SWIR-4 */
+    title: "SWIR - SWIR-4",
+    color: '#D76B23',
+    xMin: 1702, 
+    xMax: 1759,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** SWIR - SWIR-5 */
+    title: "SWIR - SWIR-5",
+    color: '#c88647',
+    xMin: 2137, 
+    xMax: 2191,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** SWIR - SWIR-6 */
+    title: "SWIR - SWIR-6",
+    color: '#7B8179',
+    xMin: 2174, 
+    xMax: 2232,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** SWIR - SWIR-7 */
+    title: "SWIR - SWIR-7",
+    color: '#7B8179',
+    xMin: 2228, 
+    xMax: 2292,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** SWIR - SWIR-8 */
+    title: "SWIR - SWIR-8",
+    color: '#7B8179',
+    xMin: 2285, 
+    xMax: 2373,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '3.70m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** CAVIS - Desert Clouds */
+    title: "CAVIS - Desert Clouds",
+    color: '#4884AD',
+    xMin: 405,
+    xMax: 420,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** CAVIS - Aerosol-1 */
+    title: "CAVIS - Aerosol-1",
+    color: '#0084B8',
+    xMin: 459, 
+    xMax: 509,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** CAVIS - Green */
+    title: "CAVIS - Green",
+    color: '#418652',
+    xMin: 525, 
+    xMax: 585,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** CAVIS - Aerosol-2 */
+    title: "CAVIS - Aerosol-2",
+    color: '#DD2C44',
+    xMin: 635, 
+    xMax: 685,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 15,
+  },
+  {
+    //** CAVIS - Water-1 */
+    title: "CAVIS - Water-1",
+    color: '#9D6289',
+    xMin: 845, 
+    xMax: 885,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 15,
+  },
+  {
+    //** CAVIS - Water-2 */
+    title: "CAVIS - Water-2",
+    color: '#9D6289',
+    xMin: 897, 
+    xMax: 927,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** CAVIS - Water-3 */
+    title: "CAVIS - Water-3",
+    color: '#9D5EC5',
+    xMin: 930, 
+    xMax: 965,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** CAVIS - NDVI-SWIR */
+    title: "CAVIS - NDVI-SWIR",
+    color: '#b5b0c4',
+    xMin: 1220, 
+    xMax: 1252,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** CAVIS - Cirrus */
+    title: "CAVIS - Cirrus",
+    color: '#657795',
+    xMin: 1365, 
+    xMax: 1405,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** CAVIS - Snow */
+    title: "CAVIS - Snow",
+    color: '#D76B23',
+    xMin: 1620, 
+    xMax: 1680,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** CAVIS - Aerosol-3 */
+    title: "CAVIS - Aerosol-3",
+    color: '#c88647',
+    xMin: 2105, 
+    xMax: 2245,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var WorldView_4_values = [
+  //** TITLE */
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 430, 
+    xMax: 2290,
+    xMin_2: 430, 
+    xMax_2: 2290,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15, 
+    subLabelText: 'Worldview-4',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Panchromatic	*/
+    title: "Panchromatic",
+    color: '#008799',
+    xMin: 450, 
+    xMax: 800,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '0.31m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    //** Multispectral - Red */
+    title: "Multispectral - Red",
+    color: '#DD2C44',
+    xMin: 655, 
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Green */
+    title: "Multispectral - Green",
+    color: '#418652',
+    xMin: 510, 
+    xMax: 580,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    //** Multispectral - Blue */
+    title: "Multispectral - Blue",
+    color: '#0084B8',
+    xMin: 450, 
+    xMax: 510,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    //** Multispectral - Near-IR */
+    title: "Multispectral - Near-IR",
+    color: '#9D6289',
+    xMin: 780, 
+    xMax: 920,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9, 
+    subLabelText: '1.24m',
+    graphNumb: 1,
+    yOffset: 5,
   },
 ];
 var STELLA_values = [
@@ -3678,10 +4302,34 @@ function addPreset(title, preset)
           {
             if(boxAnnotations[i].title.includes("sublabel"))
             {
+              //** TAKE THE Y VALUE OF THE BOX ITSELF */
               var yValue = parseFloat(boxAnnotations[i-2].yMin) + parseFloat(this.value) + 1;
               boxAnnotations[i].yMin = yValue;
               boxAnnotations[i].yMax = yValue;
-              console.log(boxAnnotations[i]);
+            }
+            //** IF IT IS A TITLE, BUT ALSO A BOX */
+            else if(boxAnnotations[i].title.includes("box") && boxAnnotations[i].title.includes("Title"))
+            {
+              //** FIND THE NAME OF THE YOFFSET INPUT FOR THIS BAND */
+              var yOffsetIdName = boxAnnotations[i].title.slice(0, (boxAnnotations[i].title.length - 15)) + "yOffset";
+              var yOffset = document.getElementById(yOffsetIdName);
+              var division = yOffset.value/(boxHeight + boxPadding);
+
+              yOffset.value = division * (boxHeight + boxPadding);
+
+              boxAnnotations[i].yMax = parseFloat(boxAnnotations[i].yMin) + parseFloat(this.value);
+            }   
+            //** FOR BOXES / LABELS */
+            else if(boxAnnotations[i].title.includes("box"))
+            {
+              //** FIND THE NAME OF THE YOFFSET INPUT FOR THIS BAND */
+              var yOffsetIdName = boxAnnotations[i].title.slice(0, (boxAnnotations[i].title.length - 3)) + "yOffset";
+              var yOffset = document.getElementById(yOffsetIdName);
+              var division = yOffset.value/(boxHeight + boxPadding);
+
+              document.getElementById(yOffsetIdName).value = ((boxHeight + boxPadding) * division);
+
+              boxAnnotations[i].yMax = parseFloat(boxAnnotations[i].yMin) + parseFloat(this.value);
             }
             else
             {
@@ -4544,8 +5192,6 @@ function addPreset(title, preset)
           input_container_xMin_title.innerHTML = "xMin";
           input_container_xMin.appendChild(input_container_xMin_title);
   
-          console.log(preset[i].xMin);
-
           //** INPUT - xMin - INPUT */
           var input_container_xMin_input = document.createElement('input');
           input_container_xMin_input.type = "number";
@@ -4989,126 +5635,6 @@ function addPreset(title, preset)
   layers.insertBefore(nav, layers.firstChild);
 }
 
-function loopThroughLayers()
-{
-  clearAnnotations();
-  
-  console.log(boxAnnotations);
-
-  //** GRAB ALL NAVS */
-  let navs = layers.getElementsByClassName("nav");
-  var offsetY = 0;
-  var min_1 = [];
-  var min_2 = [];
-  var max_1 = [];
-  var max_2 = [];
-
-  Array.from(navs).forEach(function (element, i) {
-    //** Band LIST */
-    let bandList = element.children[0].children[0].children[2];
-    
-    //** GRAB TITLE OF PRESET */
-    // let title = element.children[0].children[0].children[1].innerHTML;
-    // title = title.substring(0, title.indexOf("<"));
-
-    offsetY = groupSeperation_Global.value * i;
-    i++;
-
-    for(var i = 0; i < bandList.children.length; i++)
-    {
-      if(!bandList.children[i].id.includes("add_") && !bandList.children[i].id.includes("global_values"))
-      {
-        //** NEED A BETTER WAY TO INDENTIFY THESE */
-
-        let xMin, xMax;
-
-        if(bandList.children[i].children[2].querySelector("#xMin"))
-        {
-          xMin = bandList.children[i].children[2].querySelector("#xMin").children[1].value;
-        }
-        if(bandList.children[i].children[2].querySelector("#xMax"))
-        {
-          xMax = bandList.children[i].children[2].querySelector("#xMax").children[1].value;
-        }
-        
-        let color = bandList.children[i].children[2].querySelector("#color").children[1].value;
-        let labelSize_ = bandList.children[i].children[2].querySelector("#label_size").children[1].value;
-        let labelText = bandList.children[i].children[2].querySelector("#label_content").children[1].value;
-        let sublabelSize_ = bandList.children[i].children[2].querySelector("#sublabel_size").children[1].value;
-        //let sublabelOffset = bandList.children[i].children[2].querySelector("#xMin").children[1].value;
-        let sublabelText = bandList.children[i].children[2].querySelector("#sublabel_content").children[1].value;
-        let graphNumb = bandList.children[i].children[2].querySelector("#graph_number").children[1].value;
-        let Offset = bandList.children[i].children[2].querySelector("#yOffset").children[1].value;
-
-        //** GRAB ID OF BAND */
-        let band  = bandList.children[i].children[1].id;
-  
-        //** PUSH THE MIN NUMBERS TO EACH GROUP */
-        if(graphNumb == 1)
-        {
-          min_1.push(xMin);
-          max_1.push(xMax);
-        }
-        else
-        {
-          min_2.push(xMin);
-          max_2.push(xMax);
-        }
-  
-        var yStart = offsetY + 10 + parseFloat(Offset);
-        var yEnd = yStart + boxHeight;
-  
-        addBox(xMin, xMax, 
-          yStart, 
-          yEnd, 
-          color, labelText, labelSize_, sublabelText, sublabelSize_, graphNumb, band);
-  
-        chart.update();
-        chart2.update();
-      }
-    }
-  });
-
-  //** FIGURE OUT MIN & MAX */
-  if(min_1.length > 0 && min_2.length > 0)
-    {
-      //** Update min and max values of charts manually *//
-      updateMinAndMax(
-      Math.min.apply(Math, min_1), 
-      Math.min.apply(Math, min_2),
-      Math.max.apply(Math, max_1),
-      Math.max.apply(Math, max_2));
-  }
-  else if(min_1.length > 0)
-  {
-    updateMinAndMax(
-    Math.min.apply(Math, min_1), 
-    7050,
-    Math.max.apply(Math, max_1),
-    13950);
-  }
-  else if(min_2.length > 0)
-  {
-    updateMinAndMax(
-    450, 
-    Math.min.apply(Math, min_2),
-    2450,
-    Math.max.apply(Math, max_2));
-  }
-  else
-  {
-    updateMinAndMax(
-    450, 
-    7050,
-    2450,
-    13950);
-  }
-  
-
-  chart.update();
-  chart2.update();
-}
-
 function addAlpha(color, opacity) {
   // coerce values so ti is between 0 and 1.
   var _opacity = Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255);
@@ -5188,7 +5714,7 @@ function updateGraphMinMax()
   {
     if(!boxAnnotations2[x].title.includes("box") || boxAnnotations2[x].title.includes("label") || boxAnnotations2[x].title.includes("sublabel"))
     {
-      if(!boxAnnotations[x].title.includes("Title"))
+      if(!boxAnnotations2[x].title.includes("Title"))
       {
         min2.push(boxAnnotations2[x].xMin);
         max2.push(boxAnnotations2[x].xMax);
@@ -5664,6 +6190,38 @@ MODIS_Dropdown.addEventListener("click", function () {
 });
 PACE_Dropdown.addEventListener("click", function () {
   addPreset("PACE (OCI)", PACE_values);
+  
+  if(tutorial && tutorialIndex == 2)
+  {
+    progressTutorial(true);
+  }
+});
+WorldView_1_Dropdown.addEventListener("click", function () {
+  addPreset("Worldview-1", WorldView_1_values);
+  
+  if(tutorial && tutorialIndex == 2)
+  {
+    progressTutorial(true);
+  }
+});
+WorldView_2_Dropdown.addEventListener("click", function () {
+  addPreset("Worldview-2", WorldView_2_values);
+  
+  if(tutorial && tutorialIndex == 2)
+  {
+    progressTutorial(true);
+  }
+});
+WorldView_3_Dropdown.addEventListener("click", function () {
+  addPreset("Worldview-3", WorldView_3_values);
+  
+  if(tutorial && tutorialIndex == 2)
+  {
+    progressTutorial(true);
+  }
+});
+WorldView_4_Dropdown.addEventListener("click", function () {
+  addPreset("Worldview-4", WorldView_4_values);
   
   if(tutorial && tutorialIndex == 2)
   {
