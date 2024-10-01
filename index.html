@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Spectral Band Comparison Tool</title>
     <link rel="icon" type="image/x-icon" href="/files/Comparison-Tool-Icon.ico">
+    <!-- FOR LANDSAT SITE -->
+    <!-- <link rel="icon" type="image/x-icon" href="https://landsat.gsfc.nasa.gov/apps/Spectral-Band-Comparison-Tool/public/files/Comparison-Tool-Icon.ico"> -->
+    <!-- FOR LANDSAT SITE -->
+    <!-- <link type = "text/css" href="https://landsat.gsfc.nasa.gov/apps/Spectral-Band-Comparison-Tool/style.css" rel="stylesheet"/> -->
   </head>
   <body>
     <div id="myDropdown" class="dropdown-content">
@@ -23,8 +27,8 @@
       <a id="preset_L8-9">Landsat 8-9 (OLI & TIRS)</a>
       <a id="preset_LNext">Landsat Next</a>
       <a id="preset_PACE">PACE (OCI)</a>
-      <a id="preset_Sentinel2">Sentinel-2</a>
-      <a id="preset_Sentinel3">Sentinel-3</a>
+      <a id="preset_Sentinel2">Sentinel-2 (MSI)</a>
+      <a id="preset_Sentinel3">Sentinel-3 (OLCI)</a>
       <a id="preset_MODIS">Terra/Aqua (MODIS)</a>
       <a id="preset_Worldview1">Worldview-1</a>
       <a id="preset_Worldview2">Worldview-2</a>
@@ -268,17 +272,15 @@
         <div class="chartCard active" id="chart_container">
           <div class="chartBox active" id="VSWIR_Chart">
             <canvas id="VSWIR"> </canvas>
-            <!-- <div class="title">Visible to Short Wavelength InfraRed (VSWIR)</div> -->
           </div>
           <div class="chartBox active" id="TIRS_Chart">
             <canvas id="TIR"> </canvas>
-            <!-- <div class="title">Thermal Infrared (TIR)</div> -->
           </div>
           <img class="graphConnector" id="graphConnector" src="files/axisBreak.png">
           </img>
-          <!-- <div class="graphConnector">
-            //
-          </div> -->
+          <!-- FOR LANDSAT SITE -->
+          <!-- <img class="graphConnector" id="graphConnector" src="https://landsat.gsfc.nasa.gov/apps/Spectral-Band-Comparison-Tool/public/files/axisBreak.png">
+          </img> -->
         </div>
         <div class="editIcon active" id="snapshot" title="Take a screenshot of the current graph">
           <!-- <i class="fa fa-camera">Export Graph (PNG)</i> -->
@@ -286,6 +288,8 @@
         </div>
       </div>
     </div>
+    <!-- FOR LANDSAT SITE -->
+    <!-- <script type="module" src="https://landsat.gsfc.nasa.gov/apps/Spectral-Band-Comparison-Tool/main.js"></script> -->
     <script type="module" src="/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>

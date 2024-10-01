@@ -1,3 +1,4 @@
+//* FOR LANDSAT SITE - COMMENT THIS OUT */
 import "./style.css";
 
 //** CHART JS SETUP */
@@ -7,6 +8,8 @@ var chart1_element = document.getElementById("VSWIR_Chart");
 var chart2_element = document.getElementById("TIRS_Chart");
 var chart_container = document.getElementById("chart_container");
 let myData = "/files/myData.csv";
+//* FOR LANDSAT SITE - UNCOMMENT */
+// let myData = "https://landsat.gsfc.nasa.gov/apps/Spectral-Band-Comparison-Tool/public/files/myData.csv";
 
 let transmissionData = [];
 var boxAnnotations = [];
@@ -1528,7 +1531,7 @@ var Sentinel2_values = [
     labelSize: 50,
     labelText: "",
     sublabelSize: 15, 
-    subLabelText: 'Sentinel-2',
+    subLabelText: 'Sentinel-2 (MSI)',
     graphNumb: 1,
     yOffset: 14,
   },
@@ -1728,7 +1731,7 @@ var Sentinel3_values = [
     labelSize: 50,
     labelText: "",
     sublabelSize: 15, 
-    subLabelText: 'Sentinel-3',
+    subLabelText: 'Sentinel-3 (OLCI)',
     graphNumb: 1,
     yOffset: 10,
   },
@@ -6133,7 +6136,7 @@ LNext_Dropdown.addEventListener("click", function () {
   }
 });
 Sentinel2_Dropdown.addEventListener("click", function () {
-  addPreset("Sentinel-2", Sentinel2_values);
+  addPreset("Sentinel-2 (MSI)", Sentinel2_values);
   
   if(tutorial && tutorialIndex == 2)
   {
@@ -6141,7 +6144,7 @@ Sentinel2_Dropdown.addEventListener("click", function () {
   }
 });
 Sentinel3_Dropdown.addEventListener("click", function () {
-  addPreset("Sentinel-3", Sentinel3_values);
+  addPreset("Sentinel-3 (OLCI)", Sentinel3_values);
   
   if(tutorial && tutorialIndex == 2)
   {
