@@ -29,6 +29,15 @@ var boxPadding = 2;
 
 var sensorNumb = 0;
 
+// Parse URL search parameters for "mode"
+const urlParams = new URLSearchParams(window.location.search);
+//For the link + /?mode=commercial
+const commercialMode = urlParams.get("mode") === "commercial";
+console.log(commercialMode);
+
+// Now you can use the Commercial variable anywhere in your code
+// Example: console.log("Commercial mode:", Commercial);
+
 //** TUTORIAL HTML ELEMENTS */
 let tut_btn_prev = document.getElementById("tut-prev");
 let tut_btn_next = document.getElementById("tut-next");
@@ -84,6 +93,24 @@ let WorldView_1_Dropdown = document.getElementById("preset_Worldview1");
 let WorldView_2_Dropdown = document.getElementById("preset_Worldview2");
 let WorldView_3_Dropdown = document.getElementById("preset_Worldview3");
 let WorldView_4_Dropdown = document.getElementById("preset_Worldview4");
+
+//** IF THE COMMERCIAL MODE IS LOADED */
+if(commercialMode)
+{
+  // Create a new <a> element for the commercial preset
+  const commercialPreset = document.createElement("a");
+  commercialPreset.id = "preset_Commercial";
+  commercialPreset.textContent = "Commercial";
+  document.getElementById("myDropdown").appendChild(commercialPreset);
+
+  // Add event listener for the new preset
+  commercialPreset.addEventListener("click", function () {
+    addPreset("Commercial", Commercial_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+}
 
 let STELLA_Dropdown = document.getElementById("preset_STELLA");
 let CUSTOM_Dropdown = document.getElementById("preset_CUSTOM");
