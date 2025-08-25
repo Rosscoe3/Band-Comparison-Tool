@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Spectral Band Comparison Tool</title>
@@ -42,7 +43,7 @@
         <div class="sidebarTitle">
           <label>Layers</label>
           <div class="dropdown">
-            <button id="dropDownBtn_layers" title="Add a preset or custom set of bands" class="dropbtn">+</button>
+            <button id="dropDownBtn_layers" title="Add a preset or custom set of bands" class="dropbtn"><i class="fa fa-plus"></i></button>
           </div>
         </div>
         <div class="scrollContainer">
@@ -250,7 +251,7 @@
           &#9432;
         </div>
         <div class="openSidebarIcon active" id="openSidebarIcon">
-          ‹
+          <i class="fa fa-chevron-left"></i>
         </div>
         <div class="tutorial-wrap active" id="tutorial-wrap">
           <div class="tutorial-instructions" id="tut_text">
@@ -276,11 +277,24 @@
           <div class="chartBox active" id="TIRS_Chart">
             <canvas id="TIR"> </canvas>
           </div>
-          <img class="graphConnector" id="graphConnector" src="files/axisBreak.png">
-          </img>
+          <div class="graphConnector" id="graphConnector">
+            <svg width="100%" height="100%" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+              <!-- Horizontal zigzag lines for axis break at bottom -->
+              <polyline points="5,10 15,20 25,10 35,20 45,10 55,20" 
+                        stroke="#C0C0C0" stroke-width="2" fill="none"/>
+              <polyline points="5,15 15,25 25,15 35,25 45,15 55,25" 
+                        stroke="#C0C0C0" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
           <!-- FOR LANDSAT SITE -->
-          <!-- <img class="graphConnector" id="graphConnector" src="https://landsat.gsfc.nasa.gov/apps/Spectral-Band-Comparison-Tool/public/files/axisBreak.png">
-          </img> -->
+          <!-- <div class="graphConnector" id="graphConnector">
+            <svg width="100%" height="100%" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="5,10 15,20 25,10 35,20 45,10 55,20" 
+                        stroke="#C0C0C0" stroke-width="2" fill="none"/>
+              <polyline points="5,15 15,25 25,15 35,25 45,15 55,25" 
+                        stroke="#C0C0C0" stroke-width="2" fill="none"/>
+            </svg>
+          </div> -->
         </div>
         <div class="editIcon active" id="snapshot" title="Take a screenshot of the current graph">
           <!-- <i class="fa fa-camera">Export Graph (PNG)</i> -->

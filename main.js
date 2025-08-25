@@ -33,7 +33,7 @@ var sensorNumb = 0;
 const urlParams = new URLSearchParams(window.location.search);
 //For the link + /?mode=commercial
 const commercialMode = urlParams.get("mode") === "commercial";
-console.log(commercialMode);
+//console.log(commercialMode);
 
 // Now you can use the Commercial variable anywhere in your code
 // Example: console.log("Commercial mode:", Commercial);
@@ -97,19 +97,150 @@ let WorldView_4_Dropdown = document.getElementById("preset_Worldview4");
 //** IF THE COMMERCIAL MODE IS LOADED */
 if(commercialMode)
 {
-  // Create a new <a> element for the commercial preset
-  const commercialPreset = document.createElement("a");
-  commercialPreset.id = "preset_Commercial";
-  commercialPreset.textContent = "Commercial";
-  document.getElementById("myDropdown").appendChild(commercialPreset);
+  //** RapidEye */
+  const rapidEye = document.createElement("a");
+  rapidEye.id = "preset_RapidEye";
+  rapidEye.textContent = "RapidEye";
+  document.getElementById("myDropdown").appendChild(rapidEye);
 
   // Add event listener for the new preset
-  commercialPreset.addEventListener("click", function () {
-    addPreset("Commercial", Commercial_values);
+  rapidEye.addEventListener("click", function () {
+    addPreset("RapidEye", RapidEye_values);
     if (tutorial && tutorialIndex == 2) {
       progressTutorial(true);
     }
   });
+
+  //** Skysat */
+  const skysat = document.createElement("a");
+  skysat.id = "preset_SkySat_19_21";
+  skysat.textContent = "SkySat";
+  document.getElementById("myDropdown").appendChild(skysat);
+
+  skysat.addEventListener("click", function () {
+    addPreset("SkySat", SkySat_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  //** Tanager */
+  const tanager = document.createElement("a");
+  tanager.id = "preset_Tanager";
+  tanager.textContent = "Tanager";
+  document.getElementById("myDropdown").appendChild(tanager);
+
+  tanager.addEventListener("click", function () {
+    addPreset("Tanager", Tanager_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  // PlanetScope
+  const planetscope = document.createElement("a");
+  planetscope.id = "preset_PlanetScope";
+  planetscope.textContent = "PlanetScope";
+  document.getElementById("myDropdown").appendChild(planetscope);
+
+  planetscope.addEventListener("click", function () {
+    addPreset("PlanetScope", PlanetScope_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  // GeoEye-1
+  const geoeye1 = document.createElement("a");
+  geoeye1.id = "preset_GeoEye1";
+  geoeye1.textContent = "GeoEye-1";
+  document.getElementById("myDropdown").appendChild(geoeye1);
+
+  geoeye1.addEventListener("click", function () {
+    addPreset("GeoEye-1", GeoEye1_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  // QuickBird
+  const quickbird = document.createElement("a");
+  quickbird.id = "preset_QuickBird";
+  quickbird.textContent = "QuickBird";
+  document.getElementById("myDropdown").appendChild(quickbird);
+
+  quickbird.addEventListener("click", function () {
+    addPreset("QuickBird", QuickBird_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  //** IKONOS */
+  const ikonos = document.createElement("a");
+  ikonos.id = "preset_IKONOS";
+  ikonos.textContent = "IKONOS";
+  document.getElementById("myDropdown").appendChild(ikonos);
+
+  ikonos.addEventListener("click", function () {
+    addPreset("IKONOS", IKONOS_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  //** Spaceview-24 */
+  const spaceview24 = document.createElement("a");
+  spaceview24.id = "preset_SpaceView24";
+  spaceview24.textContent = "SpaceView-24";
+  document.getElementById("myDropdown").appendChild(spaceview24);
+
+  spaceview24.addEventListener("click", function () {
+    addPreset("SpaceView-24", SpaceView24_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  // Worldview Legion 1
+  const worldviewLegion1 = document.createElement("a");
+  worldviewLegion1.id = "preset_WorldViewLegion1";
+  worldviewLegion1.textContent = "WorldView Legion 1";
+  document.getElementById("myDropdown").appendChild(worldviewLegion1);
+
+  worldviewLegion1.addEventListener("click", function () {
+    addPreset("WorldView Legion 1", WorldView_Legion1_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  // ASTER
+  const ASTER = document.createElement("a");
+  ASTER.id = "preset_ASTER";
+  ASTER.textContent = "ASTER";
+  document.getElementById("myDropdown").appendChild(ASTER);
+
+  ASTER.addEventListener("click", function () {
+    addPreset("ASTER", ASTER_values);
+    if (tutorial && tutorialIndex == 2) {
+      progressTutorial(true);
+    }
+  });
+
+  const S2NG = document.createElement("a");
+  S2NG.id = "preset_Sentinel2NG";
+  S2NG.textContent = "Sentinel-2 Next Gen (S2NG)";
+  document.getElementById("myDropdown").appendChild(S2NG);
+
+  S2NG.addEventListener("click", function () {
+  addPreset("Sentinel-2 Next Gen (S2NG)", Sentinel2NG_values);
+    if (tutorial && tutorialIndex == 2) 
+    {
+      progressTutorial(true);
+    }
+  });
+
 }
 
 let STELLA_Dropdown = document.getElementById("preset_STELLA");
@@ -280,18 +411,12 @@ const config = {
       },
     },
     //** ADDS NM to the Y axis lables */
-    // animation: {
-    //   onComplete: () => {
-    //     delayed = true;
-    //   },
-    //   delay: (context) => {
-    //     let delay = 0;
-    //     if (context.type === "data" && context.mode === "default" && !delayed) {
-    //       delay = context.dataIndex * 75 + context.datasetIndex * 25;
-    //     }
-    //     return delay;
-    //   },
-    // },
+    animation: {
+      onComplete: () => {
+        // Position axis break after chart animation completes
+        setTimeout(positionAxisBreak, 50);
+      },
+    },
     scales: {
       y: {
         title: {
@@ -402,18 +527,12 @@ const config2 = {
       },
     },
     //** ADDS NM to the Y axis lables */
-    // animation: {
-    //   onComplete: () => {
-    //     delayed = true;
-    //   },
-    //   delay: (context) => {
-    //     let delay = 0;
-    //     if (context.type === "data" && context.mode === "default" && !delayed) {
-    //       delay = context.dataIndex * 75 + context.datasetIndex * 25;
-    //     }
-    //     return delay;
-    //   },
-    // },
+    animation: {
+      onComplete: () => {
+        // Position axis break after chart animation completes
+        setTimeout(positionAxisBreak, 50);
+      },
+    },
     scales: {
       y: {
         ticks: {
@@ -455,10 +574,61 @@ const config2 = {
 const chart = new Chart(ctx, config);
 const chart2 = new Chart(ctx2, config2);
 
+// Function to position the axis break dynamically
+function positionAxisBreak() {
+  const chartContainer = document.getElementById("chart_container");
+  const chart1Element = document.getElementById("VSWIR_Chart");
+  const chart2Element = document.getElementById("TIRS_Chart");
+  const connector = document.getElementById("graphConnector");
+  
+  if (chartContainer && chart1Element && chart2Element && connector && chart && chart2) {
+    // Get the Chart.js chart area (where the actual graph is drawn)
+    const chart1Area = chart.chartArea;
+    const chart2Area = chart2.chartArea;
+    
+    if (chart1Area && chart2Area) {
+      // Get container and chart element positions
+      const containerRect = chartContainer.getBoundingClientRect();
+      const chart1Rect = chart1Element.getBoundingClientRect();
+      const chart2Rect = chart2Element.getBoundingClientRect();
+      
+      // Calculate the gap between charts
+      const gapStart = chart1Rect.right - containerRect.left;
+      const gapEnd = chart2Rect.left - containerRect.left;
+      const gapCenter = (gapStart + gapEnd) / 2;
+      
+      // Calculate the x-axis position (bottom of chart area + padding)
+      const chart1AxisBottom = (chart1Rect.top - containerRect.top) + chart1Area.bottom;
+      const chart2AxisBottom = (chart2Rect.top - containerRect.top) + chart2Area.bottom;
+      const axisBottom = Math.max(chart1AxisBottom, chart2AxisBottom);
+      
+      // Position the connector at the x-axis level
+      connector.style.left = `${(gapCenter / containerRect.width) * 100}%`;
+      connector.style.top = `${(axisBottom / containerRect.height) * 100}%`;
+      connector.style.bottom = 'auto'; // Override CSS bottom positioning
+      connector.style.transform = 'translate(-50%, -50%)'; // Center both horizontally and vertically
+    }
+  }
+}
+
+// Helper function to update charts and reposition axis break
+function updateChartsAndAxisBreak() {
+  chart.update();
+  chart2.update();
+  // Use a longer delay to ensure chart area is calculated
+  setTimeout(positionAxisBreak, 100);
+}
+
+// Position the axis break initially and on window resize
+window.addEventListener('resize', positionAxisBreak);
+window.addEventListener('load', positionAxisBreak);
+
 init();
 function init() {
   setTimeout(() => {
     addPreset("Landsat 8-9 (OLI & TIRS)", Landsat8_9_values);
+    // Position axis break after initial preset is loaded
+    setTimeout(positionAxisBreak, 1500);
   }, 1000);
   //transmissionData = readTextFile("/myData.csv", true);
   // console.log(chart.options.plugins.annotation.annotations[0]);
@@ -541,8 +711,7 @@ function plotCSV()
     };
   }
 
-  chart.update();
-  chart2.update();
+  updateChartsAndAxisBreak();
 }
 
 //** WINDOW RESIZE EVENT */
@@ -559,6 +728,9 @@ function resize() {
     chart.resize();
     chart2.update();
     chart2.resize();
+    
+    // Reposition the axis break after chart resize
+    setTimeout(positionAxisBreak, 100);
   }, 500);
 }
 
@@ -3878,6 +4050,1000 @@ var CUSTOM_values = [
   },
 ];
 
+//** BRUCE's ADDITIONS */
+
+// RapidEye satellite bands
+var RapidEye_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 440,
+    xMax: 850,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'RapidEye',
+    graphNumb: 1,
+    yOffset: 4,
+  },
+  {
+    title: "Band 1 - Blue",
+    color: '#0084B8',
+    xMin: 440,
+    xMax: 510,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '5m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 2 - Green",
+    color: '#418652',
+    xMin: 520,
+    xMax: 590,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '5m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 3 - Red",
+    color: '#DD2C44',
+    xMin: 630,
+    xMax: 685,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '5m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 4 - Red Edge",
+    color: '#EA0652',
+    xMin: 690,
+    xMax: 730,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '5m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 5 - NIR",
+    color: '#9D6289',
+    xMin: 760,
+    xMax: 850,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '5m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var SkySat_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'SkySat',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Band 1 - Blue",
+    color: '#0084B8',
+    xMin: 450,
+    xMax: 515,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.75m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Band 2 - Green",
+    color: '#418652',
+    xMin: 525,
+    xMax: 595,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.75m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Band 3 - Red",
+    color: '#DD2C44',
+    xMin: 630,
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.75m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Band 4 - NIR",
+    color: '#9D6289',
+    xMin: 760,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.75m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.57m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var Tanager_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 400,
+    xMax: 2500,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'Tanager (Planet)',
+    graphNumb: 1,
+    yOffset: 4,
+  },
+  {
+    title: "Band 1 - Blue",
+    color: '#0084B8',
+    xMin: 400,
+    xMax: 2500,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var PlanetScope_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 431,
+    xMax: 885,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'PlanetScope',
+    graphNumb: 1,
+    yOffset: 9,
+  },
+  {
+    title: "Coastal Blue",
+    color: '#4884AD',
+    xMin: 431,
+    xMax: 452,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Blue",
+    color: '#0084B8',
+    xMin: 465,
+    xMax: 515,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Green I",
+    color: '#5cb85c',
+    xMin: 513,
+    xMax: 549,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Green",
+    color: '#418652',
+    xMin: 547,
+    xMax: 583,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Yellow",
+    color: '#cac53f',
+    xMin: 600,
+    xMax: 620,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Red",
+    color: '#DD2C44',
+    xMin: 650,
+    xMax: 680,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Red Edge",
+    color: '#EA0652',
+    xMin: 697,
+    xMax: 713,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "NIR",
+    color: '#9D6289',
+    xMin: 845,
+    xMax: 885,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '3m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var GeoEye1_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450,
+    xMax: 920,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'GeoEye-1',
+    graphNumb: 1,
+    yOffset: 14,
+  },
+  {
+    title: "Blue",
+    color: '#0084B8',
+    xMin: 450,
+    xMax: 510,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.65m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Green",
+    color: '#418652',
+    xMin: 510,
+    xMax: 580,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.65m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Red",
+    color: '#DD2C44',
+    xMin: 655,
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.65m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "NIR",
+    color: '#9D6289',
+    xMin: 780,
+    xMax: 920,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.65m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450,
+    xMax: 800,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.41m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var QuickBird_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 450,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'QuickBird',
+    graphNumb: 1,
+    yOffset: 14,
+  },
+  {
+    title: "Blue",
+    color: '#0084B8',
+    xMin: 450,
+    xMax: 520,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '2.44m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Green",
+    color: '#418652',
+    xMin: 520,
+    xMax: 600,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '2.44m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Red",
+    color: '#DD2C44',
+    xMin: 630,
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '2.44m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "NIR",
+    color: '#9D6289',
+    xMin: 760,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '2.44m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.61m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var IKONOS_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 445,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'IKONOS',
+    graphNumb: 1,
+    yOffset: 14,
+  },
+  {
+    title: "Blue",
+    color: '#0084B8',
+    xMin: 445,
+    xMax: 516,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '4m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Green",
+    color: '#418652',
+    xMin: 506,
+    xMax: 595,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '4m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Red",
+    color: '#DD2C44',
+    xMin: 632,
+    xMax: 698,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '4m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "NIR",
+    color: '#9D6289',
+    xMin: 757,
+    xMax: 853,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '4m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450,
+    xMax: 900,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.82m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var SpaceView24_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 400,
+    xMax: 700,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'SpaceView-24',
+    graphNumb: 1,
+    yOffset: 14,
+  },
+  {
+    title: "Blue",
+    color: '#0084B8',
+    xMin: 460,
+    xMax: 520,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Green",
+    color: '#418652',
+    xMin: 520,
+    xMax: 600,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Red",
+    color: '#DD2C44',
+    xMin: 600,
+    xMax: 680,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 400,
+    xMax: 700,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+];
+var WorldView_Legion1_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 400,
+    xMax: 895,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'WorldView Legion 1',
+    graphNumb: 1,
+    yOffset: 14,
+  },
+  {
+    title: "Panchromatic",
+    color: '#cac53f',
+    xMin: 450,
+    xMax: 800,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '0.34m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Coastal",
+    color: '#4884AD',
+    xMin: 400,
+    xMax: 450,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Blue",
+    color: '#0084B8',
+    xMin: 450,
+    xMax: 510,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Green",
+    color: '#418652',
+    xMin: 510,
+    xMax: 580,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Yellow",
+    color: '#cac53f',
+    xMin: 585,
+    xMax: 625,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Red",
+    color: '#DD2C44',
+    xMin: 630,
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Red Edge 1",
+    color: '#EA0652',
+    xMin: 695,
+    xMax: 715,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 10,
+  },
+  {
+    title: "Red Edge 2",
+    color: '#b5b0c4',
+    xMin: 730,
+    xMax: 750,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Near IR",
+    color: '#9D6289',
+    xMin: 770,
+    xMax: 895,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "",
+    sublabelSize: 9,
+    subLabelText: '1.36m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+];
+var ASTER_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 520,
+    xMax: 2430,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'ASTER',
+    graphNumb: 1,
+    yOffset: 9,
+  },
+  {
+    title: "Band 1",
+    color: '#0084B8',
+    xMin: 520,
+    xMax: 600,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "1",
+    sublabelSize: 9,
+    subLabelText: '15m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 2",
+    color: '#418652',
+    xMin: 630,
+    xMax: 690,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "2",
+    sublabelSize: 9,
+    subLabelText: '15m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 3N",
+    color: '#DD2C44',
+    xMin: 780,
+    xMax: 860,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "3N",
+    sublabelSize: 9,
+    subLabelText: '15m',
+    graphNumb: 1,
+    yOffset: 5,
+  },
+  {
+    title: "Band 3B",
+    color: '#EA0652',
+    xMin: 780,
+    xMax: 860,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "3B",
+    sublabelSize: 9,
+    subLabelText: '15m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 4",
+    color: '#9D6289',
+    xMin: 1600,
+    xMax: 1700,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "4",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 5",
+    color: '#D76B23',
+    xMin: 2145,
+    xMax: 2185,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "5",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 6",
+    color: '#c88647',
+    xMin: 2185,
+    xMax: 2225,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "6",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 7",
+    color: '#7B8179',
+    xMin: 2235,
+    xMax: 2285,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "7",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 8",
+    color: '#b5b0c4',
+    xMin: 2295,
+    xMax: 2365,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "8",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 9",
+    color: '#657795',
+    xMin: 2360,
+    xMax: 2430,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "9",
+    sublabelSize: 9,
+    subLabelText: '30m',
+    graphNumb: 1,
+    yOffset: 0,
+  },
+  {
+    title: "Band 10",
+    color: '#b79498',
+    xMin: 8125,
+    xMax: 8475,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "10",
+    sublabelSize: 9,
+    subLabelText: '90m',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+  {
+    title: "Band 11",
+    color: '#b79498',
+    xMin: 8475,
+    xMax: 8825,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "11",
+    sublabelSize: 9,
+    subLabelText: '90m',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+  {
+    title: "Band 12",
+    color: '#b79498',
+    xMin: 8925,
+    xMax: 9275,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "12",
+    sublabelSize: 9,
+    subLabelText: '90m',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+  {
+    title: "Band 13",
+    color: '#AD5C64',
+    xMin: 10250,
+    xMax: 10950,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "13",
+    sublabelSize: 9,
+    subLabelText: '90m',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+  {
+    title: "Band 14",
+    color: '#AD5C64',
+    xMin: 10950,
+    xMax: 11650,
+    yHeight: boxHeight,
+    labelSize: 10,
+    labelText: "14",
+    sublabelSize: 9,
+    subLabelText: '90m',
+    graphNumb: 2,
+    yOffset: 0,
+  },
+];
+var Sentinel2NG_values = [
+  {
+    title: "Title",
+    color: '#d1d1d1',
+    xMin: 400,
+    xMax: 2300,
+    yHeight: boxHeight,
+    labelSize: 50,
+    labelText: "",
+    sublabelSize: 15,
+    subLabelText: 'Sentinel-2 Next Generation (S2NG)',
+    graphNumb: 1,
+    yOffset: 9,
+  },
+  { title: "Band 0", color: '#B930D5', xMin: 402, xMax: 422, yHeight: boxHeight, labelSize: 10, labelText: "0", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 1a", color: '#4884AD', xMin: 465, xMax: 485, yHeight: boxHeight, labelSize: 10, labelText: "1a", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 2a", color: '#0084B8', xMin: 513, xMax: 528, yHeight: boxHeight, labelSize: 10, labelText: "2a", sublabelSize: 9, subLabelText: '10m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 3 (H)", color: '#418652', xMin: 543, xMax: 577, yHeight: boxHeight, labelSize: 10, labelText: "3", sublabelSize: 9, subLabelText: '5m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 3a", color: '#418652', xMin: 605, xMax: 635, yHeight: boxHeight, labelSize: 10, labelText: "3a", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 3b", color: '#418652', xMin: 640, xMax: 660, yHeight: boxHeight, labelSize: 10, labelText: "3b", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 5 },
+  { title: "Band 4 (H)", color: '#DD2C44', xMin: 655, xMax: 675, yHeight: boxHeight, labelSize: 10, labelText: "4", sublabelSize: 9, subLabelText: '5m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 5 (H)", color: '#cac53f', xMin: 698, xMax: 713, yHeight: boxHeight, labelSize: 10, labelText: "5", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 6 (H)", color: '#EA0652', xMin: 725, xMax: 755, yHeight: boxHeight, labelSize: 10, labelText: "6", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 7 (H)", color: '#9D6289', xMin: 773, xMax: 793, yHeight: boxHeight, labelSize: 10, labelText: "7", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 8 (H)", color: '#9D6289', xMin: 784, xMax: 899, yHeight: boxHeight, labelSize: 10, labelText: "8", sublabelSize: 9, subLabelText: '10m', graphNumb: 1, yOffset: 5 },
+  { title: "Band 8a (H)", color: '#9D6289', xMin: 855, xMax: 875, yHeight: boxHeight, labelSize: 10, labelText: "8a", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 9 (H)", color: '#9D5EC5', xMin: 935, xMax: 955, yHeight: boxHeight, labelSize: 10, labelText: "9", sublabelSize: 9, subLabelText: '60m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 9a", color: '#9D5EC5', xMin: 975, xMax: 995, yHeight: boxHeight, labelSize: 10, labelText: "9a", sublabelSize: 9, subLabelText: '60m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 10 (H)", color: '#657795', xMin: 1360, xMax: 1390, yHeight: boxHeight, labelSize: 10, labelText: "10", sublabelSize: 9, subLabelText: '60m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 11 (H)", color: '#D76B23', xMin: 1565, xMax: 1655, yHeight: boxHeight, labelSize: 10, labelText: "11", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 12a", color: '#c88647', xMin: 2105, xMax: 2155, yHeight: boxHeight, labelSize: 10, labelText: "12a", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 12b", color: '#c88647', xMin: 2210, xMax: 2260, yHeight: boxHeight, labelSize: 10, labelText: "12b", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 0 },
+  { title: "Band 12c", color: '#c88647', xMin: 2260, xMax: 2310, yHeight: boxHeight, labelSize: 10, labelText: "12c", sublabelSize: 9, subLabelText: '20m', graphNumb: 1, yOffset: 5 },
+];
+
 //addPreset("Landsat 8-9", Landsat8_9_values);
 
 //** CREATES HTML FOR PRESETS IN THE LAYERS TAB */
@@ -4035,8 +5201,8 @@ function addPreset(title, preset)
 
   var threeDot_Button = document.createElement("button");
   threeDot_Button.id = "dropDownBtn";
-  threeDot_Button.classList = "dropbtn";
-  threeDot_Button.innerHTML = "&#10247";
+  threeDot_Button.classList = "dropbtn-small";
+  threeDot_Button.innerHTML = '<i class="fa fa-ellipsis-v"></i>';
   threeDot_Dropdown.appendChild(threeDot_Button);
 
   //** TITLE REMOVE ICON */
@@ -4055,6 +5221,11 @@ function addPreset(title, preset)
   //threeDot_Dropdown.insertBefore(threeDot_Dropdown_Container, threeDot_Dropdown.firstChild)
 
   threeDot_Button.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent event bubbling to window.onclick
+    
+    // Toggle the dropdown visibility
+    document.getElementById("dropdown_" + title).classList.toggle("show");
+    
     //var distance = document.getElementById("dropdown_" + title).offsetTop;
     console.log()
     document.getElementById("dropdown_" + title).style.top = event.clientY + "px";
@@ -4163,7 +5334,8 @@ function addPreset(title, preset)
   title_label.appendChild(threeDot_Dropdown);
 
   //** ON CHANGE EVENT FOR REMOVE ICON */
-  threeDot_Dropdown.addEventListener('click', function() {
+  threeDot_Dropdown.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent event bubbling
     threeDot_Dropdown_Container.classList.toggle("show");
   }, false);
 
@@ -5896,11 +7068,11 @@ function progressTutorial(forward) {
 sidebarButton.addEventListener("click", function () 
 {
   //** TOGGLE Threedot */
-  var dropdownButtons = document.getElementsByClassName("dropbtn");
+  var dropdownButtons = [...document.getElementsByClassName("dropbtn"), ...document.getElementsByClassName("dropbtn-small")];
 
   if(sidebar.classList.contains("active"))
   {
-    sidebarButton.innerHTML = "›";
+    sidebarButton.innerHTML = '<i class="fa fa-chevron-right"></i>';
     sidebar_open = false;
 
     setTimeout(() => {
@@ -5919,7 +7091,7 @@ sidebarButton.addEventListener("click", function ()
   }
   else
   {
-    sidebarButton.innerHTML = "‹";
+    sidebarButton.innerHTML = '<i class="fa fa-chevron-left"></i>';
     sidebar_open = true;
 
     //** HIDE ALL THREEDOTS */
@@ -6535,6 +7707,8 @@ Chart2_max.addEventListener("change", function () {
 
 presetDropDown.addEventListener("click", function (event) 
 {
+  event.stopPropagation(); // Prevent event bubbling to window.onclick
+  
   if(tutorial && tutorialIndex == 1)
   {
     progressTutorial(true);
@@ -6578,7 +7752,13 @@ var lastClickedButton;
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) 
 { 
-  if (!event.target.matches('.dropbtn')) 
+  // Check if clicked element is a dropdown button or icon inside a dropdown button
+  var isDropdownButton = event.target.matches('.dropbtn') || 
+                         event.target.matches('.dropbtn-small') ||
+                         event.target.closest('.dropbtn') ||
+                         event.target.closest('.dropbtn-small');
+  
+  if (!isDropdownButton) 
   {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     for (var i = 0; i < dropdowns.length; i++) 
@@ -6590,7 +7770,7 @@ window.onclick = function(event)
       }
     }
     //** TOGGLE Threedot */
-    var dropdownButtons = document.getElementsByClassName("dropbtn");
+    var dropdownButtons = [...document.getElementsByClassName("dropbtn"), ...document.getElementsByClassName("dropbtn-small")];
     
     if(sidebar_open)
     {
@@ -6611,7 +7791,7 @@ window.onclick = function(event)
     //** TOGGLE Threedot */
     if (event.target.id != "dropDownBtn_layers")
     {
-      var dropdownButtons = document.getElementsByClassName("dropbtn");
+      var dropdownButtons = [...document.getElementsByClassName("dropbtn"), ...document.getElementsByClassName("dropbtn-small")];
       for (var i = 0; i < dropdownButtons.length; i++) {
         var Threedot = dropdownButtons[i];
         if (Threedot.classList.contains('hide')) 
@@ -6632,15 +7812,3 @@ window.onclick = function(event)
     }
   }
 }
-
-
-
-//console.log(boxAnnotations);
-//console.log(boxAnnotations2);
-
-//** REMOVE BOX ANNOTATION */
-// setTimeout(() => {
-//   boxAnnotations.splice(0, 3);
-//   console.log(boxAnnotations);
-//   chart.update();
-// }, 2000);

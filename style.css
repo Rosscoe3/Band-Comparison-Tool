@@ -68,20 +68,43 @@ h1 {
 }
 
 .graphConnector {
-  position: inherit;
+  position: absolute;
   left: 50%;
-  top: 90%;
-  transform: translate(-50%, -50%);
-  padding: 1%;
-  user-select: none;
-
-  width: 6.75%;
-  height: 12.5%;
+  bottom: 0; /* Default fallback position */
+  transform: translateX(-50%);
+  
+  /* Responsive sizing using CSS custom properties */
+  --connector-width: min(60px, 4vw);
+  --connector-height: min(30px, 3vh);
+  
+  width: var(--connector-width);
+  height: var(--connector-height);
   color: #C0C0C0;
   z-index: 100;
   text-align: center;
-  font-size: 200%;
   pointer-events: none;
+  
+  /* Smooth transitions for responsive changes */
+  transition: all 0.3s ease;
+  
+  /* Allow JavaScript to override positioning */
+  --js-top: initial;
+  --js-transform: initial;
+}
+
+/* Media queries for fine-tuning */
+@media (max-width: 768px) {
+  .graphConnector {
+    --connector-width: 40px;
+    --connector-height: 25px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .graphConnector {
+    --connector-width: 80px;
+    --connector-height: 35px;
+  }
 }
 
 .graphConnector.disabled {
@@ -137,19 +160,27 @@ h1 {
 }
 
 .openSidebarIcon{
+  position: absolute;
   left: 0%;
   top: 0%;
   width: fit-content;
-  margin-left: 0.5rem;
-  padding: 0rem;
-  font-size: 225%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
   opacity: 0%;
   cursor: pointer;
+  
+  /* Clean styling without circle */
+  color: #333;
+  
+  /* Center the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 
   user-select: none;
-
   pointer-events: none;
-
   z-index: 500;
 
   transition: all 0.25s ease-in-out;
@@ -161,7 +192,7 @@ h1 {
 }
 
 .openSidebarIcon:hover{
-  opacity: 50%;
+  opacity: 70%;
   transition: all 0.25s ease-in-out;
 }
 
@@ -169,191 +200,295 @@ h1 {
   position: relative;
   width: 0%;
   height: 100%;
-  background-color: white;
-  outline: solid 0px rgba(0, 0, 0, 1);
-  transition: all 0.5s ease-in-out;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   flex-flow: column nowrap;
-
   resize: none;
-
   overflow-x: hidden;
   overflow-y: hidden;
-
   display: flex;
+  font-family: "Inter", sans-serif;
 }
 
 .sidebar .scrollContainer{
   width: 100%;
-  height: fit-content;
+  height: 100%;
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  padding: 16px 0;
+  
+  /* Modern scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.sidebar .scrollContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar .scrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar .scrollContainer::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar .scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .inputContainer{
   display: flex;
   width: 100%;
+  align-items: center;
+  padding: 8px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+  min-height: 44px;
 }
+
+.inputContainer:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
 .inputContainer input{
-  /* min-width: 10%;
-  max-width: 25%; */
   width: 25%;
-  margin-left: 0;
-  padding: 1.5%;
+  min-width: 60px;
+  margin: 0;
+  padding: 6px 8px;
   outline: none;
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  font-size: 14px;
 }
+
 .inputContainer input[type=checkbox] {
-  transform: scale(0.6);
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #495057;
+  cursor: pointer;
+  flex-shrink: 0;
 }
+
+.inputContainer input[type=color] {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+}
+
 .inputContainer div{
-  flex-grow: 2;
-  justify-content: center;
-  height: 100%;
-  padding-left: 12.5%;
-  line-height: 350%;
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
   user-select: none;
+  cursor: pointer;
+  line-height: 1.2;
+  margin-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar .sidebarTitle{
   user-select: none;
   height: fit-content;
-
-  padding: 5%;
-
-  float: right;
-  text-align: left;
-
-  background-color: #B3B3B3;
-  color: black;
-
-  transition: all 0.5s ease-in-out;
+  padding: 20px 24px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 .sidebar.active .sidebarTitle{
-  font-size: 150%;
-  outline: solid 1px rgba(0, 0, 0, 1);
-  transition: all 0.5s ease-in-out;
+  padding: 20px 24px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .sidebarTitle .symbol{
-  float: right;
-  font-weight: 100;
-  font-size: 125%;
-
-  opacity: 100%;
-  transition: opacity 0.25s ease-in-out;
+  font-weight: 300;
+  font-size: 16px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .sidebarTitle label{
-  align-items: center;
-  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+  letter-spacing: -0.02em;
   user-select: none;
-
-  font-size: 2vw;
-  transform: translate(0%, 10%);
-}
-
-.layersSpacer{
-  user-select: none;
-  height: 2.5%;
-
-  background-color: #B3B3B3;
-}
-
-.group-list i{
-  float: right;
-  margin-right: 0%;
-  margin: 1.5%;
-  height: 100%;
-  color: black;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.group-list i:hover{
-  color: white;
 }
 
 .symbol:hover{
-  opacity: 50%;
-  cursor: pointer;
-  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
-/* Dropdown Button */
-.dropbtn {
-  height: fit-content;
-  font-weight: 200%;
-  font-size: 100%;
-  border: none;
+.group-list i{
+  margin: 8px;
+  color: #6b7280;
   cursor: pointer;
-  opacity: 100%;
-  background-color: rgba(0, 100, 100, 0);
-  z-index: 0;
+  transition: all 0.2s ease;
+}
+
+.group-list i:hover{
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+/* Dropdown Button - Main layers button */
+.dropbtn {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  background: #ffffff;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+}
+
+.dropbtn i {
+  font-size: 12px;
+}
+
+/* Dropdown Button - Three dots button (smaller) */
+.dropbtn-small {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  background: #ffffff;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  margin-right: 8px;
+}
+
+.dropbtn-small i {
+  font-size: 10px;
 }
 
 .dropbtn.hide{
   pointer-events: none;
   opacity: 0%;
+  transform: scale(0.8);
+}
+
+.dropbtn-small.hide{
+  pointer-events: none;
+  opacity: 0%;
+  transform: scale(0.8);
 }
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-  opacity: 50%;
-  font-weight: 200%;
-  background-color: rgba(0, 100, 100, 0);
-  color: white;
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.dropbtn-small:hover, .dropbtn-small:focus {
+  background: #e9ecef;
+  border-color: #adb5bd;
 }
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  display: inline-block;
-  float: right;
+  position: relative;
+  display: flex;
 }
 
 li .dropdown{
-  left: 0%;
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
-  padding: 0%;
-  margin: 1%;
+  background: white;
+  padding: 4px;
+  margin: 8px 0;
   min-width: fit-content;
-  max-height:500px;
-  overflow-y:scroll; 
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  left: 0%;
-  top: 5%;
-  font-size: 125%;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #dee2e6;
+  z-index: 1000;
+  
+  /* Custom scrollbar for dropdown */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 ul .dropdown-content {
-  left: 0%;
-  min-width: 150px;
-  max-height:500px;
-  font-size: 75%;
+  min-width: 200px;
+  max-height: 400px;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
+  color: #374151;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  font-size: 75%;
-  pointer-events: auto;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 1px 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
+
 .dropdown-content a.disabled {
-  opacity: 50%;
-  cursor: default;
+  opacity: 0.4;
+  cursor: not-allowed;
   pointer-events: none;
 }
+
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #f8f9fa;
+  color: #495057;
+}
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .dropdown-content.show 
 {
@@ -362,10 +497,10 @@ ul .dropdown-content {
 }
 
 .sidebar.active{
-  width: 20%;
-  outline: solid 2px rgba(0, 0, 0, 1);
-  transition: all 0.5s ease-in-out;
-  resize: none;
+  width: 22%;
+  min-width: 320px;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .sidebar .batchGrid {
   outline: solid 0px rgba(0, 0, 0, 1);
@@ -447,6 +582,8 @@ ul .dropdown-content {
 .nav a, .nav label {
   font-size: 110%;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: .85rem;
   padding-left: 12%;
   /* color: #fff; */
@@ -456,9 +593,41 @@ ul .dropdown-content {
   -webkit-transition: all .25s ease-in;
   transition: all .25s ease-in;
 }
+
+/* Special styling for main section headers like "Global Style" */
+.nav label[style*="padding-left: 5%"] {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+  font-weight: 600;
+  padding-left: 5%;
+}
+
+.nav label[style*="padding-left: 5%"]:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.layersSpacer{
+  height: 1px;
+  background-color: #dee2e6;
+  margin: 8px 0;
+}
 .nav a:focus, .nav a:hover, .nav label:focus, .nav label:hover{
   color: rgba(255, 255, 255, 1);
   background: black;
+}
+
+.nav label:hover .dropbtn {
+  background: black;
+  color: white;
+  border-color: #495057;
+}
+
+.nav label:hover .dropbtn-small {
+  background: black;
+  color: white;
+  border-color: #495057;
 }
 .nav label { 
   cursor: pointer;
@@ -466,6 +635,10 @@ ul .dropdown-content {
   user-select: none;
 }
 .title_Label:hover .dropbtn{
+  color: rgba(255, 255, 255, 1);
+}
+
+.title_Label:hover .dropbtn-small{
   color: rgba(255, 255, 255, 1);
 }
 
@@ -635,6 +808,11 @@ ul {
 }
 
 .title_Label i:hover .dropbtn {
+  color: white;
+  transition: all 0.25s ease-in-out;
+}
+
+.title_Label i:hover .dropbtn-small {
   color: white;
   transition: all 0.25s ease-in-out;
 }
